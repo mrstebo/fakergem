@@ -11,14 +11,15 @@ Contents
 - [Usage](#usage)
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Number](doc/number.md)
+  - [Faker.Placeholdit](doc/placeholdit.md)
 
-  ## Installing
+## Installing
 
-  ```bash
-  npm install fakergem
-  ```
+```bash
+npm install fakergem
+```
 
-  ## Usage
+## Usage
 
 ```js
 const Faker = require('fakergem');

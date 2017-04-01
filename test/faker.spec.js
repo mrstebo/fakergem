@@ -11,4 +11,10 @@ describe('#Faker', () => {
       expect(Faker.Number).to.be.a('object');
     });
   });
+
+  describe('#Placeholdit', () => {
+    it('should return an object', () => {
+      expect(Faker.Placeholdit).to.be.a('object');
+    });
+  });
 });
