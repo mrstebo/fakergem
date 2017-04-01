@@ -22,5 +22,5 @@ Contents
 ```js
 const Faker = require('fakergem');
 
-Faker.Number.number(2)      #=> 52
+Faker.Number.number(2)      //=> 52
 ```
