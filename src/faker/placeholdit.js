@@ -37,7 +37,7 @@ function isSupportedFormat(format) {
 
 function isValidColorValue(color) {
   if (color) {
-    return new RegExp(/(?:^[0-9a-f]{3}$)|(?:^[0-9a-f]{6}$)/, 'i').test(color);
+    return new RegExp(/(?:^[0-9a-f]{3}$)|(?:^[0-9a-f]{6}$)/.source, 'i').test(color);
   }
   return true;
 }
