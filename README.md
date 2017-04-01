@@ -9,6 +9,7 @@ Contents
 
 - [Installing](#installing)
 - [Usage](#usage)
+  - [Faker.Boolean](doc/boolean.md)
   - [Faker.Number](doc/number.md)
 
   ## Installing
