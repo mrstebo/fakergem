@@ -2,7 +2,7 @@
   "name": "fakergem",
   "version": "0.0.1",
   "description": "A javascript version of the Faker ruby gem",
-  "main": "./lib/index.js",
+  "main": "./lib/faker.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint src",
     "prebuild": "npm run lint",
