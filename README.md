@@ -10,6 +10,7 @@ Contents
 - [Installing](#installing)
 - [Usage](#usage)
   - [Faker.Boolean](doc/boolean.md)
+  - [Faker.LoremFlickr](doc/lorem_flickr.md)
   - [Faker.Number](doc/number.md)
   - [Faker.Placeholdit](doc/placeholdit.md)
 
