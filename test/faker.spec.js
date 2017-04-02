@@ -12,6 +12,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#LoremFlickr', () => {
+    it('should return an object', () => {
+      expect(Faker.LoremFlickr).to.be.a('object');
+    });
+  });
+
   describe('#Number', () => {
     it('should return an object', () => {
       expect(Faker.Number).to.be.a('object');
