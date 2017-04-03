@@ -8,6 +8,14 @@ export function rgbColor() {
   });
 }
 
+export function hslColor() {
+  return [
+    Math.floor(Math.random() * 360),
+    Math.round(Math.random(), 2),
+    Math.round(Math.random(), 2)
+  ];
+}
+
 function leftPad(text, length, paddingCharacter) {
   let padding = [...Array(length)].map(_ => paddingCharacter).join('');
   return (padding + text).slice(-length);

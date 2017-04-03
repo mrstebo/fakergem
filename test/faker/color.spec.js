@@ -22,4 +22,22 @@ describe('Color', () => {
       });
     });
   });
+
+  describe('#hslColor', () => {
+    it('should return an array of 3 values', () => {
+      expect(Color.hslColor()).to.have.lengthOf(3);
+    });
+
+    it('should return a hue value between 0 and 360', () => {
+      expect(Color.hslColor()[0]).to.be.within(0, 360);
+    });
+
+    it('should return a saturation value between 0 and 1', () => {
+      expect(Color.hslColor()[1]).to.be.within(0, 1);
+    });
+
+    it('should return a lightness value between 0 and 1', () => {
+      expect(Color.hslColor()[2]).to.be.within(0, 1);
+    });
+  });
 });
