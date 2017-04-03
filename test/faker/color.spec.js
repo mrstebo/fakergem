@@ -1,11 +1,20 @@
 import {expect} from 'chai';
 import * as Color from '../../lib/faker/color';
+import data from '../../data/color.json';
 
 describe('Color', () => {
   describe('#hexColor', () => {
     it('should return a hex color value', () => {
       [...Array(10).keys()].forEach(_ => {
         expect(Color.hexColor()).to.match(/^#[0-9a-f]{6}/);
+      });
+    });
+  });
+
+  describe('#colorName', () => {
+    it('should return a color name', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Color.colorName()).to.be.oneOf(data['colorNames']);
       });
     });
   });

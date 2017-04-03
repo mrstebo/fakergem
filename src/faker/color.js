@@ -1,5 +1,12 @@
+import data from '../../data/color.json';
+
 export function hexColor() {
   return `#${leftPad(Math.floor(Math.random() * 0xffffff).toString(16), 6, '0')}`;
+}
+
+export function colorName() {
+  const colors = data['colorNames'];
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
 export function rgbColor() {
