@@ -35,4 +35,10 @@ describe('#Faker', () => {
       expect(Faker.Placeholdit).to.be.a('object');
     });
   });
+
+  describe('#Time', () => {
+    it('should return an object', () => {
+      expect(Faker.Time).to.be.a('object');
+    });
+  });
 });
