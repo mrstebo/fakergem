@@ -9,4 +9,17 @@ describe('Color', () => {
       });
     });
   });
+
+  describe('#rgbColor', () => {
+    it('should return an array of 3 values', () => {
+      expect(Color.rgbColor()).to.have.lengthOf(3);
+    });
+
+    it('should return values between 0 and 255', () => {
+      let color = Color.rgbColor();
+      [0, 1, 2].forEach(i => {
+        expect(color[i]).to.be.within(0, 255);
+      });
+    });
+  });
 });
