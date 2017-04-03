@@ -7,7 +7,7 @@ Faker.Color.colorName() //=> "yellow"
 
 Faker.Color.rgbColor() //=> [54, 233, 67]
 
-Faker.Color.hslColor() //=> [69.87, 169.66, 225.3]
+Faker.Color.hslColor() //=> [69.87, 0.66, 0.3]
 
-Faker.Color.hslaColor() //=> [154.77, 232.36, 58.9, 0.26170574657729073]
+Faker.Color.hslaColor() //=> [154.77, 0.36, 0.9, 0.26170574657729073]
 ```
