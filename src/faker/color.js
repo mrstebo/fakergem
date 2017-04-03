@@ -1,5 +1,5 @@
 export function hexColor() {
-  return `#${leftPad(Math.floor(Math.random() * 0xffffff).toString(16))}`;
+  return `#${leftPad(Math.floor(Math.random() * 0xffffff).toString(16), 6, '0')}`;
 }
 
 export function rgbColor() {
