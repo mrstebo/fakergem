@@ -26,14 +26,16 @@ export function between(from, to, period=ALL, format=null) {
 export function forward(days=365, period=ALL, format=null) {
   const from = daysFromNow(1);
   const to = daysFromNow(days);
-  const time = dateBetween(from, to);
+  const date = dateBetween(from, to);
+  const time = dateWithRandomTime(date, period);
   return timeWithFormat(time, format);
 }
 
 export function backward(days=365, period=ALL, format=null) {
   const from = daysFromNow(-days);
   const to = daysFromNow(-1);
-  const time = dateBetween(from, to);
+  const date = dateBetween(from, to);
+  const time = dateWithRandomTime(date, period);
   return timeWithFormat(time, format);
 }
 
