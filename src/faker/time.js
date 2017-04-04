@@ -21,7 +21,7 @@ const TIME_RANGES = {
 
 export function between(from, to, period=ALL, format=null) {
   const date = dateBetween(from, to);
-  const time = dateWithRandomTime(date, period);
+  const time = period == BETWEEN ? date : dateWithRandomTime(date, period);
   return timeWithFormat(time, format);
 }
 
