@@ -43,7 +43,9 @@ function dateBetween(from, to) {
   const fromMilli = Date.parse(from);
   const toMilli = Date.parse(to);
   const offset = Math.floor(Math.random() * (toMilli - fromMilli));
-  return new Date(fromMilli + offset);
+  const date = new Date(fromMilli + offset);
+  date.setHours(0, 0, 0, 0);
+  return date;
 }
 
 function dateWithRandomTime(date, period) {
