@@ -10,7 +10,18 @@ describe('Time', () => {
     it('should return a date between two dates', () => {
       const from = new Date(2017, 9, 1);
       const to = new Date(2017, 9, 31);
-      expect(Time.between(new Date(from), new Date(to))).to.be.within(from, to);
+      expect(Time.between(from, to)).to.be.within(from, to);
+    });
+
+    it('should return a time between a specified period', () => {
+      expect(Time.between(new Date(), new Date(), Time.ALL).getHours()).to.be.within(0, 23);
+      expect(Time.between(new Date(), new Date(), Time.DAY).getHours()).to.be.within(9, 17);
+      expect(Time.between(new Date(), new Date(), Time.NIGHT).getHours()).to.be.within(18, 23);
+      expect(Time.between(new Date(), new Date(), Time.MORNING).getHours()).to.be.within(6, 11);
+      expect(Time.between(new Date(), new Date(), Time.AFTERNOON).getHours()).to.be.within(12, 17);
+      expect(Time.between(new Date(), new Date(), Time.EVENING).getHours()).to.be.within(17, 21);
+      expect(Time.between(new Date(), new Date(), Time.MIDNIGHT).getHours()).to.be.within(0, 4);
+      expect(Time.between(new Date(), new Date(), Time.BETWEEN).getHours()).to.be.within(0, 23);
     });
 
     it('should return a formatted date', () => {
@@ -36,6 +47,20 @@ describe('Time', () => {
       });
     });
 
+    it('should return a time between a specified period', () => {
+      expect(Time.forward(10, Time.ALL).getHours()).to.be.within(0, 23);
+      expect(Time.forward(10, Time.DAY).getHours()).to.be.within(9, 17);
+      expect(Time.forward(10, Time.NIGHT).getHours()).to.be.within(18, 23);
+      expect(Time.forward(10, Time.MORNING).getHours()).to.be.within(6, 11);
+      expect(Time.forward(10, Time.AFTERNOON).getHours()).to.be.within(12, 17);
+      expect(Time.forward(10, Time.EVENING).getHours()).to.be.within(17, 21);
+      expect(Time.forward(10, Time.MIDNIGHT).getHours()).to.be.within(0, 4);
+    });
+
+    it('should throw if BETWEEN period specified', () => {
+      expect(() => Time.forward(10, Time.BETWEEN)).to.throw('invalid period');
+    });
+
     it('should return a formatted date', () => {
       const date = new Date();
       expect(Time.forward(10, Time.ALL, 'yyyy-MM-dd HH:mm:ss')).to.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/);
@@ -57,6 +82,20 @@ describe('Time', () => {
       [...Array(100).keys()].forEach(_ => {
         expect(Time.backward(10)).to.be.below(today);
       });
+    });
+
+    it('should return a time between a specified period', () => {
+      expect(Time.backward(10, Time.ALL).getHours()).to.be.within(0, 23);
+      expect(Time.backward(10, Time.DAY).getHours()).to.be.within(9, 17);
+      expect(Time.backward(10, Time.NIGHT).getHours()).to.be.within(18, 23);
+      expect(Time.backward(10, Time.MORNING).getHours()).to.be.within(6, 11);
+      expect(Time.backward(10, Time.AFTERNOON).getHours()).to.be.within(12, 17);
+      expect(Time.backward(10, Time.EVENING).getHours()).to.be.within(17, 21);
+      expect(Time.backward(10, Time.MIDNIGHT).getHours()).to.be.within(0, 4);
+    });
+
+    it('should throw if BETWEEN period specified', () => {
+      expect(() => Time.backward(10, Time.BETWEEN)).to.throw('invalid period');
     });
 
     it('should return a formatted date', () => {
