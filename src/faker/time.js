@@ -70,7 +70,10 @@ function timeWithFormat(time, format) {
 
 function hours(period) {
   const range = TIME_RANGES[period];
-  return range.start + Math.floor(Math.random() * range.end);
+  if (!range) {
+    throw new Error('invalid period');
+  }
+  return range.start + Math.floor(Math.random() * (range.end - range.start));
 }
 
 function minutes() {
