@@ -13,6 +13,15 @@ describe('Time', () => {
       expect(Time.between(from, to)).to.be.within(from, to);
     });
 
+    it('should return only date if Time.BETWEEN is the period', () => {
+      const from = new Date(2017, 9, 1);
+      const to = new Date(2017, 9, 31);
+      const date = Time.between(from, to, Time.BETWEEN);
+      expect(date.getHours()).to.equal(0);
+      expect(date.getMinutes()).to.equal(0);
+      expect(date.getSeconds()).to.equal(0);
+    });
+
     it('should return a time between a specified period', () => {
       expect(Time.between(new Date(), new Date(), Time.ALL).getHours()).to.be.within(0, 23);
       expect(Time.between(new Date(), new Date(), Time.DAY).getHours()).to.be.within(9, 17);
