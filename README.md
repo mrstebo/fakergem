@@ -14,6 +14,7 @@ Contents
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
   - [Faker.Number](doc/number.md)
   - [Faker.Placeholdit](doc/placeholdit.md)
+  - [Faker.Time](doc/time.md)
 
 ## Installing
 
