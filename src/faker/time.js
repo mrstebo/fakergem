@@ -1,3 +1,5 @@
+import {format as formatDate} from '../utils/date-helper';
+
 export const ALL = 'ALL';
 export const DAY = 'DAY';
 export const NIGHT = 'NIGHT';
@@ -60,38 +62,10 @@ function dateWithRandomTime(date, period) {
 }
 
 function timeWithFormat(time, format) {
-  const  monthNames = [
-    'January', 'February', 'March',
-    'April', 'May', 'June', 'July',
-    'August', 'September', 'October',
-    'November', 'December'
-  ];
-  const days = [
-    'Sunday', 'Monday', 'Tuesday', 'Wednesday',
-    'Thursday', 'Friday', 'Saturday'
-  ];
   if (!format) {
     return time;
   }
-  return format
-    .replace('ss', pad(time.getSeconds(), 2))
-    .replace('s', time.getSeconds())
-    .replace('dd', pad(time.getDate(), 2))
-    .replace('d', time.getDate())
-    .replace('mm', pad(time.getMinutes(), 2))
-    .replace('m', time.getMinutes())
-    .replace('MMMM', monthNames[time.getMonth()])
-    .replace('MMM', monthNames[time.getMonth()].substring(0, 3))
-    .replace('MM', pad(time.getMonth() + 1, 2))
-    .replace(/M(?![ao])/, time.getMonth() + 1)
-    .replace('DD', days[time.getDay()])
-    .replace(/D(?!e)/, days[time.getDay()].substring(0, 3))
-    .replace('yyyy', time.getFullYear())
-    .replace('YYYY', time.getFullYear())
-    .replace('yy', (time.getFullYear()+'').substring(2))
-    .replace('YY', (time.getFullYear()+'').substring(2))
-    .replace('HH', pad(time.getHours(), 2))
-    .replace('H', time.getHours());
+  return formatDate(time, format);
 }
 
 function hours(period) {
@@ -111,9 +85,4 @@ function daysFromNow(n) {
   const d = new Date();
   d.setDate(d.getDate() + n);
   return d;
-}
-
-function pad(text, length) {
-  let padding = [...Array(length)].map(_ => '0').join('');
-  return (padding + text).slice(-length);
 }
