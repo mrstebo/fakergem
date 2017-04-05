@@ -9,5 +9,8 @@
     "browser": true,
     "node": true,
     "mocha": true
-  }
+  },
+  "extends": [
+    "es2015"
+  ]
 }

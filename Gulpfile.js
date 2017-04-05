@@ -10,7 +10,7 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('build', () => {
+gulp.task('build', ['lint'], () => {
   return gulp.src('src/**/*.js')
     .pipe(babel({
       presets: ['es2015']
