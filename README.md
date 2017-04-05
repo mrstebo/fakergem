@@ -12,6 +12,7 @@ Contents
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
+  - [Faker.Friends](doc/friends.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
   - [Faker.Number](doc/number.md)
   - [Faker.Placeholdit](doc/placeholdit.md)

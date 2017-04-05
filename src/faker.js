@@ -1,6 +1,7 @@
 import * as Boolean from './faker/boolean';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
+import * as Friends from './faker/friends';
 import * as LoremFlickr from './faker/lorem-flickr';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
@@ -10,6 +11,7 @@ export default {
   Boolean,
   Color,
   Date,
+  Friends,
   LoremFlickr,
   Number,
   Placeholdit,
