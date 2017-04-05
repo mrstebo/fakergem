@@ -1,6 +1,14 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
+const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
+
+gulp.task('lint', () => {
+  return gulp.src('src/**/*.js')
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
 
 gulp.task('build', () => {
   return gulp.src('src/**/*.js')
