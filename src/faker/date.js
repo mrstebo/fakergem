@@ -37,7 +37,11 @@ export function backward(days=365) {
 }
 
 export function birthday(minAge=18, maxAge=65) {
-  return new Date();
+  const now = new Date();
+  const from = new Date(now.getYear() - maxAge, now.getMonth(), now.getDay());
+  const to = new Date(now.getYear() - minAge, now.getMonth(), now.getDay());
+  const date = between(from, to);
+  return date;
 }
 
 function getDateObject(date) {
