@@ -1,4 +1,7 @@
 export function between(from, to) {
+  from = getDateObject(from);
+  to = getDateObject(to);
+
   const fromMilli = Date.parse(from);
   const toMilli = Date.parse(to);
   const offset = Math.floor(Math.random() * (toMilli - fromMilli));
@@ -8,6 +11,10 @@ export function between(from, to) {
 }
 
 export function betweenExcept(from, to, except) {
+  from = getDateObject(from);
+  to = getDateObject(to);
+  except = getDateObject(except);
+
   let date = between(from, to);
   while (datesAreEqual(date, except)) {
     date = between(from, to);
@@ -31,6 +38,14 @@ export function backward(days=365) {
 
 export function birthday(minAge=18, maxAge=65) {
   return new Date();
+}
+
+function getDateObject(date) {
+  if (typeof(date) == 'string') {
+    return new Date(Date.parse(date));
+  }
+  date.setHours(0, 0, 0, 0);
+  return date;
 }
 
 function datesAreEqual(date1, date2) {
