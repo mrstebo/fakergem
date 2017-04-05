@@ -18,6 +18,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Date', () => {
+    it('should return an object', () => {
+      expect(Faker.Date).to.be.a('object');
+    });
+  });
+
   describe('#LoremFlickr', () => {
     it('should return an object', () => {
       expect(Faker.LoremFlickr).to.be.a('object');
