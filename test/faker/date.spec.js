@@ -12,6 +12,15 @@ describe('#Date', () => {
       const to = new Date(2017, 0, 10);
       expect(DateFaker.between('2017-01-01', '2017-01-10')).to.be.within(from, to);
     });
+
+    it('should return a date between two dates', () => {
+      const from = new Date(2017, 0, 1);
+      const to = new Date(2017, 0, 10);
+
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.between(from, to)).to.be.within(from, to);
+      });
+    });
   });
 
   describe('#betweenExcept', () => {
