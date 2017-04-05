@@ -14,5 +14,5 @@ Faker.Date.forward(23) //=> "Fri, 03 Oct 2014"
 Faker.Date.backward(14) //=> "Fri, 19 Sep 2014"
 
 // Random birthday date (maximum age between 18 and 65)
-Faker.Date.birthday(18, 65) //=> "Mar, 28 Mar 1986"
+Faker.Date.birthday(18, 65) //=> "Fri, 28 Mar 1986"
 ```
