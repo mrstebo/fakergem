@@ -10,7 +10,7 @@ gulp.task('build', () => {
     .pipe(gulp.dest('lib'));
 });
 
-gulp.task('test', () => {
+gulp.task('test', ['build'], () => {
   return gulp.src('test/**/*.spec.js', { read: false })
     .pipe(mocha({
       reporter: 'spec',
@@ -19,3 +19,9 @@ gulp.task('test', () => {
       harmony: true
     }));
 });
+
+gulp.task('watch', () => {
+  gulp.watch(['src/**/*.js', 'test/**/*.spec.js'], ['test']);
+});
+
+gulp.task('default', ['build', 'watch']);
