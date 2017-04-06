@@ -1,27 +1,41 @@
+import data from '../../data/name.json';
+
 export function name() {
-  return 'John Smith';
+  return pickOneOf(data['names']);
 }
 
 export function nameWithMiddle() {
-  return 'John Norman Smith';
+  return [
+    pickOneOf(data['names']),
+    pickOneOf(data['names']),
+    pickOneOf(data['lastNames'])
+  ].join(' ');
 }
 
 export function firstName() {
-  return 'John';
+  return pickOneOf(data['firstNames']);
 }
 
 export function lastName() {
-  return 'Smith';
+  return pickOneOf(data['lastNames']);
 }
 
 export function prefix() {
-  return 'Mr';
+  return pickOneOf(data['prefixes']);
 }
 
 export function suffix() {
-  return 'Phd';
+  return pickOneOf(data['suffixes']);
 }
 
 export function title() {
-  return 'Github Wizard';
+  return [
+    pickOneOf(data['titles']['descriptor']),
+    pickOneOf(data['titles']['level']),
+    pickOneOf(data['titles']['job'])
+  ].join(' ');
+}
+
+function pickOneOf(collection) {
+  return collection[Math.floor(Math.random() * collection.length)];
 }
