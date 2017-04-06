@@ -36,6 +36,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Name', () => {
+    it('should return an object', () => {
+      expect(Faker.Name).to.be.a('object');
+    });
+  });
+
   describe('#Number', () => {
     it('should return an object', () => {
       expect(Faker.Number).to.be.a('object');
