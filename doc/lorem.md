@@ -1,7 +1,7 @@
 # Faker.Lorem
 
 ```js
-Faker.Lorem.word //=> "repellendus"
+Faker.Lorem.word() //=> "repellendus"
 
 // Optional arguments: num=3, supplemental=false (words from a supplementary list of Lorem-like words)
 Faker.Lorem.words() //=> ["dolores", "adipisci", "nesciunt"]
