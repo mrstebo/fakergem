@@ -34,7 +34,25 @@ describe('Lorem', () => {
   });
 
   describe('#characters', () => {
+    it('should return a string', () => {
+      expect(Lorem.characters()).to.be.a('string');
+    });
 
+    it('should return a specified number of characters', () => {
+      [...Array(50).keys()].forEach(i => {
+        expect(Lorem.characters(i)).to.have.lengthOf(i);
+      });
+    });
+
+    it('should return numbers from "0" to "9" and characters "a" to "z"', () => {
+      [...Array(100).keys()].forEach(i => {
+        expect(Lorem.characters(1)).to.match(/^[0-9a-z]$/);
+      });
+    });
+
+    it('should return empty string if number of characters is less than 1', () => {
+      expect(Lorem.characters(-1)).to.equal('');
+    });
   });
 
   describe('#sentence', () => {
