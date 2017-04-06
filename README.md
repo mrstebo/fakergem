@@ -14,6 +14,7 @@ Contents
   - [Faker.Date](doc/date.md)
   - [Faker.Friends](doc/friends.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
+  - [Faker.Name](doc/name.md)
   - [Faker.Number](doc/number.md)
   - [Faker.Placeholdit](doc/placeholdit.md)
   - [Faker.Time](doc/time.md)
