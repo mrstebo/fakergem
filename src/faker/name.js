@@ -1,13 +1,16 @@
 import data from '../../data/name.json';
 
 export function name() {
-  return pickOneOf(data['names']);
+  return [
+    pickOneOf(data['firstNames']),
+    pickOneOf(data['lastNames'])
+  ].join(' ');
 }
 
 export function nameWithMiddle() {
   return [
-    pickOneOf(data['names']),
-    pickOneOf(data['names']),
+    pickOneOf(data['firstNames']),
+    pickOneOf(data['firstNames']),
     pickOneOf(data['lastNames'])
   ].join(' ');
 }
