@@ -24,7 +24,10 @@ export function characters(charCount=255) {
 }
 
 export function sentence(wordCount=4, supplemental=false, randomWordsToAdd=6) {
-
+  const text = capitalize(
+    words(wordCount + randomNumber(randomWordsToAdd), supplemental).join(' ')
+  );
+  return text.length > 0 ? `${text}.` : text;
 }
 
 export function sentences(sentenceCount=3, supplemental=false) {
@@ -47,7 +50,7 @@ function resolveNumber(n) {
 }
 
 function pickOneOf(collection) {
-  return collection[Math.floor(Math.random() * collection.length)];
+  return collection[randomNumber(collection.length)];
 }
 
 function shuffle(collection) {
@@ -55,7 +58,7 @@ function shuffle(collection) {
     let length = collection.length;
     let result = Array(length);
     while (++index < length) {
-        let rand = Math.floor(Math.random() * (index + 1));
+        let rand = randomNumber(index + 1);
         result[index] = result[rand];
         result[rand] = collection[index];
     }
@@ -66,4 +69,12 @@ function repeatArray(collection, n) {
   return Array
     .apply(null, {length: n * collection.length})
     .map((e, i) => collection[i % collection.length]);
+}
+
+function randomNumber(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function capitalize(text) {
+  return text.replace(/\b\w/, x => x.toUpperCase());
 }

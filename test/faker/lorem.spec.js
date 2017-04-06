@@ -56,7 +56,19 @@ describe('Lorem', () => {
   });
 
   describe('#sentence', () => {
+    it('should return a string', () => {
+      expect(Lorem.sentence()).to.be.a('string');
+    });
 
+    it('should return a specified number of words', () => {
+      [...Array(50).keys()].map(i => i + 1).forEach(i => {
+        expect(Lorem.sentence(i, false, 0).split(' ')).to.be.lengthOf(i);
+      });
+    });
+
+    it('should return empty string if number of words is less than 1', () => {
+      expect(Lorem.sentence(-1, false, 0)).to.equal('');
+    });
   });
 
   describe('#sentences', () => {
