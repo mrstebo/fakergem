@@ -2,10 +2,10 @@
 
 ```js
 // Random date between dates
-Faker.Date.between(2.days.ago, Date.today) //=> "Wed, 24 Sep 2014"
+Faker.Date.between(new Date(2014, 8, 1), new Date(2014, 8, 30)) //=> "Wed, 24 Sep 2014"
 
 // Random date between dates except for certain date
-Faker.Date.between_except(1.year.ago, 1.year.from_now, Date.today) //=> "Wed, 24 Sep 2014"
+Faker.Date.betweenExcept(new Date(2014, 0, 1), new Date(2015, 0, 1), new Date()) //=> "Wed, 24 Sep 2014"
 
 // Random date in the future (up to maximum of N days)
 Faker.Date.forward(23) //=> "Fri, 03 Oct 2014"
