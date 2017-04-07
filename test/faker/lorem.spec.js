@@ -69,6 +69,11 @@ describe('Lorem', () => {
       expect(supplementals.length).to.be.at.least(1);
     });
 
+    it('should include random words if specified', () => {
+      const words = Lorem.sentence(0, false, 10).match(/\w+/g) || [];
+      expect(words.length).to.be.within(0, 10);
+    });
+
     it('should return empty string if number of words is less than 1', () => {
       expect(Lorem.sentence(-1, false, 0)).to.equal('');
     });
@@ -110,6 +115,11 @@ describe('Lorem', () => {
         .split(' ')
         .filter(word => data['supplemental'].includes(word));
       expect(supplementals.length).to.be.at.least(1);
+    });
+
+    it('should include random sentences if specified', () => {
+      const sentences = Lorem.paragraph(0, false, 10).match(/.*?\./g) || [];
+      expect(sentences.length).to.be.within(0, 10);
     });
 
     it('should return empty string if number of sentences is less than 1', () => {
