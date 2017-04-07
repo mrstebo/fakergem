@@ -72,7 +72,15 @@ describe('Lorem', () => {
   });
 
   describe('#sentences', () => {
+    it('should return an array', () => {
+      expect(Lorem.sentences()).to.be.a('array');
+    });
 
+    it('should rturn a specified number of sentences', () => {
+      [...Array(50).keys()].forEach(i => {
+        expect(Lorem.sentences(i)).to.have.lengthOf(i);
+      });
+    });
   });
 
   describe('#paragraph', () => {

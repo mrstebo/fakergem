@@ -31,7 +31,9 @@ export function sentence(wordCount=4, supplemental=false, randomWordsToAdd=6) {
 }
 
 export function sentences(sentenceCount=3, supplemental=false) {
-
+  return [...Array(resolveNumber(sentenceCount)).keys()].map(_ => {
+    return sentence(3, supplemental);
+  });
 }
 
 export function paragraph(sentenceCount=3, supplemental=false, randomSentencesToAdd=3) {
