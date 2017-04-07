@@ -5,6 +5,7 @@ const coveralls = require('gulp-coveralls');
 const eslint = require('gulp-eslint');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
+const isparta = require('isparta');
 
 gulp.task('lint', () => {
   return gulp.src('src/**/*.js')
@@ -21,9 +22,11 @@ gulp.task('build', ['lint'], () => {
     .pipe(gulp.dest('lib'));
 });
 
-gulp.task('pre-test', () => {
-  return gulp.src(['lib/**/*.js'])
-    .pipe(istanbul())
+gulp.task('pre-test', ['build'], () => {
+  return gulp.src(['src/**/*.js'])
+    .pipe(istanbul({
+      instrumenter: isparta.Instrumenter
+    }))
     .pipe(istanbul.hookRequire());
 });
 
