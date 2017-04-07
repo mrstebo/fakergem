@@ -31,7 +31,7 @@ describe('Lorem', () => {
     it('should return supplemental words if specified', () => {
       const supplementals = Lorem.words(200, true)
         .filter(word => data['supplemental'].includes(word));
-      expect(supplementals.length).to.be.at.least(1);
+      expect(supplementals.length).to.be.within(0, 200);
     });
   });
 
@@ -66,7 +66,7 @@ describe('Lorem', () => {
       const supplementals = Lorem.sentence(50, true)
         .split(' ')
         .filter(word => data['supplemental'].includes(word));
-      expect(supplementals.length).to.be.at.least(1);
+      expect(supplementals.length).to.be.at.within(0, 50);
     });
 
     it('should include random words if specified', () => {
