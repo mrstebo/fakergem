@@ -27,6 +27,12 @@ describe('Lorem', () => {
         expect(word).to.be.oneOf(data['words']);
       });
     });
+
+    it('should return supplemental words if specified', () => {
+      const supplementals = Lorem.words(200, true)
+        .filter(word => data['supplemental'].includes(word));
+      expect(supplementals.length).to.be.at.least(1);
+    });
   });
 
   describe('#characters', () => {
@@ -56,6 +62,13 @@ describe('Lorem', () => {
       expect(Lorem.sentence(10, false, 0).match(/\w+[\s\.]/g) || []).to.be.lengthOf(10);
     });
 
+    it('should return supplemental words if specified', () => {
+      const supplementals = Lorem.sentence(50, true)
+        .split(' ')
+        .filter(word => data['supplemental'].includes(word));
+      expect(supplementals.length).to.be.at.least(1);
+    });
+
     it('should return empty string if number of words is less than 1', () => {
       expect(Lorem.sentence(-1, false, 0)).to.equal('');
     });
@@ -68,6 +81,14 @@ describe('Lorem', () => {
 
     it('should return a specified number of sentences', () => {
       expect(Lorem.sentences(50)).to.have.lengthOf(50);
+    });
+
+    it('should return supplemental words if specified', () => {
+      const supplementals = Lorem.sentences(50, true)
+        .filter(sentence => sentence.split(' ')
+          .filter(word => data['supplemental'].includes(word))
+        );
+      expect(supplementals.length).to.be.at.least(1);
     });
 
     it('should return empty array if number of sentences is less than 1', () => {
@@ -84,6 +105,13 @@ describe('Lorem', () => {
       expect(Lorem.paragraph(10, false, 0).match(/.*?\./g)).to.have.lengthOf(10);
     });
 
+    it('should return supplemental words if specified', () => {
+      const supplementals = Lorem.paragraph(50, true)
+        .split(' ')
+        .filter(word => data['supplemental'].includes(word));
+      expect(supplementals.length).to.be.at.least(1);
+    });
+
     it('should return empty string if number of sentences is less than 1', () => {
       expect(Lorem.paragraph(-1, false, 0)).to.equal('');
     });
@@ -96,6 +124,14 @@ describe('Lorem', () => {
 
     it('should return a specified number of paragraphs', () => {
       expect(Lorem.paragraphs(50)).to.have.lengthOf(50);
+    });
+
+    it('should return supplemental words if specified', () => {
+      const supplementals = Lorem.paragraphs(50, true)
+        .filter(paragraph => paragraph.split(' ')
+          .filter(word => data['supplemental'].includes(word))
+        );
+      expect(supplementals.length).to.be.at.least(1);
     });
 
     it('should return empty array if number of paragraphs is less than 1', () => {
