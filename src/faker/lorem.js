@@ -25,7 +25,10 @@ export function characters(charCount=255) {
 
 export function sentence(wordCount=4, supplemental=false, randomWordsToAdd=6) {
   const text = capitalize(
-    words(wordCount + randomNumber(randomWordsToAdd), supplemental).join(' ')
+    words(
+      resolveNumber(wordCount) + randomNumber(randomWordsToAdd),
+      supplemental
+    ).join(' ')
   );
   return text.length > 0 ? `${text}.` : text;
 }
@@ -37,11 +40,16 @@ export function sentences(sentenceCount=3, supplemental=false) {
 }
 
 export function paragraph(sentenceCount=3, supplemental=false, randomSentencesToAdd=3) {
-
+  return sentences(
+    resolveNumber(sentenceCount) + randomNumber(randomSentencesToAdd),
+    supplemental
+  ).join(' ');
 }
 
 export function paragraphs(paragraphCount=3, supplemental=false) {
-
+  return [...Array(resolveNumber(paragraphCount)).keys()].map(_ => {
+    return paragraph(3, supplemental);
+  });
 }
 
 function resolveNumber(n) {

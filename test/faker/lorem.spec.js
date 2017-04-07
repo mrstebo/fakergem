@@ -19,16 +19,12 @@ describe('Lorem', () => {
     });
 
     it('should return a specified number of words', () => {
-      [...Array(300).keys()].forEach(i => {
-        expect(Lorem.words(i)).to.have.lengthOf(i);
-      });
+      expect(Lorem.words(50)).to.have.lengthOf(50);
     });
 
     it('should return words', () => {
-      [...Array(30).keys()].forEach(i => {
-        Lorem.words(i).forEach(word => {
-          expect(word).to.be.oneOf(data['words']);
-        });
+      Lorem.words(50).forEach(word => {
+        expect(word).to.be.oneOf(data['words']);
       });
     });
   });
@@ -39,15 +35,11 @@ describe('Lorem', () => {
     });
 
     it('should return a specified number of characters', () => {
-      [...Array(50).keys()].forEach(i => {
-        expect(Lorem.characters(i)).to.have.lengthOf(i);
-      });
+      expect(Lorem.characters(50)).to.have.lengthOf(50);
     });
 
     it('should return numbers from "0" to "9" and characters "a" to "z"', () => {
-      [...Array(100).keys()].forEach(i => {
-        expect(Lorem.characters(1)).to.match(/^[0-9a-z]$/);
-      });
+      expect(Lorem.characters(200)).to.match(/^[0-9a-z]+$/);
     });
 
     it('should return empty string if number of characters is less than 1', () => {
@@ -61,9 +53,7 @@ describe('Lorem', () => {
     });
 
     it('should return a specified number of words', () => {
-      [...Array(50).keys()].map(i => i + 1).forEach(i => {
-        expect(Lorem.sentence(i, false, 0).split(' ')).to.be.lengthOf(i);
-      });
+      expect(Lorem.sentence(10, false, 0).match(/\w+[\s\.]/g) || []).to.be.lengthOf(10);
     });
 
     it('should return empty string if number of words is less than 1', () => {
@@ -76,18 +66,40 @@ describe('Lorem', () => {
       expect(Lorem.sentences()).to.be.a('array');
     });
 
-    it('should rturn a specified number of sentences', () => {
-      [...Array(50).keys()].forEach(i => {
-        expect(Lorem.sentences(i)).to.have.lengthOf(i);
-      });
+    it('should return a specified number of sentences', () => {
+      expect(Lorem.sentences(50)).to.have.lengthOf(50);
+    });
+
+    it('should return empty array if number of sentences is less than 1', () => {
+      expect(Lorem.sentences(-1)).to.have.lengthOf(0);
     });
   });
 
   describe('#paragraph', () => {
+    it('should return a string', () => {
+      expect(Lorem.paragraph()).to.be.a('string');
+    });
 
+    it('should return a specified number of sentences', () => {
+      expect(Lorem.paragraph(10, false, 0).match(/.*?\./g)).to.have.lengthOf(10);
+    });
+
+    it('should return empty string if number of sentences is less than 1', () => {
+      expect(Lorem.paragraph(-1, false, 0)).to.equal('');
+    });
   });
 
   describe('#paragraphs', () => {
+    it('should return an array', () => {
+      expect(Lorem.paragraphs()).to.be.a('array');
+    });
 
+    it('should return a specified number of paragraphs', () => {
+      expect(Lorem.paragraphs(50)).to.have.lengthOf(50);
+    });
+
+    it('should return empty array if number of paragraphs is less than 1', () => {
+      expect(Lorem.paragraphs(-1)).to.have.lengthOf(0);
+    });
   });
 });
