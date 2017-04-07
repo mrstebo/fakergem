@@ -1,5 +1,7 @@
+const path = require('path');
 const gulp = require('gulp');
 const babel = require('gulp-babel');
+const coveralls = require('gulp-coveralls');
 const eslint = require('gulp-eslint');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
@@ -37,8 +39,16 @@ gulp.task('test', ['build', 'pre-test'], () => {
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
 
-gulp.task('watch', () => {
+gulp.task('coveralls', ['test'], () => {
+  if (!process.env.CI) {
+    return;
+  }
+  return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
+    .pipe(coveralls());
+});
+
+gulp.task('watch', ['build', 'test'], () => {
   gulp.watch(['src/**/*.js', 'test/**/*.spec.js'], ['test']);
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['test', 'coveralls']);
