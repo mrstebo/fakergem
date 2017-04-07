@@ -13,6 +13,7 @@ Contents
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
   - [Faker.Friends](doc/friends.md)
+  - [Faker.Lorem](doc/lorem.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
   - [Faker.Name](doc/name.md)
   - [Faker.Number](doc/number.md)
