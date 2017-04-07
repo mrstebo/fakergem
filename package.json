@@ -4,12 +4,9 @@
   "description": "A javascript version of the Faker ruby gem",
   "main": "./lib/faker.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint src",
-    "prebuild": "npm run lint",
-    "build": "./node_modules/.bin/babel -d lib/ src/",
-    "test": "npm run build && mocha --compilers js:babel-core/register --colors --recursive --harmony",
     "version:patch": "npm version patch",
-    "prepublish": "npm run build"
+    "prepublish": "./node_modules/.bin/gulp build",
+    "test": "./node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
