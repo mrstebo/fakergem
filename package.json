@@ -6,7 +6,7 @@
   "scripts": {
     "version:patch": "npm version patch",
     "prepublish": "./node_modules/.bin/gulp build",
-    "test": "./node_modules/.bin/gulp test"
+    "test": "./node_modules/.bin/gulp test coveralls"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "eslint-config-es2015": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-coveralls": "^0.1.4",
     "gulp-eslint": "^3.0.1",
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^4.3.0",
