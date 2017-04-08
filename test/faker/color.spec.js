@@ -1,6 +1,7 @@
-import {expect} from 'chai';
-import * as Color from '../../lib/faker/color';
-import data from '../../data/color.json';
+'use strict';
+const expect = require('chai').expect;
+const Color = require('../../src/faker/color');
+const data = require('../../data/color.json');
 
 describe('Color', () => {
   describe('#hexColor', () => {

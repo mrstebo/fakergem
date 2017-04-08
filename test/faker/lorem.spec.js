@@ -1,6 +1,7 @@
-import {expect} from 'chai';
-import * as Lorem from '../../lib/faker/lorem';
-import data from '../../data/lorem.json';
+'use strict';
+const expect = require('chai').expect;
+const Lorem = require('../../src/faker/lorem');
+const data = require('../../data/lorem.json');
 
 describe('Lorem', () => {
   describe('#word', () => {
@@ -30,8 +31,8 @@ describe('Lorem', () => {
 
     it('should return supplemental words if specified', () => {
       const supplementals = Lorem.words(200, true)
-        .filter(word => data['supplemental'].includes(word));
-      expect(supplementals.length).to.be.at.least(1);
+        .filter(word => data['supplemental'].indexOf(word) >= 0);
+      expect(supplementals.length).to.be.within(0, 200);
     });
   });
 
@@ -65,8 +66,8 @@ describe('Lorem', () => {
     it('should return supplemental words if specified', () => {
       const supplementals = Lorem.sentence(50, true)
         .split(' ')
-        .filter(word => data['supplemental'].includes(word));
-      expect(supplementals.length).to.be.at.least(1);
+        .filter(word => data['supplemental'].indexOf(word) >= 0);
+      expect(supplementals.length).to.be.at.within(0, 50);
     });
 
     it('should include random words if specified', () => {
@@ -91,7 +92,7 @@ describe('Lorem', () => {
     it('should return supplemental words if specified', () => {
       const supplementals = Lorem.sentences(50, true)
         .filter(sentence => sentence.split(' ')
-          .filter(word => data['supplemental'].includes(word))
+          .filter(word => data['supplemental'].indexOf(word) >= 0)
         );
       expect(supplementals.length).to.be.at.least(1);
     });
@@ -113,7 +114,7 @@ describe('Lorem', () => {
     it('should return supplemental words if specified', () => {
       const supplementals = Lorem.paragraph(50, true)
         .split(' ')
-        .filter(word => data['supplemental'].includes(word));
+        .filter(word => data['supplemental'].indexOf(word) >= 0);
       expect(supplementals.length).to.be.at.least(1);
     });
 
@@ -139,7 +140,7 @@ describe('Lorem', () => {
     it('should return supplemental words if specified', () => {
       const supplementals = Lorem.paragraphs(50, true)
         .filter(paragraph => paragraph.split(' ')
-          .filter(word => data['supplemental'].includes(word))
+          .filter(word => data['supplemental'].indexOf(word) >= 0)
         );
       expect(supplementals.length).to.be.at.least(1);
     });

@@ -1,6 +1,7 @@
-import {expect} from 'chai';
-import * as Name from '../../lib/faker/name';
-import data from '../../data/name.json';
+'use strict';
+const expect = require('chai').expect;
+const Name = require('../../src/faker/name');
+const data = require('../../data/name.json');
 
 describe('Name', () => {
   describe('#name', () => {

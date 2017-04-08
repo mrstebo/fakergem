@@ -1,5 +1,6 @@
-import {expect} from 'chai';
-import * as LoremFlickr from '../../lib/faker/lorem-flickr';
+'use strict';
+const expect = require('chai').expect;
+const LoremFlickr = require('../../src/faker/lorem-flickr');
 
 describe('LoremFlickr', () => {
   describe('#image', () => {

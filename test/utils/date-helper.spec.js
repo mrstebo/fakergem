@@ -1,5 +1,6 @@
-import {expect} from 'chai';
-import * as DateHelper from '../../lib/utils/date-helper';
+'use strict';
+const expect = require('chai').expect;
+const DateHelper = require('../../src/utils/date-helper');
 
 describe('DateHelper', () => {
   describe('#format', () => {
