@@ -1,3 +1,4 @@
+import * as App from './faker/app';
 import * as Boolean from './faker/boolean';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
@@ -10,6 +11,7 @@ import * as Placeholdit from './faker/placeholdit';
 import * as Time from './faker/time';
 
 export default {
+  App,
   Boolean,
   Color,
   Date,
