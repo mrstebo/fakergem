@@ -39,8 +39,8 @@ gulp.task('test', ['pre-test'], () => {
       colors: true,
       harmony: true
     }))
-    .pipe(istanbul.writeReports());
-    // .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
+    .pipe(istanbul.writeReports())
+    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
 
 gulp.task('coveralls', ['test'], () => {
