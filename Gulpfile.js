@@ -22,7 +22,7 @@ gulp.task('build', ['lint'], () => {
     .pipe(gulp.dest('lib'));
 });
 
-gulp.task('pre-test', ['build'], () => {
+gulp.task('pre-test', () => {
   return gulp.src(['src/**/*.js'])
     .pipe(istanbul({
       instrumenter: isparta.Instrumenter,
@@ -31,7 +31,7 @@ gulp.task('pre-test', ['build'], () => {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['build', 'pre-test'], () => {
+gulp.task('test', ['pre-test'], () => {
   return gulp.src('test/**/*.spec.js', { read: false })
     .pipe(mocha({
       reporter: 'spec',
@@ -51,7 +51,7 @@ gulp.task('coveralls', ['test'], () => {
     .pipe(coveralls());
 });
 
-gulp.task('watch', ['build', 'test'], () => {
+gulp.task('watch', ['test'], () => {
   gulp.watch(['src/**/*.js', 'test/**/*.spec.js'], ['test']);
 });
 
