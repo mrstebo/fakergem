@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Number = require('../../lib/faker/number');
+const Number = require('../../src/faker/number');
 
 describe('Number', () => {
   describe('#number', () => {

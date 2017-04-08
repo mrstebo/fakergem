@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Lorem = require('../../lib/faker/lorem');
+const Lorem = require('../../src/faker/lorem');
 const data = require('../../data/lorem.json');
 
 describe('Lorem', () => {

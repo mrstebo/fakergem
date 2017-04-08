@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const DateFaker = require('../../lib/faker/date');
+const DateFaker = require('../../src/faker/date');
 
 describe('#Date', () => {
   describe('#between', () => {

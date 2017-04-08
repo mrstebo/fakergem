@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Faker = require('../lib/faker').default;
+const Faker = require('../src/faker').default;
 
 describe('#Faker', () => {
   it('should be an object', () => {

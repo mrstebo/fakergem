@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Placeholdit = require('../../lib/faker/placeholdit');
+const Placeholdit = require('../../src/faker/placeholdit');
 
 describe('Placeholdit', () => {
   describe('#image', () => {

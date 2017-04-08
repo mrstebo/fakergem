@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Time = require('../../lib/faker/time');
+const Time = require('../../src/faker/time');
 
 describe('Time', () => {
   describe('#between', () => {

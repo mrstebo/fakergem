@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const DateHelper = require('../../lib/utils/date-helper');
+const DateHelper = require('../../src/utils/date-helper');
 
 describe('DateHelper', () => {
   describe('#format', () => {

@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Color = require('../../lib/faker/color');
+const Color = require('../../src/faker/color');
 const data = require('../../data/color.json');
 
 describe('Color', () => {

@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const LoremFlickr = require('../../lib/faker/lorem-flickr');
+const LoremFlickr = require('../../src/faker/lorem-flickr');
 
 describe('LoremFlickr', () => {
   describe('#image', () => {
