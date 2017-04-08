@@ -1,5 +1,6 @@
-import {expect} from 'chai';
-import * as Number from '../../lib/faker/number';
+'use strict';
+const expect = require('chai').expect;
+const Number = require('../../lib/faker/number');
 
 describe('Number', () => {
   describe('#number', () => {

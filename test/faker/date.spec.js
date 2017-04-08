@@ -1,5 +1,6 @@
-import {expect} from 'chai';
-import * as DateFaker from '../../lib/faker/date';
+'use strict';
+const expect = require('chai').expect;
+const DateFaker = require('../../lib/faker/date');
 
 describe('#Date', () => {
   describe('#between', () => {

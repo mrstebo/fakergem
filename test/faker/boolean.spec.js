@@ -1,5 +1,6 @@
-import {expect} from 'chai';
-import * as Boolean from '../../lib/faker/boolean';
+'use strict';
+const expect = require('chai').expect;
+const Boolean = require('../../lib/faker/boolean');
 
 describe('Boolean', () => {
   describe('#boolean', () => {

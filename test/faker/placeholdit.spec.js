@@ -1,5 +1,6 @@
-import {expect} from 'chai';
-import * as Placeholdit from '../../lib/faker/placeholdit';
+'use strict';
+const expect = require('chai').expect;
+const Placeholdit = require('../../lib/faker/placeholdit');
 
 describe('Placeholdit', () => {
   describe('#image', () => {

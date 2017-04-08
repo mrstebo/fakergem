@@ -1,6 +1,7 @@
-import {expect} from 'chai';
-import * as Lorem from '../../lib/faker/lorem';
-import data from '../../data/lorem.json';
+'use strict';
+const expect = require('chai').expect;
+const Lorem = require('../../lib/faker/lorem');
+const data = require('../../data/lorem.json');
 
 describe('Lorem', () => {
   describe('#word', () => {
