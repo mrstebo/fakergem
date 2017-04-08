@@ -25,7 +25,8 @@ gulp.task('build', ['lint'], () => {
 gulp.task('pre-test', ['build'], () => {
   return gulp.src(['src/**/*.js'])
     .pipe(istanbul({
-      instrumenter: isparta.Instrumenter
+      instrumenter: isparta.Instrumenter,
+      includeUntested: true
     }))
     .pipe(istanbul.hookRequire());
 });
