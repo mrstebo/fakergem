@@ -22,7 +22,7 @@ gulp.task('build', ['lint'], () => {
     .pipe(gulp.dest('lib'));
 });
 
-gulp.task('pre-test', () => {
+gulp.task('istanbul', () => {
   return gulp.src(['src/**/*.js'])
     .pipe(istanbul({
       instrumenter: isparta.Instrumenter,
@@ -31,7 +31,7 @@ gulp.task('pre-test', () => {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], () => {
+gulp.task('test', ['istanbul'], () => {
   return gulp.src('test/**/*.spec.js', { read: false })
     .pipe(mocha({
       reporter: 'spec',
@@ -43,7 +43,7 @@ gulp.task('test', ['pre-test'], () => {
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
 
-gulp.task('coveralls', ['test'], () => {
+gulp.task('coveralls', ['istanbul', 'test'], () => {
   if (!process.env.CI) {
     return;
   }
