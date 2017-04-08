@@ -7,6 +7,10 @@ describe('#Faker', () => {
     expect(Faker).to.be.a('object');
   });
 
+  describe('#App', () => {
+    expect(Faker.App).to.be.a('object');
+  });
+
   describe('#Boolean', () => {
     it('should return an object', () => {
       expect(Faker.Boolean).to.be.a('object');
