@@ -32,7 +32,7 @@ function isValidSize(size) {
 }
 
 function isSupportedFormat(format) {
-  return SUPPORTED_FORMATS.includes(format);
+  return SUPPORTED_FORMATS.indexOf(format) >= 0;
 }
 
 function isValidColorValue(color) {

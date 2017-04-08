@@ -55,7 +55,7 @@ function hasSearchTerms(searchTerms) {
 }
 
 function isColorizationSupported(color) {
-  return SUPPORTED_COLORIZATIONS.includes(color);
+  return SUPPORTED_COLORIZATIONS.indexOf(color) >= 0;
 }
 
 function isValidSize(size) {
