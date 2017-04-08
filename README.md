@@ -10,6 +10,7 @@ Contents
 
 - [Installing](#installing)
 - [Usage](#usage)
+  - [Faker.App](doc/app.md)
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
