@@ -15,13 +15,10 @@ export function name() {
 }
 
 export function version() {
-  const version = itemFromCollection(VERSION_FORMATS);
-  return version.split('.').map(i => {
-    if (i =='#') {
-      return randomNumber(0, 10);
-    }
-    return i;
-  }).join('.');
+  return itemFromCollection(VERSION_FORMATS)
+    .split('.')
+    .map(i => i =='#' ? randomNumber(0, 10) : i)
+    .join('.');
 }
 
 export function author() {
