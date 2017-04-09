@@ -1,5 +1,6 @@
-const data = require('../../data/app.json');
-const nameData = require('../../data/name.json');
+import data from '../../data/app.json';
+import nameData from '../../data/name.json';
+
 const VERSION_FORMATS = [
   '0.#.#',
   '0.##',
