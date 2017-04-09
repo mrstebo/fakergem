@@ -8,7 +8,6 @@ export function between(from, to) {
   const toMilli = Date.parse(to);
   const offset = randomNumber(0, toMilli - fromMilli);
   const date = new Date(fromMilli + offset);
-  date.setHours(0, 0, 0, 0);
   return date;
 }
 
