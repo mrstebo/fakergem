@@ -1,10 +1,11 @@
 import data from '../../data/lorem.json';
+import { randomNumber, itemFromCollection } from '../utils/random';
 
 // 0-9, a-z
 const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));
 
 export function word() {
-  return pickOneOf(data['words']);
+  return itemFromCollection(data['words']);
 }
 
 export function words(num=3, supplemental=false) {
@@ -15,7 +16,7 @@ export function words(num=3, supplemental=false) {
 }
 
 export function character() {
-  return pickOneOf(CHARACTERS);
+  return itemFromCollection(CHARACTERS);
 }
 
 export function characters(charCount=255) {
@@ -26,7 +27,7 @@ export function characters(charCount=255) {
 export function sentence(wordCount=4, supplemental=false, randomWordsToAdd=6) {
   const text = capitalize(
     words(
-      resolveNumber(wordCount) + randomNumber(randomWordsToAdd),
+      resolveNumber(wordCount) + randomNumber(0, randomWordsToAdd),
       supplemental
     ).join(' ')
   );
@@ -41,7 +42,7 @@ export function sentences(sentenceCount=3, supplemental=false) {
 
 export function paragraph(sentenceCount=3, supplemental=false, randomSentencesToAdd=3) {
   return sentences(
-    resolveNumber(sentenceCount) + randomNumber(randomSentencesToAdd),
+    resolveNumber(sentenceCount) + randomNumber(0, randomSentencesToAdd),
     supplemental
   ).join(' ');
 }
@@ -59,16 +60,12 @@ function resolveNumber(n) {
   return n;
 }
 
-function pickOneOf(collection) {
-  return collection[randomNumber(collection.length)];
-}
-
 function shuffle(collection) {
     let index = -1;
     let length = collection.length;
     let result = Array(length);
     while (++index < length) {
-        let rand = randomNumber(index + 1);
+        let rand = randomNumber(0, index + 1);
         result[index] = result[rand];
         result[rand] = collection[index];
     }
@@ -79,10 +76,6 @@ function repeatArray(collection, n) {
   return Array
     .apply(null, {length: n * collection.length})
     .map((e, i) => collection[i % collection.length]);
-}
-
-function randomNumber(max) {
-  return Math.floor(Math.random() * max);
 }
 
 function capitalize(text) {

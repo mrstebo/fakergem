@@ -1,44 +1,41 @@
 import data from '../../data/name.json';
+import { itemFromCollection } from '../utils/random';
 
 export function name() {
   return [
-    pickOneOf(data['firstNames']),
-    pickOneOf(data['lastNames'])
+    itemFromCollection(data['firstNames']),
+    itemFromCollection(data['lastNames'])
   ].join(' ');
 }
 
 export function nameWithMiddle() {
   return [
-    pickOneOf(data['firstNames']),
-    pickOneOf(data['firstNames']),
-    pickOneOf(data['lastNames'])
+    itemFromCollection(data['firstNames']),
+    itemFromCollection(data['firstNames']),
+    itemFromCollection(data['lastNames'])
   ].join(' ');
 }
 
 export function firstName() {
-  return pickOneOf(data['firstNames']);
+  return itemFromCollection(data['firstNames']);
 }
 
 export function lastName() {
-  return pickOneOf(data['lastNames']);
+  return itemFromCollection(data['lastNames']);
 }
 
 export function prefix() {
-  return pickOneOf(data['prefixes']);
+  return itemFromCollection(data['prefixes']);
 }
 
 export function suffix() {
-  return pickOneOf(data['suffixes']);
+  return itemFromCollection(data['suffixes']);
 }
 
 export function title() {
   return [
-    pickOneOf(data['titles']['descriptor']),
-    pickOneOf(data['titles']['level']),
-    pickOneOf(data['titles']['job'])
+    itemFromCollection(data['titles']['descriptor']),
+    itemFromCollection(data['titles']['level']),
+    itemFromCollection(data['titles']['job'])
   ].join(' ');
-}
-
-function pickOneOf(collection) {
-  return collection[Math.floor(Math.random() * collection.length)];
 }

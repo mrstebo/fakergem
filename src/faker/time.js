@@ -1,4 +1,5 @@
 import {format as formatDate} from '../utils/date-helper';
+import { randomNumber } from '../utils/random';
 
 export const ALL = 'ALL';
 export const DAY = 'DAY';
@@ -44,7 +45,7 @@ export function backward(days=365, period=ALL, format=null) {
 function dateBetween(from, to) {
   const fromMilli = Date.parse(from);
   const toMilli = Date.parse(to);
-  const offset = Math.floor(Math.random() * (toMilli - fromMilli));
+  const offset = randomNumber(0, toMilli - fromMilli);
   const date = new Date(fromMilli + offset);
   date.setHours(0, 0, 0, 0);
   return date;
@@ -73,15 +74,15 @@ function hours(period) {
   if (!range) {
     throw new Error('invalid period');
   }
-  return range.start + Math.floor(Math.random() * (range.end - range.start));
+  return randomNumber(range.start, range.end);
 }
 
 function minutes() {
-  return Math.floor(Math.random() * 59);
+  return randomNumber(0, 59);
 }
 
 function seconds() {
-  return Math.floor(Math.random() * 59);
+  return randomNumber(0, 59);
 }
 
 function daysFromNow(n) {

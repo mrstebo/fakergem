@@ -1,17 +1,14 @@
 import data from '../../data/friends.json';
+import { itemFromCollection } from '../utils/random';
 
 export function character() {
-  return pickOneOf(data['characters']);
+  return itemFromCollection(data['characters']);
 }
 
 export function location() {
-  return pickOneOf(data['locations']);
+  return itemFromCollection(data['locations']);
 }
 
 export function quote() {
-  return pickOneOf(data['quotes']);
-}
-
-function pickOneOf(collection) {
-  return collection[Math.floor(Math.random() * collection.length)];
+  return itemFromCollection(data['quotes']);
 }

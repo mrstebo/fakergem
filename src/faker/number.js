@@ -1,3 +1,5 @@
+import { randomNumber } from '../utils/random';
+
 export function number(digits=10) {
   let num = '';
   if (digits > 1) {
@@ -20,14 +22,14 @@ export function normal(mean=1, standardDeviation=1) {
 
 export function hexadecimal(digits=6) {
   return [...Array(digits).keys()]
-    .map(_ => Math.floor(Math.random() * 15).toString(16))
+    .map(_ => randomNumber(0, 15).toString(16))
     .join('');
 }
 
 export function between(from=1.00, to=5000.00) {
   let min = Math.min(from, to);
   let max = Math.max(from, to);
-  return Math.floor(Math.random() * (max - min)) + min;
+  return randomNumber(min, max);
 }
 
 export function positive(from=1.00, to=5000.00) {
@@ -41,11 +43,11 @@ export function negative(from=-1.00, to=-5000.00) {
 }
 
 export function digit() {
-  return Math.floor(Math.random() * 10);
+  return randomNumber(0, 10);
 }
 
 function nonZeroDigit() {
-  return Math.floor(Math.random() * 9) + 1;
+  return randomNumber(0, 9) + 1;
 }
 
 function decimalPart(digits) {

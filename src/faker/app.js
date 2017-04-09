@@ -1,5 +1,6 @@
 import data from '../../data/app.json';
 import nameData from '../../data/name.json';
+import { itemFromCollection, randomNumber } from '../utils/random';
 
 const VERSION_FORMATS = [
   '0.#.#',
@@ -10,14 +11,14 @@ const VERSION_FORMATS = [
 ];
 
 export function name() {
-  return pickOneOf(data['names']);
+  return itemFromCollection(data['names']);
 }
 
 export function version() {
-  const version = pickOneOf(VERSION_FORMATS);
+  const version = itemFromCollection(VERSION_FORMATS);
   return version.split('.').map(i => {
     if (i =='#') {
-      return randomNumber();
+      return randomNumber(0, 10);
     }
     return i;
   }).join('.');
@@ -25,15 +26,7 @@ export function version() {
 
 export function author() {
   return [
-    pickOneOf(nameData['firstNames']),
-    pickOneOf(nameData['lastNames'])
+    itemFromCollection(nameData['firstNames']),
+    itemFromCollection(nameData['lastNames'])
   ].join(' ');
-}
-
-function pickOneOf(collection) {
-  return collection[Math.floor(Math.random() * collection.length)];
-}
-
-function randomNumber() {
-  return Math.floor(Math.random() * 10);
 }

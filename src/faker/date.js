@@ -1,10 +1,12 @@
+import { randomNumber } from '../utils/random';
+
 export function between(from, to) {
   from = getDateObject(from);
   to = getDateObject(to);
 
   const fromMilli = Date.parse(from);
   const toMilli = Date.parse(to);
-  const offset = Math.floor(Math.random() * (toMilli - fromMilli));
+  const offset = randomNumber(0, toMilli - fromMilli);
   const date = new Date(fromMilli + offset);
   date.setHours(0, 0, 0, 0);
   return date;
