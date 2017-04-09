@@ -5,6 +5,7 @@ const coveralls = require('gulp-coveralls');
 const eslint = require('gulp-eslint');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
+const gutil = require('gulp-util');
 const isparta = require('isparta');
 
 gulp.task('lint', () => {
@@ -39,6 +40,10 @@ gulp.task('test', ['istanbul'], () => {
       colors: true,
       harmony: true
     }))
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red(err));
+      this.emit('end');
+    })
     .pipe(istanbul.writeReports())
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
