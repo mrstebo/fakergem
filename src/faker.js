@@ -8,6 +8,7 @@ import * as LoremFlickr from './faker/lorem-flickr';
 import * as Name from './faker/name';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
+import * as StarWars from './faker/star-wars';
 import * as Time from './faker/time';
 
 export default {
@@ -21,5 +22,6 @@ export default {
   Name,
   Number,
   Placeholdit,
+  StarWars,
   Time
 };
