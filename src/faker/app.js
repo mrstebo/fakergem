@@ -29,5 +29,8 @@ export function author() {
 }
 
 function parseNumber(n) {
-  return n == '#' ? randomNumber(0, 9) : n;
+  (n.match(/#/g) || []).forEach(_ => {
+    n = n.replace(/#/, randomNumber(0, 10));
+  });
+  return n;
 }

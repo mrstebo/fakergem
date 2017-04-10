@@ -21,7 +21,9 @@ describe('App', () => {
     });
 
     it('should return a version format', () => {
-      expect(App.version()).to.match(/(?:#|\d+)\.(?:[#]+|\d+)(?:\.(?:[#]+|\d+))?/);
+      [...Array(100).keys()].forEach(_ => {
+        expect(App.version()).to.match(/(?:#|\d+)\.(?:[#]+|\d+)(?:\.(?:[#]+|\d+))?/);
+      });
     });
   });
 
