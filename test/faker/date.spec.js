@@ -56,11 +56,11 @@ describe('#Date', () => {
 
   describe('#forward', () => {
     it('should return a Date', () => {
-      expect(DateFaker.forward(10)).to.be.a('Date');
+      expect(DateFaker.forward()).to.be.a('Date');
     });
 
     it('should return a date in the future', () => {
-      expect(DateFaker.forward(10)).to.be.above(new Date());
+      expect(DateFaker.forward()).to.be.above(new Date());
     });
 
     it('should return a date no greater than the specified number of days', () => {
@@ -76,11 +76,11 @@ describe('#Date', () => {
 
   describe('#backward', () => {
     it('should return a Date', () => {
-      expect(DateFaker.backward(10)).to.be.a('Date');
+      expect(DateFaker.backward()).to.be.a('Date');
     });
 
     it('should return a date in the past', () => {
-      expect(DateFaker.backward(10)).to.be.below(new Date());
+      expect(DateFaker.backward()).to.be.below(new Date());
     });
 
     it('should return a date no less than the specified number of days', () => {
@@ -96,7 +96,7 @@ describe('#Date', () => {
 
   describe('#birthday', () => {
     it('should return a Date', () => {
-      expect(DateFaker.birthday(18, 65)).to.be.a('Date');
+      expect(DateFaker.birthday()).to.be.a('Date');
     });
 
     it('should return a birth date between two ages', () => {
