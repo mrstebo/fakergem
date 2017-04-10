@@ -71,6 +71,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Superhero', () => {
+    it('should return an object', () => {
+      expect(Faker.Superhero).to.be.a('object');
+    });
+  });
+
   describe('#Time', () => {
     it('should return an object', () => {
       expect(Faker.Time).to.be.a('object');
