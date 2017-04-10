@@ -42,11 +42,11 @@ describe('Time', () => {
 
   describe('#forward', () => {
     it('should return a Date', () => {
-      expect(Time.forward(10)).to.be.a('Date');
+      expect(Time.forward()).to.be.a('Date');
     });
 
     it('should return a time in the future', () => {
-      expect(Time.forward(10)).to.be.at.least(new Date());
+      expect(Time.forward()).to.be.at.least(new Date());
     });
 
     it('should return a time no greater than the specified number of days', () => {
@@ -79,11 +79,11 @@ describe('Time', () => {
 
   describe('#backward', () => {
     it('should return a Date', () => {
-      expect(Time.backward(10)).to.be.a('Date');
+      expect(Time.backward()).to.be.a('Date');
     });
 
     it('should return a time in the past', () => {
-      expect(Time.backward(10)).to.be.at.most(new Date());
+      expect(Time.backward()).to.be.at.most(new Date());
     });
 
     it('should return a time no less than the specified number of days', () => {
