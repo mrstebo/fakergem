@@ -41,7 +41,7 @@ function buildUrl(size, format, searchTerms, matchAll) {
     url += `/${format}`;
   }
   url += `/${size.replace('x', '/')}`;
-  if ((searchTerms ||[]).length > 0) {
+  if ((searchTerms || []).length > 0) {
     url += `/${searchTerms.join(',')}`;
   }
   if (matchAll) {

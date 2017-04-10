@@ -12,6 +12,11 @@ describe('LoremFlickr', () => {
       expect(LoremFlickr.image('100x120')).to.equal('http://loremflickr.com/100/120');
     });
 
+    it('should handle empty search terms', () => {
+      expect(LoremFlickr.image('300x300', null)).to.equal('http://loremflickr.com/300/300');
+      expect(LoremFlickr.image('300x300', [])).to.equal('http://loremflickr.com/300/300');
+    });
+
     it('should return URL with specified search term', () => {
       expect(LoremFlickr.image('300x300', ['faker'])).to.equal('http://loremflickr.com/300/300/faker');
     });
@@ -59,6 +64,7 @@ describe('LoremFlickr', () => {
     });
 
     it('should throw if no search terms specified', () => {
+      expect(() => LoremFlickr.grayscaleImage('300x300', null)).to.throw();
       expect(() => LoremFlickr.grayscaleImage('300x300', [])).to.throw();
     });
   });
@@ -91,6 +97,7 @@ describe('LoremFlickr', () => {
     });
 
     it('should throw if no search terms specified', () => {
+      expect(() => LoremFlickr.pixelatedImage('300x300', null)).to.throw();
       expect(() => LoremFlickr.pixelatedImage('300x300', [])).to.throw();
     });
   });
@@ -135,6 +142,7 @@ describe('LoremFlickr', () => {
     });
 
     it('should throw if no search terms specified', () => {
+      expect(() => LoremFlickr.colorizedImage('300x300', 'red', null)).to.throw();
       expect(() => LoremFlickr.colorizedImage('300x300', 'red', [])).to.throw();
     });
   });
