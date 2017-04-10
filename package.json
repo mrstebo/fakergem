@@ -1,6 +1,6 @@
 {
   "name": "fakergem",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A javascript version of the Faker ruby gem",
   "main": "./lib/faker.js",
   "scripts": {
