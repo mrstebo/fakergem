@@ -17,7 +17,7 @@ export function name() {
 export function version() {
   return itemFromCollection(VERSION_FORMATS)
     .split('.')
-    .map(i => i =='#' ? randomNumber(0, 10) : i)
+    .map(parseNumber)
     .join('.');
 }
 
@@ -26,4 +26,8 @@ export function author() {
     itemFromCollection(nameData['firstNames']),
     itemFromCollection(nameData['lastNames'])
   ].join(' ');
+}
+
+function parseNumber(n) {
+  return n == '#' ? randomNumber(0, 9) : n;
 }
