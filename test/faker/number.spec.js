@@ -31,10 +31,14 @@ describe('Number', () => {
     });
 
     it('should return number of specified left digits', () => {
+      expect(Number.decimal(1)).to.match(/\d{1}\.\d{2}/);
+      expect(Number.decimal(2)).to.match(/\d{2}\.\d{2}/);
       expect(Number.decimal(3)).to.match(/\d{3}\.\d{2}/);
     });
 
     it('should return number of specified right digits', () => {
+      expect(Number.decimal(2, 1)).to.match(/\d{2}\.\d{1}/);
+      expect(Number.decimal(2, 2)).to.match(/\d{2}\.\d{2}/);
       expect(Number.decimal(2, 3)).to.match(/\d{2}\.\d{3}/);
     });
   });
