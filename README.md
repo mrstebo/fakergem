@@ -21,6 +21,7 @@ Contents
   - [Faker.Number](doc/number.md)
   - [Faker.Placeholdit](doc/placeholdit.md)
   - [Faker.StarWars](doc/star_wars.md)
+  - [Faker.Superhero](doc/superhero.md)
   - [Faker.Time](doc/time.md)
 
 ## Installing
