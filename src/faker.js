@@ -8,6 +8,7 @@ import * as LoremFlickr from './faker/lorem-flickr';
 import * as Name from './faker/name';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
+import * as RockBand from './faker/rock-band';
 import * as SlackEmoji from './faker/slack-emoji';
 import * as StarWars from './faker/star-wars';
 import * as Superhero from './faker/superhero';
@@ -24,6 +25,7 @@ export default {
   Name,
   Number,
   Placeholdit,
+  RockBand,
   SlackEmoji,
   StarWars,
   Superhero,
