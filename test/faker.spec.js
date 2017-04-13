@@ -65,6 +65,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#SlackEmoji', () => {
+    it('should return an object', () => {
+      expect(Faker.SlackEmoji).to.be.a('object');
+    });
+  });
+
   describe('#StarWars', () => {
     it('should return an object', () => {
       expect(Faker.StarWars).to.be.a('object');
