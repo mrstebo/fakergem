@@ -32,6 +32,10 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.buildingNumber()).to.be.a('string');
     });
+
+    it('should return a number between 100 and 99999', () => {
+      expect(Address.buildingNumber()).to.match(/^\d{3}[0-9]?[0-9]?$/);
+    });
   });
 
   describe('#zipCode', () => {
