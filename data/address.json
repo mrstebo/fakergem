@@ -755,9 +755,9 @@
     "Well",
     "Wells"
   ],
-  "secondaryAddresses": [
-    "Apt. ###",
-    "Suite ###"
+  "secondaryAddressPrefixes": [
+    "Apt.",
+    "Suite"
   ],
   "postcodes": [
     "#####",

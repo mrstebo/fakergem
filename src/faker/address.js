@@ -34,7 +34,7 @@ export function streetAddress() {
 }
 
 export function secondaryAddress() {
-  const format = itemFromCollection(data['secondaryAddresses']);
+  const format = `${itemFromCollection(data['secondaryAddressPrefixes'])} ###`;
   return parseFormat(format);
 }
 

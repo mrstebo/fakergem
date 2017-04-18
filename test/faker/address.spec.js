@@ -14,6 +14,10 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.streetName()).to.be.a('string');
     });
+
+    it('should end with a street suffix', () => {
+      expect(Address.streetName().split(/\s/)[1]).to.be.oneOf(data['streetSuffixes']);
+    });
   });
 
   describe('#streetAddress', () => {
@@ -25,6 +29,14 @@ describe('Address', () => {
   describe('#secondaryAddress', () => {
     it('should return a string', () => {
       expect(Address.secondaryAddress()).to.be.a('string');
+    });
+
+    it('should return a prefixed address', () => {
+      expect(Address.secondaryAddress().split(/\s/)[0]).to.be.oneOf(data['secondaryAddressPrefixes']);
+    });
+
+    it('should end with a 3 digit number', () => {
+      expect(Address.secondaryAddress().split(/\s/)[1]).to.match(/^\d{3}$/);
     });
   });
 
@@ -42,17 +54,29 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.zipCode()).to.be.a('string');
     });
+
+    it('should return state zip code if stateAbbreviation is specified', () => {
+      expect(Address.zipCode('AL')).to.match(/^350/);
+    });
   });
 
   describe('#zip', () => {
     it('should return a string', () => {
       expect(Address.zip()).to.be.a('string');
     });
+
+    it('should return state zip if stateAbbreviation is specified', () => {
+      expect(Address.zip('AL')).to.match(/^350/);
+    });
   });
 
   describe('#postcode', () => {
     it('should return a string', () => {
       expect(Address.postcode()).to.be.a('string');
+    });
+
+    it('should return state postcode if stateAbbreviation is specified', () => {
+      expect(Address.postcode('AL')).to.match(/^350/);
     });
   });
 
