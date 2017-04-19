@@ -15,7 +15,7 @@ import * as StarWars from './faker/star-wars';
 import * as Superhero from './faker/superhero';
 import * as Time from './faker/time';
 
-export default {
+module.exports = {
   Address,
   App,
   Boolean,
