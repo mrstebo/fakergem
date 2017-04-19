@@ -84,11 +84,19 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.timeZone()).to.be.a('string');
     });
+
+    it('should return a time zone', () => {
+      expect(Address.timeZone()).to.be.oneOf(data['timeZones']);
+    });
   });
 
   describe('#streetSuffix', () => {
     it('should return a string', () => {
       expect(Address.streetSuffix()).to.be.a('string');
+    });
+
+    it('should return a street suffix', () => {
+      expect(Address.streetSuffix()).to.be.oneOf(data['streetSuffixes']);
     });
   });
 
@@ -96,11 +104,19 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.citySuffix()).to.be.a('string');
     });
+
+    it('should return a city suffix', () => {
+      expect(Address.citySuffix()).to.be.oneOf(data['citySuffixes']);
+    });
   });
 
   describe('#cityPrefix', () => {
     it('should return a string', () => {
       expect(Address.cityPrefix()).to.be.a('string');
+    });
+
+    it('should return a city prefix', () => {
+      expect(Address.cityPrefix()).to.be.oneOf(data['cityPrefixes']);
     });
   });
 
@@ -108,11 +124,19 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.state()).to.be.a('string');
     });
+
+    it('should return a state', () => {
+      expect(Address.state()).to.be.oneOf(data['states']);
+    });
   });
 
   describe('#stateAbbr', () => {
     it('should return a string', () => {
       expect(Address.stateAbbr()).to.be.a('string');
+    });
+
+    it('should return a state abbreviation', () => {
+      expect(Address.stateAbbr()).to.be.oneOf(data['stateAbbreviations']);
     });
   });
 
@@ -120,11 +144,19 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.country()).to.be.a('string');
     });
+
+    it('should return a country', () => {
+      expect(Address.country()).to.be.oneOf(data['countries']);
+    });
   });
 
   describe('#countryCode', () => {
     it('should return a string', () => {
       expect(Address.countryCode()).to.be.a('string');
+    });
+
+    it('should return a country code', () => {
+      expect(Address.countryCode()).to.be.oneOf(data['countryCodes']);
     });
   });
 
@@ -132,11 +164,23 @@ describe('Address', () => {
     it('should return a string', () => {
       expect(Address.latitude()).to.be.a('string');
     });
+
+    it('should return a number -90 and 90', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(parseFloat(Address.latitude())).to.be.within(-90, 90);
+      });
+    });
   });
 
   describe('#longitude', () => {
     it('should return a string', () => {
       expect(Address.longitude()).to.be.a('string');
+    });
+
+    it('should return a number -180 and 180', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(parseFloat(Address.longitude())).to.be.within(-180, 180);
+      });
     });
   });
 });
