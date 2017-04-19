@@ -1,6 +1,6 @@
 import data from '../../data/address.json';
 import nameData from '../../data/name.json';
-import { itemFromCollection, randomNumber } from '../utils/random';
+import { itemFromCollection, randomFloat, randomNumber } from '../utils/random';
 
 const CITY_FORMATS = [
   '{cityPrefix} {Name.firstName} {citySuffix}',
@@ -90,11 +90,11 @@ export function countryCode() {
 }
 
 export function latitude() {
-  return ''+(randomNumber(0, 180) - 90);
+  return ''+(randomFloat(0, 180) - 90);
 }
 
 export function longitude() {
-  return ''+(randomNumber(0, 360) - 180);
+  return ''+(randomFloat(0, 360) - 180);
 }
 
 function parseFormat(format) {
