@@ -7,6 +7,10 @@ describe('#Faker', () => {
     expect(Faker).to.be.a('object');
   });
 
+  describe('#Address', () => {
+    expect(Faker.Address).to.be.a('object');
+  });
+
   describe('#App', () => {
     expect(Faker.App).to.be.a('object');
   });

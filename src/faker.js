@@ -1,3 +1,4 @@
+import * as Address from './faker/address';
 import * as App from './faker/app';
 import * as Boolean from './faker/boolean';
 import * as Color from './faker/color';
@@ -15,6 +16,7 @@ import * as Superhero from './faker/superhero';
 import * as Time from './faker/time';
 
 export default {
+  Address,
   App,
   Boolean,
   Color,
