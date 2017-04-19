@@ -3,10 +3,10 @@ import nameData from '../../data/name.json';
 import { itemFromCollection, randomFloat, randomNumber } from '../utils/random';
 
 const CITY_FORMATS = [
-  '{cityPrefix} {Name.firstName} {citySuffix}',
+  '{cityPrefix} {Name.firstName}{citySuffix}',
   '{cityPrefix} {Name.firstName}',
-  '{Name.firstName} {citySuffix}',
-  '{Name.lastName} {citySuffix}'
+  '{Name.firstName}{citySuffix}',
+  '{Name.lastName}{citySuffix}'
 ];
 
 const STREET_NAME_FORMATS = [
