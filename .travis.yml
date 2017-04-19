@@ -2,6 +2,7 @@ language: node_js
 node_js:
 - 5.1.0
 - 6.3.0
+- 7.3.3
 deploy:
   provider: npm
   email: mrstebouk@gmail.com
@@ -10,3 +11,4 @@ deploy:
   on:
     tags: true
     repo: mrstebo/fakergem
+  skip_cleanup: true
