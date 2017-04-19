@@ -21,6 +21,15 @@ export function hslColor() {
   ];
 }
 
+export function hslaColor() {
+  return [
+    randomNumber(0, 360),
+    Math.round(randomFloat(0, 1), 2),
+    Math.round(randomFloat(0, 1), 2),
+    randomFloat(0, 1)
+  ];
+}
+
 function leftPad(text, length, paddingCharacter) {
   let padding = [...Array(length)].map(_ => paddingCharacter).join('');
   return (padding + text).slice(-length);
