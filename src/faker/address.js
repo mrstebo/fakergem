@@ -2,34 +2,18 @@ import data from '../../data/address.json';
 import nameData from '../../data/name.json';
 import { itemFromCollection, randomFloat, randomNumber } from '../utils/random';
 
-const CITY_FORMATS = [
-  '{cityPrefix} {Name.firstName}{citySuffix}',
-  '{cityPrefix} {Name.firstName}',
-  '{Name.firstName}{citySuffix}',
-  '{Name.lastName}{citySuffix}'
-];
-
-const STREET_NAME_FORMATS = [
-  '{Name.firstName} {streetSuffix}',
-  '{Name.lastName} {streetSuffix}'
-];
-
-const STREET_ADDRESS_FORMATS = [
-  '{buildingNumber} {streetName}'
-];
-
 export function city() {
-  const format = itemFromCollection(CITY_FORMATS);
+  const format = itemFromCollection(data['cities']);
   return parseFormat(format);
 }
 
 export function streetName() {
-  const format = itemFromCollection(STREET_NAME_FORMATS);
+  const format = itemFromCollection(data['streetNames']);
   return parseFormat(format);
 }
 
 export function streetAddress() {
-  const format = itemFromCollection(STREET_ADDRESS_FORMATS);
+  const format = itemFromCollection(data['streetAddresses']);
   return parseFormat(format);
 }
 

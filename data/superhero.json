@@ -576,5 +576,11 @@
     "Ymir",
     "Zatanna",
     "Zoom"
+  ],
+  "names": [
+    "{prefix} {descriptor} {suffix}",
+    "{prefix} {descriptor}",
+    "{descriptor} {suffix}",
+    "{descriptor}"
   ]
 }
