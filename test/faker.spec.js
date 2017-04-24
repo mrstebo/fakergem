@@ -11,6 +11,10 @@ describe('#Faker', () => {
     expect(Faker.Address).to.be.a('object');
   });
 
+  describe('#Ancient', () => {
+    expect(Faker.Ancient).to.be.a('object');
+  });
+
   describe('#App', () => {
     expect(Faker.App).to.be.a('object');
   });
