@@ -1,5 +1,6 @@
 import * as Address from './faker/address';
 import * as App from './faker/app';
+import * as Avatar from './faker/avatar';
 import * as Boolean from './faker/boolean';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
@@ -18,6 +19,7 @@ import * as Time from './faker/time';
 module.exports = {
   Address,
   App,
+  Avatar,
   Boolean,
   Color,
   Date,

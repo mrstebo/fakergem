@@ -12,6 +12,7 @@ Contents
 - [Usage](#usage)
   - [Faker.Address](doc/address.md)
   - [Faker.App](doc/app.md)
+  - [Faker.Avatar](doc/avatar.md)
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
