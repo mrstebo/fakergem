@@ -1065,5 +1065,18 @@
     "Pacific/Tongatapu",
     "Pacific/Fakaofo",
     "Pacific/Apia"
+  ],
+  "cities": [
+    "{cityPrefix} {Name.firstName}{citySuffix}",
+    "{cityPrefix} {Name.firstName}",
+    "{Name.firstName}{citySuffix}",
+    "{Name.lastName}{citySuffix}"
+  ],
+  "streetNames": [
+    "{Name.firstName} {streetSuffix}",
+    "{Name.lastName} {streetSuffix}"
+  ],
+  "streetAddresses": [
+    "{buildingNumber} {streetName}"
   ]
 }

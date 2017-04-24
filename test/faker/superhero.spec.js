@@ -10,9 +10,13 @@ describe('Superhero', () => {
     });
 
     it('should return a formatted name', () => {
-      expect(Superhero.name("{prefix}")).to.be.oneOf(data['prefixes']);
-      expect(Superhero.name("{suffix}")).to.be.oneOf(data['suffixes']);
-      expect(Superhero.name("{descriptor}")).to.be.oneOf(data['descriptors']);
+      expect(Superhero.name()).not.to.be.oneOf(data['names']);
+    });
+
+    it('should replace placeholders', () => {
+      expect(Superhero.name()).not.to.match(/\{prefix\}/);
+      expect(Superhero.name()).not.to.match(/\{suffix\}/);
+      expect(Superhero.name()).not.to.match(/\{descriptor\}/);
     });
   });
 
