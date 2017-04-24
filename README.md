@@ -11,6 +11,7 @@ Contents
 - [Installing](#installing)
 - [Usage](#usage)
   - [Faker.Address](doc/address.md)
+  - [Faker.Ancient](doc/ancient.md)
   - [Faker.App](doc/app.md)
   - [Faker.Avatar](doc/avatar.md)
   - [Faker.Boolean](doc/boolean.md)
