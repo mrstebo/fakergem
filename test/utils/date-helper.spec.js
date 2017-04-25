@@ -34,6 +34,10 @@ describe('DateHelper', () => {
       expect(DateHelper.format(new Date(2017, 0, 7), 'D')).to.equal('Sat');
     });
 
+    it('should not replace "De" with a 3 character day name', () => {
+      expect(DateHelper.format(new Date(2017,0,1), 'De')).to.equal('De');
+    });
+
     it('should replace "MMMM" with full month name', () => {
       expect(DateHelper.format(new Date(2017, 0, 1), 'MMMM')).to.equal('January');
       expect(DateHelper.format(new Date(2017, 1, 1), 'MMMM')).to.equal('February');
@@ -72,6 +76,14 @@ describe('DateHelper', () => {
     it('should replace "M" with month', () => {
       const date = new Date(2017, 0, 1);
       expect(DateHelper.format(date, 'M')).to.equal('1');
+    });
+
+    it('should not replace "Ma" with month', () => {
+      expect(DateHelper.format(new Date(2017, 0, 1), 'Ma')).to.equal('Ma');
+    });
+
+    it('should not replace "Mo" with month', () => {
+      expect(DateHelper.format(new Date(2017, 0, 1), 'Mo')).to.equal('Mo');
     });
 
     it('should replace "yyyy" with year', () => {
