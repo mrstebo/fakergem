@@ -138,5 +138,13 @@ describe('DateHelper', () => {
       const date = new Date(2017, 0, 1, 0, 1, 2);
       expect(DateHelper.format(date, 's')).to.equal('2');
     });
+
+    it('should handle complex format', () => {
+      const date = new Date(2017, 0, 1, 0, 1, 2);
+      expect(DateHelper.format(date, 'yyyy-MM-dd HH:mm:ss')).to.equal('2017-01-01 00:01:02');
+      expect(DateHelper.format(date, 'yy-M-d')).to.equal('17-1-1');
+      expect(DateHelper.format(date, 'HH:mm:ss')).to.equal('00:01:02');
+      expect(DateHelper.format(date, 'H:m:s')).to.equal('0:1:2');
+    });
   });
 });
