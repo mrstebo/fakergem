@@ -1,6 +1,7 @@
-import data from '../../data/app.json';
-import nameData from '../../data/name.json';
 import { itemFromCollection, randomNumber } from '../utils/random';
+
+const data = require('../../data/app.json');
+const nameData = require('../../data/name.json');
 
 export function name() {
   return itemFromCollection(data['names']);

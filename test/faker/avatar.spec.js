@@ -22,7 +22,9 @@ describe('Avatar', () => {
     });
 
     it('should return url with specified format', () => {
-      expect(Avatar.image('test', '300x300', 'bmp')).to.match(/^https\:\/\/robohash\.org\/test\.bmp\?size=300x300&set=set1/);
+      ['png', 'jpg', 'bmp'].forEach(format => {
+        expect(Avatar.image('test', '300x300', format)).to.equal(`https://robohash.org/test.${format}?size=300x300&set=set1`);
+      });
     });
 
     it('should return url with specified set', () => {

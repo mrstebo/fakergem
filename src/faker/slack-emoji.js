@@ -1,5 +1,6 @@
-import data from '../../data/slack-emoji.json';
 import { itemFromCollection } from '../utils/random';
+
+const data = require('../../data/slack-emoji.json');
 
 export function people() {
   return itemFromCollection(data['people']);

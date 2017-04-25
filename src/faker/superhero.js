@@ -1,5 +1,6 @@
-import data from '../../data/superhero.json';
 import { randomNumber, itemFromCollection } from '../utils/random';
+
+const data = require('../../data/superhero.json');
 
 export function name() {
   return itemFromCollection(data['names'])

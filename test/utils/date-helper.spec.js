@@ -34,6 +34,11 @@ describe('DateHelper', () => {
       expect(DateHelper.format(new Date(2017, 0, 7), 'D')).to.equal('Sat');
     });
 
+    it('should not replace "De" with a 3 character day name', () => {
+      const date = new Date(2017, 0, 1);
+      expect(DateHelper.format(date, 'De')).to.equal('De');
+    });
+
     it('should replace "MMMM" with full month name', () => {
       expect(DateHelper.format(new Date(2017, 0, 1), 'MMMM')).to.equal('January');
       expect(DateHelper.format(new Date(2017, 1, 1), 'MMMM')).to.equal('February');
@@ -72,6 +77,16 @@ describe('DateHelper', () => {
     it('should replace "M" with month', () => {
       const date = new Date(2017, 0, 1);
       expect(DateHelper.format(date, 'M')).to.equal('1');
+    });
+
+    it('should not replace "Ma" with month', () => {
+      const date = new Date(2017, 0, 1);
+      expect(DateHelper.format(date, 'Ma')).to.equal('Ma');
+    });
+
+    it('should not replace "Mo" with month', () => {
+      const date = new Date(2017, 0, 1);
+      expect(DateHelper.format(date, 'Mo')).to.equal('Mo');
     });
 
     it('should replace "yyyy" with year', () => {
@@ -122,6 +137,14 @@ describe('DateHelper', () => {
     it('should replace "s" with seconds', () => {
       const date = new Date(2017, 0, 1, 0, 1, 2);
       expect(DateHelper.format(date, 's')).to.equal('2');
+    });
+
+    it('should handle complex format', () => {
+      const date = new Date(2017, 0, 1, 0, 1, 2);
+      expect(DateHelper.format(date, 'yyyy-MM-dd HH:mm:ss')).to.equal('2017-01-01 00:01:02');
+      expect(DateHelper.format(date, 'yy-M-d')).to.equal('17-1-1');
+      expect(DateHelper.format(date, 'HH:mm:ss')).to.equal('00:01:02');
+      expect(DateHelper.format(date, 'H:m:s')).to.equal('0:1:2');
     });
   });
 });

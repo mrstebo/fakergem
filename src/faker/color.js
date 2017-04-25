@@ -1,5 +1,6 @@
-import data from '../../data/color.json';
 import { randomNumber, randomFloat, itemFromCollection } from '../utils/random';
+
+const data = require('../../data/color.json');
 
 export function hexColor() {
   return `#${leftPad(randomNumber(0, 0xffffff).toString(16), 6, '0')}`;

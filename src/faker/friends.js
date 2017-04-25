@@ -1,5 +1,6 @@
-import data from '../../data/friends.json';
 import { itemFromCollection } from '../utils/random';
+
+const data = require('../../data/friends.json');
 
 export function character() {
   return itemFromCollection(data['characters']);
