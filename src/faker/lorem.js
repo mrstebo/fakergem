@@ -1,5 +1,6 @@
-import data from '../../data/lorem.json';
 import { randomNumber, itemFromCollection } from '../utils/random';
+
+const data = require('../../data/lorem.json');
 
 // 0-9, a-z
 const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));

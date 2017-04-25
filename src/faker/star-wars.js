@@ -1,5 +1,6 @@
-import data from '../../data/star-wars.json';
 import { randomNumber, itemFromCollection } from '../utils/random';
+
+const data = require('../../data/star-wars.json');
 
 export function character() {
   return itemFromCollection(data['characters']);

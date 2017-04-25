@@ -1,6 +1,7 @@
-import data from '../../data/address.json';
-import nameData from '../../data/name.json';
 import { itemFromCollection, randomFloat, randomNumber } from '../utils/random';
+
+const data = require('../../data/address.json');
+const nameData = require('../../data/name.json');
 
 export function city() {
   const format = itemFromCollection(data['cities']);

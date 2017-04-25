@@ -1,5 +1,6 @@
-import data from '../../data/lorem.json';
 import { itemFromCollection } from '../utils/random';
+
+const data = require('../../data/lorem.json');
 
 const SUPPORTED_FORMATS = ['png', 'jpg', 'bmp'];
 

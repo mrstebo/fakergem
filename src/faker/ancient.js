@@ -1,5 +1,6 @@
 import { itemFromCollection } from '../utils/random';
-import data from '../../data/ancient.json';
+
+const data = require('../../data/ancient.json');
 
 export function god() {
   return itemFromCollection(data['gods']);
