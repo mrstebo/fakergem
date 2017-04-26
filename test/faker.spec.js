@@ -23,6 +23,12 @@ describe('#Faker', () => {
     expect(Faker.Avatar).to.be.a('object');
   });
 
+  describe('#Beer', () => {
+    it('should return an object', () => {
+      expect(Faker.Beer).to.be.a('object');
+    });
+  });
+
   describe('#Boolean', () => {
     it('should return an object', () => {
       expect(Faker.Boolean).to.be.a('object');
