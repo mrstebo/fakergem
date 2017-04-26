@@ -14,6 +14,7 @@ Contents
   - [Faker.Ancient](doc/ancient.md)
   - [Faker.App](doc/app.md)
   - [Faker.Avatar](doc/avatar.md)
+  - [Faker.Beer](doc/beer.md)
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
