@@ -26,6 +26,10 @@ describe('#Faker', () => {
   describe('#Beer', () => {
     it('should return an object', () => {
       expect(Faker.Beer).to.be.a('object');
+
+  describe('#Book', () => {
+    it('should return an object', () => {
+      expect(Faker.Book).to.be.a('object');
     });
   });
 
@@ -44,6 +48,12 @@ describe('#Faker', () => {
   describe('#Date', () => {
     it('should return an object', () => {
       expect(Faker.Date).to.be.a('object');
+    });
+  });
+
+  describe('#File', () => {
+    it('should return an object', () => {
+      expect(Faker.File).to.be.a('object');
     });
   });
 

@@ -3,9 +3,11 @@ import * as Ancient from './faker/ancient';
 import * as App from './faker/app';
 import * as Avatar from './faker/avatar';
 import * as Beer from './faker/beer';
+import * as Book from './faker/book';
 import * as Boolean from './faker/boolean';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
+import * as File from './faker/file';
 import * as Friends from './faker/friends';
 import * as Lorem from './faker/lorem';
 import * as LoremFlickr from './faker/lorem-flickr';
@@ -24,9 +26,11 @@ module.exports = {
   App,
   Avatar,
   Beer,
+  Book,
   Boolean,
   Color,
   Date,
+  File,
   Friends,
   Lorem,
   LoremFlickr,
