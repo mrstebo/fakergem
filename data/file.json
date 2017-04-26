@@ -33,7 +33,7 @@
     "key",
     "pdf"
   ],
-  "mime_types": [
+  "mimeTypes": [
     "application/atom+xml",
     "application/ecmascript",
     "application/EDI-X12",
