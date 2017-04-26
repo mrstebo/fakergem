@@ -8,19 +8,27 @@ describe('#Faker', () => {
   });
 
   describe('#Address', () => {
-    expect(Faker.Address).to.be.a('object');
+    it('should be an object', () => {
+      expect(Faker.Address).to.be.a('object');
+    });
   });
 
   describe('#Ancient', () => {
-    expect(Faker.Ancient).to.be.a('object');
+    it('should be an object', () => {
+      expect(Faker.Ancient).to.be.a('object');
+    });
   });
 
   describe('#App', () => {
-    expect(Faker.App).to.be.a('object');
+    it('should be an object', () => {
+      expect(Faker.App).to.be.a('object');
+    });
   });
 
   describe('#Avatar', () => {
-    expect(Faker.Avatar).to.be.a('object');
+    it('should be an object', () => {
+      expect(Faker.Avatar).to.be.a('object');
+    });
   });
 
   describe('#Beer', () => {
