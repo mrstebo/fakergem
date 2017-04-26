@@ -26,6 +26,8 @@ describe('#Faker', () => {
   describe('#Beer', () => {
     it('should return an object', () => {
       expect(Faker.Beer).to.be.a('object');
+    });
+  });
 
   describe('#Book', () => {
     it('should return an object', () => {
