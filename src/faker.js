@@ -5,6 +5,7 @@ import * as Avatar from './faker/avatar';
 import * as Boolean from './faker/boolean';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
+import * as File from './faker/file';
 import * as Friends from './faker/friends';
 import * as Lorem from './faker/lorem';
 import * as LoremFlickr from './faker/lorem-flickr';
@@ -25,6 +26,7 @@ module.exports = {
   Boolean,
   Color,
   Date,
+  File,
   Friends,
   Lorem,
   LoremFlickr,

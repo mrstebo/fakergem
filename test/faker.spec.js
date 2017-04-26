@@ -41,6 +41,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#File', () => {
+    it('should return an object', () => {
+      expect(Faker.File).to.be.a('object');
+    });
+  });
+
   describe('#Friends', () => {
     it('should return an object', () => {
       expect(Faker.Friends).to.be.a('object');
