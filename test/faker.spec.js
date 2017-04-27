@@ -31,9 +31,16 @@ describe('#Faker', () => {
     });
   });
 
+
   describe('#Bank', () => {
     it('should return an object', () => {
       expect(Faker.Bank).to.be.a('object');
+    });
+  });
+
+  describe('#Bitcoin', () => {
+    it('should return an object', () => {
+      expect(Faker.Bitcoin).to.be.a('object');
     });
   });
 
