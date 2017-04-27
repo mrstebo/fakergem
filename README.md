@@ -15,6 +15,7 @@ Contents
   - [Faker.App](doc/app.md)
   - [Faker.Avatar](doc/avatar.md)
   - [Faker.Beer](doc/beer.md)
+  - [Faker.Bitcoin](doc/bitcoin.md)
   - [Faker.Book](doc/book.md)
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Color](doc/color.md)
