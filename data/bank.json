@@ -1,0 +1,187 @@
+{
+  "names": [
+    "UBS CLEARING AND EXECUTION SERVICES LIMITED",
+    "ABN AMRO CORPORATE FINANCE LIMITED",
+    "ABN AMRO FUND MANAGERS LIMITED",
+    "ABN AMRO HOARE GOVETT SECURITIES",
+    "ABN AMRO HOARE GOVETT CORPORATE FINANCE LTD.",
+    "ALKEN ASSET MANAGEMENT",
+    "ALKEN ASSET MANAGEMENT",
+    "ABN AMRO HOARE GOVETT LIMITED",
+    "AAC CAPITAL PARTNERS LIMITED",
+    "ABBOTSTONE AGRICULTURAL PROPERTY UNIT TRUST",
+    "ABN AMRO QUOTED INVESTMENTS (UK) LIMITED",
+    "ABN AMRO MEZZANINE (UK) LIMITED",
+    "ABBEY LIFE",
+    "SANTANDER UK PLC",
+    "OTKRITIE SECURITIES LIMITED",
+    "ABC INTERNATIONAL BANK PLC",
+    "ALLIED BANK PHILIPPINES (UK) PLC",
+    "ABU DHABI ISLAMIC BANK",
+    "ABG SUNDAL COLLIER LIMITED",
+    "PGMS (GLASGOW) LIMITED",
+    "ABINGWORTH MANAGEMENT LIMITED",
+    "THE ROYAL BANK OF SCOTLAND PLC (FORMER RBS NV)"
+  ],
+  "swiftBics": [
+    "AACCGB21",
+    "AACNGB21",
+    "AAFMGB21",
+    "AAHOGB21",
+    "AAHVGB21",
+    "AANLGB21",
+    "AANLGB2L",
+    "AAOGGB21",
+    "AAPEGB21",
+    "AAPUGB21",
+    "AAQIGB21",
+    "ABAZGB21",
+    "ABBEGB21",
+    "ABBYGB2L",
+    "ABCCGB22",
+    "ABCEGB2L",
+    "ABCMGB21",
+    "ABDIGB21",
+    "ABECGB21",
+    "ABFIGB21",
+    "ABMNGB21",
+    "ABNAGB21VOC"
+  ],
+  "ibanDetails": [
+    {
+      "bankCountryCode": "AT",
+      "ibanLetterCode": "0",
+      "ibanDigits": "18"
+    },
+    {
+      "bankCountryCode": "BG",
+      "ibanLetterCode": "4",
+      "ibanDigits": "14"
+    },
+    {
+      "bankCountryCode": "BE",
+      "ibanLetterCode": "0",
+      "ibanDigits": "14"
+    },
+    {
+      "bankCountryCode": "CY",
+      "ibanLetterCode": "0",
+      "ibanDigits": "26"
+    },
+    {
+      "bankCountryCode": "CZ",
+      "ibanLetterCode": "0",
+      "ibanDigits": "22"
+    },
+    {
+      "bankCountryCode": "DE",
+      "ibanLetterCode": "0",
+      "ibanDigits": "20"
+    },
+    {
+      "bankCountryCode": "DK",
+      "ibanLetterCode": "0",
+      "ibanDigits": "16"
+    },
+    {
+      "bankCountryCode": "EE",
+      "ibanLetterCode": "0",
+      "ibanDigits": "18"
+    },
+    {
+      "bankCountryCode": "ES",
+      "ibanLetterCode": "0",
+      "ibanDigits": "22"
+    },
+    {
+      "bankCountryCode": "FI",
+      "ibanLetterCode": "0",
+      "ibanDigits": "16"
+    },
+    {
+      "bankCountryCode": "FR",
+      "ibanLetterCode": "0",
+      "ibanDigits": "25"
+    },
+    {
+      "bankCountryCode": "GB",
+      "ibanLetterCode": "4",
+      "ibanDigits": "14"
+    },
+    {
+      "bankCountryCode": "GR",
+      "ibanLetterCode": "0",
+      "ibanDigits": "25"
+    },
+    {
+      "bankCountryCode": "HU",
+      "ibanLetterCode": "0",
+      "ibanDigits": "28"
+    },
+    {
+      "bankCountryCode": "HR",
+      "ibanLetterCode": "0",
+      "ibanDigits": "19"
+    },
+    {
+      "bankCountryCode": "IE",
+      "ibanLetterCode": "4",
+      "ibanDigits": "16"
+    },
+    {
+      "bankCountryCode": "IT",
+      "ibanLetterCode": "0",
+      "ibanDigits": "25"
+    },
+    {
+      "bankCountryCode": "LV",
+      "ibanLetterCode": "4",
+      "ibanDigits": "15"
+    },
+    {
+      "bankCountryCode": "LT",
+      "ibanLetterCode": "0",
+      "ibanDigits": "14"
+    },
+    {
+      "bankCountryCode": "LU",
+      "ibanLetterCode": "0",
+      "ibanDigits": "16"
+    },
+    {
+      "bankCountryCode": "PL",
+      "ibanLetterCode": "0",
+      "ibanDigits": "24"
+    },
+    {
+      "bankCountryCode": "PT",
+      "ibanLetterCode": "0",
+      "ibanDigits": "18"
+    },
+    {
+      "bankCountryCode": "MT",
+      "ibanLetterCode": "4",
+      "ibanDigits": "26"
+    },
+    {
+      "bankCountryCode": "NL",
+      "ibanLetterCode": "4",
+      "ibanDigits": "12"
+    },
+    {
+      "bankCountryCode": "RO",
+      "ibanLetterCode": "4",
+      "ibanDigits": "18"
+    },
+    {
+      "bankCountryCode": "SE",
+      "ibanLetterCode": "0",
+      "ibanDigits": "22"
+    },
+    {
+      "bankCountryCode": "SK",
+      "ibanLetterCode": "0",
+      "ibanDigits": "22"
+    }
+  ]
+}
