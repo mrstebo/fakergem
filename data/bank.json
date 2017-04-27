@@ -49,138 +49,138 @@
   ],
   "ibanDetails": [
     {
-      "bankCountryCodes": "AT",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "AT",
+      "ibanLetterCode": "0",
       "ibanDigits": "18"
     },
     {
-      "bankCountryCodes": "BG",
-      "ibanLetterCodes": "4",
+      "bankCountryCode": "BG",
+      "ibanLetterCode": "4",
       "ibanDigits": "14"
     },
     {
-      "bankCountryCodes": "BE",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "BE",
+      "ibanLetterCode": "0",
       "ibanDigits": "14"
     },
     {
-      "bankCountryCodes": "CY",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "CY",
+      "ibanLetterCode": "0",
       "ibanDigits": "26"
     },
     {
-      "bankCountryCodes": "CZ",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "CZ",
+      "ibanLetterCode": "0",
       "ibanDigits": "22"
     },
     {
-      "bankCountryCodes": "DE",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "DE",
+      "ibanLetterCode": "0",
       "ibanDigits": "20"
     },
     {
-      "bankCountryCodes": "DK",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "DK",
+      "ibanLetterCode": "0",
       "ibanDigits": "16"
     },
     {
-      "bankCountryCodes": "EE",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "EE",
+      "ibanLetterCode": "0",
       "ibanDigits": "18"
     },
     {
-      "bankCountryCodes": "ES",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "ES",
+      "ibanLetterCode": "0",
       "ibanDigits": "22"
     },
     {
-      "bankCountryCodes": "FI",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "FI",
+      "ibanLetterCode": "0",
       "ibanDigits": "16"
     },
     {
-      "bankCountryCodes": "FR",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "FR",
+      "ibanLetterCode": "0",
       "ibanDigits": "25"
     },
     {
-      "bankCountryCodes": "GB",
-      "ibanLetterCodes": "4",
+      "bankCountryCode": "GB",
+      "ibanLetterCode": "4",
       "ibanDigits": "14"
     },
     {
-      "bankCountryCodes": "GR",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "GR",
+      "ibanLetterCode": "0",
       "ibanDigits": "25"
     },
     {
-      "bankCountryCodes": "HU",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "HU",
+      "ibanLetterCode": "0",
       "ibanDigits": "28"
     },
     {
-      "bankCountryCodes": "HR",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "HR",
+      "ibanLetterCode": "0",
       "ibanDigits": "19"
     },
     {
-      "bankCountryCodes": "IE",
-      "ibanLetterCodes": "4",
+      "bankCountryCode": "IE",
+      "ibanLetterCode": "4",
       "ibanDigits": "16"
     },
     {
-      "bankCountryCodes": "IT",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "IT",
+      "ibanLetterCode": "0",
       "ibanDigits": "25"
     },
     {
-      "bankCountryCodes": "LV",
-      "ibanLetterCodes": "4",
+      "bankCountryCode": "LV",
+      "ibanLetterCode": "4",
       "ibanDigits": "15"
     },
     {
-      "bankCountryCodes": "LT",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "LT",
+      "ibanLetterCode": "0",
       "ibanDigits": "14"
     },
     {
-      "bankCountryCodes": "LU",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "LU",
+      "ibanLetterCode": "0",
       "ibanDigits": "16"
     },
     {
-      "bankCountryCodes": "PL",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "PL",
+      "ibanLetterCode": "0",
       "ibanDigits": "24"
     },
     {
-      "bankCountryCodes": "PT",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "PT",
+      "ibanLetterCode": "0",
       "ibanDigits": "18"
     },
     {
-      "bankCountryCodes": "MT",
-      "ibanLetterCodes": "4",
+      "bankCountryCode": "MT",
+      "ibanLetterCode": "4",
       "ibanDigits": "26"
     },
     {
-      "bankCountryCodes": "NL",
-      "ibanLetterCodes": "4",
+      "bankCountryCode": "NL",
+      "ibanLetterCode": "4",
       "ibanDigits": "12"
     },
     {
-      "bankCountryCodes": "RO",
-      "ibanLetterCodes": "4",
+      "bankCountryCode": "RO",
+      "ibanLetterCode": "4",
       "ibanDigits": "18"
     },
     {
-      "bankCountryCodes": "SE",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "SE",
+      "ibanLetterCode": "0",
       "ibanDigits": "22"
     },
     {
-      "bankCountryCodes": "SK",
-      "ibanLetterCodes": "0",
+      "bankCountryCode": "SK",
+      "ibanLetterCode": "0",
       "ibanDigits": "22"
     }
   ]
