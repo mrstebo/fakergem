@@ -2,6 +2,7 @@ import * as Address from './faker/address';
 import * as Ancient from './faker/ancient';
 import * as App from './faker/app';
 import * as Avatar from './faker/avatar';
+import * as Bank from './faker/bank';
 import * as Beer from './faker/beer';
 import * as Book from './faker/book';
 import * as Boolean from './faker/boolean';
@@ -25,6 +26,7 @@ module.exports = {
   Ancient,
   App,
   Avatar,
+  Bank,
   Beer,
   Book,
   Boolean,
