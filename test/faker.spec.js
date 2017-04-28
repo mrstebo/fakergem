@@ -62,6 +62,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Business', () => {
+    it('should return an object', () => {
+      expect(Faker.Business).to.be.a('object');
+    });
+  });
+
   describe('#Color', () => {
     it('should return an object', () => {
       expect(Faker.Color).to.be.a('object');
