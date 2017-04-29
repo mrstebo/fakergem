@@ -80,6 +80,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Coffee', () => {
+    it('should return an object', () => {
+      expect(Faker.Coffee).to.be.a('object');
+    });
+  });
+
   describe('#Color', () => {
     it('should return an object', () => {
       expect(Faker.Color).to.be.a('object');
