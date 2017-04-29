@@ -20,6 +20,7 @@ Contents
   - [Faker.Book](doc/book.md)
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Business](doc/business.md)
+  - [Faker.Cat](doc/cat.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
   - [Faker.File](doc/file.md)
