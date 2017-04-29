@@ -10,6 +10,7 @@ import * as Boolean from './faker/boolean';
 import * as Business from './faker/business';
 import * as Cat from './faker/cat';
 import * as ChuckNorris from './faker/chuck-norris';
+import * as Coffee from './faker/coffee';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
 import * as File from './faker/file';
@@ -38,6 +39,7 @@ module.exports = {
   Business,
   Cat,
   ChuckNorris,
+  Coffee,
   Color,
   Date,
   File,
