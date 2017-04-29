@@ -400,8 +400,8 @@
     "musty",
     "rubber"
   ],
-  "notes": "#{intensifier}, #{body}, #{descriptor}, #{descriptor}, #{descriptor}",
-  "name1s": [
+  "notes": "{intensifier}, {body}, {descriptor}, {descriptor}, {descriptor}",
+  "name1": [
     "Summer",
     "Holiday",
     "Jacked",
@@ -445,7 +445,7 @@
     "KrebStar",
     "Kreb-Full-o"
   ],
-  "name2s": [
+  "name2": [
     "Solstice",
     "Blend",
     "Level",
@@ -478,5 +478,5 @@
     "Coffee",
     "Nuts"
   ],
-  "blendNames": "#{name_1} #{name_2}"
+  "blendNames": "{name1} {name2}"
 }
