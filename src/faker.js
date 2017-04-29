@@ -8,6 +8,7 @@ import * as Bitcoin from './faker/bitcoin';
 import * as Book from './faker/book';
 import * as Boolean from './faker/boolean';
 import * as Business from './faker/business';
+import * as Cat from './faker/cat';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
 import * as File from './faker/file';
@@ -34,6 +35,7 @@ module.exports = {
   Book,
   Boolean,
   Business,
+  Cat,
   Color,
   Date,
   File,
