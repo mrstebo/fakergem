@@ -21,6 +21,7 @@ Contents
   - [Faker.Boolean](doc/boolean.md)
   - [Faker.Business](doc/business.md)
   - [Faker.Cat](doc/cat.md)
+  - [Faker.ChuckNorris](doc/chuck_norris.md)
   - [Faker.Coffee](doc/coffee.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
