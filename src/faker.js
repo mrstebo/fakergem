@@ -15,6 +15,7 @@ import * as Color from './faker/color';
 import * as Date from './faker/date';
 import * as File from './faker/file';
 import * as Friends from './faker/friends';
+import * as GameOfThrones from './faker/game-of-thrones';
 import * as Lorem from './faker/lorem';
 import * as LoremFlickr from './faker/lorem-flickr';
 import * as Name from './faker/name';
@@ -44,6 +45,7 @@ module.exports = {
   Date,
   File,
   Friends,
+  GameOfThrones,
   Lorem,
   LoremFlickr,
   Name,
