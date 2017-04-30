@@ -18,13 +18,14 @@ import * as Food from './faker/food';
 import * as Friends from './faker/friends';
 import * as GameOfThrones from './faker/game-of-thrones';
 import * as HarryPotter from './faker/harry-potter';
-import * as Lorem from './faker/lorem';
-import * as LoremFlickr from './faker/lorem-flickr';
 import * as LordOfTheRings from './faker/lord-of-the-rings';
+import * as LoremFlickr from './faker/lorem-flickr';
+import * as Lorem from './faker/lorem';
 import * as Name from './faker/name';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
 import * as Pokemon from './faker/pokemon';
+import * as RickAndMorty from './faker/rick-and-morty';
 import * as RockBand from './faker/rock-band';
 import * as SlackEmoji from './faker/slack-emoji';
 import * as StarWars from './faker/star-wars';
@@ -52,16 +53,17 @@ module.exports = {
   Friends,
   GameOfThrones,
   HarryPotter,
-  Lorem,
-  LoremFlickr,
   LordOfTheRings,
+  LoremFlickr,
+  Lorem,
   Name,
   Number,
   Placeholdit,
   Pokemon,
+  RickAndMorty,
   RockBand,
   SlackEmoji,
   StarWars,
   Superhero,
   Time
-};
+}
