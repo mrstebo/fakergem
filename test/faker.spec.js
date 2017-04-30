@@ -247,6 +247,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#TwinPeaks', () => {
+    it('should be an object', () => {
+      expect(Faker.TwinPeaks).to.be.a('object');
+    });
+  });
+
   describe('#University', () => {
     it('should be an object', () => {
       expect(Faker.University).to.be.a('object');
