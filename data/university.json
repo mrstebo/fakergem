@@ -1,0 +1,25 @@
+{
+  "prefixes": [
+    "The",
+    "Northern",
+    "North",
+    "Western",
+    "West",
+    "Southern",
+    "South",
+    "Eastern",
+    "East"
+  ],
+  "suffixes": [
+    "University",
+    "Institute",
+    "College",
+    "Academy"
+  ],
+  "names": [
+    "#{Name.last_name} #{University.suffix}",
+    "#{University.prefix} #{Name.last_name} #{University.suffix}",
+    "#{University.prefix} #{Name.last_name}",
+    "#{University.prefix} #{Address.state} #{University.suffix}"
+  ]
+}
