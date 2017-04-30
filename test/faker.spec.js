@@ -116,6 +116,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#GameOfThrones', () => {
+    it('should return an object', () => {
+      expect(Faker.GameOfThrones).to.be.a('object');
+     });
+  });
+  
   describe('#HarryPotter', () => {
     it('should return an object', () => {
       expect(Faker.HarryPotter).to.be.a('object');
