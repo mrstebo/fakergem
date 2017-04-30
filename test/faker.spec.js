@@ -104,6 +104,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Food', () => {
+    it('should return an object', () => {
+      expect(Faker.Food).to.be.a('object');
+    });
+  });
+
   describe('#Friends', () => {
     it('should return an object', () => {
       expect(Faker.Friends).to.be.a('object');
