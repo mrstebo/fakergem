@@ -7,7 +7,7 @@ describe('#Faker', () => {
     expect(Faker).to.be.a('object');
   });
 
-    describe('#Address', () => {
+  describe('#Address', () => {
     it('should be an object', () => {
       expect(Faker.Address).to.be.a('object');
     });
@@ -232,6 +232,12 @@ describe('#Faker', () => {
   describe('#Time', () => {
     it('should be an object', () => {
       expect(Faker.Time).to.be.a('object');
+    });
+  });
+
+  describe('#University', () => {
+    it('should be an object', () => {
+      expect(Faker.University).to.be.a('object');
     });
   });
 });

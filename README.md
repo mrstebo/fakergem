@@ -48,6 +48,7 @@ Contents
   - [Faker.StarWars](doc/star_wars.md)
   - [Faker.Superhero](doc/superhero.md)
   - [Faker.Time](doc/time.md)
+  - [Faker.University](doc/university.md)
 
 ## Installing
 
