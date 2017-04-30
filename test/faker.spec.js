@@ -127,6 +127,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Hacker', () => {
+    it('should be an object', () => {
+      expect(Faker.Hacker).to.be.a('object');
+    });
+  });
+
   describe('#HarryPotter', () => {
     it('should be an object', () => {
       expect(Faker.HarryPotter).to.be.a('object');
@@ -238,6 +244,12 @@ describe('#Faker', () => {
   describe('#Time', () => {
     it('should be an object', () => {
       expect(Faker.Time).to.be.a('object');
+    });
+  });
+
+  describe('#University', () => {
+    it('should be an object', () => {
+      expect(Faker.University).to.be.a('object');
     });
   });
 });

@@ -30,6 +30,7 @@ Contents
   - [Faker.Food](doc/food.md)
   - [Faker.Friends](doc/friends.md)
   - [Faker.GameOfThrones](doc/game_of_thrones.md)
+  - [Faker.Hacker](doc/hacker.md)
   - [Faker.HarryPotter](doc/harry_potter.md)
   - [Faker.LordOfTheRings](doc/lord_of_the_rings.md)
   - [Faker.Lorem](doc/lorem.md)
@@ -49,6 +50,7 @@ Contents
   - [Faker.Superhero](doc/superhero.md)
   - [Faker.Team](doc/team.md)
   - [Faker.Time](doc/time.md)
+  - [Faker.University](doc/university.md)
 
 ## Installing
 
