@@ -22,6 +22,8 @@ import * as HarryPotter from './faker/harry-potter';
 import * as LordOfTheRings from './faker/lord-of-the-rings';
 import * as LoremFlickr from './faker/lorem-flickr';
 import * as Lorem from './faker/lorem';
+import * as Matz from './faker/matz';
+import * as Music from './faker/music';
 import * as Name from './faker/name';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
@@ -57,6 +59,8 @@ module.exports = {
   LordOfTheRings,
   LoremFlickr,
   Lorem,
+  Matz,
+  Music,
   Name,
   Number,
   Placeholdit,
