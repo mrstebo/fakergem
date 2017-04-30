@@ -187,6 +187,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#RickAndMorty', () => {
+    it('should be an object', () => {
+      expect(Faker.RickAndMorty).to.be.a('object');
+    });
+  });
+
   describe('#RockBand', () => {
     it('should be an object', () => {
       expect(Faker.RockBand).to.be.a('object');

@@ -28,6 +28,7 @@ import * as Name from './faker/name';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
 import * as Pokemon from './faker/pokemon';
+import * as RickAndMorty from './faker/rick-and-morty';
 import * as RockBand from './faker/rock-band';
 import * as RuPaul from './faker/ru-paul';
 import * as SlackEmoji from './faker/slack-emoji';
@@ -67,6 +68,7 @@ module.exports = {
   Number,
   Placeholdit,
   Pokemon,
+  RickAndMorty,
   RockBand,
   RuPaul,
   SlackEmoji,
