@@ -40,6 +40,7 @@ import * as Team from './faker/team';
 import * as Time from './faker/time';
 import * as TwinPeaks from './faker/twin-peaks';
 import * as University from './faker/university';
+import * as Zelda from './faker/zelda';
 
 module.exports = {
   Address,
@@ -83,5 +84,6 @@ module.exports = {
   Team,
   Time,
   TwinPeaks,
-  University
+  University,
+  Zelda
 }

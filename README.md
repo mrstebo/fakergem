@@ -52,6 +52,7 @@ Contents
   - [Faker.Time](doc/time.md)
   - [Faker.TwinPeaks](doc/twin_peaks.md)
   - [Faker.University](doc/university.md)
+  - [Faker.Zelda](doc/zelda.md)
 
 ## Installing
 
