@@ -18,6 +18,7 @@ import * as File from './faker/file';
 import * as Food from './faker/food';
 import * as Friends from './faker/friends';
 import * as GameOfThrones from './faker/game-of-thrones';
+import * as Hacker from './faker/hacker';
 import * as HarryPotter from './faker/harry-potter';
 import * as LordOfTheRings from './faker/lord-of-the-rings';
 import * as LoremFlickr from './faker/lorem-flickr';
@@ -58,6 +59,7 @@ module.exports = {
   Food,
   Friends,
   GameOfThrones,
+  Hacker,
   HarryPotter,
   LordOfTheRings,
   LoremFlickr,
