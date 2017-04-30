@@ -18,6 +18,7 @@ import * as File from './faker/file';
 import * as Food from './faker/food';
 import * as Friends from './faker/friends';
 import * as GameOfThrones from './faker/game-of-thrones';
+import * as Hacker from './faker/hacker';
 import * as HarryPotter from './faker/harry-potter';
 import * as LordOfTheRings from './faker/lord-of-the-rings';
 import * as LoremFlickr from './faker/lorem-flickr';
@@ -36,6 +37,7 @@ import * as Space from './faker/space';
 import * as StarWars from './faker/star-wars';
 import * as Superhero from './faker/superhero';
 import * as Time from './faker/time';
+import * as University from './faker/university';
 import * as Zelda from './faker/zelda';
 
 module.exports = {
@@ -59,6 +61,7 @@ module.exports = {
   Food,
   Friends,
   GameOfThrones,
+  Hacker,
   HarryPotter,
   LordOfTheRings,
   LoremFlickr,
@@ -77,5 +80,6 @@ module.exports = {
   StarWars,
   Superhero,
   Time,
+  University,
   Zelda
 }
