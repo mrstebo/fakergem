@@ -14,6 +14,7 @@ import * as Coffee from './faker/coffee';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
 import * as File from './faker/file';
+import * as Food from './faker/food';
 import * as Friends from './faker/friends';
 import * as Lorem from './faker/lorem';
 import * as LoremFlickr from './faker/lorem-flickr';
@@ -43,6 +44,7 @@ module.exports = {
   Color,
   Date,
   File,
+  Food,
   Friends,
   Lorem,
   LoremFlickr,
