@@ -235,9 +235,21 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Team', () => {
+    it('should be an object', () => {
+      expect(Faker.Team).to.be.a('object');
+    });
+  });
+
   describe('#Time', () => {
     it('should be an object', () => {
       expect(Faker.Time).to.be.a('object');
+    });
+  });
+
+  describe('#TwinPeaks', () => {
+    it('should be an object', () => {
+      expect(Faker.TwinPeaks).to.be.a('object');
     });
   });
 

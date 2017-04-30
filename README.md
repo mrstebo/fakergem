@@ -48,9 +48,11 @@ Contents
   - [Faker.Space](doc/space.md)
   - [Faker.StarWars](doc/star_wars.md)
   - [Faker.Superhero](doc/superhero.md)
+  - [Faker.Team](doc/team.md)
   - [Faker.Time](doc/time.md)
-  - [Faker.Zelda](doc/zelda.md)
+  - [Faker.TwinPeaks](doc/twin_peaks.md)
   - [Faker.University](doc/university.md)
+  - [Faker.Zelda](doc/zelda.md)
 
 ## Installing
 
