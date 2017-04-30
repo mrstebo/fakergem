@@ -28,6 +28,7 @@ Contents
   - [Faker.File](doc/file.md)
   - [Faker.Food](doc/food.md)
   - [Faker.Friends](doc/friends.md)
+  - [Faker.HarryPotter](doc/harry_potter.md)
   - [Faker.Lorem](doc/lorem.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
   - [Faker.Name](doc/name.md)
