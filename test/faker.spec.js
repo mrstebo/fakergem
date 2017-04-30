@@ -152,6 +152,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Pokemon', () => {
+    it('should return an object', () => {
+      expect(Faker.Pokemon).to.be.a('object');
+    });
+  });
+
   describe('#RockBand', () => {
     it('should return an object', () => {
       expect(Faker.RockBand).to.be.a('object');

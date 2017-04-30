@@ -22,6 +22,7 @@ import * as LoremFlickr from './faker/lorem-flickr';
 import * as Name from './faker/name';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
+import * as Pokemon from './faker/pokemon';
 import * as RockBand from './faker/rock-band';
 import * as SlackEmoji from './faker/slack-emoji';
 import * as StarWars from './faker/star-wars';
@@ -53,6 +54,7 @@ module.exports = {
   Name,
   Number,
   Placeholdit,
+  Pokemon,
   RockBand,
   SlackEmoji,
   StarWars,
