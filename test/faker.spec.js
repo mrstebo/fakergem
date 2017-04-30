@@ -122,6 +122,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#LordOfTheRings', () => {
+    it('should return an object', () => {
+      expect(Faker.LordOfTheRings).to.be.a('object');
+    });
+  });
+
   describe('#Name', () => {
     it('should return an object', () => {
       expect(Faker.Name).to.be.a('object');
