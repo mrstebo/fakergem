@@ -110,6 +110,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#HarryPotter', () => {
+    it('should return an object', () => {
+      expect(Faker.HarryPotter).to.be.a('object');
+    });
+  });
+
   describe('#Lorem', () => {
     it('should return an object', () => {
       expect(Faker.Lorem).to.be.a('object');
