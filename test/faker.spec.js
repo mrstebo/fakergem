@@ -187,6 +187,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#RuPaul', () => {
+    it('should be an object', () => {
+      expect(Faker.RuPaul).to.be.a('object');
+    });
+  });
+
   describe('#SlackEmoji', () => {
     it('should be an object', () => {
       expect(Faker.SlackEmoji).to.be.a('object');
