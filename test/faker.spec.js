@@ -97,6 +97,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#DragonBall', () => {
+    it('should be an object', () => {
+      expect(Faker.DragonBall).to.be.a('object');
+    });
+  });
+
   describe('#File', () => {
     it('should be an object', () => {
       expect(Faker.File).to.be.a('object');
@@ -150,7 +156,7 @@ describe('#Faker', () => {
       expect(Faker.Matz).to.be.a('object');
     });
   });
-  
+
   describe('#Music', () => {
     it('should be an object', () => {
       expect(Faker.Music).to.be.a('object');

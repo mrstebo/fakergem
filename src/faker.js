@@ -13,6 +13,7 @@ import * as ChuckNorris from './faker/chuck-norris';
 import * as Coffee from './faker/coffee';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
+import * as DragonBall from './faker/dragon-ball';
 import * as File from './faker/file';
 import * as Food from './faker/food';
 import * as Friends from './faker/friends';
@@ -50,6 +51,7 @@ module.exports = {
   Coffee,
   Color,
   Date,
+  DragonBall,
   File,
   Food,
   Friends,
