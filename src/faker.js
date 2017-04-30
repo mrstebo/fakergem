@@ -13,14 +13,15 @@ import * as ChuckNorris from './faker/chuck-norris';
 import * as Coffee from './faker/coffee';
 import * as Color from './faker/color';
 import * as Date from './faker/date';
+import * as DragonBall from './faker/dragon-ball';
 import * as File from './faker/file';
 import * as Food from './faker/food';
 import * as Friends from './faker/friends';
 import * as GameOfThrones from './faker/game-of-thrones';
 import * as HarryPotter from './faker/harry-potter';
-import * as Lorem from './faker/lorem';
-import * as LoremFlickr from './faker/lorem-flickr';
 import * as LordOfTheRings from './faker/lord-of-the-rings';
+import * as LoremFlickr from './faker/lorem-flickr';
+import * as Lorem from './faker/lorem';
 import * as Name from './faker/name';
 import * as Number from './faker/number';
 import * as Placeholdit from './faker/placeholdit';
@@ -47,14 +48,15 @@ module.exports = {
   Coffee,
   Color,
   Date,
+  DragonBall,
   File,
   Food,
   Friends,
   GameOfThrones,
   HarryPotter,
-  Lorem,
-  LoremFlickr,
   LordOfTheRings,
+  LoremFlickr,
+  Lorem,
   Name,
   Number,
   Placeholdit,
@@ -64,4 +66,4 @@ module.exports = {
   StarWars,
   Superhero,
   Time
-};
+}
