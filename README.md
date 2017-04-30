@@ -38,6 +38,7 @@ Contents
   - [Faker.Placeholdit](doc/placeholdit.md)
   - [Faker.Pokemon](doc/pokemon.md)
   - [Faker.RockBand](doc/rock_band.md)
+  - [Faker.RuPaul](doc/ru_paul.md)
   - [Faker.SlackEmoji](doc/slack_emoji.md)
   - [Faker.StarWars](doc/star_wars.md)
   - [Faker.Superhero](doc/superhero.md)
