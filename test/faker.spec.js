@@ -205,6 +205,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Space', () => {
+    it('should be an object', () => {
+      expect(Faker.Space).to.be.a('object');
+    });
+  });
+
   describe('#StarWars', () => {
     it('should be an object', () => {
       expect(Faker.StarWars).to.be.a('object');

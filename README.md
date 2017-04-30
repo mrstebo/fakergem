@@ -43,6 +43,7 @@ Contents
   - [Faker.RockBand](doc/rock_band.md)
   - [Faker.RuPaul](doc/ru_paul.md)
   - [Faker.SlackEmoji](doc/slack_emoji.md)
+  - [Faker.Space](doc/space.md)
   - [Faker.StarWars](doc/star_wars.md)
   - [Faker.Superhero](doc/superhero.md)
   - [Faker.Time](doc/time.md)

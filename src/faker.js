@@ -31,6 +31,7 @@ import * as Pokemon from './faker/pokemon';
 import * as RockBand from './faker/rock-band';
 import * as RuPaul from './faker/ru-paul';
 import * as SlackEmoji from './faker/slack-emoji';
+import * as Space from './faker/space';
 import * as StarWars from './faker/star-wars';
 import * as Superhero from './faker/superhero';
 import * as Time from './faker/time';
@@ -69,6 +70,7 @@ module.exports = {
   RockBand,
   RuPaul,
   SlackEmoji,
+  Space,
   StarWars,
   Superhero,
   Time
