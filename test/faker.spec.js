@@ -104,6 +104,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Food', () => {
+    it('should return an object', () => {
+      expect(Faker.Food).to.be.a('object');
+    });
+  });
+
   describe('#Friends', () => {
     it('should return an object', () => {
       expect(Faker.Friends).to.be.a('object');
@@ -113,6 +119,12 @@ describe('#Faker', () => {
   describe('#GameOfThrones', () => {
     it('should return an object', () => {
       expect(Faker.GameOfThrones).to.be.a('object');
+     });
+  });
+  
+  describe('#HarryPotter', () => {
+    it('should return an object', () => {
+      expect(Faker.HarryPotter).to.be.a('object');
     });
   });
 
@@ -125,6 +137,12 @@ describe('#Faker', () => {
   describe('#LoremFlickr', () => {
     it('should return an object', () => {
       expect(Faker.LoremFlickr).to.be.a('object');
+    });
+  });
+
+  describe('#LordOfTheRings', () => {
+    it('should return an object', () => {
+      expect(Faker.LordOfTheRings).to.be.a('object');
     });
   });
 
@@ -143,6 +161,12 @@ describe('#Faker', () => {
   describe('#Placeholdit', () => {
     it('should return an object', () => {
       expect(Faker.Placeholdit).to.be.a('object');
+    });
+  });
+
+  describe('#Pokemon', () => {
+    it('should return an object', () => {
+      expect(Faker.Pokemon).to.be.a('object');
     });
   });
 
