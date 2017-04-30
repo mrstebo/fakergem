@@ -27,6 +27,7 @@ Contents
   - [Faker.Date](doc/date.md)
   - [Faker.File](doc/file.md)
   - [Faker.Friends](doc/friends.md)
+  - [Faker.GameOfThrones](doc/game_of_thrones.md)
   - [Faker.Lorem](doc/lorem.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
   - [Faker.Name](doc/name.md)
