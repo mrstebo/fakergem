@@ -31,6 +31,7 @@ Contents
   - [Faker.HarryPotter](doc/harry_potter.md)
   - [Faker.Lorem](doc/lorem.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
+  - [Faker.LordOfTheRings](doc/lord_of_the_rings.md)
   - [Faker.Name](doc/name.md)
   - [Faker.Number](doc/number.md)
   - [Faker.Placeholdit](doc/placeholdit.md)
