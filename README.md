@@ -27,6 +27,7 @@ Contents
   - [Faker.Date](doc/date.md)
   - [Faker.Demographic](doc/demographic.md)
   - [Faker.DragonBall](doc/dragon_ball.md)
+  - [Faker.Educator](doc/educator.md)
   - [Faker.File](doc/file.md)
   - [Faker.Food](doc/food.md)
   - [Faker.Friends](doc/friends.md)

@@ -1,0 +1,64 @@
+{
+  "names": [
+    "Marblewald",
+    "Mallowtown",
+    "Brookville",
+    "Flowerlake",
+    "Falconholt",
+    "Ostbarrow",
+    "Lakeacre",
+    "Clearcourt",
+    "Ironston",
+    "Mallowpond",
+    "Iceborough",
+    "Icelyn",
+    "Brighthurst",
+    "Bluemeadow",
+    "Vertapple",
+    "Ironbarrow"
+  ],
+  "secondaries": [
+    "High School",
+    "Secondary College",
+    "High"
+  ],
+  "tertiaries": {
+    "types": [
+      "College",
+      "University",
+      "Technical College",
+      "TAFE"
+    ],
+    "course": {
+      "subjects": [
+        "Arts",
+        "Business",
+        "Education",
+        "Applied Science (Psychology)",
+        "Architectural Technology",
+        "Biological Science",
+        "Biomedical Science",
+        "Commerce",
+        "Communications",
+        "Creative Arts",
+        "Criminology",
+        "Design",
+        "Engineering",
+        "Forensic Science",
+        "Health Science",
+        "Information Systems",
+        "Computer Science",
+        "Law",
+        "Nursing",
+        "Medicine",
+        "Psychology",
+        "Teaching"
+      ],
+      "types": [
+        "Associate Degree in",
+        "Bachelor of",
+        "Master of"
+      ]
+    }
+  }
+}
