@@ -25,6 +25,7 @@ Contents
   - [Faker.Coffee](doc/coffee.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Date](doc/date.md)
+  - [Faker.Demographic](doc/demographic.md)
   - [Faker.DragonBall](doc/dragon_ball.md)
   - [Faker.File](doc/file.md)
   - [Faker.Food](doc/food.md)

@@ -97,6 +97,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Demographic', () => {
+    it('should be an object', () => {
+      expect(Faker.Demographic).to.be.a('object');
+    });
+  });
+
   describe('#DragonBall', () => {
     it('should be an object', () => {
       expect(Faker.DragonBall).to.be.a('object');
@@ -258,7 +264,7 @@ describe('#Faker', () => {
       expect(Faker.University).to.be.a('object');
     });
   });
-  
+
   describe('#Zelda', () => {
     it('should be an object', () => {
       expect(Faker.Zelda).to.be.a('object');
