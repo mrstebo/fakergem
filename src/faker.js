@@ -15,6 +15,7 @@ import * as Color from './faker/color';
 import * as Date from './faker/date';
 import * as Demographic from './faker/demographic';
 import * as DragonBall from './faker/dragon-ball';
+import * as Educator from './faker/educator';
 import * as File from './faker/file';
 import * as Food from './faker/food';
 import * as Friends from './faker/friends';
@@ -61,6 +62,7 @@ module.exports = {
   Date,
   Demographic,
   DragonBall,
+  Educator,
   File,
   Food,
   Friends,

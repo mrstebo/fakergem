@@ -109,6 +109,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Educator', () => {
+    it('should be an object', () => {
+      expect(Faker.Educator).to.be.a('object');
+    });
+  });
+
   describe('#File', () => {
     it('should be an object', () => {
       expect(Faker.File).to.be.a('object');
