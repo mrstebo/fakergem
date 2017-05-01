@@ -271,6 +271,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Vehicle', () => {
+    it('should be an object', () => {
+      expect(Faker.Vehicle).to.be.a('object');
+    });
+  });
+
   describe('#Zelda', () => {
     it('should be an object', () => {
       expect(Faker.Zelda).to.be.a('object');
