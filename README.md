@@ -29,6 +29,7 @@ Contents
   - [Faker.DragonBall](doc/dragon_ball.md)
   - [Faker.Educator](doc/educator.md)
   - [Faker.File](doc/file.md)
+  - [Faker.Fillmurray](doc/fillmurray.md)
   - [Faker.Food](doc/food.md)
   - [Faker.Friends](doc/friends.md)
   - [Faker.GameOfThrones](doc/game_of_thrones.md)

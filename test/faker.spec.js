@@ -121,6 +121,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Fillmurray', () => {
+    it('should be an object', () => {
+      expect(Faker.Fillmurray).to.be.a('object');
+    });
+  });
+
   describe('#Food', () => {
     it('should be an object', () => {
       expect(Faker.Food).to.be.a('object');

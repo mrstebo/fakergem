@@ -17,6 +17,7 @@ import * as Demographic from './faker/demographic';
 import * as DragonBall from './faker/dragon-ball';
 import * as Educator from './faker/educator';
 import * as File from './faker/file';
+import * as Fillmurray from './faker/fillmurray';
 import * as Food from './faker/food';
 import * as Friends from './faker/friends';
 import * as GameOfThrones from './faker/game-of-thrones';
@@ -66,6 +67,7 @@ module.exports = {
   DragonBall,
   Educator,
   File,
+  Fillmurray,
   Food,
   Friends,
   GameOfThrones,
