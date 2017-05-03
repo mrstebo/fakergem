@@ -163,6 +163,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#LoremPixel', () => {
+    it('should be an object', () => {
+      expect(Faker.LoremPixel).to.be.a('object');
+    });
+  });
+
   describe('#Lorem', () => {
     it('should be an object', () => {
       expect(Faker.Lorem).to.be.a('object');
