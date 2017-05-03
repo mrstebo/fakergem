@@ -5,13 +5,17 @@ const DateFaker = require('../../src/faker/date');
 describe('#Date', () => {
   describe('#between', () => {
     it('should return a Date', () => {
-      expect(DateFaker.between(new Date(), new Date())).to.be.a('Date');
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.between(new Date(), new Date())).to.be.a('Date');
+      });
     });
 
     it('should handle string dates', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 10);
-      expect(DateFaker.between('2017-01-01', '2017-01-10')).to.be.within(from, to);
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.between('2017-01-01', '2017-01-10')).to.be.within(from, to);
+      });
     });
 
     it('should return a date between two dates', () => {
@@ -29,16 +33,20 @@ describe('#Date', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 10);
       const except = new Date(2017, 0, 5);
-      expect(DateFaker.betweenExcept(from, to, except)).to.be.a('Date');
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.betweenExcept(from, to, except)).to.be.a('Date');
+      });
     });
 
     it('should handle string dates', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 10);
       const except = new Date(2017, 0, 4);
-      expect( DateFaker.betweenExcept('2017-01-01', '2017-01-10', '2017-01-04'))
-        .to.be.within(from, to)
-        .and.not.equal(except);
+      [...Array(100).keys()].forEach(_ => {
+        expect( DateFaker.betweenExcept('2017-01-01', '2017-01-10', '2017-01-04'))
+          .to.be.within(from, to)
+          .and.not.equal(except);
+      });
     });
 
     it('should return a date in between two dates except for the excepted date', () => {
@@ -56,11 +64,15 @@ describe('#Date', () => {
 
   describe('#forward', () => {
     it('should return a Date', () => {
-      expect(DateFaker.forward()).to.be.a('Date');
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.forward()).to.be.a('Date');
+      });
     });
 
     it('should return a date in the future', () => {
-      expect(DateFaker.forward()).to.be.above(new Date());
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.forward()).to.be.above(new Date());
+      });
     });
 
     it('should return a date no greater than the specified number of days', () => {
@@ -76,11 +88,15 @@ describe('#Date', () => {
 
   describe('#backward', () => {
     it('should return a Date', () => {
-      expect(DateFaker.backward()).to.be.a('Date');
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.backward()).to.be.a('Date');
+      });
     });
 
     it('should return a date in the past', () => {
-      expect(DateFaker.backward()).to.be.below(new Date());
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.backward()).to.be.below(new Date());
+      });
     });
 
     it('should return a date no less than the specified number of days', () => {
@@ -96,7 +112,9 @@ describe('#Date', () => {
 
   describe('#birthday', () => {
     it('should return a Date', () => {
-      expect(DateFaker.birthday()).to.be.a('Date');
+      [...Array(100).keys()].forEach(_ => {
+        expect(DateFaker.birthday()).to.be.a('Date');
+      });
     });
 
     it('should return a birth date between two ages', () => {

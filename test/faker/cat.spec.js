@@ -5,32 +5,26 @@ const data = require('../../data/cat.json');
 
 describe('Cat', () => {
   describe('#name', () => {
-    it('should return a string', () => {
-      expect(Cat.name()).to.be.a('string');
-    });
-
     it('should return a name', () => {
-      expect(Cat.name()).to.be.oneOf(data['names']);
+      [...Array(100).keys()].forEach(_ => {
+        expect(Cat.name()).to.be.oneOf(data['names']);
+      });
     });
   });
 
   describe('#breed', () => {
-    it('should return a string', () => {
-      expect(Cat.breed()).to.be.a('string');
-    });
-
     it('should return a breed', () => {
-      expect(Cat.breed()).to.be.oneOf(data['breeds']);
+      [...Array(100).keys()].forEach(_ => {
+        expect(Cat.breed()).to.be.oneOf(data['breeds']);
+      });
     });
   });
 
   describe('#registry', () => {
-    it('should return a string', () => {
-      expect(Cat.registry()).to.be.a('string');
-    });
-
     it('should return a registry', () => {
-      expect(Cat.registry()).to.be.oneOf(data['registries']);
+      [...Array(100).keys()].forEach(_ => {
+        expect(Cat.registry()).to.be.oneOf(data['registries']);
+      });
     });
   });
 });

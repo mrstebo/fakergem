@@ -54,12 +54,14 @@ describe('StarWars', () => {
 
   describe('#wookieSentence', () => {
     it('should return wookie words', () => {
-      StarWars.wookieSentence()
-        .split(/(?:\s|[.?!])/) // remove endings
-        .filter(x => x)
-        .forEach(word => {
-          expect(word.toLowerCase()).to.be.oneOf(data['wookieWords']);
-        });
+      [...Array(100).keys()].forEach(_ => {
+        StarWars.wookieSentence()
+          .split(/(?:\s|[.?!])/) // remove endings
+          .filter(x => x)
+          .forEach(word => {
+            expect(word.toLowerCase()).to.be.oneOf(data['wookieWords']);
+          });
+      });
     });
 
     it('should start with a capital letter', () => {

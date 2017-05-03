@@ -12,7 +12,9 @@ describe('Music', () => {
     });
 
     it('should return a variant', () => {
-      expect(Music.key().slice(1)).to.be.oneOf(data['keyVariants']);
+      [...Array(100).keys()].forEach(_ => {
+        expect(Music.key().slice(1)).to.be.oneOf(data['keyVariants']);
+      });
     });
   });
 
