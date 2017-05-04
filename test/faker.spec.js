@@ -91,6 +91,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Commerce', () => {
+    it('should be an object', () => {
+      expect(Faker.Commerce).to.be.a('object');
+    });
+  });
+
   describe('#Date', () => {
     it('should be an object', () => {
       expect(Faker.Date).to.be.a('object');
