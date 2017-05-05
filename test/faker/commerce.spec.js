@@ -18,9 +18,20 @@ describe('Commerce', () => {
     it('should return a department', () => {
       const re = new RegExp(`(${orList(data['departments'])})`);
       [...Array(100).keys()].forEach(_ => {
-        Commerce.department().split(/[,&]/).map(x => x.trim()).forEach(category => {
-          expect(Commerce.department()).to.match(re);
-        });
+        expect(Commerce.department()).to.match(re);
+      });
+    });
+
+    it('should contain no more than the max number of departments if specified', () => {
+      const re = new RegExp(`(${orList(data['departments'])}){1,5}`);
+      [...Array(100).keys()].forEach(_ => {
+        expect(Commerce.department(5)).to.match(re);
+      });
+    });
+
+    it('should return fixed number of departments if specified', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Commerce.department(5, true)).to.match(/\b(?:\w+){5}\b/);
       });
     });
   });
@@ -60,6 +71,13 @@ describe('Commerce', () => {
         expect(Commerce.price()).to.be.within(0, 100);
       });
     });
+
+    it('should return a price within the specified range', () => {
+      const range = {min: 20, max: 40};
+      [...Array(100).keys()].forEach(_ => {
+        expect(Commerce.price(range)).to.be.within(range.min, range.max);
+      });
+    });
   });
 
   describe('#promotionCode', () => {
@@ -86,6 +104,12 @@ describe('Commerce', () => {
     it('should end with a number', () => {
       [...Array(100).keys()].forEach(_ => {
         expect(Commerce.promotionCode()).to.match(/.*[0-9]{6}$/);
+      });
+    });
+
+    it('should end with number with specified number of digits', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Commerce.promotionCode(24)).to.match(/.*[0-9]{24}$/);
       });
     });
   });

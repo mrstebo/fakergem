@@ -8,7 +8,7 @@ export function color() {
 }
 
 export function department(max=3, fixedAmount=false) {
-  const num = fixedAmount ? max : 1 + randomNumber(0, max);
+  const num = fixedAmount ? max : (1 + randomNumber(0, max));
   const categories = buildCategories(num);
   return num > 1 ? mergeCategories(categories) : categories[0];
 }
@@ -21,9 +21,8 @@ export function productName() {
   ].join(' ');
 }
 
-export function price(range={min: 0, max: 100}, asString=false) {
-  const value = Math.floor(randomFloat(range.min, range.max) * 100) / 100.0;
-  return asString ? `${value.toFixed(2)}` : value.toFixed(2);
+export function price(range={min: 0, max: 100}) {
+  return (Math.floor(randomFloat(range.min, range.max) * 100) / 100.0).toFixed(2);
 }
 
 export function promotionCode(digits=6) {
