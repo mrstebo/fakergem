@@ -24,6 +24,7 @@ Contents
   - [Faker.ChuckNorris](doc/chuck_norris.md)
   - [Faker.Coffee](doc/coffee.md)
   - [Faker.Color](doc/color.md)
+  - [Faker.Commerce](doc/commerce.md)
   - [Faker.Date](doc/date.md)
   - [Faker.Demographic](doc/demographic.md)
   - [Faker.DragonBall](doc/dragon_ball.md)
