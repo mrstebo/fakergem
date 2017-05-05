@@ -11,6 +11,7 @@ Faker.Commerce.department(2, true) //=> "Books & Tools"
 Faker.Commerce.productName() //=> "Practical Granite Shirt"
 
 Faker.Commerce.price() //=> "44.6"
+Faker.Commerce.price({min: 20, max: 40}) //=> "32.16"
 
 // Generate a random promotion code.
 // Optional argument digits = 6 for number of random digits in suffix
