@@ -72,5 +72,15 @@ export function profession() {
 }
 
 function luhnAlgorithm(number) {
-  return '0';
+  const multiplications = `${number}`
+    .split('')
+    .map((x, i) => i % 2 == 0 ? parseInt(x) * 2 : parseInt(x));
+  let sum = 0;
+  multiplications.forEach(num => {
+    `${num}`.split('').forEach(character => {
+      sum += character.charCodeAt(0);
+    });
+  });
+
+  return sum % 10 == 0 ? 0 : (sum / 10 + 1) * 10 - sum;
 }

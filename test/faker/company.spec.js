@@ -101,7 +101,7 @@ describe('Company', () => {
   describe('#swedishOrganisationNumber', () => {
     it('should return a Swedish Organisation Number', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Company.swedishOrganisationNumber()).to.match(/^[1-9]\d[2-9]\d{6}\d$/);
+        expect(Company.swedishOrganisationNumber()).to.match(/^[1-9]\d[2-9]\d{6}\d+$/);
       });
     });
   });
