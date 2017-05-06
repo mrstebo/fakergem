@@ -13,6 +13,7 @@ import * as ChuckNorris from './faker/chuck-norris';
 import * as Coffee from './faker/coffee';
 import * as Color from './faker/color';
 import * as Commerce from './faker/commerce';
+import * as Company from './faker/company';
 import * as Date from './faker/date';
 import * as Demographic from './faker/demographic';
 import * as DragonBall from './faker/dragon-ball';
@@ -64,6 +65,7 @@ module.exports = {
   Coffee,
   Color,
   Commerce,
+  Company,
   Date,
   Demographic,
   DragonBall,
