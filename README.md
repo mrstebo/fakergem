@@ -37,6 +37,7 @@ Contents
   - [Faker.GameOfThrones](doc/game_of_thrones.md)
   - [Faker.Hacker](doc/hacker.md)
   - [Faker.HarryPotter](doc/harry_potter.md)
+  - [Faker.Hipster](doc/hipster.md)
   - [Faker.LordOfTheRings](doc/lord_of_the_rings.md)
   - [Faker.Lorem](doc/lorem.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
