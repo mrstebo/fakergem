@@ -14,6 +14,7 @@ import * as Coffee from './faker/coffee';
 import * as Color from './faker/color';
 import * as Commerce from './faker/commerce';
 import * as Company from './faker/company';
+import * as Compass from './faker/compass';
 import * as Date from './faker/date';
 import * as Demographic from './faker/demographic';
 import * as DragonBall from './faker/dragon-ball';
@@ -67,6 +68,7 @@ module.exports = {
   Color,
   Commerce,
   Company,
+  Compass,
   Date,
   Demographic,
   DragonBall,

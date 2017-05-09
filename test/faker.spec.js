@@ -103,6 +103,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Compass', () => {
+    it('should be an object', () => {
+      expect(Faker.Compass).to.be.a('object');
+    });
+  });
+
   describe('#Date', () => {
     it('should be an object', () => {
       expect(Faker.Date).to.be.a('object');
