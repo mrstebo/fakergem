@@ -169,6 +169,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Hipster', () => {
+    it('should be an object', () => {
+      expect(Faker.Hipster).to.be.a('object');
+    });
+  });
+
   describe('#LordOfTheRings', () => {
     it('should be an object', () => {
       expect(Faker.LordOfTheRings).to.be.a('object');
