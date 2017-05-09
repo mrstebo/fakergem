@@ -60,7 +60,16 @@ export function swedishOrganisationNumber() {
 }
 
 export function norwegianOrganisationNumber() {
-  return '0';
+  let mod11Check = null;
+  let base = '';
+  while (mod11Check == null) {
+    base = [
+      itemFromCollection([8, 9]),
+      leftPad(randomNumber(0, 10000000), 7, '0')
+    ].join('');
+    mod11Check = mod11(base);
+  }
+  return `${base}${mod11Check}`;
 }
 
 export function australianBusinessNumber() {
@@ -83,4 +92,30 @@ function luhnAlgorithm(number) {
   });
 
   return sum % 10 == 0 ? 0 : (sum / 10 + 1) * 10 - sum;
+}
+
+function mod11(number) {
+  const weight = [
+    2, 3, 4, 5, 6, 7,
+    2, 3, 4, 5, 6, 7,
+    2, 3, 4, 5, 6, 7
+  ];
+  const sum = `${number}`.split('').reverse().reduce((acc, val, index) => {
+    return val.charCodeAt(0) * weight[index - 1];
+  });
+  const remainder = sum % 11;
+
+  switch (remainder) {
+    case 0:
+      return remainder;
+    case 1:
+      return null;
+  }
+
+  return 11 - remainder;
+}
+
+function leftPad(text, length, paddingCharacter) {
+  let padding = [...Array(length)].map(_ => paddingCharacter).join('');
+  return (padding + text).slice(-length);
 }
