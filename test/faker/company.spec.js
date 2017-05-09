@@ -117,7 +117,7 @@ describe('Company', () => {
   describe('#australianBusinessNumber', () => {
     it('should return a Australian Business Number', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Company.australianBusinessNumber()).to.match(/\d/);
+        expect(Company.australianBusinessNumber()).to.match(/^\d{11}$/);
       });
     });
   });

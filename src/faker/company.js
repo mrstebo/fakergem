@@ -73,7 +73,10 @@ export function norwegianOrganisationNumber() {
 }
 
 export function australianBusinessNumber() {
-  return '0';
+  const base = leftPad(randomNumber(0, 1000000000), 9, '0');
+  const abn = `00${base}`;
+
+  return `${(99 - abnChecksum(abn) % 89)}${base}`;
 }
 
 export function profession() {
@@ -113,6 +116,14 @@ function mod11(number) {
   }
 
   return 11 - remainder;
+}
+
+function abnChecksum(abn) {
+  const weights = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
+  return weights.reduce((acc, val, index) => {
+    return acc + (val * abn[index-1]);
+  });
 }
 
 function leftPad(text, length, paddingCharacter) {
