@@ -109,6 +109,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Crypto', () => {
+    it('should be an object', () => {
+      expect(Faker.Crypto).to.be.a('object');
+    });
+  });
+
   describe('#Date', () => {
     it('should be an object', () => {
       expect(Faker.Date).to.be.a('object');

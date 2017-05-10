@@ -15,6 +15,7 @@ import * as Color from './faker/color';
 import * as Commerce from './faker/commerce';
 import * as Company from './faker/company';
 import * as Compass from './faker/compass';
+import * as Crypto from './faker/crypto';
 import * as Date from './faker/date';
 import * as Demographic from './faker/demographic';
 import * as DragonBall from './faker/dragon-ball';
@@ -69,6 +70,7 @@ module.exports = {
   Commerce,
   Company,
   Compass,
+  Crypto,
   Date,
   Demographic,
   DragonBall,
