@@ -50,12 +50,12 @@ describe('Hipster', () => {
       const supplementals = Hipster.sentence(50, true)
         .split(' ')
         .filter(word => loremData['words'].indexOf(word) >= 0);
-      expect(supplementals.length).to.be.at.within(0, 50);
+      expect(supplementals).to.have.length.within(0, 50);
     });
 
     it('should include random words if specified', () => {
       const words = Hipster.sentence(0, false, 10).match(/\w+/g) || [];
-      expect(words.length).to.be.above(0);
+      expect(words).to.have.length.within(0, 10);
     });
 
     it('should return empty string if number of words is less than 1', () => {
@@ -77,7 +77,7 @@ describe('Hipster', () => {
         .filter(sentence => sentence.split(' ')
           .filter(word => loremData['words'].indexOf(word) >= 0)
         );
-      expect(supplementals).to.have.length.above(0);
+      expect(supplementals).to.have.length.within(0, 50);
     });
 
     it('should return empty array if number of sentences is less than 1', () => {
@@ -98,12 +98,12 @@ describe('Hipster', () => {
       const supplementals = Hipster.paragraph(50, true)
         .split(' ')
         .filter(word => loremData['words'].indexOf(word) >= 0);
-      expect(supplementals).to.have.length.above(0);
+      expect(supplementals).to.have.length.within(0, 50);
     });
 
     it('should include random sentences if specified', () => {
       const sentences = Hipster.paragraph(0, false, 10).match(/.*?\./g) || [];
-      expect(sentences.length).to.be.within(0, 10);
+      expect(sentences).to.have.length.within(0, 10);
     });
 
     it('should return empty string if number of sentences is less than 1', () => {
@@ -125,7 +125,7 @@ describe('Hipster', () => {
         .filter(paragraph => paragraph.split(' ')
           .filter(word => loremData['words'].indexOf(word) >= 0)
         );
-      expect(supplementals).to.have.length.above(0);
+      expect(supplementals).to.have.length.within(0, 50);
     });
 
     it('should return empty array if number of paragraphs is less than 1', () => {
