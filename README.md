@@ -40,6 +40,7 @@ Contents
   - [Faker.Hacker](doc/hacker.md)
   - [Faker.HarryPotter](doc/harry_potter.md)
   - [Faker.Hipster](doc/hipster.md)
+  - [Faker.Internet](doc/internet.md)
   - [Faker.LordOfTheRings](doc/lord_of_the_rings.md)
   - [Faker.Lorem](doc/lorem.md)
   - [Faker.LoremFlickr](doc/lorem_flickr.md)
