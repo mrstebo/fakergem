@@ -3,6 +3,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/mrstebo/fakergem/badge.svg?branch=master)](https://coveralls.io/github/mrstebo/fakergem?branch=master)
 
 # fakergem
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/mrstebo/fakergem.svg)](https://greenkeeper.io/)
 A javascript version of the Faker ruby gem
 
 Contents
