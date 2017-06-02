@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/mrstebo/fakergem.svg?branch=master)](https://travis-ci.org/mrstebo/fakergem)
 [![npm version](https://badge.fury.io/js/fakergem.svg)](https://badge.fury.io/js/fakergem)
 [![Coverage Status](https://coveralls.io/repos/github/mrstebo/fakergem/badge.svg?branch=master)](https://coveralls.io/github/mrstebo/fakergem?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/mrstebo/fakergem.svg)](https://greenkeeper.io/)
 
 # fakergem
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/mrstebo/fakergem.svg)](https://greenkeeper.io/)
 A javascript version of the Faker ruby gem
 
 Contents
