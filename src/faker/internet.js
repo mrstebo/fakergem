@@ -1,6 +1,7 @@
 import { itemFromCollection, randomNumber } from '../utils/random';
 
 const data = require('../../data/internet.json');
+const nameData = require('../../data/name.json');
 
 // 0-9, a-z
 const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));
@@ -43,15 +44,21 @@ export function password(minLength=8, maxLength=16, mixCase=true, specialChars=f
 }
 
 export function domainName() {
+  return [
+    domainWord(),
+    domainSuffix()
+  ].join('.');
 }
 
 export function fixUmlauts() {
 }
 
 export function domainWord() {
+  return itemFromCollection(nameData['lastNames']);
 }
 
 export function domainSuffix() {
+  return itemFromCollection(data['domainSuffixes'])
 }
 
 export function ipV4Address() {

@@ -2,6 +2,7 @@
 const expect = require('chai').expect;
 const Internet = require('../../src/faker/internet');
 const data = require('../../data/internet.json');
+const nameData = require('../../data/name.json');
 
 describe('Internet', () => {
   describe('#email', () => {
@@ -47,7 +48,9 @@ describe('Internet', () => {
   describe('#domainName', () => {
     it('should return a domainName', () => {
       [...Array(100).keys()].forEach(_ => {
-        // expect(Internet.domainName()).to.be.oneOf(data['domainNames']);
+        const domainName = Internet.domainName();
+        expect(domainName.split('.')[0]).to.be.oneOf(nameData['lastNames']);
+        expect(domainName.split('.')[1]).to.be.oneOf(data['domainSuffixes']);
       });
     });
   });
@@ -63,7 +66,7 @@ describe('Internet', () => {
   describe('#domainWord', () => {
     it('should return a domainWord', () => {
       [...Array(100).keys()].forEach(_ => {
-        // expect(Internet.domainWord()).to.be.oneOf(data['domainWords']);
+        expect(Internet.domainWord()).to.be.oneOf(nameData['lastNames']);
       });
     });
   });
@@ -71,7 +74,7 @@ describe('Internet', () => {
   describe('#domainSuffix', () => {
     it('should return a domainSuffix', () => {
       [...Array(100).keys()].forEach(_ => {
-        // expect(Internet.domainSuffix()).to.be.oneOf(data['domainSuffixes']);
+        expect(Internet.domainSuffix()).to.be.oneOf(data['domainSuffixes']);
       });
     });
   });
