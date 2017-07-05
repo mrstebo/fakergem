@@ -68,14 +68,15 @@ describe('Commerce', () => {
   describe('#price', () => {
     it('should return a price', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Commerce.price()).to.be.within(0, 100);
+        expect(Commerce.price()).to.match(/^\d{1,3}\.\d{2}$/);
       });
     });
 
     it('should return a price within the specified range', () => {
-      const range = {min: 20, max: 40};
+      const range = {min: 20.0, max: 40.0};
       [...Array(100).keys()].forEach(_ => {
-        expect(Commerce.price(range)).to.be.within(range.min, range.max);
+        const price = parseFloat(Commerce.price(range));
+        expect(price).to.be.within(range.min, range.max);
       });
     });
   });

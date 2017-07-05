@@ -1,6 +1,9 @@
 'use strict';
-const expect = require('chai').expect;
+const chai = require('chai');
+const { expect } = chai;
 const Time = require('../../src/faker/time');
+
+chai.use(require('chai-datetime'));
 
 describe('Time', () => {
   describe('#between', () => {
@@ -14,7 +17,7 @@ describe('Time', () => {
       const from = new Date(2017, 9, 1);
       const to = new Date(2017, 9, 31);
       [...Array(100).keys()].forEach(_ => {
-        expect(Time.between(from, to)).to.be.within(from, to);
+        expect(Time.between(from, to)).to.be.withinTime(from, to);
       });
     });
 
@@ -59,15 +62,18 @@ describe('Time', () => {
 
     it('should return a time in the future', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Time.forward()).to.be.at.least(new Date());
+        expect(Time.forward()).to.be.afterTime(new Date());
       });
     });
 
     it('should return a time no greater than the specified number of days', () => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
+      const max = new Date();
+      max.setDate(max.getDate() + 10);
+      max.setHours(23, 59, 59, 0);
       [...Array(100).keys()].forEach(_ => {
-        expect(Time.forward(10)).to.be.above(today);
+        expect(Time.forward(10)).to.be.withinTime(today, max);
       });
     });
 
@@ -104,15 +110,18 @@ describe('Time', () => {
 
     it('should return a time in the past', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Time.backward()).to.be.at.most(new Date());
+        expect(Time.backward()).to.be.beforeTime(new Date());
       });
     });
 
     it('should return a time no less than the specified number of days', () => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
+      const min = new Date();
+      min.setDate(min.getDate() - 10);
+      min.setHours(0, 0, 0, 0);
       [...Array(100).keys()].forEach(_ => {
-        expect(Time.backward(10)).to.be.below(today);
+        expect(Time.backward(10)).to.be.withinDate(min, today);
       });
     });
 
