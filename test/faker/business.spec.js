@@ -1,7 +1,10 @@
 'use strict';
-const expect = require('chai').expect;
+const chai = require('chai');
+const { expect } = chai;
 const Business = require('../../src/faker/business');
 const data = require('../../data/business.json');
+
+chai.use(require('chai-datetime'));
 
 describe('Business', () => {
   describe('#creditCardNumber', () => {
@@ -15,7 +18,7 @@ describe('Business', () => {
   describe('#creditCardExpiryDate', () => {
     it('should return a date in the future', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Business.creditCardExpiryDate()).to.be.above(new Date());
+        expect(Business.creditCardExpiryDate()).to.be.afterDate(new Date());
       });
     });
   });

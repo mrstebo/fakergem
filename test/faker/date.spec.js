@@ -1,6 +1,9 @@
 'use strict';
-const expect = require('chai').expect;
+const chai = require('chai');
+const { expect } = chai;
 const DateFaker = require('../../src/faker/date');
+
+chai.use(require('chai-datetime'));
 
 describe('#Date', () => {
   describe('#between', () => {
@@ -14,7 +17,7 @@ describe('#Date', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 10);
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.between('2017-01-01', '2017-01-10')).to.be.within(from, to);
+        expect(DateFaker.between('2017-01-01', '2017-01-10')).to.be.withinDate(from, to);
       });
     });
 
@@ -23,7 +26,7 @@ describe('#Date', () => {
       const to = new Date(2017, 0, 10);
 
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.between(from, to)).to.be.within(from, to);
+        expect(DateFaker.between(from, to)).to.be.withinDate(from, to);
       });
     });
   });
@@ -44,7 +47,7 @@ describe('#Date', () => {
       const except = new Date(2017, 0, 4);
       [...Array(100).keys()].forEach(_ => {
         expect( DateFaker.betweenExcept('2017-01-01', '2017-01-10', '2017-01-04'))
-          .to.be.within(from, to)
+          .to.be.withinDate(from, to)
           .and.not.equal(except);
       });
     });
@@ -56,7 +59,7 @@ describe('#Date', () => {
 
       [...Array(100).keys()].forEach(_ => {
         expect(DateFaker.betweenExcept(from, to, except))
-          .to.be.within(from, to)
+          .to.be.withinDate(from, to)
           .and.not.equal(except);
       });
     });
@@ -71,7 +74,7 @@ describe('#Date', () => {
 
     it('should return a date in the future', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.forward()).to.be.above(new Date());
+        expect(DateFaker.forward()).to.be.afterDate(new Date());
       });
     });
 
@@ -81,7 +84,7 @@ describe('#Date', () => {
       max.setHours(0, 0, 0, 0);
 
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.forward(10)).to.be.at.most(max);
+        expect(DateFaker.forward(10)).to.be.withinDate(new Date(), max);
       });
     });
   });
@@ -95,7 +98,7 @@ describe('#Date', () => {
 
     it('should return a date in the past', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.backward()).to.be.below(new Date());
+        expect(DateFaker.backward()).to.be.beforeDate(new Date());
       });
     });
 
@@ -105,7 +108,7 @@ describe('#Date', () => {
       min.setHours(0, 0, 0, 0);
 
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.backward(10)).to.be.at.least(min);
+        expect(DateFaker.backward(10)).to.be.withinDate(min, new Date());
       });
     });
   });
@@ -122,7 +125,7 @@ describe('#Date', () => {
       const from = new Date(now.getYear() - 25, now.getMonth(), now.getDate());
       const to = new Date(now.getYear() - 18, now.getMonth(), now.getDate());
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.birthday(18, 25)).to.be.within(from, to);
+        expect(DateFaker.birthday(18, 25)).to.be.withinDate(from, to);
       });
     });
   });
