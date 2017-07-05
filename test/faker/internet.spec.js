@@ -40,7 +40,25 @@ describe('Internet', () => {
   describe('#password', () => {
     it('should return a password', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.password()).to.equal('');
+        expect(Internet.password()).to.match(/^[a-zA-Z0-9]+$/);
+      });
+    });
+
+    it('should return a password between 8 and 16 alphanumeric characters by default', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.password()).to.match(/^[a-zA-Z0-9]{8,16}$/);
+      });
+    });
+
+    it('should return a lowercase password when mixCase is false', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.password(8, 16, false)).to.match(/^[a-z0-9]+$/);
+      });
+    });
+
+    it('should return a password with special characters when specialChars is true', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.password(8, 16, true, true)).to.match(/[\!\@\#\$\%\^\&\*]/);
       });
     });
   });
