@@ -33,7 +33,7 @@
     "babel-eslint": "^7.2.1",
     "babel-preset-es2015": "^6.24.0",
     "chai": "^4.0.2",
-    "chai-datetime": "^1.4.1",
+    "chai-datetime": "github:mrstebo/chai-datetime#feature/date-within",
     "eslint": "^4.1.0",
     "eslint-config-es2015": "^1.1.0",
     "gulp": "^3.9.1",
