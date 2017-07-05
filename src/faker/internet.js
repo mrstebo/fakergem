@@ -37,10 +37,10 @@ export function password(minLength=8, maxLength=16, mixCase=true, specialChars=f
   const extraCharacters = randomNumber(0, diffLength + 1);
   const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
 
-  return [...Array(minLength + extraCharacters).keys()].map((_, index) => {
-    const c = itemFromCollection(chars);
-    return mixCase && index % 2 == 0 ? c.toUpperCase() : c;
-  }).join('');
+  return [...Array(minLength + extraCharacters).keys()].reduce((result, val, index) => {
+    const c = itemFromCollection(chars).toString();
+    return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
+  }, '');
 }
 
 export function domainName() {
