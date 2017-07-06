@@ -58,7 +58,7 @@ describe('Internet', () => {
 
     it('should return a password with special characters when specialChars is true', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.password(8, 16, true, true)).to.match(/[\!\@\#\$\%\^\&\*]/);
+        expect(Internet.password(128, 128, true, true)).to.match(/[\!\@\#\$\%\^\&\*]/);
       });
     });
   });
