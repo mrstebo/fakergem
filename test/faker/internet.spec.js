@@ -74,10 +74,16 @@ describe('Internet', () => {
   });
 
   describe('#fixUmlauts', () => {
-    it('should return a fixUmlauts', () => {
-      [...Array(100).keys()].forEach(_ => {
-        // expect(Internet.fixUmlauts()).to.be.oneOf(data['fixUmlauts']);
-      });
+    it('should replace ä with ae', () => {
+      expect(Internet.fixUmlauts('ä')).to.eql('ae');
+    });
+
+    it('should replace ö with oe', () => {
+      expect(Internet.fixUmlauts('ö')).to.eql('oe');
+    });
+
+    it('should replace ü with ue', () => {
+      expect(Internet.fixUmlauts('ü')).to.eql('ue');
     });
   });
 

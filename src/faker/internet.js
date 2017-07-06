@@ -50,7 +50,11 @@ export function domainName() {
   ].join('.');
 }
 
-export function fixUmlauts() {
+export function fixUmlauts(value='') {
+  return value
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue');
 }
 
 export function domainWord() {
