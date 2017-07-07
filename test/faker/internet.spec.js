@@ -102,6 +102,17 @@ describe('Internet', () => {
   });
 
   describe('#macAddress', () => {
+    it('should return a colon separated address', () => {
+      expect(Internet.macAddress()).to.match(/\:/);
+    });
+
+    it('should contain no more than 6 separated values', () => {
+      expect(Internet.macAddress().split(':')).to.have.lengthOf(6);
+    });
+
+    it('should have values that do not exceed 0xFF', () => {
+      expect(Internet.macAddress().split(':').map(x => parseInt(x, 16)).sort((a, b) => a < b)[0]).to.be.below(0xFF);
+    });
   });
 
   describe('#url', () => {

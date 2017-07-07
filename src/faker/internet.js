@@ -83,7 +83,10 @@ export function ipV6Address() {
 export function ipV6Cidr() {
 }
 
-export function macAddress() {
+export function macAddress(prefix='') {
+  const prefixDigits = prefix.split(':').filter(x => x).map(x => parseInt(x, 16));
+  const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(x => randomNumber(0, 255));
+  return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
 }
 
 export function url() {
