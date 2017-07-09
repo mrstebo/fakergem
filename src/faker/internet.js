@@ -1,4 +1,5 @@
 import { itemFromCollection, randomNumber } from '../utils/random';
+import shuffle from '../utils/shuffle';
 
 const data = require('../../data/internet.json');
 const nameData = require('../../data/name.json');
@@ -29,8 +30,17 @@ export function safeEmail(name=null) {
   ].join('@');
 }
 
-export function userName() {
-  return itemFromCollection(data['userNames']);
+export function userName(specifier=null, separators=null) {
+  const userNameSeparator = itemFromCollection(separators || ['.', '_']);
+  if (typeof specifier === 'string') {
+    return shuffle(specifier.match(/\w+/g).map(x => x)).join(userNameSeparator);
+  }
+  const firstName = itemFromCollection(nameData['firstNames']).toLowerCase();
+  const lastName = itemFromCollection(nameData['lastNames']).toLowerCase();
+  return itemFromCollection([
+    firstName,
+    [firstName, lastName].join(userNameSeparator)
+  ]);
 }
 
 export function password(minLength=8, maxLength=16, mixCase=true, specialChars=false) {

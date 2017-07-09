@@ -15,6 +15,20 @@ describe('Internet', () => {
   });
 
   describe('#userName', () => {
+    it('should return a username', () => {
+      expect(Internet.userName()).to.match(/^\w+(?:(\.|\_)\w+)?$/);
+    });
+
+    it('should return a username based off the specifier', () => {
+      const userName = Internet.userName('test user');
+      expect(userName).to.match(/test/);
+      expect(userName).to.match(/user/);
+      expect(userName).to.match(/\w+(\.|\_)\w+/);
+    });
+
+    it('should return a username with the specified separator', () => {
+      expect(Internet.userName('test user', ['#'])).to.match(/\w+\#\w+/);
+    });
   });
 
   describe('#password', () => {
