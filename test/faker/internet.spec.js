@@ -119,5 +119,20 @@ describe('Internet', () => {
   });
 
   describe('#slug', () => {
+    it('should return a slug when no parameters are specified', () => {
+      expect(Internet.slug()).to.match(/^\w+(\-|\_|\.)\w+$/);
+    });
+
+    it('should return slug with specified words', () => {
+      expect(Internet.slug('test slug')).to.match(/^test(\-|\_|\.)slug$/);
+    });
+
+    it('should return slug joined with the specified "glue"', () => {
+      expect(Internet.slug(null, '#')).to.match(/^\w+\#\w+$/);
+    });
+
+    it('should be all lowercase', () => {
+      expect(Internet.slug()).to.match(/^[a-z]+.[a-z]+$/)
+    });
   });
 });

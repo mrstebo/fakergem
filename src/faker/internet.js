@@ -2,6 +2,7 @@ import { itemFromCollection, randomNumber } from '../utils/random';
 
 const data = require('../../data/internet.json');
 const nameData = require('../../data/name.json');
+const loremData = require('../../data/lorem.json');
 
 // 0-9, a-z
 const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));
@@ -92,5 +93,8 @@ export function macAddress(prefix='') {
 export function url() {
 }
 
-export function slug() {
+export function slug(words='', glue='') {
+  return (words || [...Array(2).keys()].map(_ => itemFromCollection(loremData['words'])).join(' '))
+    .replace(/\s+/g, glue || itemFromCollection(['-', '_', '.']))
+    .toLowerCase();
 }
