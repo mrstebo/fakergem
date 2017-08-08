@@ -37,7 +37,7 @@
     "eslint": "^4.4.1",
     "eslint-config-es2015": "^1.1.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
+    "gulp-babel": "^7.0.0",
     "gulp-coveralls": "^0.1.4",
     "gulp-eslint": "^3.0.1",
     "gulp-istanbul": "^1.1.1",
