@@ -307,6 +307,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Twitter', () => {
+    it('should be an object', () => {
+      expect(Faker.Twitter).to.be.a('object');
+    });
+  });
+
   describe('#University', () => {
     it('should be an object', () => {
       expect(Faker.University).to.be.a('object');
