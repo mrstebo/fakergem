@@ -21,5 +21,5 @@ Faker.Twitter.status() //=> {id: 8821452687517076614, text: "Ea et laboriosam ve
 Faker.Twitter.status({includeUser: false}) // Just get a status object with no embed user
 Faker.Twitter.status({includePhoto: true}) // Includes entities for an attached image
 
-Faker.Twitter.screen_name() //=> "audreanne_hackett"
+Faker.Twitter.screenName() //=> "audreanne_hackett"
 ```
