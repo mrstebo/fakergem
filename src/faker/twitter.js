@@ -1,10 +1,18 @@
-import { itemFromCollection } from '../utils/random';
+import * as Name from './name';
 
-const nameData = require('../../data/name.json');
+export class Twitter {
+  constructor(fakers) {
+    this._fakers = fakers;
+  }
 
-export function screenName() {
-  return [
-    itemFromCollection(nameData['firstNames']),
-    itemFromCollection(nameData['lastNames'])
-  ].join('_').substring(0, 20);
+  screenName() {
+    return [
+      this._fakers.Name.firstName(),
+      this._fakers.Name.lastName()
+    ].join('_').substring(0, 20).toLowerCase();
+  }
 }
+
+export default new Twitter({
+  Name
+});
