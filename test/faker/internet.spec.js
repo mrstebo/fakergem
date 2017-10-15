@@ -166,10 +166,18 @@ describe('Internet', () => {
     });
   });
 
-  describe('#ipV6_address', () => {
+  describe('#ipV6Address', () => {
+    [...Array(100).keys()].forEach(_ => {
+      expect(Internet.ipV6Address()).to.match(/^[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}$/);
+    });
   });
 
-  describe('#ipV6_cidr', () => {
+  describe('#ipV6CIDR', () => {
+    [...Array(100).keys()].forEach(_ => {
+      const addr = Internet.ipV6CIDR();
+      expect(addr).to.match(/\/\d{1,3}$/);
+      expect(parseInt(addr.split('/')[1])).to.be.within(1, 128);
+    });
   });
 
   describe('#macAddress', () => {

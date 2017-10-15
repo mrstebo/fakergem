@@ -117,13 +117,15 @@ export function publicIPV4Address() {
 }
 
 export function ipV4CIDR() {
-  return `${ipV4Address()}/${randomNumber(1, 31)}`;
+  return `${ipV4Address()}/${randomNumber(1, 32)}`;
 }
 
 export function ipV6Address() {
+  return [...Array(8).keys()].map(_ => randomNumber(4096, 65536).toString(16)).join(':');
 }
 
-export function ipV6Cidr() {
+export function ipV6CIDR() {
+  return `${ipV6Address()}/${randomNumber(1, 128)}`;
 }
 
 export function macAddress(prefix='') {
