@@ -53,11 +53,11 @@ Faker.Internet.privateIPV4Address() //=> "10.0.0.1"
 // Guaranteed not to be in the ip range from the private_ip_v4_address method.
 Faker.Internet.publicIPV4Address() //=> "24.29.18.175"
 
-Faker.Internet.ipV4Cidr() //=> "24.29.18.175/21"
+Faker.Internet.ipV4CIDR() //=> "24.29.18.175/21"
 
 Faker.Internet.ipV6Address() //=> "ac5f:d696:3807:1d72:2eb5:4e81:7d2b:e1df"
 
-Faker.Internet.ipV6Cidr() //=> "ac5f:d696:3807:1d72:2eb5:4e81:7d2b:e1df/78"
+Faker.Internet.ipV6CIDR() //=> "ac5f:d696:3807:1d72:2eb5:4e81:7d2b:e1df/78"
 
 // Optional argument prefix=''
 Faker.Internet.macAddress() //=> "e6:0d:00:11:ed:4f"
