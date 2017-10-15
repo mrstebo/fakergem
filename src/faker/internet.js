@@ -116,7 +116,8 @@ export function publicIPV4Address() {
   return addr;
 }
 
-export function ipV4Cidr() {
+export function ipV4CIDR() {
+  return `${ipV4Address()}/${randomNumber(1, 31)}`;
 }
 
 export function ipV6Address() {

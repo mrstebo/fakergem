@@ -156,7 +156,14 @@ describe('Internet', () => {
     });
   });
 
-  describe('#ipV4_cidr', () => {
+  describe('#ipV4CIDR', () => {
+    it('should return a IPv4 Classless Inter-Domain Routing address', () => {
+      [...Array(100).keys()].forEach(_ => {
+        const addr = Internet.ipV4CIDR();
+        expect(addr).to.match(/\/\d{1,2}$/);
+        expect(parseInt(addr.split('/')[1])).to.be.within(1, 32);
+      });
+    });
   });
 
   describe('#ipV6_address', () => {
