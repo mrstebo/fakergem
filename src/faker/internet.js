@@ -134,7 +134,10 @@ export function macAddress(prefix='') {
   return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
 }
 
-export function url() {
+export function url(host=null, path=null, scheme='http') {
+  host = host || domainName();
+  path = path || `/${userName()}`;
+  return `${scheme}://${host}${path}`;
 }
 
 export function slug(words='', glue='') {

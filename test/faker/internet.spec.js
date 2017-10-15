@@ -195,6 +195,29 @@ describe('Internet', () => {
   });
 
   describe('#url', () => {
+    it('should return a URL', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.url()).to.match(/^http:\/\/.+\/.+$/);
+      });
+    });
+
+    it('should return a URL with the specified host', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.url('myhost')).to.match(/^http:\/\/myhost\/.+$/);
+      });
+    });
+
+    it('should return a URL with the specified path', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.url('myhost', '/mypath')).to.match(/^http:\/\/.+\/mypath$/);
+      });
+    });
+
+    it('should return a URL with the specified scheme', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.url('myhost', '/mypath', 'git')).to.match(/^git:\/\/.+\/.+$/);
+      });
+    });
   });
 
   describe('#slug', () => {
