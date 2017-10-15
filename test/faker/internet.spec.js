@@ -97,13 +97,63 @@ describe('Internet', () => {
     });
   });
 
-  describe('#ipV4_address', () => {
+  describe('#ipV4Address', () => {
+    it('should return an IPv4 address', () => {
+      [...Array(100).keys()].forEach(_ => {
+        const addr = Internet.ipV4Address();
+        const octets = addr.split('.').map(x => parseInt(x));
+        expect(addr).to.match(/^\d+\.\d+\.\d+\.\d+$/);
+        expect(Math.max(...octets)).to.be.below(255);
+      });
+    });
   });
 
-  describe('#privateIpV4_address', () => {
+  describe('#privateIPV4Address', () => {
+    it('should return a private IPv4 address', () => {
+      const regexps = [
+        /^10\./,                                       // 10.0.0.0    – 10.255.255.255
+        /^100\.(6[4-9]|[7-9]\d|1[0-1]\d|12[0-7])\./,   // 100.64.0.0  – 100.127.255.255
+        /^127\./,                                      // 127.0.0.0   – 127.255.255.255
+        /^169\.254\./,                                 // 169.254.0.0 – 169.254.255.255
+        /^172\.(1[6-9]|2\d|3[0-1])\./,                 // 172.16.0.0  – 172.31.255.255
+        /^192\.0\.0\./,                                // 192.0.0.0   – 192.0.0.255
+        /^192\.168\./,                                 // 192.168.0.0 – 192.168.255.255
+        /^198\.(1[8-9])\./                             // 198.18.0.0  – 198.19.255.255
+      ];
+      const expected = new RegExp(regexps.map(x => `(${x.source})`).join('|'));
+      [...Array(100).keys()].forEach(_ => {
+        expect(Internet.privateIPV4Address()).to.match(expected);
+      });
+    });
   });
 
-  describe('#publicIpV4_address', () => {
+  describe('#publicIPV4Address', () => {
+    it('should return a public IPv4 address', () => {
+      const privateRegexps = [
+        /^10\./,                                       // 10.0.0.0    – 10.255.255.255
+        /^100\.(6[4-9]|[7-9]\d|1[0-1]\d|12[0-7])\./,   // 100.64.0.0  – 100.127.255.255
+        /^127\./,                                      // 127.0.0.0   – 127.255.255.255
+        /^169\.254\./,                                 // 169.254.0.0 – 169.254.255.255
+        /^172\.(1[6-9]|2\d|3[0-1])\./,                 // 172.16.0.0  – 172.31.255.255
+        /^192\.0\.0\./,                                // 192.0.0.0   – 192.0.0.255
+        /^192\.168\./,                                 // 192.168.0.0 – 192.168.255.255
+        /^198\.(1[8-9])\./                             // 198.18.0.0  – 198.19.255.255
+      ];
+      const reservedRegexps = [
+        /^0\./,                 // 0.0.0.0      – 0.255.255.255
+        /^192\.0\.2\./,         // 192.0.2.0    – 192.0.2.255
+        /^192\.88\.99\./,       // 192.88.99.0  – 192.88.99.255
+        /^198\.51\.100\./,      // 198.51.100.0 – 198.51.100.255
+        /^203\.0\.113\./,       // 203.0.113.0  – 203.0.113.255
+        /^(22[4-9]|23\d)\./,    // 224.0.0.0    – 239.255.255.255
+        /^(24\d|25[0-5])\./     // 240.0.0.0    – 255.255.255.254  and  255.255.255.255
+      ];
+      [...Array(100).keys()].forEach(_ => {
+        const addr = Internet.publicIPV4Address();
+        privateRegexps.forEach(regexp => expect(addr).not.to.match(regexp));
+        reservedRegexps.forEach(regexp => expect(addr).not.to.match(regexp));
+      });
+    });
   });
 
   describe('#ipV4_cidr', () => {
