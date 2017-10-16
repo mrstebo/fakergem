@@ -1,22 +1,31 @@
 'use strict';
 const expect = require('chai').expect;
 const PhoneNumber = require('../../src/faker/phone-number');
+const data = require('../../data/phone-number.json');
 
 describe('PhoneNumber', () => {
   describe('#phoneNumber', () => {
-
+    it('should return a phone number with hashes replaced', () => {
+      expect(PhoneNumber.phoneNumber()).to.not.match(/[#]/);
+    });
   });
 
   describe('#cellPhone', () => {
-
+    it('should return a cellphone number with hashes replaced', () => {
+      expect(PhoneNumber.cellPhone()).to.not.match(/[#]/);
+    });
   });
 
   describe('#areaCode', () => {
-
+    it('should return an area code', () => {
+      expect(PhoneNumber.areaCode()).to.be.oneOf(data['areaCodes']);
+    });
   });
 
   describe('#exchangeCode', () => {
-
+    it('should return an exchange code', () => {
+      expect(PhoneNumber.exchangeCode()).to.be.oneOf(data['exchangeCodes']);
+    });
   });
 
   describe('#subscriberNumber', () => {
