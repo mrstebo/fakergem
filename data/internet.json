@@ -1,0 +1,17 @@
+{
+  "freeEmails": [
+    "gmail.com",
+    "yahoo.com",
+    "hotmail.com"
+  ],
+  "domainSuffixes": [
+    "com",
+    "biz",
+    "info",
+    "name",
+    "net",
+    "org",
+    "io",
+    "co"
+  ]
+}

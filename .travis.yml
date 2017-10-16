@@ -4,8 +4,8 @@ node_js:
 deploy:
   provider: npm
   email: mrstebouk@gmail.com
-  api_key:
-    secure: CptfVimaLNDV7HquC3SR7V84dxbgD6I/XVFOcIlLrrgsMPY7YmS52dAaNIjaE15rmf41OWBBkInG4t2pkxH78a0mU4q4Z/k2eqLRAQs0ZYPPXBRBouBjU0wPDD3re4nNs3YGCGPRZOD56+19wda/X/2gOa47dStIpOpoAwnrndyXXw+keZ5wIPFrLeSUDwhdksAMjuR4UGfe06ltPZonza6dp2ZCW/DdKRt9e1yZXZVfpPPWLSlalFEDAlGF9jnmgIarIqph4FQdMm7VrXtgTaSQMGQuqV6PA4/8wJjKSbgjJ61WPTXn4Lqg+b3JDu5S90FDNvYw6MnRhqBD2kakgM1isgi1zpciYJQMogR2ZoJ19bLOXCUbS2OlVxgRkJpDJkqCxMnBc8jvVFfKvOLSRL1NkQN6rJC5N/LvkMJKAE/xPQarmnjQyWZ4mVW/XDNRAsyjQgDnWbIOblOYF2Ryyux1HpaHQRFfVEBx425H1Hv4oQOQV1Uw35sNUQMfqk8zHkYywbe7uiNtXaUUVIrzJhEujpHtQ2krcFFHslgg6qk8jye0HZYcuwM1XJia0DEtsug9s6iVW7cVAK65oOLf/pggWXrlNMvgYEPgmqDgPDj/417Z28CecMEXsvlCYSvjXrH2SZ078aonVDPNruE7dUYWnfkw6tlKTRphgoFkVAY=
+  api_key: $API_KEY
+  skip_cleanup: true
   on:
     tags: true
     repo: mrstebo/fakergem
