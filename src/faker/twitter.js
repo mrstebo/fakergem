@@ -114,11 +114,68 @@ export class Twitter {
   }
 
   _userEntities() {
-    return [];
+    return {
+      url:  {
+        urls: []
+      },
+      description:  {
+        urls: []
+      }
+    };
   }
 
   _statusEntities(includePhoto) {
-    return [];
+    const entities = {
+      hashtags:  [],
+      symbols:  [],
+      user_mentions:  [],
+      urls:  []
+    };
+
+    if (includePhoto) entities['media'] = [this._photoEntity()];
+
+    return entities;
+  }
+
+  _photoEntity() {
+    const mediaUrl = this._fakers.LoremPixel.image('1064x600');
+    const mediaId = this._fakers.Number.between(1, 9223372036854775807);
+    return {
+      id: mediaId,
+      id_str: `${mediaId}`,
+      indices:  [
+        103,
+        126
+      ],
+      media_url: mediaUrl.sub('https://', 'http://'),
+      media_url_https: mediaUrl,
+      url: this._fakers.Internet.url('example.com'),
+      display_url: 'example.com',
+      expanded_url: this._fakers.Internet.url('example.com'),
+      type: 'photo',
+      sizes:  {
+        medium:  {
+          w: 1064,
+          h: 600,
+          resize: 'fit'
+        },
+        large:  {
+          w: 1064,
+          h: 600,
+          resize: 'fit'
+        },
+        small:  {
+          w: 680,
+          h: 383,
+          resize: 'fit'
+        },
+        thumb:  {
+          w: 150,
+          h: 150,
+          resize: 'crop'
+        }
+      }
+    };
   }
 }
 
