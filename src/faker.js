@@ -49,6 +49,7 @@ import * as Superhero from './faker/superhero';
 import * as Team from './faker/team';
 import * as Time from './faker/time';
 import * as TwinPeaks from './faker/twin-peaks';
+import * as Twitter from './faker/twitter';
 import * as University from './faker/university';
 import * as Vehicle from './faker/vehicle';
 import * as Zelda from './faker/zelda';
@@ -105,6 +106,7 @@ module.exports = {
   Team,
   Time,
   TwinPeaks,
+  Twitter,
   University,
   Vehicle,
   Zelda
