@@ -95,7 +95,7 @@ export class Twitter {
       retweeted_status:  null,
       retweeted: false,
       source: `<a href=\"${this._fakers.Internet.url('example.com')}\" rel=\"nofollow\">${this._fakers.Company.name}</a>`,
-      text: this._fakers.Lorem.sentence,
+      text: this._fakers.Lorem.sentence(),
       truncated: false
     };
 

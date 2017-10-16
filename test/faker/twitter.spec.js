@@ -7,8 +7,7 @@ const Twitter = require('../../src/faker/twitter').default;
 describe('Twitter', () => {
   describe('#user', () => {
     it('should have the properties for a user object', () => {
-      const user = Twitter.user();
-      expect(user).to.have.keys([
+      expect(Twitter.user()).to.have.all.keys([
         'id',
         'id_str',
         'contributors_enabled',
@@ -52,12 +51,19 @@ describe('Twitter', () => {
         'verified'
       ]);
     });
+
+    it('should not have status when includeStatus is false', () => {
+      expect(Twitter.user(false)).to.not.have.all.keys('status');
+    });
+
+    it('should have email when includeEmail is true', () => {
+      expect(Twitter.user(true, true)).to.have.any.keys('email');
+    });
   });
 
   describe('#status', () => {
     it('should have the properties for a status object', () => {
-      const status = Twitter.status();
-      expect(status).to.have.keys([
+      expect(Twitter.status()).to.have.all.keys([
         'id',
         'id_str',
         'contributors',
@@ -85,6 +91,21 @@ describe('Twitter', () => {
         'user'
       ]);
     });
+
+    it('should not have user when includeUser is false', () => {
+      expect(Twitter.status(false)).to.not.have.all.keys('user');
+    });
+
+    it('should have a media entry when includePhoto is true', () => {
+      const status = Twitter.status(true, true);
+      expect(status.entities.media).to.have.lengthOf(1);
+    });
+
+    it('should have url in text when includePhoto is true', sinonTest(function() {
+      this.stub(Twitter._fakers.Lorem, 'sentence').callsFake(() => 'test');
+      this.stub(Twitter._fakers.Internet, 'url').callsFake(() => 'http://test.com/image.png');
+      expect(Twitter.status(true, true).text).to.equal('test http://test.com/image.png');
+    }));
   });
 
   describe('#screenName', () => {
