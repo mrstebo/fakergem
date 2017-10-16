@@ -106,10 +106,7 @@ export class Twitter {
   }
 
   screenName() {
-    return [
-      this._fakers.Name.firstName(),
-      this._fakers.Name.lastName()
-    ].join('_').substring(0, 20).toLowerCase();
+    return this._fakers.Internet.userName().substring(0, 20);
   }
 
   _utcOffset() {

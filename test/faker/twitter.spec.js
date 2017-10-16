@@ -88,21 +88,13 @@ describe('Twitter', () => {
   });
 
   describe('#screenName', () => {
-    it('should contain a screen name separated by an underscore', sinonTest(function() {
-      this.stub(Twitter._fakers.Name, 'firstName').callsFake(() => 'test');
-      this.stub(Twitter._fakers.Name, 'lastName').callsFake(() => 'user');
-      expect(Twitter.screenName()).to.equal('test_user');
-    }));
-
-    it('should convert name to lowercase', sinonTest(function() {
-      this.stub(Twitter._fakers.Name, 'firstName').callsFake(() => 'Test');
-      this.stub(Twitter._fakers.Name, 'lastName').callsFake(() => 'User');
+    it('should contain an internet username', sinonTest(function() {
+      this.stub(Twitter._fakers.Internet, 'userName').callsFake(() => 'test_user');
       expect(Twitter.screenName()).to.equal('test_user');
     }));
 
     it('should not be longer than 20 characters', sinonTest(function() {
-      this.stub(Twitter._fakers.Name, 'firstName').callsFake(() => 'XXXXXXXXXXXXXXX');
-      this.stub(Twitter._fakers.Name, 'lastName').callsFake(() => 'XXXXXXXXXXXXXXX');
+      this.stub(Twitter._fakers.Internet, 'userName').callsFake(() => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
       expect(Twitter.screenName()).to.have.lengthOf(20);
     }));
   });
