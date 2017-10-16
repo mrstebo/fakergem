@@ -187,6 +187,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Internet', () => {
+    it('should be an object', () => {
+      expect(Faker.Internet).to.be.a('object');
+    });
+  });
+
   describe('#LordOfTheRings', () => {
     it('should be an object', () => {
       expect(Faker.LordOfTheRings).to.be.a('object');
