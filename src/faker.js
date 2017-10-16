@@ -28,6 +28,7 @@ import * as GameOfThrones from './faker/game-of-thrones';
 import * as Hacker from './faker/hacker';
 import * as HarryPotter from './faker/harry-potter';
 import * as Hipster from './faker/hipster';
+import * as Internet from './faker/internet';
 import * as LordOfTheRings from './faker/lord-of-the-rings';
 import * as LoremFlickr from './faker/lorem-flickr';
 import * as LoremPixel from './faker/lorem-pixel';
@@ -84,6 +85,7 @@ module.exports = {
   Hacker,
   HarryPotter,
   Hipster,
+  Internet,
   LordOfTheRings,
   LoremFlickr,
   LoremPixel,
