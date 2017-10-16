@@ -51,6 +51,7 @@ Contents
   - [Faker.Music](doc/music.md)
   - [Faker.Name](doc/name.md)
   - [Faker.Number](doc/number.md)
+  - [Faker.PhoneNumber](doc/phone_number.md)
   - [Faker.Placeholdit](doc/placeholdit.md)
   - [Faker.Pokemon](doc/pokemon.md)
   - [Faker.RickAndMorty](doc/rick_and_morty.md)
