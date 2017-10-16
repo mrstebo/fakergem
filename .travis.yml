@@ -5,6 +5,7 @@ deploy:
   provider: npm
   email: mrstebouk@gmail.com
   api_key: $API_KEY
+  skip_cleanup: true
   on:
     tags: true
     repo: mrstebo/fakergem
