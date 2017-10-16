@@ -7,7 +7,7 @@ const Twitter = require('../../src/faker/twitter').default;
 describe('Twitter', () => {
   describe('#user', () => {
     it('should have the properties for a user object', () => {
-      const user = Twitter.user()
+      const user = Twitter.user();
       expect(user).to.have.keys([
         'id',
         'id_str',
@@ -44,6 +44,7 @@ describe('Twitter', () => {
         'profile_use_background_image',
         'protected',
         'screen_name',
+        'status',
         'statuses_count',
         'time_zone',
         'url',
@@ -54,7 +55,36 @@ describe('Twitter', () => {
   });
 
   describe('#status', () => {
-
+    it('should have the properties for a status object', () => {
+      const status = Twitter.status();
+      expect(status).to.have.keys([
+        'id',
+        'id_str',
+        'contributors',
+        'coordinates',
+        'created_at',
+        'entities',
+        'favourite_count',
+        'favourited',
+        'geo',
+        'in_reply_to_screen_name',
+        'in_reply_to_status_id',
+        'in_reply_to_user_id_str',
+        'in_reply_to_user_id',
+        'is_quote_status',
+        'lang',
+        'nil',
+        'place',
+        'possibly_sensitive',
+        'retweet_count',
+        'retweeted_status',
+        'retweeted',
+        'source',
+        'text',
+        'truncated',
+        'user'
+      ]);
+    });
   });
 
   describe('#screenName', () => {

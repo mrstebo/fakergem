@@ -2,7 +2,9 @@ import * as Address from './address';
 import * as Avatar from './avatar';
 import * as Boolean from './boolean';
 import * as Color from './color';
+import * as Company from './company';
 import * as DateFaker from './date';
+import * as Internet from './internet';
 import * as Lorem from './lorem';
 import * as LoremPixel from './lorem-pixel';
 import * as Name from './name';
@@ -18,15 +20,15 @@ export class Twitter {
     const createdAt = this._fakers.DateFaker.between(new Date(2006, 2, 21), new Date());
     const backgroundImageUrl = this._fakers.LoremPixel.image('600x400');
     const profileImageUrl = this._fakers.Avatar.image(userId, '48x48');
-    return {
+    const user = {
       id: userId,
-      id_str: userId,
+      id_str: `${userId}`,
       contributors_enabled: this._fakers.Boolean.boolean(0.1),
       created_at: createdAt,
       default_profile_image: this._fakers.Boolean.boolean(0.1),
       default_profile: this._fakers.Boolean.boolean(0.1),
       description: this._fakers.Lorem.sentence(),
-      entities: [],
+      entities: this._userEntities(),
       favourites_count: this._fakers.Number.between(1, 100000),
       follow_request_sent: false,
       followers_count: this._fakers.Number.between(1, 10000000),
@@ -59,7 +61,48 @@ export class Twitter {
       url: 'http://example.com',
       utc_offset: this._utcOffset(),
       verified: this._fakers.Boolean.boolean(0.1)
-    }
+    };
+
+    if (includeStatus) user['status'] = this.status(false);
+    if (includeEmail) user['email'] = this._fakers.Internet.safeEmail();
+
+    return user;
+  }
+
+  status(includeUser=true, includePhoto=false) {
+    const statusId = this._fakers.Number.between(1, 9223372036854775807);
+    const createdAt = this._fakers.DateFaker.between(new Date(2006, 2, 21), new Date());
+    const status = {
+      id: statusId,
+      id_str: `${statusId}`,
+      contributors: null,
+      coordinates: null,
+      created_at: createdAt,
+      entities: this._statusEntities(includePhoto),
+      favourite_count: this._fakers.Number.between(1, 10000),
+      favourited: false,
+      geo: null,
+      in_reply_to_screen_name: null,
+      in_reply_to_status_id: null,
+      in_reply_to_user_id_str: null,
+      in_reply_to_user_id: null,
+      is_quote_status: false,
+      lang: this._fakers.Address.countryCode(),
+      nil: null,
+      place: null,
+      possibly_sensitive: this._fakers.Boolean.boolean(0.1),
+      retweet_count: this._fakers.Number.between(1, 10000),
+      retweeted_status:  null,
+      retweeted: false,
+      source: `<a href=\"${this._fakers.Internet.url('example.com')}\" rel=\"nofollow\">${this._fakers.Company.name}</a>`,
+      text: this._fakers.Lorem.sentence,
+      truncated: false
+    };
+
+    if (includeUser) status['user'] = this.user(false);
+    if (includePhoto) status['text'] = `${status['text']} ${status['entities']['media'][0]['url']}`;
+
+    return status;
   }
 
   screenName() {
@@ -72,6 +115,14 @@ export class Twitter {
   _utcOffset() {
     return this._fakers.Number.between(-43200, 50400);
   }
+
+  _userEntities() {
+    return [];
+  }
+
+  _statusEntities(includePhoto) {
+    return [];
+  }
 }
 
 export default new Twitter({
@@ -79,7 +130,9 @@ export default new Twitter({
   Avatar,
   Boolean,
   Color,
+  Company,
   DateFaker,
+  Internet,
   Lorem,
   LoremPixel,
   Name,
