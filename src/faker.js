@@ -37,6 +37,7 @@ import * as Matz from './faker/matz';
 import * as Music from './faker/music';
 import * as Name from './faker/name';
 import * as Number from './faker/number';
+import * as PhoneNumber from './faker/phone-number';
 import * as Placeholdit from './faker/placeholdit';
 import * as Pokemon from './faker/pokemon';
 import * as RickAndMorty from './faker/rick-and-morty';
@@ -94,6 +95,7 @@ module.exports = {
   Music,
   Name,
   Number,
+  PhoneNumber,
   Placeholdit,
   Pokemon,
   RickAndMorty,

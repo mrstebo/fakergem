@@ -241,6 +241,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#PhoneNumber', () => {
+    it('should be an object', () => {
+      expect(Faker.PhoneNumber).to.be.a('object');
+    });
+  });
+
   describe('#Placeholdit', () => {
     it('should be an object', () => {
       expect(Faker.Placeholdit).to.be.a('object');
