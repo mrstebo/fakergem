@@ -122,8 +122,8 @@ describe('#Date', () => {
 
     it('should return a birth date between two ages', () => {
       const now = new Date();
-      const from = new Date(now.getYear() - 25, now.getMonth(), now.getDate());
-      const to = new Date(now.getYear() - 18, now.getMonth(), now.getDate());
+      const from = new Date(now.getFullYear() - 25, now.getMonth(), now.getDate());
+      const to = new Date(now.getFullYear() - 18, now.getMonth(), now.getDate());
       [...Array(100).keys()].forEach(_ => {
         expect(DateFaker.birthday(18, 25)).to.be.withinDate(from, to);
       });
