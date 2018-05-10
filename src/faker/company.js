@@ -108,13 +108,6 @@ function mod11(number) {
   });
   const remainder = sum % 11;
 
-  switch (remainder) {
-    case 0:
-      return remainder;
-    case 1:
-      return null;
-  }
-
   return 11 - remainder;
 }
 
