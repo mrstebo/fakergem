@@ -25,19 +25,19 @@ function ibanDetails(bankCountryCode) {
 function buildBankCountryCode(details) {
   return [
     details['bankCountryCode'],
-    randomNumber(0, 10),
-    randomNumber(0, 10)
+    randomNumber(0, 9),
+    randomNumber(0, 9)
   ].join('');
 }
 
 function buildIbanLetterCode(details) {
   return [...Array(parseInt(details['ibanLetterCode'])).keys()].map(_ => {
-    return String.fromCharCode(65 + randomNumber(0, 26));
+    return String.fromCharCode(65 + randomNumber(0, 25));
   }).join('');
 }
 
 function buildIbanDigits(details) {
   return [...Array(parseInt(details['ibanDigits'])).keys()].map(_ => {
-    return randomNumber(0, 10)
+    return randomNumber(0, 9)
   }).join('');
 }

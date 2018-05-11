@@ -52,5 +52,5 @@ function mergeCategories(categories) {
 }
 
 function number(digits) {
-  return [...Array(digits).keys()].map(_ => randomNumber(0, 10)).join('');
+  return [...Array(digits).keys()].map(_ => randomNumber(0, 9)).join('');
 }

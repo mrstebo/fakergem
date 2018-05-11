@@ -43,11 +43,11 @@ export function negative(from=-1.00, to=-5000.00) {
 }
 
 export function digit() {
-  return randomNumber(0, 10);
+  return randomNumber(0, 9);
 }
 
 function nonZeroDigit() {
-  return randomNumber(0, 9) + 1;
+  return randomNumber(1, 9);
 }
 
 function decimalPart(digits) {

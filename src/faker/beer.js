@@ -23,7 +23,7 @@ export function malt() {
 }
 
 export function ibu() {
-  return `${randomNumber(10, 100)} IBU`;
+  return `${randomNumber(10, 99)} IBU`;
 }
 
 export function alcohol() {

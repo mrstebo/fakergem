@@ -70,7 +70,7 @@ function shuffle(collection) {
     let length = collection.length;
     let result = Array(length);
     while (++index < length) {
-        let rand = randomNumber(0, index + 1);
+        let rand = randomNumber(0, index);
         result[index] = result[rand];
         result[rand] = collection[index];
     }

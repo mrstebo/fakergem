@@ -32,14 +32,14 @@ export function bs() {
 
 export function ein() {
   return [...Array(9).keys()]
-    .map(_ => randomNumber(0, 10))
+    .map(_ => randomNumber(0, 9))
     .join('')
     .replace(/(\d{2})(\d{7})/, '$1-$2')
 }
 
 export function dunsNumber() {
   return [...Array(9).keys()]
-    .map(_ => randomNumber(0, 10))
+    .map(_ => randomNumber(0, 9))
     .join('')
     .replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3');
 }
@@ -51,10 +51,10 @@ export function logo() {
 
 export function swedishOrganisationNumber() {
   const base = [
-    randomNumber(1, 10),
-    randomNumber(0, 10),
-    randomNumber(2, 10),
-    [...Array(6).keys()].map(_ => randomNumber(0, 10)).join('')
+    randomNumber(1, 9),
+    randomNumber(0, 9),
+    randomNumber(2, 9),
+    [...Array(6).keys()].map(_ => randomNumber(0, 9)).join('')
   ].join('');
   return `${base}${luhnAlgorithm(base)}`;
 }

@@ -64,7 +64,7 @@ export function userName(specifier=null, separators=null) {
 
 export function password(minLength=8, maxLength=16, mixCase=true, specialChars=false) {
   const diffLength = maxLength - minLength;
-  const extraCharacters = randomNumber(0, diffLength + 1);
+  const extraCharacters = randomNumber(0, diffLength);
   const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
 
   return [...Array(minLength + extraCharacters).keys()].reduce((result, val, index) => {
@@ -121,7 +121,7 @@ export function ipV4CIDR() {
 }
 
 export function ipV6Address() {
-  return [...Array(8).keys()].map(_ => randomNumber(4096, 65536).toString(16)).join(':');
+  return [...Array(8).keys()].map(_ => randomNumber(4096, 65535).toString(16)).join(':');
 }
 
 export function ipV6CIDR() {

@@ -90,6 +90,6 @@ function parseFormat(format) {
     .replace(/\{buildNumber\}/g, buildingNumber())
     .replace(/\{Name\.firstName\}/g, itemFromCollection(nameData['firstNames']))
     .replace(/\{Name\.lastName\}/g, itemFromCollection(nameData['lastNames']))
-    .replace(/#/, randomNumber(1, 10))
-    .replace(/#/g, _ => randomNumber(0, 10));
+    .replace(/#/, randomNumber(1, 9))
+    .replace(/#/g, _ => randomNumber(0, 9));
 }
