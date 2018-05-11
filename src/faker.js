@@ -20,6 +20,7 @@ import * as Date from './faker/date';
 import * as Demographic from './faker/demographic';
 import * as DragonBall from './faker/dragon-ball';
 import * as Educator from './faker/educator';
+import Fake from './faker/fake';
 import * as File from './faker/file';
 import * as Fillmurray from './faker/fillmurray';
 import * as Food from './faker/food';
@@ -80,6 +81,7 @@ class Faker {
     this.Demographic = Demographic;
     this.DragonBall = DragonBall;
     this.Educator = Educator;
+    this.Fake = new Fake(this);
     this.File = File;
     this.Fillmurray = Fillmurray;
     this.Food = Food;

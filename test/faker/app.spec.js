@@ -1,8 +1,8 @@
 'use strict';
 const expect = require('chai').expect;
 const sinon = require('sinon');
-const Faker = require('../../src/faker');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const appData = require('../../data/app.json');
 const nameData = require('../../data/name.json');
 
