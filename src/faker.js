@@ -1,6 +1,6 @@
 import * as Address from './faker/address';
 import * as Ancient from './faker/ancient';
-import * as App from './faker/app';
+import App from './faker/app';
 import * as Avatar from './faker/avatar';
 import * as Bank from './faker/bank';
 import * as Beer from './faker/beer';
@@ -56,62 +56,66 @@ import * as University from './faker/university';
 import * as Vehicle from './faker/vehicle';
 import * as Zelda from './faker/zelda';
 
-module.exports = {
-  Address,
-  Ancient,
-  App,
-  Avatar,
-  Bank,
-  Beer,
-  Bitcoin,
-  Book,
-  Boolean,
-  Business,
-  Cat,
-  ChuckNorris,
-  Coffee,
-  Color,
-  Commerce,
-  Company,
-  Compass,
-  Crypto,
-  Date,
-  Demographic,
-  DragonBall,
-  Educator,
-  File,
-  Fillmurray,
-  Food,
-  Friends,
-  GameOfThrones,
-  Hacker,
-  HarryPotter,
-  Hipster,
-  Internet,
-  LordOfTheRings,
-  LoremFlickr,
-  LoremPixel,
-  Lorem,
-  Matz,
-  Music,
-  Name,
-  Number,
-  PhoneNumber,
-  Placeholdit,
-  Pokemon,
-  Random,
-  RickAndMorty,
-  RockBand,
-  RuPaul,
-  SlackEmoji,
-  Space,
-  StarWars,
-  Superhero,
-  Team,
-  Time,
-  TwinPeaks,
-  Twitter,
-  University,
-  Vehicle,
-  Zelda
+class Faker {
+  constructor() {
+    this.Address = Address;
+    this.Ancient = Ancient;
+    this.App = new App(this);
+    this.Avatar = Avatar;
+    this.Bank = Bank;
+    this.Beer = Beer;
+    this.Bitcoin = Bitcoin;
+    this.Book = Book;
+    this.Boolean = Boolean;
+    this.Business = Business;
+    this.Cat = Cat;
+    this.ChuckNorris = ChuckNorris;
+    this.Coffee = Coffee;
+    this.Color = Color;
+    this.Commerce = Commerce;
+    this.Company = Company;
+    this.Compass = Compass;
+    this.Crypto = Crypto;
+    this.Date = Date;
+    this.Demographic = Demographic;
+    this.DragonBall = DragonBall;
+    this.Educator = Educator;
+    this.File = File;
+    this.Fillmurray = Fillmurray;
+    this.Food = Food;
+    this.Friends = Friends;
+    this.GameOfThrones = GameOfThrones;
+    this.Hacker = Hacker;
+    this.HarryPotter = HarryPotter;
+    this.Hipster = Hipster;
+    this.Internet = Internet;
+    this.LordOfTheRings = LordOfTheRings;
+    this.LoremFlickr = LoremFlickr;
+    this.LoremPixel = LoremPixel;
+    this.Lorem = Lorem;
+    this.Matz = Matz;
+    this.Music = Music;
+    this.Name = Name;
+    this.Number = Number;
+    this.PhoneNumber = PhoneNumber;
+    this.Placeholdit = Placeholdit;
+    this.Pokemon = Pokemon;
+    this.Random = Random;
+    this.RickAndMorty = RickAndMorty;
+    this.RockBand = RockBand;
+    this.RuPaul = RuPaul;
+    this.SlackEmoji = SlackEmoji;
+    this.Space = Space;
+    this.StarWars = StarWars;
+    this.Superhero = Superhero;
+    this.Team = Team;
+    this.Time = Time;
+    this.TwinPeaks = TwinPeaks;
+    this.Twitter = Twitter;
+    this.University = University;
+    this.Vehicle = Vehicle;
+    this.Zelda = Zelda;
+  }
 }
+
+module.exports = new Faker();
