@@ -39,6 +39,9 @@ gulp.task('test', ['istanbul'], () => {
       compilers: 'js:babel-core/register',
       colors: true,
       harmony: true
+    }).on('error', function(err) {
+      console.error(err);
+      this.emit('end');
     }))
     .pipe(istanbul.writeReports())
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
