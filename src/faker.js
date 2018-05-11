@@ -51,7 +51,7 @@ import * as Superhero from './faker/superhero';
 import * as Team from './faker/team';
 import * as Time from './faker/time';
 import * as TwinPeaks from './faker/twin-peaks';
-import * as Twitter from './faker/twitter';
+import Twitter from './faker/twitter';
 import * as University from './faker/university';
 import * as Vehicle from './faker/vehicle';
 import * as Zelda from './faker/zelda';
@@ -111,7 +111,7 @@ class Faker {
     this.Team = Team;
     this.Time = Time;
     this.TwinPeaks = TwinPeaks;
-    this.Twitter = Twitter;
+    this.Twitter = new Twitter(this);
     this.University = University;
     this.Vehicle = Vehicle;
     this.Zelda = Zelda;

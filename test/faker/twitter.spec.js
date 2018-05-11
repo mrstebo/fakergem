@@ -2,12 +2,12 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
-const Twitter = require('../../src/faker/twitter').default;
+const Faker = require('../../src/faker');
 
 describe('Twitter', () => {
   describe('#user', () => {
     it('should have the properties for a user object', () => {
-      expect(Twitter.user()).to.have.all.keys([
+      expect(Faker.Twitter.user()).to.have.all.keys([
         'id',
         'id_str',
         'contributors_enabled',
@@ -53,17 +53,17 @@ describe('Twitter', () => {
     });
 
     it('should not have status when includeStatus is false', () => {
-      expect(Twitter.user(false)).to.not.have.all.keys('status');
+      expect(Faker.Twitter.user(false)).to.not.have.all.keys('status');
     });
 
     it('should have email when includeEmail is true', () => {
-      expect(Twitter.user(true, true)).to.have.any.keys('email');
+      expect(Faker.Twitter.user(true, true)).to.have.any.keys('email');
     });
   });
 
   describe('#status', () => {
     it('should have the properties for a status object', () => {
-      expect(Twitter.status()).to.have.all.keys([
+      expect(Faker.Twitter.status()).to.have.all.keys([
         'id',
         'id_str',
         'contributors',
@@ -93,30 +93,30 @@ describe('Twitter', () => {
     });
 
     it('should not have user when includeUser is false', () => {
-      expect(Twitter.status(false)).to.not.have.all.keys('user');
+      expect(Faker.Twitter.status(false)).to.not.have.all.keys('user');
     });
 
     it('should have a media entry when includePhoto is true', () => {
-      const status = Twitter.status(true, true);
+      const status = Faker.Twitter.status(true, true);
       expect(status.entities.media).to.have.lengthOf(1);
     });
 
     it('should have url in text when includePhoto is true', sinonTest(function() {
-      this.stub(Twitter._fakers.Lorem, 'sentence').callsFake(() => 'test');
-      this.stub(Twitter._fakers.Internet, 'url').callsFake(() => 'http://test.com/image.png');
-      expect(Twitter.status(true, true).text).to.equal('test http://test.com/image.png');
+      this.stub(Faker.Lorem, 'sentence').returns('test');
+      this.stub(Faker.Internet, 'url').returns('http://test.com/image.png');
+      expect(Faker.Twitter.status(true, true).text).to.equal('test http://test.com/image.png');
     }));
   });
 
   describe('#screenName', () => {
     it('should contain an internet username', sinonTest(function() {
-      this.stub(Twitter._fakers.Internet, 'userName').callsFake(() => 'test_user');
-      expect(Twitter.screenName()).to.equal('test_user');
+      this.stub(Faker.Internet, 'userName').returns('test_user');
+      expect(Faker.Twitter.screenName()).to.equal('test_user');
     }));
 
     it('should not be longer than 20 characters', sinonTest(function() {
-      this.stub(Twitter._fakers.Internet, 'userName').callsFake(() => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-      expect(Twitter.screenName()).to.have.lengthOf(20);
+      this.stub(Faker.Internet, 'userName').returns('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+      expect(Faker.Twitter.screenName()).to.have.lengthOf(20);
     }));
   });
 });

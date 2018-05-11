@@ -1,77 +1,65 @@
-import * as Address from './address';
-import * as Avatar from './avatar';
-import * as Boolean from './boolean';
-import * as Color from './color';
-import * as Company from './company';
-import * as DateFaker from './date';
-import * as Internet from './internet';
-import * as Lorem from './lorem';
-import * as LoremPixel from './lorem-pixel';
-import * as Name from './name';
-import * as Number from './number';
-
-export class Twitter {
-  constructor(fakers) {
-    this._fakers = fakers;
+export default class Twitter {
+  constructor(faker) {
+    this.faker = faker;
   }
 
   user(includeStatus=true, includeEmail=false) {
-    const userId = this._fakers.Number.between(1, 9223372036854775807);
-    const createdAt = this._fakers.DateFaker.between(new Date(2006, 2, 21), new Date());
-    const backgroundImageUrl = this._fakers.LoremPixel.image('600x400');
-    const profileImageUrl = this._fakers.Avatar.image(userId, '48x48');
+    const userId = this.faker.Number.between(1, 9223372036854775807);
+    const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
+    const backgroundImageUrl = this.faker.LoremPixel.image('600x400');
+    const profileImageUrl = this.faker.Avatar.image(userId, '48x48');
     const user = {
       id: userId,
       id_str: `${userId}`,
-      contributors_enabled: this._fakers.Boolean.boolean(0.1),
+      contributors_enabled: this.faker.Boolean.boolean(0.1),
       created_at: createdAt,
-      default_profile_image: this._fakers.Boolean.boolean(0.1),
-      default_profile: this._fakers.Boolean.boolean(0.1),
-      description: this._fakers.Lorem.sentence(),
+      default_profile_image: this.faker.Boolean.boolean(0.1),
+      default_profile: this.faker.Boolean.boolean(0.1),
+      description: this.faker.Lorem.sentence(),
       entities: this._userEntities(),
-      favourites_count: this._fakers.Number.between(1, 100000),
+      favourites_count: this.faker.Number.between(1, 100000),
       follow_request_sent: false,
-      followers_count: this._fakers.Number.between(1, 10000000),
+      followers_count: this.faker.Number.between(1, 10000000),
       following: false,
-      friends_count: this._fakers.Number.between(1, 100000),
-      geo_enabled: this._fakers.Boolean.boolean(0.1),
-      is_translation_enabled: this._fakers.Boolean.boolean(0.1),
-      is_translator: this._fakers.Boolean.boolean(0.1),
-      lang: this._fakers.Address.countryCode(),
-      listed_count: this._fakers.Number.between(1, 1000),
-      location: `${this._fakers.Address.city()}, ${this._fakers.Address.stateAbbr()}, ${this._fakers.Address.countryCode()}`,
-      name: this._fakers.Name.name(),
+      friends_count: this.faker.Number.between(1, 100000),
+      geo_enabled: this.faker.Boolean.boolean(0.1),
+      is_translation_enabled: this.faker.Boolean.boolean(0.1),
+      is_translator: this.faker.Boolean.boolean(0.1),
+      lang: this.faker.Address.countryCode(),
+      listed_count: this.faker.Number.between(1, 1000),
+      location: `${this.faker.Address.city()}, ${this.faker.Address.stateAbbr()}, ${this.faker.Address.countryCode()}`,
+      name: this.faker.Name.name(),
       notifications: false,
-      profile_background_color: this._fakers.Color.hexColor(),
+      profile_background_color: this.faker.Color.hexColor(),
       profile_background_image_url_https: backgroundImageUrl,
       profile_background_image_url: backgroundImageUrl.replace('https://', 'http://'),
-      profile_background_tile: this._fakers.Boolean.boolean(0.1),
-      profile_banner_url: this._fakers.LoremPixel.image('1500x500'),
+      profile_background_tile: this.faker.Boolean.boolean(0.1),
+      profile_banner_url: this.faker.LoremPixel.image('1500x500'),
       profile_image_url_https: profileImageUrl,
       profile_image_url: profileImageUrl.replace('https://', 'http://'),
-      profile_link_color: this._fakers.Color.hexColor(),
-      profile_sidebar_border_color: this._fakers.Color.hexColor(),
-      profile_sidebar_fill_color: this._fakers.Color.hexColor(),
-      profile_text_color: this._fakers.Color.hexColor(),
-      profile_use_background_image: this._fakers.Boolean.boolean(0.4),
-      protected: this._fakers.Boolean.boolean(0.1),
+      profile_link_color: this.faker.Color.hexColor(),
+      profile_sidebar_border_color: this.faker.Color.hexColor(),
+      profile_sidebar_fill_color: this.faker.Color.hexColor(),
+      profile_text_color: this.faker.Color.hexColor(),
+      profile_use_background_image: this.faker.Boolean.boolean(0.4),
+      protected: this.faker.Boolean.boolean(0.1),
       screen_name: this.screenName(),
-      statuses_count: this._fakers.Number.between(1, 100000),
-      time_zone: this._fakers.Address.timeZone(),
+      statuses_count: this.faker.Number.between(1, 100000),
+      time_zone: this.faker.Address.timeZone(),
       url: 'http://example.com',
       utc_offset: this._utcOffset(),
-      verified: this._fakers.Boolean.boolean(0.1)
+      verified: this.faker.Boolean.boolean(0.1)
     };
 
     if (includeStatus) user['status'] = this.status(false);
-    if (includeEmail) user['email'] = this._fakers.Internet.safeEmail();
+    if (includeEmail) user['email'] = this.faker.Internet.safeEmail();
 
     return user;
   }
 
   status(includeUser=true, includePhoto=false) {
-    const statusId = this._fakers.Number.between(1, 9223372036854775807);
-    const createdAt = this._fakers.DateFaker.between(new Date(2006, 2, 21), new Date());
+    const statusId = this.faker.Number.between(1, 9223372036854775807);
+    const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const status = {
       id: statusId,
       id_str: `${statusId}`,
@@ -79,7 +67,7 @@ export class Twitter {
       coordinates: null,
       created_at: createdAt,
       entities: this._statusEntities(includePhoto),
-      favourite_count: this._fakers.Number.between(1, 10000),
+      favourite_count: this.faker.Number.between(1, 10000),
       favourited: false,
       geo: null,
       in_reply_to_screen_name: null,
@@ -87,15 +75,15 @@ export class Twitter {
       in_reply_to_user_id_str: null,
       in_reply_to_user_id: null,
       is_quote_status: false,
-      lang: this._fakers.Address.countryCode(),
+      lang: this.faker.Address.countryCode(),
       nil: null,
       place: null,
-      possibly_sensitive: this._fakers.Boolean.boolean(0.1),
-      retweet_count: this._fakers.Number.between(1, 10000),
+      possibly_sensitive: this.faker.Boolean.boolean(0.1),
+      retweet_count: this.faker.Number.between(1, 10000),
       retweeted_status:  null,
       retweeted: false,
-      source: `<a href=\"${this._fakers.Internet.url('example.com')}\" rel=\"nofollow\">${this._fakers.Company.name}</a>`,
-      text: this._fakers.Lorem.sentence(),
+      source: `<a href=\"${this.faker.Internet.url('example.com')}\" rel=\"nofollow\">${this.faker.Company.name}</a>`,
+      text: this.faker.Lorem.sentence(),
       truncated: false
     };
 
@@ -106,11 +94,11 @@ export class Twitter {
   }
 
   screenName() {
-    return this._fakers.Internet.userName().substring(0, 20);
+    return this.faker.Internet.userName().substring(0, 20);
   }
 
   _utcOffset() {
-    return this._fakers.Number.between(-43200, 50400);
+    return this.faker.Number.between(-43200, 50400);
   }
 
   _userEntities() {
@@ -138,8 +126,8 @@ export class Twitter {
   }
 
   _photoEntity() {
-    const mediaUrl = this._fakers.LoremPixel.image('1064x600');
-    const mediaId = this._fakers.Number.between(1, 9223372036854775807);
+    const mediaUrl = this.faker.LoremPixel.image('1064x600');
+    const mediaId = this.faker.Number.between(1, 9223372036854775807);
     return {
       id: mediaId,
       id_str: `${mediaId}`,
@@ -149,9 +137,9 @@ export class Twitter {
       ],
       media_url: mediaUrl.sub('https://', 'http://'),
       media_url_https: mediaUrl,
-      url: this._fakers.Internet.url('example.com'),
+      url: this.faker.Internet.url('example.com'),
       display_url: 'example.com',
-      expanded_url: this._fakers.Internet.url('example.com'),
+      expanded_url: this.faker.Internet.url('example.com'),
       type: 'photo',
       sizes:  {
         medium:  {
@@ -178,17 +166,3 @@ export class Twitter {
     };
   }
 }
-
-export default new Twitter({
-  Address,
-  Avatar,
-  Boolean,
-  Color,
-  Company,
-  DateFaker,
-  Internet,
-  Lorem,
-  LoremPixel,
-  Name,
-  Number
-});
