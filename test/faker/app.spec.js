@@ -1,33 +1,48 @@
 'use strict';
 const expect = require('chai').expect;
-const App = require('../../src/faker/app');
-const data = require('../../data/app.json');
+const sinon = require('sinon');
+const Faker = require('../../src/faker');
+const appData = require('../../data/app.json');
 const nameData = require('../../data/name.json');
 
 describe('App', () => {
+  let sandbox;
+
+  beforeEach(() => {
+    sandbox = sinon.sandbox.create();
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
   describe('#name', () => {
-    it('should return a name', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(App.name()).to.be.oneOf(data['names']);
-      });
+    it('returns a name', () => {
+      Faker.Random.element = sandbox.stub()
+        .withArgs(appData['names'])
+        .returns('x');
+      expect(Faker.App.name()).to.eql('x');
     });
   });
 
   describe('#version', () => {
-    it('should return a version format', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(App.version()).to.match(/(?:#|\d+)\.(?:[#]+|\d+)(?:\.(?:[#]+|\d+))?/);
-      });
+    it('returns a version format', () => {
+      Faker.Random.element = sandbox.stub()
+        .withArgs(appData['versions'])
+        .returns('#.#.#.#');
+      Faker.Number.between = sandbox.stub()
+        .withArgs(0, 9)
+        .returns(1);
+      expect(Faker.App.version()).to.eql('1.1.1.1');
     });
   });
 
   describe('#author', () => {
-    it('should return a name', () => {
-      [...Array(100).keys()].forEach(_ => {
-        const author = App.author();
-        expect(author.split(' ')[0]).to.be.oneOf(nameData['firstNames']);
-        expect(author.split(' ')[1]).to.be.oneOf(nameData['lastNames']);
-      });
+    it('returns a name', () => {
+      Faker.Random.element = sandbox.stub();
+      Faker.Random.element.withArgs(nameData['firstNames']).returns('John');
+      Faker.Random.element.withArgs(nameData['lastNames']).returns('Smith');
+      expect(Faker.App.author()).to.eql('John Smith');
     });
   });
 });
