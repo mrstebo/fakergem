@@ -1,95 +1,100 @@
-import { itemFromCollection, randomFloat, randomNumber } from '../utils/random';
-
 const data = require('../../data/address.json');
 const nameData = require('../../data/name.json');
 
-export function city() {
-  const format = itemFromCollection(data['cities']);
-  return parseFormat(format);
-}
-
-export function streetName() {
-  const format = itemFromCollection(data['streetNames']);
-  return parseFormat(format);
-}
-
-export function streetAddress() {
-  const format = itemFromCollection(data['streetAddresses']);
-  return parseFormat(format);
-}
-
-export function secondaryAddress() {
-  const format = `${itemFromCollection(data['secondaryAddressPrefixes'])} ###`;
-  return parseFormat(format);
-}
-
-export function buildingNumber() {
-  return ''+randomNumber(100, 99999);
-}
-
-export function zipCode(stateAbbreviation = '') {
-  if (stateAbbreviation == '') {
-    return parseFormat(itemFromCollection(data['postcodes']));
-  }
-  return parseFormat(data['postcodeByState'][stateAbbreviation]);
-}
-
-export function zip(stateAbbreviation = '') {
-  return zipCode(stateAbbreviation);
-}
-
-export function postcode(stateAbbreviation = '') {
-  return zipCode(stateAbbreviation);
-}
-
-export function timeZone() {
-  return itemFromCollection(data['timeZones']);
-}
-
-export function streetSuffix() {
-  return itemFromCollection(data['streetSuffixes']);
-}
-
-export function citySuffix() {
-  return itemFromCollection(data['citySuffixes']);
-}
-
-export function cityPrefix() {
-  return itemFromCollection(data['cityPrefixes']);
-}
-
-export function state() {
-  return itemFromCollection(data['states']);
-}
-
-export function stateAbbr() {
-  return itemFromCollection(data['stateAbbreviations']);
-}
-
-export function country() {
-  return itemFromCollection(data['countries']);
-}
-
-export function countryCode() {
-  return itemFromCollection(data['countryCodes']);
-}
-
-export function latitude() {
-  return ''+(randomFloat(0, 180) - 90);
-}
-
-export function longitude() {
-  return ''+(randomFloat(0, 360) - 180);
-}
-
-function parseFormat(format) {
+function parseFormat(faker, format) {
   return format
-    .replace(/\{streetSuffix\}/g, streetSuffix())
-    .replace(/\{citySuffix\}/g, citySuffix())
-    .replace(/\{cityPrefix\}/g, cityPrefix())
-    .replace(/\{buildNumber\}/g, buildingNumber())
-    .replace(/\{Name\.firstName\}/g, itemFromCollection(nameData['firstNames']))
-    .replace(/\{Name\.lastName\}/g, itemFromCollection(nameData['lastNames']))
-    .replace(/#/, randomNumber(1, 9))
-    .replace(/#/g, _ => randomNumber(0, 9));
+    .replace(/\{streetSuffix\}/g, faker.Address.streetSuffix())
+    .replace(/\{citySuffix\}/g, faker.Address.citySuffix())
+    .replace(/\{cityPrefix\}/g, faker.Address.cityPrefix())
+    .replace(/\{buildNumber\}/g, faker.Address.buildingNumber())
+    .replace(/\{Name\.firstName\}/g, faker.Random.element(nameData['firstNames']))
+    .replace(/\{Name\.lastName\}/g, faker.Random.element(nameData['lastNames']))
+    .replace(/#/, faker.Number.between(1, 9))
+    .replace(/#/g, _ => faker.Number.between(0, 9));
+}
+
+export default class Address {
+  constructor(faker) {
+    this.faker = faker;
+  }
+
+  city() {
+    const format = this.faker.Random.element(data['cities']);
+    return parseFormat(this.faker, format);
+  }
+
+  streetName() {
+    const format = this.faker.Random.element(data['streetNames']);
+    return parseFormat(this.faker, format);
+  }
+
+  streetAddress() {
+    const format = this.faker.Random.element(data['streetAddresses']);
+    return parseFormat(this.faker, format);
+  }
+
+  secondaryAddress() {
+    const prefix = this.faker.Random.element(data['secondaryAddressPrefixes']);
+    const format = `${prefix} ###`;
+    return parseFormat(this.faker, format);
+  }
+
+  buildingNumber() {
+    return ''+this.faker.Number.between(100, 99999);
+  }
+
+  zipCode(stateAbbreviation = '') {
+    const format = stateAbbreviation == ''
+      ? this.faker.Random.element(data['postcodes'])
+      : data['postcodeByState'][stateAbbreviation];
+    return parseFormat(this.faker, format);
+  }
+
+  zip(stateAbbreviation = '') {
+    return this.zipCode(stateAbbreviation);
+  }
+
+  postcode(stateAbbreviation = '') {
+    return this.zipCode(stateAbbreviation);
+  }
+
+  timeZone() {
+    return this.faker.Random.element(data['timeZones']);
+  }
+
+  streetSuffix() {
+    return this.faker.Random.element(data['streetSuffixes']);
+  }
+
+  citySuffix() {
+    return this.faker.Random.element(data['citySuffixes']);
+  }
+
+  cityPrefix() {
+    return this.faker.Random.element(data['cityPrefixes']);
+  }
+
+  state() {
+    return this.faker.Random.element(data['states']);
+  }
+
+  stateAbbr() {
+    return this.faker.Random.element(data['stateAbbreviations']);
+  }
+
+  country() {
+    return this.faker.Random.element(data['countries']);
+  }
+
+  countryCode() {
+    return this.faker.Random.element(data['countryCodes']);
+  }
+
+  latitude() {
+    return ''+(this.faker.Number.between(0.00, 180.00) - 90);
+  }
+
+  longitude() {
+    return ''+(this.faker.Number.between(0.00, 360.00) - 180);
+  }
 }
