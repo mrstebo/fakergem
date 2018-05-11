@@ -2,13 +2,8 @@ const data = require('../../data/address.json');
 const nameData = require('../../data/name.json');
 
 function parseFormat(faker, format) {
-  return format
-    .replace(/\{streetSuffix\}/g, faker.Address.streetSuffix())
-    .replace(/\{citySuffix\}/g, faker.Address.citySuffix())
-    .replace(/\{cityPrefix\}/g, faker.Address.cityPrefix())
-    .replace(/\{buildNumber\}/g, faker.Address.buildingNumber())
-    .replace(/\{Name\.firstName\}/g, faker.Random.element(nameData['firstNames']))
-    .replace(/\{Name\.lastName\}/g, faker.Random.element(nameData['lastNames']))
+  return faker.Fake
+    .f(format.replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`))
     .replace(/#/, faker.Number.between(1, 9))
     .replace(/#/g, _ => faker.Number.between(0, 9));
 }
