@@ -139,6 +139,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Fake', () => {
+    it('should be an object', () => {
+      expect(Faker.Fake).to.be.a('object');
+    });
+  });
+
   describe('#File', () => {
     it('should be an object', () => {
       expect(Faker.File).to.be.a('object');

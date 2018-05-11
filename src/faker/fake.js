@@ -11,7 +11,7 @@ function parse(faker, match) {
     throw new Error(`Invalid method: ${module}.${method}`);
   }
 
-  return faker[module][method].call();
+  return faker[module][method]();
 }
 
 export default class Fake {
@@ -24,6 +24,6 @@ export default class Fake {
       throw new Error('A string must be specified');
     }
 
-    return str.replace(/\{(.+)\}/g, m => parse(this.faker, m));
+    return str.replace(/\{(\w+)\.(\w+)\}/g, m => parse(this.faker, m));
   }
 }
