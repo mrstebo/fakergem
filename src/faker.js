@@ -40,6 +40,7 @@ import * as Number from './faker/number';
 import * as PhoneNumber from './faker/phone-number';
 import * as Placeholdit from './faker/placeholdit';
 import * as Pokemon from './faker/pokemon';
+import * as Random from './faker/random';
 import * as RickAndMorty from './faker/rick-and-morty';
 import * as RockBand from './faker/rock-band';
 import * as RuPaul from './faker/ru-paul';
@@ -98,6 +99,7 @@ module.exports = {
   PhoneNumber,
   Placeholdit,
   Pokemon,
+  Random,
   RickAndMorty,
   RockBand,
   RuPaul,
