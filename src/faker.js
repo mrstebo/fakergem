@@ -2,7 +2,7 @@ import Address from './faker/address';
 import Ancient from './faker/ancient';
 import App from './faker/app';
 import Avatar from './faker/avatar';
-import * as Bank from './faker/bank';
+import Bank from './faker/bank';
 import * as Beer from './faker/beer';
 import * as Bitcoin from './faker/bitcoin';
 import * as Book from './faker/book';
@@ -63,7 +63,7 @@ class Faker {
     this.Ancient = new Ancient(this);
     this.App = new App(this);
     this.Avatar = new Avatar(this);
-    this.Bank = Bank;
+    this.Bank = new Bank(this);
     this.Beer = Beer;
     this.Bitcoin = Bitcoin;
     this.Book = Book;
