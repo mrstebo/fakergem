@@ -1,4 +1,8 @@
-import { randomNumber } from '../utils/random';
+import { randomNumber, randomFloat } from '../utils/random';
+
+function isDecimal(n) {
+  return !!(''+n).match(/\./);
+}
 
 export function number(digits=10) {
   let num = '';
@@ -29,7 +33,9 @@ export function hexadecimal(digits=6) {
 export function between(from=1.00, to=5000.00) {
   let min = Math.min(from, to);
   let max = Math.max(from, to);
-  return randomNumber(min, max);
+  return isDecimal(min) || isDecimal(max)
+    ? randomFloat(min, max)
+    : randomNumber(min, max);
 }
 
 export function positive(from=1.00, to=5000.00) {
