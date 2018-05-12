@@ -2,18 +2,24 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/ancient.json');
 
-export function god() {
-  return itemFromCollection(data['gods']);
-}
+export default class Ancient {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function primordial() {
-  return itemFromCollection(data['primordials']);
-}
+  god() {
+    return this.faker.Random.element(data['gods']);
+  }
 
-export function titan() {
-  return itemFromCollection(data['titans']);
-}
+  primordial() {
+    return this.faker.Random.element(data['primordials']);
+  }
 
-export function hero() {
-  return itemFromCollection(data['heroes']);
+  titan() {
+    return this.faker.Random.element(data['titans']);
+  }
+
+  hero() {
+    return this.faker.Random.element(data['heroes']);
+  }
 }

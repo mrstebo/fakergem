@@ -5,7 +5,6 @@ const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
 const Faker = require('../../src/faker');
 const data = require('../../data/address.json');
 
-
 describe('Address', () => {
   describe('#city', () => {
     it('should return a city', sinonTest(function() {

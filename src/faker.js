@@ -1,5 +1,5 @@
 import Address from './faker/address';
-import * as Ancient from './faker/ancient';
+import Ancient from './faker/ancient';
 import App from './faker/app';
 import * as Avatar from './faker/avatar';
 import * as Bank from './faker/bank';
@@ -60,7 +60,7 @@ import * as Zelda from './faker/zelda';
 class Faker {
   constructor() {
     this.Address = new Address(this);
-    this.Ancient = Ancient;
+    this.Ancient = new Ancient(this);
     this.App = new App(this);
     this.Avatar = Avatar;
     this.Bank = Bank;
