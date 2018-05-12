@@ -1,49 +1,48 @@
 'use strict';
 const expect = require('chai').expect;
-const Avatar = require('../../src/faker/avatar');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/lorem.json');
 
 describe('Avatar', () => {
   describe('#image', () => {
-    it('should return a string', () => {
-      expect(Avatar.image()).to.be.a('string');
-    });
-
-    it('should return a default url', () => {
-      expect(Avatar.image()).to.match(/^https\:\/\/robohash\.org\/.*?\.png\?size=300x300&set=set1/);
-    });
+    it('should return a url', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['words']).returns('word');
+      expect(Faker.Avatar.image()).to.eql('https://robohash.org/word-word-word.png?size=300x300&set=set1');
+    }));
 
     it('should return url with specified slug', () => {
-      expect(Avatar.image('hello-world')).to.match(/^https\:\/\/robohash\.org\/hello\-world\.png\?size=300x300&set=set1/);
+      expect(Faker.Avatar.image('hello-world')).to.eql('https://robohash.org/hello-world.png?size=300x300&set=set1');
     });
 
     it('should return url with specified size', () => {
-      expect(Avatar.image('test', '64x64')).to.match(/^https\:\/\/robohash\.org\/test\.png\?size=64x64&set=set1/);
+      expect(Faker.Avatar.image('hello-world', '64x64')).to.eql('https://robohash.org/hello-world.png?size=64x64&set=set1');
     });
 
     it('should return url with specified format', () => {
       ['png', 'jpg', 'bmp'].forEach(format => {
-        expect(Avatar.image('test', '300x300', format)).to.equal(`https://robohash.org/test.${format}?size=300x300&set=set1`);
+        expect(Faker.Avatar.image('hello-world', '64x64', format)).to.equal(`https://robohash.org/hello-world.${format}?size=64x64&set=set1`);
       });
     });
 
     it('should return url with specified set', () => {
-      expect(Avatar.image('test', '300x300', 'png', 'test_set')).to.match(/^https\:\/\/robohash\.org\/test\.png\?size=300x300&set=test_set/);
+      expect(Faker.Avatar.image('hello-world', '64x64', 'png', 'test_set')).to.eql('https://robohash.org/hello-world.png?size=64x64&set=test_set');
     });
 
     it('should return url with specified bgset', () => {
-      expect(Avatar.image('test', '300x300', 'png', 'set1', 'test')).to.match(/^https\:\/\/robohash\.org\/test\.png\?size=300x300&set=set1&bgset=test/);
+      expect(Faker.Avatar.image('hello-world', '64x64', 'png', 'test_set', 'test_bg_set')).to.eql('https://robohash.org/hello-world.png?size=64x64&set=test_set&bgset=test_bg_set');
     });
 
     it('should throw is size is not in a valid format', () => {
       ['100', 'abc', '2x2x2'].forEach(size => {
-        expect(() => Avatar.image('test', size)).to.throw();
+        expect(() => Faker.Avatar.image('test', size)).to.throw();
       });
     });
 
     it('should throw is format is not in a supported', () => {
       ['gif', 'mov', '2x2x2'].forEach(format => {
-        expect(() => Avatar.image('test', '300x300', format)).to.throw();
+        expect(() => Faker.Avatar.image('test', '300x300', format)).to.throw();
       });
     });
   });
