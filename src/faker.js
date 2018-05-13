@@ -6,7 +6,7 @@ import Bank from './faker/bank';
 import Beer from './faker/beer';
 import Bitcoin from './faker/bitcoin';
 import Book from './faker/book';
-import * as Boolean from './faker/boolean';
+import Boolean from './faker/boolean';
 import * as Business from './faker/business';
 import * as Cat from './faker/cat';
 import * as ChuckNorris from './faker/chuck-norris';
@@ -67,7 +67,7 @@ class Faker {
     this.Beer = new Beer(this);
     this.Bitcoin = new Bitcoin(this);
     this.Book = new Book(this);
-    this.Boolean = Boolean;
+    this.Boolean = new Boolean(this);
     this.Business = Business;
     this.Cat = Cat;
     this.ChuckNorris = ChuckNorris;
