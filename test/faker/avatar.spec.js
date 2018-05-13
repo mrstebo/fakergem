@@ -3,13 +3,12 @@ const expect = require('chai').expect;
 const sinon = require('sinon');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
 const Faker = require('../../src/faker');
-const data = require('../../data/lorem.json');
 
 describe('Avatar', () => {
   describe('#image', () => {
     it('should return a url', sinonTest(function() {
-      this.stub(Faker.Random, 'element').withArgs(data['words']).returns('word');
-      expect(Faker.Avatar.image()).to.eql('https://robohash.org/word-word-word.png?size=300x300&set=set1');
+      this.stub(Faker.Lorem, 'words').withArgs(3).returns(['this', 'are', 'test']);
+      expect(Faker.Avatar.image()).to.eql('https://robohash.org/this-are-test.png?size=300x300&set=set1');
     }));
 
     it('should return url with specified slug', () => {
