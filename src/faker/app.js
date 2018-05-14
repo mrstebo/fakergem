@@ -1,5 +1,4 @@
 const data = require('../../data/app.json');
-const nameData = require('../../data/name.json');
 
 export default class App {
   constructor(faker) {
@@ -19,8 +18,8 @@ export default class App {
 
   author() {
     return [
-      this.faker.Random.element(nameData['firstNames']),
-      this.faker.Random.element(nameData['lastNames'])
+      this.faker.Name.firstName(),
+      this.faker.Name.lastName()
     ].join(' ');
   }
 }

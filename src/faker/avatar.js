@@ -1,5 +1,3 @@
-const data = require('../../data/lorem.json');
-
 const SUPPORTED_FORMATS = ['png', 'jpg', 'bmp'];
 
 function isValidSize(size) {
@@ -11,7 +9,7 @@ function isFormatSupported(format) {
 }
 
 function words(faker) {
-  return [...Array(3).keys()].map(_ => faker.Random.element(data['words'])).join('-');
+  return faker.Lorem.words(3).join('-');
 }
 
 export default class Avatar {

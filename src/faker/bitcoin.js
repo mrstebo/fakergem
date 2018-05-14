@@ -6,14 +6,6 @@ const PROTOCOL_VERSION = {
   testnet: 111
 };
 
-export function address() {
-  return addressFor('main');
-}
-
-export function testnetAddress() {
-  return addressFor('testnet');
-}
-
 function addressFor(network) {
   const version = PROTOCOL_VERSION[network];
   const packed = String.fromCharCode(version) + crypto.randomBytes(20);
@@ -28,4 +20,18 @@ function digest(text) {
 
 function base58(text) {
   return bs58.encode(new Buffer(text, 'ascii'));
+}
+
+export default class Bitcoin {
+  constructor(faker) {
+    this.faker = faker;
+  }
+
+  address() {
+    return addressFor('main');
+  }
+
+  testnetAddress() {
+    return addressFor('testnet');
+  }
 }

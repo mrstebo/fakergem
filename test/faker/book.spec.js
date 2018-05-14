@@ -1,41 +1,37 @@
 'use strict';
 const expect = require('chai').expect;
-const Book = require('../../src/faker/book');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/book.json');
-const nameData = require('../../data/name.json');
 
 describe('Book', () => {
   describe('#title', () => {
-    it('should return a title', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Book.title()).to.be.oneOf(data['titles']);
-      });
-    });
+    it('should return a title', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['titles']).returns('title');
+      expect(Faker.Book.title()).to.eql('title');
+    }));
   });
 
   describe('#author', () => {
-    it('should return a first and last name', () => {
-      [...Array(100).keys()].forEach(_ => {
-        const author = Book.author();
-        expect(author.split(' ')[0]).to.be.oneOf(nameData['firstNames']);
-        expect(author.split(' ')[1]).to.be.oneOf(nameData['lastNames']);
-      });
-    })
+    it('should return a first and last name', sinonTest(function() {
+      this.stub(Faker.Name, 'firstName').returns('John');
+      this.stub(Faker.Name, 'lastName').returns('Smith');
+      expect(Faker.Book.author()).to.eql('John Smith');
+    }));
   });
 
   describe('#publisher', () => {
-    it('should return a publisher', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Book.publisher()).to.be.oneOf(data['publishers']);
-      });
-    });
+    it('should return a publisher', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['publishers']).returns('publisher');
+      expect(Faker.Book.publisher()).to.eql('publisher');
+    }));
   });
 
   describe('#genre', () => {
-    it('should return a genre', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Book.genre()).to.be.oneOf(data['genres']);
-      });
-    });
+    it('should return a genre', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['genres']).returns('genre');
+      expect(Faker.Book.genre()).to.eql('genre');
+    }));
   });
 });

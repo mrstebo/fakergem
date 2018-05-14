@@ -1,5 +1,4 @@
 const data = require('../../data/address.json');
-const nameData = require('../../data/name.json');
 
 function parseFormat(faker, format) {
   return faker.Fake

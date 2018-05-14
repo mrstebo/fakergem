@@ -1,5 +1,3 @@
-import { itemFromCollection, randomNumber, randomFloat } from '../utils/random';
-
 const data = require('../../data/beer.json');
 
 export default class Beer {

@@ -1,12 +1,12 @@
 'use strict';
 const expect = require('chai').expect;
-const Bitcoin = require('../../src/faker/bitcoin');
+const Faker = require('../../src/faker');
 
 describe('Bitcoin', () => {
   describe('#address', () => {
     it('should return a hash', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Bitcoin.address()).to.match(/[0-9a-zA-Z]+/);
+        expect(Faker.Bitcoin.address()).to.match(/[0-9a-zA-Z]+/);
       });
     });
   });
@@ -14,7 +14,7 @@ describe('Bitcoin', () => {
   describe('#testnetAddress', () => {
     it('should return a hash', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Bitcoin.testnetAddress()).to.match(/[0-9a-zA-Z]+/);
+        expect(Faker.Bitcoin.testnetAddress()).to.match(/[0-9a-zA-Z]+/);
       });
     });
   });
