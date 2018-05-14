@@ -18,14 +18,14 @@ function shuffle(collection) {
     return result;
 }
 
+export function assortment(array, n) {
+  const repeated = repeatArray(array, n / array.length);
+  return shuffle(repeated).slice(0, n);
+}
+
 export function element(array) {
   if (!array) {
     throw new Error('An array or string must be specified');
   }
   return itemFromCollection(array);
-}
-
-export function assortment(array, n) {
-  const repeated = repeatArray(array, ((n / array.length) + 1));
-  return shuffle(repeated).slice(0, n);
 }
