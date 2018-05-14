@@ -2,47 +2,53 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/slack-emoji.json');
 
-export function people() {
-  return itemFromCollection(data['people']);
-}
+export default class SlackEmoji {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function nature() {
-  return itemFromCollection(data['nature']);
-}
+  people() {
+    return itemFromCollection(data['people']);
+  }
 
-export function foodAndDrink() {
-  return itemFromCollection(data['foodAndDrink']);
-}
+  nature() {
+    return itemFromCollection(data['nature']);
+  }
 
-export function celebration() {
-  return itemFromCollection(data['celebration']);
-}
+  foodAndDrink() {
+    return itemFromCollection(data['foodAndDrink']);
+  }
 
-export function activity() {
-  return itemFromCollection(data['activity']);
-}
+  celebration() {
+    return itemFromCollection(data['celebration']);
+  }
 
-export function travelAndPlaces() {
-  return itemFromCollection(data['travelAndPlaces']);
-}
+  activity() {
+    return itemFromCollection(data['activity']);
+  }
 
-export function objectsAndSymbols() {
-  return itemFromCollection(data['objectsAndSymbols']);
-}
+  travelAndPlaces() {
+    return itemFromCollection(data['travelAndPlaces']);
+  }
 
-export function custom() {
-  return itemFromCollection(data['custom']);
-}
+  objectsAndSymbols() {
+    return itemFromCollection(data['objectsAndSymbols']);
+  }
 
-export function emoji() {
-  return itemFromCollection([
-    ...data['people'],
-    ...data['nature'],
-    ...data['foodAndDrink'],
-    ...data['celebration'],
-    ...data['activity'],
-    ...data['travelAndPlaces'],
-    ...data['objectsAndSymbols'],
-    ...data['custom']
-  ]);
+  custom() {
+    return itemFromCollection(data['custom']);
+  }
+
+  emoji() {
+    return itemFromCollection([
+      ...data['people'],
+      ...data['nature'],
+      ...data['foodAndDrink'],
+      ...data['celebration'],
+      ...data['activity'],
+      ...data['travelAndPlaces'],
+      ...data['objectsAndSymbols'],
+      ...data['custom']
+    ]);
+  }
 }

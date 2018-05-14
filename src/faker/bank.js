@@ -1,11 +1,5 @@
 const data = require('../../data/bank.json');
 
-function buildIbanDigits(details) {
-  return [...Array(parseInt(details['ibanDigits'])).keys()].map(_ => {
-    return randomNumber(0, 9)
-  }).join('');
-}
-
 export default class Bank {
   constructor(faker) {
     this.faker = faker;

@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const TwinPeaks = require('../../src/faker/twin-peaks');
+const Faker = require('../../src/faker');
 const data = require('../../data/twin-peaks.json');
 
 describe('TwinPeaks', () => {
   describe('#character', () => {
     it('should return a character', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(TwinPeaks.character()).to.be.oneOf(data['characters']);
+        expect(Faker.TwinPeaks.character()).to.be.oneOf(data['characters']);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('TwinPeaks', () => {
   describe('#location', () => {
     it('should return a location', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(TwinPeaks.location()).to.be.oneOf(data['locations']);
+        expect(Faker.TwinPeaks.location()).to.be.oneOf(data['locations']);
       });
     });
   });
@@ -23,7 +23,7 @@ describe('TwinPeaks', () => {
   describe('#quote', () => {
     it('should return a quote', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(TwinPeaks.quote()).to.be.oneOf(data['quotes']);
+        expect(Faker.TwinPeaks.quote()).to.be.oneOf(data['quotes']);
       });
     });
   });

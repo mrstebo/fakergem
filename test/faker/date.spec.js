@@ -1,7 +1,7 @@
 'use strict';
 const chai = require('chai');
 const { expect } = chai;
-const DateFaker = require('../../src/faker/date');
+const Faker = require('../../src/faker');
 
 chai.use(require('chai-datetime'));
 
@@ -9,7 +9,7 @@ describe('#Date', () => {
   describe('#between', () => {
     it('should return a Date', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.between(new Date(), new Date())).to.be.a('Date');
+        expect(Faker.Date.between(new Date(), new Date())).to.be.a('Date');
       });
     });
 
@@ -17,7 +17,7 @@ describe('#Date', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 10);
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.between('2017-01-01', '2017-01-10')).to.be.withinDate(from, to);
+        expect(Faker.Date.between('2017-01-01', '2017-01-10')).to.be.withinDate(from, to);
       });
     });
 
@@ -26,7 +26,7 @@ describe('#Date', () => {
       const to = new Date(2017, 0, 10);
 
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.between(from, to)).to.be.withinDate(from, to);
+        expect(Faker.Date.between(from, to)).to.be.withinDate(from, to);
       });
     });
   });
@@ -37,7 +37,7 @@ describe('#Date', () => {
       const to = new Date(2017, 0, 10);
       const except = new Date(2017, 0, 5);
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.betweenExcept(from, to, except)).to.be.a('Date');
+        expect(Faker.Date.betweenExcept(from, to, except)).to.be.a('Date');
       });
     });
 
@@ -46,7 +46,7 @@ describe('#Date', () => {
       const to = new Date(2017, 0, 10);
       const except = new Date(2017, 0, 4);
       [...Array(100).keys()].forEach(_ => {
-        expect( DateFaker.betweenExcept('2017-01-01', '2017-01-10', '2017-01-04'))
+        expect( Faker.Date.betweenExcept('2017-01-01', '2017-01-10', '2017-01-04'))
           .to.be.withinDate(from, to)
           .and.not.equal(except);
       });
@@ -58,7 +58,7 @@ describe('#Date', () => {
       const except = new Date(2017, 0, 5);
 
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.betweenExcept(from, to, except))
+        expect(Faker.Date.betweenExcept(from, to, except))
           .to.be.withinDate(from, to)
           .and.not.equal(except);
       });
@@ -68,13 +68,13 @@ describe('#Date', () => {
   describe('#forward', () => {
     it('should return a Date', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.forward()).to.be.a('Date');
+        expect(Faker.Date.forward()).to.be.a('Date');
       });
     });
 
     it('should return a date in the future', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.forward()).to.be.afterDate(new Date());
+        expect(Faker.Date.forward()).to.be.afterDate(new Date());
       });
     });
 
@@ -84,7 +84,7 @@ describe('#Date', () => {
       max.setHours(0, 0, 0, 0);
 
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.forward(10)).to.be.withinDate(new Date(), max);
+        expect(Faker.Date.forward(10)).to.be.withinDate(new Date(), max);
       });
     });
   });
@@ -92,13 +92,13 @@ describe('#Date', () => {
   describe('#backward', () => {
     it('should return a Date', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.backward()).to.be.a('Date');
+        expect(Faker.Date.backward()).to.be.a('Date');
       });
     });
 
     it('should return a date in the past', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.backward()).to.be.beforeDate(new Date());
+        expect(Faker.Date.backward()).to.be.beforeDate(new Date());
       });
     });
 
@@ -108,7 +108,7 @@ describe('#Date', () => {
       min.setHours(0, 0, 0, 0);
 
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.backward(10)).to.be.withinDate(min, new Date());
+        expect(Faker.Date.backward(10)).to.be.withinDate(min, new Date());
       });
     });
   });
@@ -116,7 +116,7 @@ describe('#Date', () => {
   describe('#birthday', () => {
     it('should return a Date', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.birthday()).to.be.a('Date');
+        expect(Faker.Date.birthday()).to.be.a('Date');
       });
     });
 
@@ -125,7 +125,7 @@ describe('#Date', () => {
       const from = new Date(now.getFullYear() - 25, now.getMonth(), now.getDate());
       const to = new Date(now.getFullYear() - 18, now.getMonth(), now.getDate());
       [...Array(100).keys()].forEach(_ => {
-        expect(DateFaker.birthday(18, 25)).to.be.withinDate(from, to);
+        expect(Faker.Date.birthday(18, 25)).to.be.withinDate(from, to);
       });
     });
   });

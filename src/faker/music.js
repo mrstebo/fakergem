@@ -2,20 +2,26 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/music.json');
 
-export function key() {
-  return [
-    itemFromCollection(data['keys']),
-    itemFromCollection(data['keyVariants'])
-  ].join('');
-}
+export default class Music {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function chord() {
-  return [
-    itemFromCollection(data['keys']),
-    itemFromCollection(data['chordTypes'])
-  ].join('');
-}
+  key() {
+    return [
+      itemFromCollection(data['keys']),
+      itemFromCollection(data['keyVariants'])
+    ].join('');
+  }
 
-export function instrument() {
-  return itemFromCollection(data['instruments']);
+  chord() {
+    return [
+      itemFromCollection(data['keys']),
+      itemFromCollection(data['chordTypes'])
+    ].join('');
+  }
+
+  instrument() {
+    return itemFromCollection(data['instruments']);
+  }
 }

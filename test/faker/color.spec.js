@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const Color = require('../../src/faker/color');
+const Faker = require('../../src/faker');
 const data = require('../../data/color.json');
 
 describe('Color', () => {
   describe('#hexColor', () => {
     it('should return a hex color value', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hexColor()).to.match(/^#[0-9a-f]{6}/);
+        expect(Faker.Color.hexColor()).to.match(/^#[0-9a-f]{6}/);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('Color', () => {
   describe('#colorName', () => {
     it('should return a color name', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.colorName()).to.be.oneOf(data['colorNames']);
+        expect(Faker.Color.colorName()).to.be.oneOf(data['colorNames']);
       });
     });
   });
@@ -23,12 +23,12 @@ describe('Color', () => {
   describe('#rgbColor', () => {
     it('should return an array of 3 values', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.rgbColor()).to.have.lengthOf(3);
+        expect(Faker.Color.rgbColor()).to.have.lengthOf(3);
       });
     });
 
     it('should return values between 0 and 255', () => {
-      let color = Color.rgbColor();
+      let color = Faker.Color.rgbColor();
       [0, 1, 2].forEach(i => {
         expect(color[i]).to.be.within(0, 255);
       });
@@ -38,25 +38,25 @@ describe('Color', () => {
   describe('#hslColor', () => {
     it('should return an array of 3 values', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslColor()).to.have.lengthOf(3);
+        expect(Faker.Color.hslColor()).to.have.lengthOf(3);
       });
     });
 
     it('should return a hue value between 0 and 360', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslColor()[0]).to.be.within(0, 360);
+        expect(Faker.Color.hslColor()[0]).to.be.within(0, 360);
       });
     });
 
     it('should return a saturation value between 0 and 1', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslColor()[1]).to.be.within(0, 1);
+        expect(Faker.Color.hslColor()[1]).to.be.within(0, 1);
       });
     });
 
     it('should return a lightness value between 0 and 1', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslColor()[2]).to.be.within(0, 1);
+        expect(Faker.Color.hslColor()[2]).to.be.within(0, 1);
       });
     });
   });
@@ -64,31 +64,31 @@ describe('Color', () => {
   describe('#hslaColor', () => {
     it('should return an array of 4 values', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslaColor()).to.have.lengthOf(4);
+        expect(Faker.Color.hslaColor()).to.have.lengthOf(4);
       });
     });
 
     it('should return a hue value between 0 and 360', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslaColor()[0]).to.be.within(0, 360);
+        expect(Faker.Color.hslaColor()[0]).to.be.within(0, 360);
       });
     });
 
     it('should return a saturation value between 0 and 1', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslaColor()[1]).to.be.within(0, 1);
+        expect(Faker.Color.hslaColor()[1]).to.be.within(0, 1);
       });
     });
 
     it('should return a lightness value between 0 and 1', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslaColor()[2]).to.be.within(0, 1);
+        expect(Faker.Color.hslaColor()[2]).to.be.within(0, 1);
       });
     });
 
     it('should return an alpha value between 0 and 1', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Color.hslaColor()[3]).to.be.within(0, 1);
+        expect(Faker.Color.hslaColor()[3]).to.be.within(0, 1);
       });
     });
   });

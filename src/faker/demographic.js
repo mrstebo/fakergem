@@ -2,32 +2,38 @@ import { itemFromCollection, randomNumber, randomFloat } from '../utils/random';
 
 const data = require('../../data/demographic.json');
 
-export function race() {
-  return itemFromCollection(data['races']);
-}
+export default class Demographic {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function educationalAttainment() {
-  return itemFromCollection(data['educationalAttainments']);
-}
+  race() {
+    return itemFromCollection(data['races']);
+  }
 
-export function demonym() {
-  return itemFromCollection(data['demonyms']);
-}
+  educationalAttainment() {
+    return itemFromCollection(data['educationalAttainments']);
+  }
 
-export function maritalStatus() {
-  return itemFromCollection(data['maritalStatuses']);
-}
+  demonym() {
+    return itemFromCollection(data['demonyms']);
+  }
 
-export function sex() {
-  return itemFromCollection(data['sexes']);
-}
+  maritalStatus() {
+    return itemFromCollection(data['maritalStatuses']);
+  }
 
-export function height(unit='metric') {
-  switch(unit) {
-    case 'metric':
-      return `${randomFloat(1.45, 2.13).toFixed(2)}`;
-    case 'imperial':
-      const inches = randomNumber(57, 86);
-      return `${Math.floor(inches / 12)} ft, ${inches % 12} in`;
+  sex() {
+    return itemFromCollection(data['sexes']);
+  }
+
+  height(unit='metric') {
+    switch(unit) {
+      case 'metric':
+        return `${randomFloat(1.45, 2.13).toFixed(2)}`;
+      case 'imperial':
+        const inches = randomNumber(57, 86);
+        return `${Math.floor(inches / 12)} ft, ${inches % 12} in`;
+    }
   }
 }

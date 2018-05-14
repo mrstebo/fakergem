@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const LordOfTheRings = require('../../src/faker/lord-of-the-rings');
+const Faker = require('../../src/faker');
 const data = require('../../data/lord-of-the-rings.json');
 
 describe('LordOfTheRings', () => {
   describe('#character', () => {
     it('should return a character', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(LordOfTheRings.character()).to.be.oneOf(data['characters']);
+        expect(Faker.LordOfTheRings.character()).to.be.oneOf(data['characters']);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('LordOfTheRings', () => {
   describe('#location', () => {
     it('should return a location', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(LordOfTheRings.location()).to.be.oneOf(data['locations']);
+        expect(Faker.LordOfTheRings.location()).to.be.oneOf(data['locations']);
       });
     });
   });

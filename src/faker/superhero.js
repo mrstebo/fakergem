@@ -2,25 +2,31 @@ import { randomNumber, itemFromCollection } from '../utils/random';
 
 const data = require('../../data/superhero.json');
 
-export function name() {
-  return itemFromCollection(data['names'])
-    .replace('{prefix}', itemFromCollection(data['prefixes']))
-    .replace('{suffix}', itemFromCollection(data['suffixes']))
-    .replace('{descriptor}', itemFromCollection(data['descriptors']));
-}
+export default class Superhero {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function power() {
-  return itemFromCollection(data['powers']);
-}
+  name() {
+    return itemFromCollection(data['names'])
+      .replace('{prefix}', itemFromCollection(data['prefixes']))
+      .replace('{suffix}', itemFromCollection(data['suffixes']))
+      .replace('{descriptor}', itemFromCollection(data['descriptors']));
+  }
 
-export function prefix() {
-  return itemFromCollection(data['prefixes']);
-}
+  power() {
+    return itemFromCollection(data['powers']);
+  }
 
-export function suffix() {
-  return itemFromCollection(data['suffixes']);
-}
+  prefix() {
+    return itemFromCollection(data['prefixes']);
+  }
 
-export function descriptor() {
-  return itemFromCollection(data['descriptors']);
+  suffix() {
+    return itemFromCollection(data['suffixes']);
+  }
+
+  descriptor() {
+    return itemFromCollection(data['descriptors']);
+  }
 }

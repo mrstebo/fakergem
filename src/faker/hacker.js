@@ -2,36 +2,42 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/hacker.json');
 
-export function saySomethingSmart() {
-  return parseFormat(itemFromCollection(data['phrases']));
-}
-
-export function abbreviation() {
-  return itemFromCollection(data['abbreviations']);
-}
-
-export function adjective() {
-  return itemFromCollection(data['adjectives']);
-}
-
-export function noun() {
-  return itemFromCollection(data['nouns']);
-}
-
-export function verb() {
-  return itemFromCollection(data['verbs']);
-}
-
-export function ingverb() {
-  return itemFromCollection(data['ingverbs']);
-}
-
-function parseFormat(format) {
+function parse(hacker, format) {
   return format
-    .replace(/\{abbreviation\}/g, abbreviation())
-    .replace(/\{adjective\}/g, adjective())
-    .replace(/\{noun\}/g, noun())
-    .replace(/\{verb\}/g, verb())
-    .replace(/\{ingverb\}/g, ingverb())
+    .replace(/\{abbreviation\}/g, hacker.abbreviation())
+    .replace(/\{adjective\}/g, hacker.adjective())
+    .replace(/\{noun\}/g, hacker.noun())
+    .replace(/\{verb\}/g, hacker.verb())
+    .replace(/\{ingverb\}/g, hacker.ingverb())
     .replace(/^(\w)/, m => m[0].toUpperCase());
+}
+
+export default class Hacker {
+  constructor(faker) {
+    this.faker = faker;
+  }
+
+  saySomethingSmart() {
+    return parse(this, itemFromCollection(data['phrases']));
+  }
+
+  abbreviation() {
+    return itemFromCollection(data['abbreviations']);
+  }
+
+  adjective() {
+    return itemFromCollection(data['adjectives']);
+  }
+
+  noun() {
+    return itemFromCollection(data['nouns']);
+  }
+
+  verb() {
+    return itemFromCollection(data['verbs']);
+  }
+
+  ingverb() {
+    return itemFromCollection(data['ingverbs']);
+  }
 }

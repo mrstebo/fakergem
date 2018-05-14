@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const Name = require('../../src/faker/name');
+const Faker = require('../../src/faker');
 const data = require('../../data/name.json');
 
 describe('Name', () => {
   describe('#name', () => {
     it('should return a first and last name', () => {
       [...Array(100).keys()].forEach(_ => {
-        const name = Name.name();
+        const name = Faker.Name.name();
         expect(name.split(' ')[0]).to.be.oneOf(data['firstNames']);
         expect(name.split(' ')[1]).to.be.oneOf(data['lastNames']);
       });
@@ -17,7 +17,7 @@ describe('Name', () => {
   describe('#nameWithMiddle', () => {
     it('should return two first names and a last name', () => {
       [...Array(100).keys()].forEach(_ => {
-        const name = Name.nameWithMiddle();
+        const name = Faker.Name.nameWithMiddle();
         expect(name.split(' ')[0]).to.be.oneOf(data['firstNames']);
         expect(name.split(' ')[1]).to.be.oneOf(data['firstNames']);
         expect(name.split(' ')[2]).to.be.oneOf(data['lastNames']);
@@ -28,7 +28,7 @@ describe('Name', () => {
   describe('#firstName', () => {
     it('should return a first name', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Name.firstName()).to.be.oneOf(data['firstNames']);
+        expect(Faker.Name.firstName()).to.be.oneOf(data['firstNames']);
       });
     });
   });
@@ -36,7 +36,7 @@ describe('Name', () => {
   describe('#lastName', () => {
     it('should return a last name', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Name.lastName()).to.be.oneOf(data['lastNames']);
+        expect(Faker.Name.lastName()).to.be.oneOf(data['lastNames']);
       });
     });
   });
@@ -44,7 +44,7 @@ describe('Name', () => {
   describe('#prefix', () => {
     it('should return a prefix', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Name.prefix()).to.be.oneOf(data['prefixes']);
+        expect(Faker.Name.prefix()).to.be.oneOf(data['prefixes']);
       });
     });
   });
@@ -52,7 +52,7 @@ describe('Name', () => {
   describe('#suffix', () => {
     it('should return a suffix', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Name.suffix()).to.be.oneOf(data['suffixes']);
+        expect(Faker.Name.suffix()).to.be.oneOf(data['suffixes']);
       });
     });
   });
@@ -60,7 +60,7 @@ describe('Name', () => {
   describe('#title', () => {
     it('should return a title descriptor, level and job', () => {
       [...Array(100).keys()].forEach(_ => {
-        const title = Name.title();
+        const title = Faker.Name.title();
         expect(title.split(' ')[0]).to.be.oneOf(data['titles']['descriptor']);
         expect(title.split(' ')[1]).to.be.oneOf(data['titles']['level']);
         expect(title.split(' ')[2]).to.be.oneOf(data['titles']['job']);

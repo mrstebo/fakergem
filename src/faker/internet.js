@@ -28,128 +28,133 @@ const RESERVED_NETS_REGEX = [
   /^(24\d|25[0-5])\./     // 240.0.0.0    – 255.255.255.254  and  255.255.255.255
 ];
 
-export function email(name=null) {
-  return [
-    userName(name),
-    domainName()
-  ].join('@');
-}
-
-export function freeEmail(name=null) {
-  return [
-    userName(name),
-    itemFromCollection(data['freeEmails'])
-  ].join('@');
-}
-
-export function safeEmail(name=null) {
-  return [
-    userName(name),
-    `example.${itemFromCollection(['org', 'com', 'net'])}`
-  ].join('@');
-}
-
-export function userName(specifier=null, separators=null) {
-  const userNameSeparator = itemFromCollection(separators || ['.', '_']);
-  if (typeof specifier === 'string') {
-    return shuffle(specifier.match(/\w+/g).map(x => x)).join(userNameSeparator);
-  }
-  const firstName = itemFromCollection(nameData['firstNames']).toLowerCase();
-  const lastName = itemFromCollection(nameData['lastNames']).toLowerCase();
-  return itemFromCollection([
-    firstName,
-    [firstName, lastName].join(userNameSeparator)
-  ]);
-}
-
-export function password(minLength=8, maxLength=16, mixCase=true, specialChars=false) {
-  const diffLength = maxLength - minLength;
-  const extraCharacters = randomNumber(0, diffLength);
-  const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
-
-  return [...Array(minLength + extraCharacters).keys()].reduce((result, val, index) => {
-    const c = itemFromCollection(chars).toString();
-    return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
-  }, '');
-}
-
-export function domainName() {
-  return [
-    domainWord(),
-    domainSuffix()
-  ].join('.');
-}
-
-export function fixUmlauts(value='') {
-  return value
-    .replace(/ä/g, 'ae')
-    .replace(/ö/g, 'oe')
-    .replace(/ü/g, 'ue');
-}
-
-export function domainWord() {
-  return itemFromCollection(nameData['lastNames']);
-}
-
-export function domainSuffix() {
-  return itemFromCollection(data['domainSuffixes'])
-}
-
-export function ipV4Address() {
-  return [
-    randomNumber(2, 254),
-    randomNumber(2, 254),
-    randomNumber(2, 254),
-    randomNumber(2, 254)
-  ].join('.');
-}
-
-export function privateIPV4Address() {
-  let addr;
-  do { addr = ipV4Address(); } while (!privateNetChecker(addr));
-  return addr;
-}
-
-export function publicIPV4Address() {
-  let addr;
-  do { addr = ipV4Address(); } while (reservedNetChecker(addr));
-  return addr;
-}
-
-export function ipV4CIDR() {
-  return `${ipV4Address()}/${randomNumber(1, 32)}`;
-}
-
-export function ipV6Address() {
-  return [...Array(8).keys()].map(_ => randomNumber(4096, 65535).toString(16)).join(':');
-}
-
-export function ipV6CIDR() {
-  return `${ipV6Address()}/${randomNumber(1, 128)}`;
-}
-
-export function macAddress(prefix='') {
-  const prefixDigits = prefix.split(':').filter(x => x).map(x => parseInt(x, 16));
-  const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(x => randomNumber(0, 255));
-  return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
-}
-
-export function url(host=null, path=null, scheme='http') {
-  host = host || domainName();
-  path = path || `/${userName()}`;
-  return `${scheme}://${host}${path}`;
-}
-
-export function slug(words='', glue='') {
-  return (words || [...Array(2).keys()].map(_ => itemFromCollection(loremData['words'])).join(' '))
-    .replace(/\s+/g, glue || itemFromCollection(['-', '_', '.']))
-    .toLowerCase();
-}
-
 function privateNetChecker(addr) {
   return PRIVATE_NET_REGEX.some(x => addr.match(x));
 }
 
 function reservedNetChecker(addr) {
   return [...PRIVATE_NET_REGEX, ...RESERVED_NETS_REGEX].some(x => addr.match(x));
+}
+
+export default class Internet {
+  constructor(faker) {
+    this.faker = faker;
+  }
+
+  email(name=null) {
+    return [
+      this.userName(name),
+      this.domainName()
+    ].join('@');
+  }
+
+  freeEmail(name=null) {
+    return [
+      this.userName(name),
+      itemFromCollection(data['freeEmails'])
+    ].join('@');
+  }
+
+  safeEmail(name=null) {
+    return [
+      this.userName(name),
+      `example.${itemFromCollection(['org', 'com', 'net'])}`
+    ].join('@');
+  }
+
+  userName(specifier=null, separators=null) {
+    const userNameSeparator = itemFromCollection(separators || ['.', '_']);
+    if (typeof specifier === 'string') {
+      return shuffle(specifier.match(/\w+/g).map(x => x)).join(userNameSeparator);
+    }
+    const firstName = itemFromCollection(nameData['firstNames']).toLowerCase();
+    const lastName = itemFromCollection(nameData['lastNames']).toLowerCase();
+    return itemFromCollection([
+      firstName,
+      [firstName, lastName].join(userNameSeparator)
+    ]);
+  }
+
+  password(minLength=8, maxLength=16, mixCase=true, specialChars=false) {
+    const diffLength = maxLength - minLength;
+    const extraCharacters = randomNumber(0, diffLength);
+    const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
+    return [...Array(minLength + extraCharacters).keys()].reduce((result, val, index) => {
+      const c = itemFromCollection(chars).toString();
+      return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
+    }, '');
+  }
+
+  domainName() {
+    return [
+      this.domainWord(),
+      this.domainSuffix()
+    ].join('.');
+  }
+
+  fixUmlauts(value='') {
+    return value
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue');
+  }
+
+  domainWord() {
+    return itemFromCollection(nameData['lastNames']);
+  }
+
+  domainSuffix() {
+    return itemFromCollection(data['domainSuffixes'])
+  }
+
+  ipV4Address() {
+    return [
+      randomNumber(2, 254),
+      randomNumber(2, 254),
+      randomNumber(2, 254),
+      randomNumber(2, 254)
+    ].join('.');
+  }
+
+  privateIPV4Address() {
+    let addr;
+    do { addr = this.ipV4Address(); } while (!privateNetChecker(addr));
+    return addr;
+  }
+
+  publicIPV4Address() {
+    let addr;
+    do { addr = this.ipV4Address(); } while (reservedNetChecker(addr));
+    return addr;
+  }
+
+  ipV4CIDR() {
+    return `${this.ipV4Address()}/${randomNumber(1, 32)}`;
+  }
+
+  ipV6Address() {
+    return [...Array(8).keys()].map(_ => randomNumber(4096, 65535).toString(16)).join(':');
+  }
+
+  ipV6CIDR() {
+    return `${this.ipV6Address()}/${randomNumber(1, 128)}`;
+  }
+
+  macAddress(prefix='') {
+    const prefixDigits = prefix.split(':').filter(x => x).map(x => parseInt(x, 16));
+    const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(x => randomNumber(0, 255));
+    return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
+  }
+
+  url(host=null, path=null, scheme='http') {
+    host = host || this.domainName();
+    path = path || `/${this.userName()}`;
+    return `${scheme}://${host}${path}`;
+  }
+
+  slug(words='', glue='') {
+    return (words || [...Array(2).keys()].map(_ => itemFromCollection(loremData['words'])).join(' '))
+      .replace(/\s+/g, glue || itemFromCollection(['-', '_', '.']))
+      .toLowerCase();
+  }
 }

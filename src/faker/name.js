@@ -2,41 +2,47 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/name.json');
 
-export function name() {
-  return [
-    itemFromCollection(data['firstNames']),
-    itemFromCollection(data['lastNames'])
-  ].join(' ');
-}
+export default class Name {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function nameWithMiddle() {
-  return [
-    itemFromCollection(data['firstNames']),
-    itemFromCollection(data['firstNames']),
-    itemFromCollection(data['lastNames'])
-  ].join(' ');
-}
+  name() {
+    return [
+      itemFromCollection(data['firstNames']),
+      itemFromCollection(data['lastNames'])
+    ].join(' ');
+  }
 
-export function firstName() {
-  return itemFromCollection(data['firstNames']);
-}
+  nameWithMiddle() {
+    return [
+      itemFromCollection(data['firstNames']),
+      itemFromCollection(data['firstNames']),
+      itemFromCollection(data['lastNames'])
+    ].join(' ');
+  }
 
-export function lastName() {
-  return itemFromCollection(data['lastNames']);
-}
+  firstName() {
+    return itemFromCollection(data['firstNames']);
+  }
 
-export function prefix() {
-  return itemFromCollection(data['prefixes']);
-}
+  lastName() {
+    return itemFromCollection(data['lastNames']);
+  }
 
-export function suffix() {
-  return itemFromCollection(data['suffixes']);
-}
+  prefix() {
+    return itemFromCollection(data['prefixes']);
+  }
 
-export function title() {
-  return [
-    itemFromCollection(data['titles']['descriptor']),
-    itemFromCollection(data['titles']['level']),
-    itemFromCollection(data['titles']['job'])
-  ].join(' ');
+  suffix() {
+    return itemFromCollection(data['suffixes']);
+  }
+
+  title() {
+    return [
+      itemFromCollection(data['titles']['descriptor']),
+      itemFromCollection(data['titles']['level']),
+      itemFromCollection(data['titles']['job'])
+    ].join(' ');
+  }
 }

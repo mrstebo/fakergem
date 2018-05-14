@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const Coffee = require('../../src/faker/coffee');
+const Faker = require('../../src/faker');
 const data = require('../../data/coffee.json');
 
 describe('Coffee', () => {
   describe('#fact', () => {
     it('should replace placeholders', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Coffee.blendName()).not.to.match(/\{\w+\}/);
+        expect(Faker.Coffee.blendName()).not.to.match(/\{\w+\}/);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('Coffee', () => {
   describe('#origin', () => {
     it('should return an origin', () => {
       [...Array(100).keys()].forEach(_ => {
-        const origin = Coffee.origin();
+        const origin = Faker.Coffee.origin();
         const region = origin.match(/^(.*),/)[1];
         const country = origin.match(/^.*,\s(.*)$/)[1];
         expect(country).to.be.oneOf(data['countries']);
@@ -27,7 +27,7 @@ describe('Coffee', () => {
   describe('#variety', () => {
     it('should return a variety', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Coffee.variety()).to.be.oneOf(data['varieties']);
+        expect(Faker.Coffee.variety()).to.be.oneOf(data['varieties']);
       });
     });
   });
@@ -35,7 +35,7 @@ describe('Coffee', () => {
   describe('#notes', () => {
     it('should replace placeholders', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Coffee.notes()).not.to.match(/\{\w+\}/);
+        expect(Faker.Coffee.notes()).not.to.match(/\{\w+\}/);
       });
     });
   });

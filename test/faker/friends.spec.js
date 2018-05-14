@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const Friends = require('../../src/faker/friends');
+const Faker = require('../../src/faker');
 const data = require('../../data/friends.json');
 
 describe('Friends', () => {
   describe('#character', () => {
     it('should return a character', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Friends.character()).to.be.oneOf(data['characters']);
+        expect(Faker.Friends.character()).to.be.oneOf(data['characters']);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('Friends', () => {
   describe('#location', () => {
     it('should return a location', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Friends.location()).to.be.oneOf(data['locations']);
+        expect(Faker.Friends.location()).to.be.oneOf(data['locations']);
       });
     });
   });
@@ -23,7 +23,7 @@ describe('Friends', () => {
   describe('#quote', () => {
     it('should return a quote', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Friends.quote()).to.be.oneOf(data['quotes']);
+        expect(Faker.Friends.quote()).to.be.oneOf(data['quotes']);
       });
     });
   });

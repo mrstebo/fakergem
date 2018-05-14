@@ -2,24 +2,6 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/coffee.json');
 
-export function blendName() {
-  return parseFormat(itemFromCollection(data['blendNames']));
-}
-
-export function origin() {
-  const c = country();
-  const r = region(c);
-  return `${r}, ${c}`;
-}
-
-export function variety() {
-  return itemFromCollection(data['varieties']);
-}
-
-export function notes() {
-  return parseFormat(itemFromCollection(data['notes']));
-}
-
 function country() {
   return itemFromCollection(data['countries']);
 }
@@ -56,4 +38,28 @@ function parseFormat(format) {
     .replace(/\{descriptor\}/g, descriptor())
     .replace(/\{name1\}/g, name1())
     .replace(/\{name2\}/g, name2());
+}
+
+export default class Coffee {
+  constructor(faker) {
+    this.faker = faker;
+  }
+
+  blendName() {
+    return parseFormat(itemFromCollection(data['blendNames']));
+  }
+
+  origin() {
+    const c = country();
+    const r = region(c);
+    return `${r}, ${c}`;
+  }
+
+  variety() {
+    return itemFromCollection(data['varieties']);
+  }
+
+  notes() {
+    return parseFormat(itemFromCollection(data['notes']));
+  }
 }

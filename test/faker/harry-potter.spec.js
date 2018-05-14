@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const HarryPotter = require('../../src/faker/harry-potter');
+const Faker = require('../../src/faker');
 const data = require('../../data/harry-potter.json');
 
 describe('HarryPotter', () => {
   describe('#character', () => {
     it('should return a character', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(HarryPotter.character()).to.be.oneOf(data['characters']);
+        expect(Faker.HarryPotter.character()).to.be.oneOf(data['characters']);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('HarryPotter', () => {
   describe('#location', () => {
     it('should return a location', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(HarryPotter.location()).to.be.oneOf(data['locations']);
+        expect(Faker.HarryPotter.location()).to.be.oneOf(data['locations']);
       });
     });
   });
@@ -23,7 +23,7 @@ describe('HarryPotter', () => {
   describe('#quote', () => {
     it('should return a quote', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(HarryPotter.quote()).to.be.oneOf(data['quotes']);
+        expect(Faker.HarryPotter.quote()).to.be.oneOf(data['quotes']);
       });
     });
   });
@@ -31,7 +31,7 @@ describe('HarryPotter', () => {
   describe('#book', () => {
     it('should return a book', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(HarryPotter.book()).to.be.oneOf(data['books']);
+        expect(Faker.HarryPotter.book()).to.be.oneOf(data['books']);
       });
     });
   });

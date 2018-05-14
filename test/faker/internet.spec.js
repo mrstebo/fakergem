@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Internet = require('../../src/faker/internet');
+const Faker = require('../../src/faker');
 const data = require('../../data/internet.json');
 const nameData = require('../../data/name.json');
 
@@ -16,43 +16,43 @@ describe('Internet', () => {
 
   describe('#userName', () => {
     it('should return a username', () => {
-      expect(Internet.userName()).to.match(/^\w+(?:(\.|\_)\w+)?$/);
+      expect(Faker.Internet.userName()).to.match(/^\w+(?:(\.|\_)\w+)?$/);
     });
 
     it('should return a username based off the specifier', () => {
-      const userName = Internet.userName('test user');
+      const userName = Faker.Internet.userName('test user');
       expect(userName).to.match(/test/);
       expect(userName).to.match(/user/);
       expect(userName).to.match(/\w+(\.|\_)\w+/);
     });
 
     it('should return a username with the specified separator', () => {
-      expect(Internet.userName('test user', ['#'])).to.match(/\w+\#\w+/);
+      expect(Faker.Internet.userName('test user', ['#'])).to.match(/\w+\#\w+/);
     });
   });
 
   describe('#password', () => {
     it('should return a password', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.password()).to.match(/^[a-zA-Z0-9]+$/);
+        expect(Faker.Internet.password()).to.match(/^[a-zA-Z0-9]+$/);
       });
     });
 
     it('should return a password between 8 and 16 alphanumeric characters by default', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.password()).to.match(/^[a-zA-Z0-9]{8,16}$/);
+        expect(Faker.Internet.password()).to.match(/^[a-zA-Z0-9]{8,16}$/);
       });
     });
 
     it('should return a lowercase password when mixCase is false', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.password(8, 16, false)).to.match(/^[a-z0-9]+$/);
+        expect(Faker.Internet.password(8, 16, false)).to.match(/^[a-z0-9]+$/);
       });
     });
 
     it('should return a password with special characters when specialChars is true', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.password(128, 128, true, true)).to.match(/[\!\@\#\$\%\^\&\*]/);
+        expect(Faker.Internet.password(128, 128, true, true)).to.match(/[\!\@\#\$\%\^\&\*]/);
       });
     });
   });
@@ -60,7 +60,7 @@ describe('Internet', () => {
   describe('#domainName', () => {
     it('should return a domainName', () => {
       [...Array(100).keys()].forEach(_ => {
-        const domainName = Internet.domainName();
+        const domainName = Faker.Internet.domainName();
         expect(domainName.split('.')[0]).to.be.oneOf(nameData['lastNames']);
         expect(domainName.split('.')[1]).to.be.oneOf(data['domainSuffixes']);
       });
@@ -69,22 +69,22 @@ describe('Internet', () => {
 
   describe('#fixUmlauts', () => {
     it('should replace ä with ae', () => {
-      expect(Internet.fixUmlauts('ä')).to.eql('ae');
+      expect(Faker.Internet.fixUmlauts('ä')).to.eql('ae');
     });
 
     it('should replace ö with oe', () => {
-      expect(Internet.fixUmlauts('ö')).to.eql('oe');
+      expect(Faker.Internet.fixUmlauts('ö')).to.eql('oe');
     });
 
     it('should replace ü with ue', () => {
-      expect(Internet.fixUmlauts('ü')).to.eql('ue');
+      expect(Faker.Internet.fixUmlauts('ü')).to.eql('ue');
     });
   });
 
   describe('#domainWord', () => {
     it('should return a domainWord', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.domainWord()).to.be.oneOf(nameData['lastNames']);
+        expect(Faker.Internet.domainWord()).to.be.oneOf(nameData['lastNames']);
       });
     });
   });
@@ -92,7 +92,7 @@ describe('Internet', () => {
   describe('#domainSuffix', () => {
     it('should return a domainSuffix', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.domainSuffix()).to.be.oneOf(data['domainSuffixes']);
+        expect(Faker.Internet.domainSuffix()).to.be.oneOf(data['domainSuffixes']);
       });
     });
   });
@@ -100,7 +100,7 @@ describe('Internet', () => {
   describe('#ipV4Address', () => {
     it('should return an IPv4 address', () => {
       [...Array(100).keys()].forEach(_ => {
-        const addr = Internet.ipV4Address();
+        const addr = Faker.Internet.ipV4Address();
         const octets = addr.split('.').map(x => parseInt(x));
         expect(addr).to.match(/^\d+\.\d+\.\d+\.\d+$/);
         expect(Math.max(...octets)).to.be.below(255);
@@ -122,7 +122,7 @@ describe('Internet', () => {
       ];
       const expected = new RegExp(regexps.map(x => `(${x.source})`).join('|'));
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.privateIPV4Address()).to.match(expected);
+        expect(Faker.Internet.privateIPV4Address()).to.match(expected);
       });
     });
   });
@@ -149,7 +149,7 @@ describe('Internet', () => {
         /^(24\d|25[0-5])\./     // 240.0.0.0    – 255.255.255.254  and  255.255.255.255
       ];
       [...Array(100).keys()].forEach(_ => {
-        const addr = Internet.publicIPV4Address();
+        const addr = Faker.Internet.publicIPV4Address();
         privateRegexps.forEach(regexp => expect(addr).not.to.match(regexp));
         reservedRegexps.forEach(regexp => expect(addr).not.to.match(regexp));
       });
@@ -159,7 +159,7 @@ describe('Internet', () => {
   describe('#ipV4CIDR', () => {
     it('should return a IPv4 Classless Inter-Domain Routing address', () => {
       [...Array(100).keys()].forEach(_ => {
-        const addr = Internet.ipV4CIDR();
+        const addr = Faker.Internet.ipV4CIDR();
         expect(addr).to.match(/\/\d{1,2}$/);
         expect(parseInt(addr.split('/')[1])).to.be.within(1, 32);
       });
@@ -168,13 +168,13 @@ describe('Internet', () => {
 
   describe('#ipV6Address', () => {
     [...Array(100).keys()].forEach(_ => {
-      expect(Internet.ipV6Address()).to.match(/^[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}$/);
+      expect(Faker.Internet.ipV6Address()).to.match(/^[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}:[0-9a-f]{4}$/);
     });
   });
 
   describe('#ipV6CIDR', () => {
     [...Array(100).keys()].forEach(_ => {
-      const addr = Internet.ipV6CIDR();
+      const addr = Faker.Internet.ipV6CIDR();
       expect(addr).to.match(/\/\d{1,3}$/);
       expect(parseInt(addr.split('/')[1])).to.be.within(1, 128);
     });
@@ -182,59 +182,59 @@ describe('Internet', () => {
 
   describe('#macAddress', () => {
     it('should return a colon separated address', () => {
-      expect(Internet.macAddress()).to.match(/\:/);
+      expect(Faker.Internet.macAddress()).to.match(/\:/);
     });
 
     it('should contain no more than 6 separated values', () => {
-      expect(Internet.macAddress().split(':')).to.have.lengthOf(6);
+      expect(Faker.Internet.macAddress().split(':')).to.have.lengthOf(6);
     });
 
     it('should have values that do not exceed 0xFF', () => {
-      expect(Internet.macAddress().split(':').map(x => parseInt(x, 16)).sort((a, b) => a < b)[0]).to.be.below(0xFF);
+      expect(Faker.Internet.macAddress().split(':').map(x => parseInt(x, 16)).sort((a, b) => a < b)[0]).to.be.below(0xFF);
     });
   });
 
   describe('#url', () => {
     it('should return a URL', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.url()).to.match(/^http:\/\/.+\/.+$/);
+        expect(Faker.Internet.url()).to.match(/^http:\/\/.+\/.+$/);
       });
     });
 
     it('should return a URL with the specified host', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.url('myhost')).to.match(/^http:\/\/myhost\/.+$/);
+        expect(Faker.Internet.url('myhost')).to.match(/^http:\/\/myhost\/.+$/);
       });
     });
 
     it('should return a URL with the specified path', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.url('myhost', '/mypath')).to.match(/^http:\/\/.+\/mypath$/);
+        expect(Faker.Internet.url('myhost', '/mypath')).to.match(/^http:\/\/.+\/mypath$/);
       });
     });
 
     it('should return a URL with the specified scheme', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Internet.url('myhost', '/mypath', 'git')).to.match(/^git:\/\/.+\/.+$/);
+        expect(Faker.Internet.url('myhost', '/mypath', 'git')).to.match(/^git:\/\/.+\/.+$/);
       });
     });
   });
 
   describe('#slug', () => {
     it('should return a slug when no parameters are specified', () => {
-      expect(Internet.slug()).to.match(/^\w+(\-|\_|\.)\w+$/);
+      expect(Faker.Internet.slug()).to.match(/^\w+(\-|\_|\.)\w+$/);
     });
 
     it('should return slug with specified words', () => {
-      expect(Internet.slug('test slug')).to.match(/^test(\-|\_|\.)slug$/);
+      expect(Faker.Internet.slug('test slug')).to.match(/^test(\-|\_|\.)slug$/);
     });
 
     it('should return slug joined with the specified "glue"', () => {
-      expect(Internet.slug(null, '#')).to.match(/^\w+\#\w+$/);
+      expect(Faker.Internet.slug(null, '#')).to.match(/^\w+\#\w+$/);
     });
 
     it('should be all lowercase', () => {
-      expect(Internet.slug()).to.match(/^[a-z]+.[a-z]+$/)
+      expect(Faker.Internet.slug()).to.match(/^[a-z]+.[a-z]+$/)
     });
   });
 });

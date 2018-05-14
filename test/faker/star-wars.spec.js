@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const StarWars = require('../../src/faker/star-wars');
+const Faker = require('../../src/faker');
 const data = require('../../data/star-wars.json');
 
 describe('StarWars', () => {
   describe('#character', () => {
     it('should return a character', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(StarWars.character()).to.be.oneOf(data['characters']);
+        expect(Faker.StarWars.character()).to.be.oneOf(data['characters']);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('StarWars', () => {
   describe('#droid', () => {
     it('should return a droid', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(StarWars.droid()).to.be.oneOf(data['droids']);
+        expect(Faker.StarWars.droid()).to.be.oneOf(data['droids']);
       });
     });
   });
@@ -23,7 +23,7 @@ describe('StarWars', () => {
   describe('#planet', () => {
     it('should return a planet', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(StarWars.planet()).to.be.oneOf(data['planets']);
+        expect(Faker.StarWars.planet()).to.be.oneOf(data['planets']);
       });
     });
   });
@@ -31,7 +31,7 @@ describe('StarWars', () => {
   describe('#quote', () => {
     it('should return a quote', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(StarWars.quote()).to.be.oneOf(data['quotes']);
+        expect(Faker.StarWars.quote()).to.be.oneOf(data['quotes']);
       });
     });
   });
@@ -39,7 +39,7 @@ describe('StarWars', () => {
   describe('#specie', () => {
     it('should return a specie', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(StarWars.specie()).to.be.oneOf(data['species']);
+        expect(Faker.StarWars.specie()).to.be.oneOf(data['species']);
       });
     });
   });
@@ -47,7 +47,7 @@ describe('StarWars', () => {
   describe('#vehicle', () => {
     it('should return a vehicle', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(StarWars.vehicle()).to.be.oneOf(data['vehicles']);
+        expect(Faker.StarWars.vehicle()).to.be.oneOf(data['vehicles']);
       });
     });
   });
@@ -55,7 +55,7 @@ describe('StarWars', () => {
   describe('#wookieSentence', () => {
     it('should return wookie words', () => {
       [...Array(100).keys()].forEach(_ => {
-        StarWars.wookieSentence()
+        Faker.StarWars.wookieSentence()
           .split(/(?:\s|[.?!])/) // remove endings
           .filter(x => x)
           .forEach(word => {
@@ -65,11 +65,11 @@ describe('StarWars', () => {
     });
 
     it('should start with a capital letter', () => {
-      expect(StarWars.wookieSentence()).to.match(/^[A-Z]/);
+      expect(Faker.StarWars.wookieSentence()).to.match(/^[A-Z]/);
     });
 
     it('should end with period, question mark or explanation mark', () => {
-      expect(StarWars.wookieSentence()).to.match(/[.?!]$/);
+      expect(Faker.StarWars.wookieSentence()).to.match(/[.?!]$/);
     });
   });
 });

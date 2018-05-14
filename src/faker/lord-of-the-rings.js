@@ -2,11 +2,16 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/lord-of-the-rings.json');
 
-export function character() {
-  return itemFromCollection(data['characters']);
-}
+export default class LordOfTheRings {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function location() {
-  return itemFromCollection(data['locations']);
-}
+  character() {
+    return itemFromCollection(data['characters']);
+  }
 
+  location() {
+    return itemFromCollection(data['locations']);
+  }
+}

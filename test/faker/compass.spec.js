@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Compass = require('../../src/faker/compass');
+const Faker = require('../../src/faker');
 const data = require('../../data/compass.json');
 
 describe('Compass', () => {
@@ -13,13 +13,13 @@ describe('Compass', () => {
         ...data['quarterWinds']['word']
       ];
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.direction()).to.be.oneOf(directions);
+        expect(Faker.Compass.direction()).to.be.oneOf(directions);
       });
     });
 
     it('should replace placeholders', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.direction()).not.to.match(/#\{\w+\}/);
+        expect(Faker.Compass.direction()).not.to.match(/#\{\w+\}/);
       });
     });
   });
@@ -27,7 +27,7 @@ describe('Compass', () => {
   describe('#cardinal', () => {
     it('should return a cardinal', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.cardinal()).to.be.oneOf(data['cardinals']['word']);
+        expect(Faker.Compass.cardinal()).to.be.oneOf(data['cardinals']['word']);
       });
     });
   });
@@ -35,7 +35,7 @@ describe('Compass', () => {
   describe('#ordinal', () => {
     it('should return a ordinal', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.ordinal()).to.be.oneOf(data['ordinals']['word']);
+        expect(Faker.Compass.ordinal()).to.be.oneOf(data['ordinals']['word']);
       });
     });
   });
@@ -43,7 +43,7 @@ describe('Compass', () => {
   describe('#halfWind', () => {
     it('should return a halfWind', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.halfWind()).to.be.oneOf(data['halfWinds']['word']);
+        expect(Faker.Compass.halfWind()).to.be.oneOf(data['halfWinds']['word']);
       });
     });
   });
@@ -51,7 +51,7 @@ describe('Compass', () => {
   describe('#quarterWind', () => {
     it('should return a quarterWind', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.quarterWind()).to.be.oneOf(data['quarterWinds']['word']);
+        expect(Faker.Compass.quarterWind()).to.be.oneOf(data['quarterWinds']['word']);
       });
     });
   });
@@ -65,13 +65,13 @@ describe('Compass', () => {
         ...data['quarterWinds']['abbreviation']
       ];
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.abbreviation()).to.be.oneOf(abbreviations);
+        expect(Faker.Compass.abbreviation()).to.be.oneOf(abbreviations);
       });
     });
 
     it('should replace placeholders', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.abbreviation()).not.to.match(/#\{\w+\}/);
+        expect(Faker.Compass.abbreviation()).not.to.match(/#\{\w+\}/);
       });
     });
   });
@@ -79,7 +79,7 @@ describe('Compass', () => {
   describe('#cardinalAbbreviation', () => {
     it('should return a cardinalAbbreviation', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.cardinalAbbreviation()).to.be.oneOf(data['cardinals']['abbreviation']);
+        expect(Faker.Compass.cardinalAbbreviation()).to.be.oneOf(data['cardinals']['abbreviation']);
       });
     });
   });
@@ -87,7 +87,7 @@ describe('Compass', () => {
   describe('#ordinalAbbreviation', () => {
     it('should return a ordinalAbbreviation', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.ordinalAbbreviation()).to.be.oneOf(data['ordinals']['abbreviation']);
+        expect(Faker.Compass.ordinalAbbreviation()).to.be.oneOf(data['ordinals']['abbreviation']);
       });
     });
   });
@@ -95,7 +95,7 @@ describe('Compass', () => {
   describe('#halfWindAbbreviation', () => {
     it('should return a halfWindAbbreviation', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.halfWindAbbreviation()).to.be.oneOf(data['halfWinds']['abbreviation']);
+        expect(Faker.Compass.halfWindAbbreviation()).to.be.oneOf(data['halfWinds']['abbreviation']);
       });
     });
   });
@@ -103,7 +103,7 @@ describe('Compass', () => {
   describe('#quarterWindAbbreviation', () => {
     it('should return a quarterWindAbbreviation', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.quarterWindAbbreviation()).to.be.oneOf(data['quarterWinds']['abbreviation']);
+        expect(Faker.Compass.quarterWindAbbreviation()).to.be.oneOf(data['quarterWinds']['abbreviation']);
       });
     });
   });
@@ -117,13 +117,13 @@ describe('Compass', () => {
         ...data['quarterWinds']['azimuth']
       ];
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.azimuth()).to.be.oneOf(azimuths);
+        expect(Faker.Compass.azimuth()).to.be.oneOf(azimuths);
       });
     });
 
     it('should replace placeholders', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.azimuth()).not.to.match(/#\{\w+\}/);
+        expect(Faker.Compass.azimuth()).not.to.match(/#\{\w+\}/);
       });
     });
   });
@@ -131,7 +131,7 @@ describe('Compass', () => {
   describe('#cardinalAzimuth', () => {
     it('should return a cardinalAzimuth', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.cardinalAzimuth()).to.be.oneOf(data['cardinals']['azimuth']);
+        expect(Faker.Compass.cardinalAzimuth()).to.be.oneOf(data['cardinals']['azimuth']);
       });
     });
   });
@@ -139,7 +139,7 @@ describe('Compass', () => {
   describe('#ordinalAzimuth', () => {
     it('should return a ordinalAzimuth', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.ordinalAzimuth()).to.be.oneOf(data['ordinals']['azimuth']);
+        expect(Faker.Compass.ordinalAzimuth()).to.be.oneOf(data['ordinals']['azimuth']);
       });
     });
   });
@@ -147,7 +147,7 @@ describe('Compass', () => {
   describe('#halfWindAzimuth', () => {
     it('should return a halfWindAzimuth', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.halfWindAzimuth()).to.be.oneOf(data['halfWinds']['azimuth']);
+        expect(Faker.Compass.halfWindAzimuth()).to.be.oneOf(data['halfWinds']['azimuth']);
       });
     });
   });
@@ -155,7 +155,7 @@ describe('Compass', () => {
   describe('#quarterWindAzimuth', () => {
     it('should return a quarterWindAzimuth', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Compass.quarterWindAzimuth()).to.be.oneOf(data['quarterWinds']['azimuth']);
+        expect(Faker.Compass.quarterWindAzimuth()).to.be.oneOf(data['quarterWinds']['azimuth']);
       });
     });
   });

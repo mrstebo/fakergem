@@ -2,15 +2,20 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/zelda.json');
 
-export function game() {
-  return itemFromCollection(data['games']);
-}
+export default class Zelda {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function character() {
-  return itemFromCollection(data['characters']);
-}
+  game() {
+    return itemFromCollection(data['games']);
+  }
 
-export function location() {
-  return itemFromCollection(data['locations']);
-}
+  character() {
+    return itemFromCollection(data['characters']);
+  }
 
+  location() {
+    return itemFromCollection(data['locations']);
+  }
+}

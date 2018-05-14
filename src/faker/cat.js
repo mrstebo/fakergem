@@ -2,14 +2,20 @@ import { itemFromCollection } from '../utils/random';
 
 const data = require('../../data/cat.json');
 
-export function name() {
-  return itemFromCollection(data['names']);
-}
+export default class Cat {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function breed() {
-  return itemFromCollection(data['breeds']);
-}
+  name() {
+    return itemFromCollection(data['names']);
+  }
 
-export function registry() {
-  return itemFromCollection(data['registries']);
+  breed() {
+    return itemFromCollection(data['breeds']);
+  }
+
+  registry() {
+    return itemFromCollection(data['registries']);
+  }
 }

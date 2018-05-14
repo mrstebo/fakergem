@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const SlackEmoji = require('../../src/faker/slack-emoji');
+const Faker = require('../../src/faker');
 const data = require('../../data/slack-emoji.json');
 
 describe('SlackEmoji', () => {
   describe('#people', () => {
     it('should return an emoji from the people category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.people()).to.be.oneOf(data['people']);
+        expect(Faker.SlackEmoji.people()).to.be.oneOf(data['people']);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('SlackEmoji', () => {
   describe('#nature', () => {
     it('should return an emoji from the nature category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.nature()).to.be.oneOf(data['nature']);
+        expect(Faker.SlackEmoji.nature()).to.be.oneOf(data['nature']);
       });
     });
   });
@@ -23,7 +23,7 @@ describe('SlackEmoji', () => {
   describe('#foodAndDrink', () => {
     it('should return an emoji from the food and drink category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.foodAndDrink()).to.be.oneOf(data['foodAndDrink']);
+        expect(Faker.SlackEmoji.foodAndDrink()).to.be.oneOf(data['foodAndDrink']);
       });
     });
   });
@@ -31,7 +31,7 @@ describe('SlackEmoji', () => {
   describe('#celebration', () => {
     it('should return an emoji from the celebration category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.celebration()).to.be.oneOf(data['celebration']);
+        expect(Faker.SlackEmoji.celebration()).to.be.oneOf(data['celebration']);
       });
     });
   });
@@ -39,7 +39,7 @@ describe('SlackEmoji', () => {
   describe('#activity', () => {
     it('should return an emoji from the activity category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.activity()).to.be.oneOf(data['activity']);
+        expect(Faker.SlackEmoji.activity()).to.be.oneOf(data['activity']);
       });
     });
   });
@@ -47,7 +47,7 @@ describe('SlackEmoji', () => {
   describe('#travelAndPlaces', () => {
     it('should return an emoji from the travel and places category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.travelAndPlaces()).to.be.oneOf(data['travelAndPlaces']);
+        expect(Faker.SlackEmoji.travelAndPlaces()).to.be.oneOf(data['travelAndPlaces']);
       });
     });
   });
@@ -55,7 +55,7 @@ describe('SlackEmoji', () => {
   describe('#objectsAndSymbols', () => {
     it('should return an emoji from the objects and symbols category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.objectsAndSymbols()).to.be.oneOf(data['objectsAndSymbols']);
+        expect(Faker.SlackEmoji.objectsAndSymbols()).to.be.oneOf(data['objectsAndSymbols']);
       });
     });
   });
@@ -63,7 +63,7 @@ describe('SlackEmoji', () => {
   describe('#custom', () => {
     it('should return an emoji from the custom category', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.custom()).to.be.oneOf(data['custom']);
+        expect(Faker.SlackEmoji.custom()).to.be.oneOf(data['custom']);
       });
     });
   });
@@ -81,7 +81,7 @@ describe('SlackEmoji', () => {
         ...data['custom']
       ];
       [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.emoji()).to.be.oneOf(emojis);
+        expect(Faker.SlackEmoji.emoji()).to.be.oneOf(emojis);
       });
     });
   });
