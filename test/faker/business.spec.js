@@ -1,33 +1,32 @@
 'use strict';
-const chai = require('chai');
-const { expect } = chai;
-const Business = require('../../src/faker/business');
+const expect = require('chai').expect;
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/business.json');
-
-chai.use(require('chai-datetime'));
 
 describe('Business', () => {
   describe('#creditCardNumber', () => {
-    it('should return a credit card number', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Business.creditCardNumber()).to.be.oneOf(data['creditCardNumbers']);
-      });
-    });
+    it('should return a credit card number', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['creditCardNumbers']).returns('123');
+      expect(Faker.Business.creditCardNumber()).to.eql('123');
+    }));
   });
 
   describe('#creditCardExpiryDate', () => {
-    it('should return a date in the future', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Business.creditCardExpiryDate()).to.be.afterDate(new Date());
-      });
-    });
+    it('should return a date in the future', sinonTest(function() {
+      const expected = new Date();
+      expected.setDate(expected.getDate() + (365 * 2));
+      expected.setHours(0, 0, 0, 0);
+      this.stub(Faker.Number, 'between').withArgs(1, 5).returns(2);
+      expect(Faker.Business.creditCardExpiryDate()).to.eql(expected)
+    }));
   });
 
   describe('#creditCardType', () => {
-    it('should return a credit card type', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Business.creditCardType()).to.be.oneOf(data['creditCardTypes']);
-      });
-    });
+    it('should return a credit card type', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['creditCardTypes']).returns('Visa');
+      expect(Faker.Business.creditCardType()).to.eql('Visa');
+    }));
   });
 });
