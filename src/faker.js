@@ -28,7 +28,7 @@ import * as Friends from './faker/friends';
 import * as GameOfThrones from './faker/game-of-thrones';
 import * as Hacker from './faker/hacker';
 import * as HarryPotter from './faker/harry-potter';
-import * as Hipster from './faker/hipster';
+import Hipster from './faker/hipster';
 import * as Internet from './faker/internet';
 import * as LordOfTheRings from './faker/lord-of-the-rings';
 import * as LoremFlickr from './faker/lorem-flickr';
@@ -89,7 +89,7 @@ class Faker {
     this.GameOfThrones = GameOfThrones;
     this.Hacker = Hacker;
     this.HarryPotter = HarryPotter;
-    this.Hipster = Hipster;
+    this.Hipster = new Hipster(this);
     this.Internet = Internet;
     this.LordOfTheRings = LordOfTheRings;
     this.LoremFlickr = LoremFlickr;
