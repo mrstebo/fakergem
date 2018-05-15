@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/game-of-thrones.json');
 
 export default class GameOfThrones {
@@ -8,18 +6,18 @@ export default class GameOfThrones {
   }
 
   character() {
-    return itemFromCollection(data['characters']);
+    return this.faker.Random.element(data['characters']);
   }
 
   house() {
-    return itemFromCollection(data['houses']);
+    return this.faker.Random.element(data['houses']);
   }
 
   city() {
-    return itemFromCollection(data['cities']);
+    return this.faker.Random.element(data['cities']);
   }
 
   dragon() {
-    return itemFromCollection(data['dragons']);
+    return this.faker.Random.element(data['dragons']);
   }
 }

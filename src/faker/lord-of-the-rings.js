@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/lord-of-the-rings.json');
 
 export default class LordOfTheRings {
@@ -8,10 +6,10 @@ export default class LordOfTheRings {
   }
 
   character() {
-    return itemFromCollection(data['characters']);
+    return this.faker.Random.element(data['characters']);
   }
 
   location() {
-    return itemFromCollection(data['locations']);
+    return this.faker.Random.element(data['locations']);
   }
 }

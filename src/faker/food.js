@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/food.json');
 
 export default class Food {
@@ -8,14 +6,14 @@ export default class Food {
   }
 
   ingredient() {
-    return itemFromCollection(data['ingredients']);
+    return this.faker.Random.element(data['ingredients']);
   }
 
   spice() {
-    return itemFromCollection(data['spices']);
+    return this.faker.Random.element(data['spices']);
   }
 
   measurement() {
-    return itemFromCollection(data['measurements']);
+    return this.faker.Random.element(data['measurements']);
   }
 }

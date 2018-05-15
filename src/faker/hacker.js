@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/hacker.json');
 
 function parse(hacker, format) {
@@ -18,26 +16,26 @@ export default class Hacker {
   }
 
   saySomethingSmart() {
-    return parse(this, itemFromCollection(data['phrases']));
+    return parse(this, this.faker.Random.element(data['phrases']));
   }
 
   abbreviation() {
-    return itemFromCollection(data['abbreviations']);
+    return this.faker.Random.element(data['abbreviations']);
   }
 
   adjective() {
-    return itemFromCollection(data['adjectives']);
+    return this.faker.Random.element(data['adjectives']);
   }
 
   noun() {
-    return itemFromCollection(data['nouns']);
+    return this.faker.Random.element(data['nouns']);
   }
 
   verb() {
-    return itemFromCollection(data['verbs']);
+    return this.faker.Random.element(data['verbs']);
   }
 
   ingverb() {
-    return itemFromCollection(data['ingverbs']);
+    return this.faker.Random.element(data['ingverbs']);
   }
 }

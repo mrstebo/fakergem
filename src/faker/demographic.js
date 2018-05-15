@@ -1,5 +1,3 @@
-import { itemFromCollection, randomNumber, randomFloat } from '../utils/random';
-
 const data = require('../../data/demographic.json');
 
 export default class Demographic {
@@ -8,31 +6,31 @@ export default class Demographic {
   }
 
   race() {
-    return itemFromCollection(data['races']);
+    return this.faker.Random.element(data['races']);
   }
 
   educationalAttainment() {
-    return itemFromCollection(data['educationalAttainments']);
+    return this.faker.Random.element(data['educationalAttainments']);
   }
 
   demonym() {
-    return itemFromCollection(data['demonyms']);
+    return this.faker.Random.element(data['demonyms']);
   }
 
   maritalStatus() {
-    return itemFromCollection(data['maritalStatuses']);
+    return this.faker.Random.element(data['maritalStatuses']);
   }
 
   sex() {
-    return itemFromCollection(data['sexes']);
+    return this.faker.Random.element(data['sexes']);
   }
 
   height(unit='metric') {
     switch(unit) {
       case 'metric':
-        return `${randomFloat(1.45, 2.13).toFixed(2)}`;
+        return `${this.faker.Number.between(1.45, 2.13).toFixed(2)}`;
       case 'imperial':
-        const inches = randomNumber(57, 86);
+        const inches = this.faker.Number.between(57, 86);
         return `${Math.floor(inches / 12)} ft, ${inches % 12} in`;
     }
   }

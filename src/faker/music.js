@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/music.json');
 
 export default class Music {
@@ -9,19 +7,19 @@ export default class Music {
 
   key() {
     return [
-      itemFromCollection(data['keys']),
-      itemFromCollection(data['keyVariants'])
+      this.faker.Random.element(data['keys']),
+      this.faker.Random.element(data['keyVariants'])
     ].join('');
   }
 
   chord() {
     return [
-      itemFromCollection(data['keys']),
-      itemFromCollection(data['chordTypes'])
+      this.faker.Random.element(data['keys']),
+      this.faker.Random.element(data['chordTypes'])
     ].join('');
   }
 
   instrument() {
-    return itemFromCollection(data['instruments']);
+    return this.faker.Random.element(data['instruments']);
   }
 }

@@ -1,5 +1,3 @@
-import { itemFromCollection, randomNumber } from '../utils/random';
-
 const data = require('../../data/phone-number.json');
 
 export default class PhoneNumber {
@@ -8,27 +6,27 @@ export default class PhoneNumber {
   }
 
   phoneNumber() {
-    const format = itemFromCollection(data['phoneNumber']['formats']);
-    return format.replace(/#/g, _ => randomNumber(0, 9));
+    const format = this.faker.Random.element(data['phoneNumber']['formats']);
+    return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
   }
 
   cellPhone() {
-    const format = itemFromCollection(data['cellPhone']['formats']);
-    return format.replace(/#/g, _ => randomNumber(0, 9));
+    const format = this.faker.Random.element(data['cellPhone']['formats']);
+    return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
   }
 
   areaCode() {
-    return itemFromCollection(data['areaCodes']);
+    return this.faker.Random.element(data['areaCodes']);
   }
 
   exchangeCode() {
-    return itemFromCollection(data['exchangeCodes']);
+    return this.faker.Random.element(data['exchangeCodes']);
   }
 
   subscriberNumber(length=4) {
     const min = Math.pow(10, length)/10;
     const max = (min * 10) - 1;
-    return randomNumber(min, max);
+    return this.faker.Number.between(min, max);
   }
 
   extension(length=4) {

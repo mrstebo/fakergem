@@ -1,4 +1,3 @@
-import { itemFromCollection, randomNumber } from '../utils/random';
 import shuffle from '../utils/shuffle';
 
 const data = require('../../data/internet.json');
@@ -51,25 +50,25 @@ export default class Internet {
   freeEmail(name=null) {
     return [
       this.userName(name),
-      itemFromCollection(data['freeEmails'])
+      this.faker.Random.element(data['freeEmails'])
     ].join('@');
   }
 
   safeEmail(name=null) {
     return [
       this.userName(name),
-      `example.${itemFromCollection(['org', 'com', 'net'])}`
+      `example.${this.faker.Random.element(['org', 'com', 'net'])}`
     ].join('@');
   }
 
   userName(specifier=null, separators=null) {
-    const userNameSeparator = itemFromCollection(separators || ['.', '_']);
+    const userNameSeparator = this.faker.Random.element(separators || ['.', '_']);
     if (typeof specifier === 'string') {
       return shuffle(specifier.match(/\w+/g).map(x => x)).join(userNameSeparator);
     }
-    const firstName = itemFromCollection(nameData['firstNames']).toLowerCase();
-    const lastName = itemFromCollection(nameData['lastNames']).toLowerCase();
-    return itemFromCollection([
+    const firstName = this.faker.Random.element(nameData['firstNames']).toLowerCase();
+    const lastName = this.faker.Random.element(nameData['lastNames']).toLowerCase();
+    return this.faker.Random.element([
       firstName,
       [firstName, lastName].join(userNameSeparator)
     ]);
@@ -77,10 +76,10 @@ export default class Internet {
 
   password(minLength=8, maxLength=16, mixCase=true, specialChars=false) {
     const diffLength = maxLength - minLength;
-    const extraCharacters = randomNumber(0, diffLength);
+    const extraCharacters = this.faker.Number.between(0, diffLength);
     const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
     return [...Array(minLength + extraCharacters).keys()].reduce((result, val, index) => {
-      const c = itemFromCollection(chars).toString();
+      const c = this.faker.Random.element(chars).toString();
       return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
     }, '');
   }
@@ -100,19 +99,19 @@ export default class Internet {
   }
 
   domainWord() {
-    return itemFromCollection(nameData['lastNames']);
+    return this.faker.Random.element(nameData['lastNames']);
   }
 
   domainSuffix() {
-    return itemFromCollection(data['domainSuffixes'])
+    return this.faker.Random.element(data['domainSuffixes'])
   }
 
   ipV4Address() {
     return [
-      randomNumber(2, 254),
-      randomNumber(2, 254),
-      randomNumber(2, 254),
-      randomNumber(2, 254)
+      this.faker.Number.between(2, 254),
+      this.faker.Number.between(2, 254),
+      this.faker.Number.between(2, 254),
+      this.faker.Number.between(2, 254)
     ].join('.');
   }
 
@@ -129,20 +128,20 @@ export default class Internet {
   }
 
   ipV4CIDR() {
-    return `${this.ipV4Address()}/${randomNumber(1, 32)}`;
+    return `${this.ipV4Address()}/${this.faker.Number.between(1, 32)}`;
   }
 
   ipV6Address() {
-    return [...Array(8).keys()].map(_ => randomNumber(4096, 65535).toString(16)).join(':');
+    return [...Array(8).keys()].map(_ => this.faker.Number.between(4096, 65535).toString(16)).join(':');
   }
 
   ipV6CIDR() {
-    return `${this.ipV6Address()}/${randomNumber(1, 128)}`;
+    return `${this.ipV6Address()}/${this.faker.Number.between(1, 128)}`;
   }
 
   macAddress(prefix='') {
     const prefixDigits = prefix.split(':').filter(x => x).map(x => parseInt(x, 16));
-    const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(x => randomNumber(0, 255));
+    const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(x => this.faker.Number.between(0, 255));
     return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
   }
 
@@ -153,8 +152,8 @@ export default class Internet {
   }
 
   slug(words='', glue='') {
-    return (words || [...Array(2).keys()].map(_ => itemFromCollection(loremData['words'])).join(' '))
-      .replace(/\s+/g, glue || itemFromCollection(['-', '_', '.']))
+    return (words || [...Array(2).keys()].map(_ => this.faker.Random.element(loremData['words'])).join(' '))
+      .replace(/\s+/g, glue || this.faker.Random.element(['-', '_', '.']))
       .toLowerCase();
   }
 }

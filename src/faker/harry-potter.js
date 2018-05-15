@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/harry-potter.json');
 
 export default class HarryPotter {
@@ -8,18 +6,18 @@ export default class HarryPotter {
   }
 
   character() {
-    return itemFromCollection(data['characters']);
+    return this.faker.Random.element(data['characters']);
   }
 
   location() {
-    return itemFromCollection(data['locations']);
+    return this.faker.Random.element(data['locations']);
   }
 
   quote() {
-    return itemFromCollection(data['quotes']);
+    return this.faker.Random.element(data['quotes']);
   }
 
   book() {
-    return itemFromCollection(data['books']);
+    return this.faker.Random.element(data['books']);
   }
 }

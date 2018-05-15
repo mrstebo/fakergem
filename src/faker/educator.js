@@ -1,26 +1,4 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/educator.json');
-
-function name() {
-  return itemFromCollection(data['names']);
-}
-
-function tertiaryType() {
-  return itemFromCollection(data['tertiaries']['types']);
-}
-
-function secondary() {
-  return itemFromCollection(data['secondaries']);
-}
-
-function courseType() {
-  return itemFromCollection(data['tertiaries']['course']['types']);
-}
-
-function courseSubject() {
-  return itemFromCollection(data['tertiaries']['course']['subjects']);
-}
 
 export default class Educator {
   constructor(faker) {
@@ -28,18 +6,25 @@ export default class Educator {
   }
 
   university() {
-    return `${name()} ${tertiaryType()}`;
+    const name = this.faker.Random.element(data['names']);
+    const tertiaryType = this.faker.Random.element(data['tertiaries']['types']);
+    return `${name} ${tertiaryType}`;
   }
 
   secondarySchool() {
-    return `${name()} ${secondary()}`;
+    const name = this.faker.Random.element(data['names']);
+    const secondary = this.faker.Random.element(data['secondaries']);
+    return `${name} ${secondary}`;
   }
 
   course() {
-    return `${courseType()} ${courseSubject()}`;
+    const courseType = this.faker.Random.element(data['tertiaries']['course']['types']);
+    const courseSubject = this.faker.Random.element(data['tertiaries']['course']['subjects']);
+    return `${courseType} ${courseSubject}`;
   }
 
   campus() {
-    return `${name()} Campus`;
+    const name = this.faker.Random.element(data['names']);
+    return `${name} Campus`;
   }
 }

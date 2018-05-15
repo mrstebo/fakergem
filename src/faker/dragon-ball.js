@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/dragon-ball.json');
 
 export default class DragonBall {
@@ -8,6 +6,6 @@ export default class DragonBall {
   }
 
   character() {
-    return itemFromCollection(data['characters']);
+    return this.faker.Random.element(data['characters']);
   }
 }

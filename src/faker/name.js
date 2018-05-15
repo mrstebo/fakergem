@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/name.json');
 
 export default class Name {
@@ -9,40 +7,40 @@ export default class Name {
 
   name() {
     return [
-      itemFromCollection(data['firstNames']),
-      itemFromCollection(data['lastNames'])
+      this.faker.Random.element(data['firstNames']),
+      this.faker.Random.element(data['lastNames'])
     ].join(' ');
   }
 
   nameWithMiddle() {
     return [
-      itemFromCollection(data['firstNames']),
-      itemFromCollection(data['firstNames']),
-      itemFromCollection(data['lastNames'])
+      this.faker.Random.element(data['firstNames']),
+      this.faker.Random.element(data['firstNames']),
+      this.faker.Random.element(data['lastNames'])
     ].join(' ');
   }
 
   firstName() {
-    return itemFromCollection(data['firstNames']);
+    return this.faker.Random.element(data['firstNames']);
   }
 
   lastName() {
-    return itemFromCollection(data['lastNames']);
+    return this.faker.Random.element(data['lastNames']);
   }
 
   prefix() {
-    return itemFromCollection(data['prefixes']);
+    return this.faker.Random.element(data['prefixes']);
   }
 
   suffix() {
-    return itemFromCollection(data['suffixes']);
+    return this.faker.Random.element(data['suffixes']);
   }
 
   title() {
     return [
-      itemFromCollection(data['titles']['descriptor']),
-      itemFromCollection(data['titles']['level']),
-      itemFromCollection(data['titles']['job'])
+      this.faker.Random.element(data['titles']['descriptor']),
+      this.faker.Random.element(data['titles']['level']),
+      this.faker.Random.element(data['titles']['job'])
     ].join(' ');
   }
 }
