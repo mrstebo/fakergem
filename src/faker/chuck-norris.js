@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/chuck-norris.json');
 
 export default class ChuckNorris {
@@ -8,6 +6,6 @@ export default class ChuckNorris {
   }
 
   fact() {
-    return itemFromCollection(data['facts']);
+    return this.faker.Random.element(data['facts']);
   }
 }

@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/cat.json');
 
 export default class Cat {
@@ -8,14 +6,14 @@ export default class Cat {
   }
 
   name() {
-    return itemFromCollection(data['names']);
+    return this.faker.Random.element(data['names']);
   }
 
   breed() {
-    return itemFromCollection(data['breeds']);
+    return this.faker.Random.element(data['breeds']);
   }
 
   registry() {
-    return itemFromCollection(data['registries']);
+    return this.faker.Random.element(data['registries']);
   }
 }

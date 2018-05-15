@@ -34,7 +34,7 @@ export default class Number {
       num = `${nonZeroDigit()}`;
       digits -= 1;
     }
-    return parseInt(num + leadingZeroNumber(digits));
+    return num + leadingZeroNumber(digits);
   }
 
   decimal(leftDigits=5, rightDigits=2) {

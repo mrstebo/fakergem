@@ -4,25 +4,25 @@ const Faker = require('../../src/faker');
 
 describe('Number', () => {
   describe('#number', () => {
-    it('should return a number', () => {
+    it('should return a number string', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Number.number()).to.be.a('number');
+        expect(Faker.Number.number()).to.be.a('string');
       });
     });
 
     it('should return 10 digits by default', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Number.number()).to.be.within(0, 9999999999);
+        expect(Faker.Number.number()).to.match(/^\d{10}$/);
       });
     });
 
     it('should return number with specified digits', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Number.number(1)).to.be.within(0, 9)
-        expect(Faker.Number.number(2)).to.be.within(0, 99);
-        expect(Faker.Number.number(3)).to.be.within(0, 999);
-        expect(Faker.Number.number(4)).to.be.within(0, 9999);
-        expect(Faker.Number.number(5)).to.be.within(0, 99999);
+        expect(Faker.Number.number(1)).to.match(/^\d{1}$/);
+        expect(Faker.Number.number(2)).to.match(/^\d{2}$/);
+        expect(Faker.Number.number(3)).to.match(/^\d{3}$/);
+        expect(Faker.Number.number(4)).to.match(/^\d{4}$/);
+        expect(Faker.Number.number(5)).to.match(/^\d{5}$/);
       });
     });
   });

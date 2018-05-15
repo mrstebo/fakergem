@@ -1,5 +1,3 @@
-import { itemFromCollection, randomNumber } from '../utils/random';
-
 const data = require('../../data/company.json');
 
 function luhnAlgorithm(number) {
@@ -49,21 +47,21 @@ export default class Company {
   }
 
   name() {
-    return itemFromCollection(data['names']);
+    return this.faker.Random.element(data['names']);
   }
 
   suffix() {
-    return itemFromCollection(data['suffixes']);
+    return this.faker.Random.element(data['suffixes']);
   }
 
   catchPhrase() {
     return [...Array(3).keys()]
-      .map(i => itemFromCollection(data['buzzwords'][i]))
+      .map(i => this.faker.Random.element(data['buzzwords'][i]))
       .join(' ');
   }
 
   buzzword() {
-    return itemFromCollection([
+    return this.faker.Random.element([
       ...data['buzzwords'][0],
       ...data['buzzwords'][1],
       ...data['buzzwords'][2]
@@ -72,35 +70,35 @@ export default class Company {
 
   bs() {
     return [...Array(3).keys()]
-      .map(i => itemFromCollection(data['bs'][i]))
+      .map(i => this.faker.Random.element(data['bs'][i]))
       .join(' ');
   }
 
   ein() {
     return [...Array(9).keys()]
-      .map(_ => randomNumber(0, 9))
+      .map(_ => this.faker.Number.between(0, 9))
       .join('')
       .replace(/(\d{2})(\d{7})/, '$1-$2')
   }
 
   dunsNumber() {
     return [...Array(9).keys()]
-      .map(_ => randomNumber(0, 9))
+      .map(_ => this.faker.Number.between(0, 9))
       .join('')
       .replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3');
   }
 
   logo() {
-    const number = randomNumber(1, 14);
+    const number = this.faker.Number.between(1, 14);
     return `https://pigment.github.io/fake-logos/logos/medium/color/${number}.png`
   }
 
   swedishOrganisationNumber() {
     const base = [
-      randomNumber(1, 9),
-      randomNumber(0, 9),
-      randomNumber(2, 9),
-      [...Array(6).keys()].map(_ => randomNumber(0, 9)).join('')
+      this.faker.Number.between(1, 9),
+      this.faker.Number.between(0, 9),
+      this.faker.Number.between(2, 9),
+      [...Array(6).keys()].map(_ => this.faker.Number.between(0, 9)).join('')
     ].join('');
     return `${base}${luhnAlgorithm(base)}`;
   }
@@ -110,8 +108,8 @@ export default class Company {
     let base = '';
     while (mod11Check == null) {
       base = [
-        itemFromCollection([8, 9]),
-        leftPad(randomNumber(0, 10000000), 7, '0')
+        this.faker.Random.element([8, 9]),
+        leftPad(this.faker.Number.between(0, 10000000), 7, '0')
       ].join('');
       mod11Check = mod11(base);
     }
@@ -119,12 +117,12 @@ export default class Company {
   }
 
   australianBusinessNumber() {
-    const base = leftPad(randomNumber(0, 1000000000), 9, '0');
+    const base = leftPad(this.faker.Number.between(0, 1000000000), 9, '0');
     const abn = `00${base}`;
     return `${(99 - abnChecksum(abn) % 89)}${base}`;
   }
 
   profession() {
-    return itemFromCollection(data['professions']);
+    return this.faker.Random.element(data['professions']);
   }
 }

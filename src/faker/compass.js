@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/compass.json');
 
 function parse(compass, text) {
@@ -24,62 +22,62 @@ export default class Compass {
   }
 
   direction() {
-    return parse(this, itemFromCollection(data['directions']));
+    return parse(this, this.faker.Random.element(data['directions']));
   }
 
   cardinal() {
-    return itemFromCollection(data['cardinals']['word']);
+    return this.faker.Random.element(data['cardinals']['word']);
   }
 
   ordinal() {
-    return itemFromCollection(data['ordinals']['word']);
+    return this.faker.Random.element(data['ordinals']['word']);
   }
 
   halfWind() {
-    return itemFromCollection(data['halfWinds']['word']);
+    return this.faker.Random.element(data['halfWinds']['word']);
   }
 
   quarterWind() {
-    return itemFromCollection(data['quarterWinds']['word']);
+    return this.faker.Random.element(data['quarterWinds']['word']);
   }
 
   abbreviation() {
-    return parse(this, itemFromCollection(data['abbreviations']));
+    return parse(this, this.faker.Random.element(data['abbreviations']));
   }
 
   cardinalAbbreviation() {
-    return itemFromCollection(data['cardinals']['abbreviation']);
+    return this.faker.Random.element(data['cardinals']['abbreviation']);
   }
 
   ordinalAbbreviation() {
-    return itemFromCollection(data['ordinals']['abbreviation']);
+    return this.faker.Random.element(data['ordinals']['abbreviation']);
   }
 
   halfWindAbbreviation() {
-    return itemFromCollection(data['halfWinds']['abbreviation']);
+    return this.faker.Random.element(data['halfWinds']['abbreviation']);
   }
 
   quarterWindAbbreviation() {
-    return itemFromCollection(data['quarterWinds']['abbreviation']);
+    return this.faker.Random.element(data['quarterWinds']['abbreviation']);
   }
 
   azimuth() {
-    return parse(this, itemFromCollection(data['azimuths']));
+    return parse(this, this.faker.Random.element(data['azimuths']));
   }
 
   cardinalAzimuth() {
-    return itemFromCollection(data['cardinals']['azimuth']);
+    return this.faker.Random.element(data['cardinals']['azimuth']);
   }
 
   ordinalAzimuth() {
-    return itemFromCollection(data['ordinals']['azimuth']);
+    return this.faker.Random.element(data['ordinals']['azimuth']);
   }
 
   halfWindAzimuth() {
-    return itemFromCollection(data['halfWinds']['azimuth']);
+    return this.faker.Random.element(data['halfWinds']['azimuth']);
   }
 
   quarterWindAzimuth() {
-    return itemFromCollection(data['quarterWinds']['azimuth']);
+    return this.faker.Random.element(data['quarterWinds']['azimuth']);
   }
 }

@@ -13,31 +13,33 @@ export default class Color {
   }
 
   hexColor() {
-    return `#${leftPad(randomNumber(0, 0xffffff).toString(16), 6, '0')}`;
+    const n = this.faker.Number.between(0, 0xffffff);
+    return `#${leftPad(n.toString(16), 6, '0')}`;
   }
 
   colorName() {
-    return itemFromCollection(data['colorNames']);
+    return this.faker.Random.element(data['colorNames']);
   }
 
   rgbColor() {
-    return [...Array(3).keys()].map(_ => randomNumber(0, 255));
+    return [...Array(3).keys()]
+      .map(_ => this.faker.Number.between(0, 255));
   }
 
   hslColor() {
     return [
-      randomNumber(0, 360),
-      Math.round(randomFloat(0, 1), 2),
-      Math.round(randomFloat(0, 1), 2)
+      this.faker.Number.between(0, 360),
+      Math.round(this.faker.Number.between(0.00, 1.00), 2),
+      Math.round(this.faker.Number.between(0.00, 1.00), 2)
     ];
   }
 
   hslaColor() {
     return [
-      randomNumber(0, 360),
-      Math.round(randomFloat(0, 1), 2),
-      Math.round(randomFloat(0, 1), 2),
-      randomFloat(0, 1)
+      this.faker.Number.between(0, 360),
+      Math.round(this.faker.Number.between(0.00, 1.00), 2),
+      Math.round(this.faker.Number.between(0.00, 1.00), 2),
+      this.faker.Number.between(0.00, 1.00)
     ];
   }
 }
