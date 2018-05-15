@@ -1,33 +1,10 @@
-import { randomNumber, itemFromCollection } from '../utils/random';
-
 const data = require('../../data/lorem.json');
 
 // 0-9, a-z
 const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));
 
 function resolveNumber(n) {
-  if (n < 0) {
-    return 0;
-  }
-  return n;
-}
-
-function shuffle(collection) {
-    let index = -1;
-    let length = collection.length;
-    let result = Array(length);
-    while (++index < length) {
-        let rand = randomNumber(0, index);
-        result[index] = result[rand];
-        result[rand] = collection[index];
-    }
-    return result;
-}
-
-function repeatArray(collection, n) {
-  return Array
-    .apply(null, {length: n * collection.length})
-    .map((e, i) => collection[i % collection.length]);
+  return Math.max(parseInt(n), 0);
 }
 
 function capitalize(text) {
@@ -40,29 +17,28 @@ export default class Lorem {
   }
 
   word() {
-    return itemFromCollection(data['words']);
+    return this.faker.Random.element(data['words']);
   }
 
   words(num=3, supplemental=false) {
-    let resolvedNumber = resolveNumber(num);
-    let wordList = supplemental ? [...data['words'], data['supplemental']] : data['words'];
-    wordList = repeatArray(wordList, ((resolvedNumber / wordList.length) + 1));
-    return shuffle(wordList).slice(0, resolvedNumber);
+    const wordList = supplemental ? [...data['words'], data['supplemental']] : data['words'];
+    const words = this.faker.Random.assortment(wordList, resolveNumber(num));
+    return words;
   }
 
   character() {
-    return itemFromCollection(CHARACTERS);
+    return this.faker.Random.element(CHARACTERS);
   }
 
   characters(charCount=255) {
-    let resolvedNumber = resolveNumber(charCount);
-    return [...Array(resolvedNumber).keys()].map(_ => this.character()).join('');
+    return [...Array(resolveNumber(charCount)).keys()]
+      .map(_ => this.character()).join('');
   }
 
   sentence(wordCount=4, supplemental=false, randomWordsToAdd=6) {
     const text = capitalize(
       this.words(
-        resolveNumber(wordCount) + randomNumber(0, randomWordsToAdd),
+        resolveNumber(wordCount) + this.faker.Number.between(0, randomWordsToAdd),
         supplemental
       ).join(' ')
     );
@@ -70,21 +46,19 @@ export default class Lorem {
   }
 
   sentences(sentenceCount=3, supplemental=false) {
-    return [...Array(resolveNumber(sentenceCount)).keys()].map(_ => {
-      return this.sentence(3, supplemental);
-    });
+    return [...Array(resolveNumber(sentenceCount)).keys()]
+    .map(_ => this.sentence(3, supplemental));
   }
 
   paragraph(sentenceCount=3, supplemental=false, randomSentencesToAdd=3) {
     return this.sentences(
-      resolveNumber(sentenceCount) + randomNumber(0, randomSentencesToAdd),
+      resolveNumber(sentenceCount) + this.faker.Number.between(0, randomSentencesToAdd),
       supplemental
     ).join(' ');
   }
 
   paragraphs(paragraphCount=3, supplemental=false) {
-    return [...Array(resolveNumber(paragraphCount)).keys()].map(_ => {
-      return this.paragraph(3, supplemental);
-    });
+    return [...Array(resolveNumber(paragraphCount)).keys()]
+      .map(_ => this.paragraph(3, supplemental));
   }
 }

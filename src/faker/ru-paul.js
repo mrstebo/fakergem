@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/ru-paul.json');
 
 export default class RuPaul {
@@ -8,6 +6,6 @@ export default class RuPaul {
   }
 
   quote() {
-    return itemFromCollection(data['quotes']);
+    return this.faker.Random.element(data['quotes']);
   }
 }

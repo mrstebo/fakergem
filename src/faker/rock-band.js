@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/rock-band.json');
 
 export default class RockBand {
@@ -8,6 +6,6 @@ export default class RockBand {
   }
 
   name() {
-    return itemFromCollection(data['names']);
+    return this.faker.Random.element(data['names']);
   }
 }

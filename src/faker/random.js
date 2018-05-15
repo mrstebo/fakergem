@@ -24,8 +24,9 @@ export default class Random {
   }
 
   assortment(array, n) {
-    const repeated = repeatArray(array, n / array.length);
-    return shuffle(repeated).slice(0, n);
+    const count = Math.max(0, n);
+    const repeated = repeatArray(array, count / array.length);
+    return shuffle(repeated).slice(0, count);
   }
 
   element(array) {

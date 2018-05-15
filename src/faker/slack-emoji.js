@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/slack-emoji.json');
 
 export default class SlackEmoji {
@@ -8,39 +6,39 @@ export default class SlackEmoji {
   }
 
   people() {
-    return itemFromCollection(data['people']);
+    return this.faker.Random.element(data['people']);
   }
 
   nature() {
-    return itemFromCollection(data['nature']);
+    return this.faker.Random.element(data['nature']);
   }
 
   foodAndDrink() {
-    return itemFromCollection(data['foodAndDrink']);
+    return this.faker.Random.element(data['foodAndDrink']);
   }
 
   celebration() {
-    return itemFromCollection(data['celebration']);
+    return this.faker.Random.element(data['celebration']);
   }
 
   activity() {
-    return itemFromCollection(data['activity']);
+    return this.faker.Random.element(data['activity']);
   }
 
   travelAndPlaces() {
-    return itemFromCollection(data['travelAndPlaces']);
+    return this.faker.Random.element(data['travelAndPlaces']);
   }
 
   objectsAndSymbols() {
-    return itemFromCollection(data['objectsAndSymbols']);
+    return this.faker.Random.element(data['objectsAndSymbols']);
   }
 
   custom() {
-    return itemFromCollection(data['custom']);
+    return this.faker.Random.element(data['custom']);
   }
 
   emoji() {
-    return itemFromCollection([
+    return this.faker.Random.element([
       ...data['people'],
       ...data['nature'],
       ...data['foodAndDrink'],

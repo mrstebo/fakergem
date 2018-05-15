@@ -1,5 +1,3 @@
-import { itemFromCollection, randomNumber } from '../utils/random';
-
 const data = require('../../data/hipster.json');
 const loremData = require('../../data/lorem.json');
 

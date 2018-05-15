@@ -1,5 +1,3 @@
-import { randomNumber } from '../utils/random';
-
 function getDateObject(date) {
   if (typeof(date) == 'string') {
     return new Date(Date.parse(date));
@@ -32,9 +30,9 @@ export default class DateFaker {
 
     const fromMilli = Date.parse(from);
     const toMilli = Date.parse(to);
-    const offset = randomNumber(0, toMilli - fromMilli);
+    const offset = this.faker.Number.between(0, toMilli - fromMilli);
     const date = new Date(fromMilli + offset);
-    return date;
+    return getDateObject(date);
   }
 
   betweenExcept(from, to, except) {
@@ -46,21 +44,21 @@ export default class DateFaker {
     while (datesAreEqual(date, except)) {
       date = this.between(from, to);
     }
-    return date;
+    return getDateObject(date);
   }
 
   forward(days=365) {
     const from = daysFromNow(1);
     const to = daysFromNow(days);
     const date = this.between(from, to);
-    return date;
+    return getDateObject(date);
   }
 
   backward(days=365) {
     const from = daysFromNow(-days);
     const to = daysFromNow(-1);
     const date = this.between(from, to);
-    return date;
+    return getDateObject(date);
   }
 
   birthday(minAge=18, maxAge=65) {
@@ -69,6 +67,6 @@ export default class DateFaker {
     const to = new Date();
     to.setFullYear(to.getFullYear() - minAge);
     const date = this.between(from, to);
-    return date;
+    return getDateObject(date);
   }
 }

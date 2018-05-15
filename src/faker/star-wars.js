@@ -1,5 +1,3 @@
-import { randomNumber, itemFromCollection } from '../utils/random';
-
 const data = require('../../data/star-wars.json');
 
 function capitalize(text) {
@@ -12,34 +10,34 @@ export default class StarWars {
   }
 
   character() {
-    return itemFromCollection(data['characters']);
+    return this.faker.Random.element(data['characters']);
   }
 
   droid() {
-    return itemFromCollection(data['droids']);
+    return this.faker.Random.element(data['droids']);
   }
 
   planet() {
-    return itemFromCollection(data['planets']);
+    return this.faker.Random.element(data['planets']);
   }
 
   quote() {
-    return itemFromCollection(data['quotes']);
+    return this.faker.Random.element(data['quotes']);
   }
 
   specie() {
-    return itemFromCollection(data['species']);
+    return this.faker.Random.element(data['species']);
   }
 
   vehicle() {
-    return itemFromCollection(data['vehicles']);
+    return this.faker.Random.element(data['vehicles']);
   }
 
   wookieSentence() {
     return capitalize(
-      [...Array(randomNumber(1, 10)).keys()]
-        .map(_ =>  itemFromCollection(data['wookieWords']))
-        .join(' ') + itemFromCollection(['.', '?', '!'])
+      [...Array(this.faker.Number.between(1, 10)).keys()]
+        .map(_ =>  this.faker.Random.element(data['wookieWords']))
+        .join(' ') + this.faker.Random.element(['.', '?', '!'])
     );
   }
 }

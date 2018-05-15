@@ -1,8 +1,6 @@
 import shuffle from '../utils/shuffle';
 
 const data = require('../../data/internet.json');
-const nameData = require('../../data/name.json');
-const loremData = require('../../data/lorem.json');
 
 // 0-9, a-z
 const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));
@@ -66,8 +64,8 @@ export default class Internet {
     if (typeof specifier === 'string') {
       return shuffle(specifier.match(/\w+/g).map(x => x)).join(userNameSeparator);
     }
-    const firstName = this.faker.Random.element(nameData['firstNames']).toLowerCase();
-    const lastName = this.faker.Random.element(nameData['lastNames']).toLowerCase();
+    const firstName = this.faker.Name.firstName().toLowerCase();
+    const lastName = this.faker.Name.lastName().toLowerCase();
     return this.faker.Random.element([
       firstName,
       [firstName, lastName].join(userNameSeparator)
@@ -99,7 +97,7 @@ export default class Internet {
   }
 
   domainWord() {
-    return this.faker.Random.element(nameData['lastNames']);
+    return this.faker.Name.lastName();
   }
 
   domainSuffix() {
@@ -152,7 +150,7 @@ export default class Internet {
   }
 
   slug(words='', glue='') {
-    return (words || [...Array(2).keys()].map(_ => this.faker.Random.element(loremData['words'])).join(' '))
+    return (words || [...Array(2).keys()].map(_ => this.faker.Lorem.word()).join(' '))
       .replace(/\s+/g, glue || this.faker.Random.element(['-', '_', '.']))
       .toLowerCase();
   }

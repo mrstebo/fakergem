@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/pokemon.json');
 
 export default class Pokemon {
@@ -8,10 +6,10 @@ export default class Pokemon {
   }
 
   name() {
-    return itemFromCollection(data['names']);
+    return this.faker.Random.element(data['names']);
   }
 
   location() {
-    return itemFromCollection(data['locations']);
+    return this.faker.Random.element(data['locations']);
   }
 }

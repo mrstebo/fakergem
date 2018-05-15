@@ -1,5 +1,4 @@
 const data = require('../../data/commerce.json');
-const colorData = require('../../data/color.json');
 
 function buildCategories(faker, num) {
   const categories = [];
@@ -25,7 +24,7 @@ export default class Commerce {
   }
 
   color() {
-    return this.faker.Random.element(colorData['colorNames']);
+    return this.faker.Color.colorName();
   }
 
   department(max=3, fixedAmount=false) {

@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/zelda.json');
 
 export default class Zelda {
@@ -8,14 +6,14 @@ export default class Zelda {
   }
 
   game() {
-    return itemFromCollection(data['games']);
+    return this.faker.Random.element(data['games']);
   }
 
   character() {
-    return itemFromCollection(data['characters']);
+    return this.faker.Random.element(data['characters']);
   }
 
   location() {
-    return itemFromCollection(data['locations']);
+    return this.faker.Random.element(data['locations']);
   }
 }

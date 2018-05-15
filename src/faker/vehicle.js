@@ -1,18 +1,8 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/vehicle.json');
 
 const VIN_CHARS = '0123456789.ABCDEFGH..JKLMN.P.R..STUVWXYZ';
 const VIN_MAP = '0123456789X';
 const VIN_WEIGHTS = '8765432X098765432';
-
-function vinChar() {
-  return itemFromCollection(VIN_CHARS.split('').filter(x => x != '.'));
-}
-
-function year() {
-  return itemFromCollection(data['years']);
-}
 
 function vinChecksum(buffer) {
   return VIN_MAP[buffer.map((c, i) => calculateVinWeight(c, i)) % 11];
@@ -28,11 +18,14 @@ export default class Vehicle {
   }
 
   vin() {
-    const details = itemFromCollection(data['manufactures'].map(x => {
-      return {wmi: x[1], wmiExt: x[2]};
-    }));
+    const details = this.faker.Random.element(
+      data['manufactures'].map(x => ({wmi: x[1], wmiExt: x[2]}))
+    );
+    const vin = [...Array(14).keys()]
+      .map(_ => this.faker.Random.element(VIN_CHARS.split('').filter(x => x != '.')))
+      .join('');
 
-    let buffer = `${details.wmi}${[...Array(14).keys()].map(_ => vinChar()).join('')}`.split('');
+    let buffer = `${details.wmi}${vin}`.split('');
 
     if (details.wmiExt) {
       [...Array(2).keys()].map(i => {
@@ -40,13 +33,13 @@ export default class Vehicle {
       });
     }
 
-    buffer[10] = year();
+    buffer[10] = this.faker.Random.element(data['years']);
     buffer[8] = vinChecksum(buffer);
 
     return buffer.join('');
   }
 
   manufacture() {
-    return itemFromCollection(data['manufactures'].map(x => x[0]));
+    return this.faker.Random.element(data['manufactures'].map(x => x[0]));
   }
 }

@@ -1,7 +1,4 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/team.json');
-const addressData = require('../../data/address.json');
 
 export default class Team {
   constructor(faker) {
@@ -9,18 +6,18 @@ export default class Team {
   }
 
   creature() {
-    return itemFromCollection(data['creatures']);
+    return this.faker.Random.element(data['creatures']);
   }
 
   name() {
-    return itemFromCollection(data['names']);
+    return this.faker.Random.element(data['names']);
   }
 
   state() {
-    return itemFromCollection(addressData['states']);
+    return this.faker.Address.state();
   }
 
   sport() {
-    return itemFromCollection(data['sports']);
+    return this.faker.Random.element(data['sports']);
   }
 }

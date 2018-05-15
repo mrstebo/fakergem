@@ -1,5 +1,3 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/space.json');
 
 export default class Space {
@@ -8,54 +6,54 @@ export default class Space {
   }
 
   planet() {
-    return itemFromCollection(data['planets']);
+    return this.faker.Random.element(data['planets']);
   }
 
   moon() {
-    return itemFromCollection(data['moons']);
+    return this.faker.Random.element(data['moons']);
   }
 
   galaxy() {
-    return itemFromCollection(data['galaxies']);
+    return this.faker.Random.element(data['galaxies']);
   }
 
   nebula() {
-    return itemFromCollection(data['nebulas']);
+    return this.faker.Random.element(data['nebulas']);
   }
 
   starCluster() {
-    return itemFromCollection(data['starClusters']);
+    return this.faker.Random.element(data['starClusters']);
   }
 
   constellation() {
-    return itemFromCollection(data['constellations']);
+    return this.faker.Random.element(data['constellations']);
   }
 
   star() {
-    return itemFromCollection(data['stars']);
+    return this.faker.Random.element(data['stars']);
   }
 
   agency() {
-    return itemFromCollection(data['agencies']);
+    return this.faker.Random.element(data['agencies']);
   }
 
   agencyAbv() {
-    return itemFromCollection(data['agencyAbvs']);
+    return this.faker.Random.element(data['agencyAbvs']);
   }
 
   nasaSpaceCraft() {
-    return itemFromCollection(data['nasaSpaceCrafts']);
+    return this.faker.Random.element(data['nasaSpaceCrafts']);
   }
 
   company() {
-    return itemFromCollection(data['companies']);
+    return this.faker.Random.element(data['companies']);
   }
 
   distanceMeasurement() {
-    return itemFromCollection(data['distanceMeasurements']);
+    return this.faker.Random.element(data['distanceMeasurements']);
   }
 
   meteorite() {
-    return itemFromCollection(data['meteorites']);
+    return this.faker.Random.element(data['meteorites']);
   }
 }
