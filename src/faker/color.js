@@ -1,5 +1,3 @@
-import { randomNumber, randomFloat, itemFromCollection } from '../utils/random';
-
 const data = require('../../data/color.json');
 
 function leftPad(text, length, paddingCharacter) {
