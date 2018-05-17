@@ -28,7 +28,7 @@ export default class Commerce {
   }
 
   department(max=3, fixedAmount=false) {
-    const num = fixedAmount ? max : (1 + this.faker.Number.between(0, max));
+    const num = fixedAmount ? max : this.faker.Number.between(1, max);
     const categories = buildCategories(this.faker, num);
     return num > 1 ? mergeCategories(categories) : categories[0];
   }
@@ -41,7 +41,7 @@ export default class Commerce {
     ].join(' ');
   }
 
-  price(range={min: 0, max: 100}) {
+  price(range={min: 0.00, max: 100.00}) {
     const n = this.faker.Number.between(range.min, range.max);
     return (Math.floor(n * 100) / 100.0).toFixed(2);
   }
