@@ -1,162 +1,140 @@
 'use strict';
 const expect = require('chai').expect;
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
 const Faker = require('../../src/faker');
 const data = require('../../data/compass.json');
 
 describe('Compass', () => {
   describe('#direction', () => {
-    it('should return a direction', () => {
-      const directions = [
-        ...data['cardinals']['word'],
-        ...data['ordinals']['word'],
-        ...data['halfWinds']['word'],
-        ...data['quarterWinds']['word']
-      ];
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.direction()).to.be.oneOf(directions);
-      });
-    });
+    it('should return a direction', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['directions']).returns('direction');
+      expect(Faker.Compass.direction()).to.eql('direction');
+    }));
 
-    it('should replace placeholders', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.direction()).not.to.match(/#\{\w+\}/);
-      });
-    });
+    it('should replace placeholders', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['directions']).returns('{cardinal} {ordinal} {halfWind} {quarterWind}');
+      this.stub(Faker.Compass, 'cardinal').returns('c');
+      this.stub(Faker.Compass, 'ordinal').returns('o');
+      this.stub(Faker.Compass, 'halfWind').returns('h');
+      this.stub(Faker.Compass, 'quarterWind').returns('q');
+      expect(Faker.Compass.direction()).to.eql('c o h q');
+    }));
   });
 
   describe('#cardinal', () => {
-    it('should return a cardinal', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.cardinal()).to.be.oneOf(data['cardinals']['word']);
-      });
-    });
+    it('should return a cardinal', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['cardinals']['word']).returns('cardinal');
+      expect(Faker.Compass.cardinal()).to.eql('cardinal');
+    }));
   });
 
   describe('#ordinal', () => {
-    it('should return a ordinal', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.ordinal()).to.be.oneOf(data['ordinals']['word']);
-      });
-    });
+    it('should return a ordinal', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['ordinals']['word']).returns('ordinal');
+      expect(Faker.Compass.ordinal()).to.eql('ordinal');
+    }));
   });
 
   describe('#halfWind', () => {
-    it('should return a halfWind', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.halfWind()).to.be.oneOf(data['halfWinds']['word']);
-      });
-    });
+    it('should return a halfWind', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['halfWinds']['word']).returns('half wind');
+      expect(Faker.Compass.halfWind()).to.eql('half wind');
+    }));
   });
 
   describe('#quarterWind', () => {
-    it('should return a quarterWind', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.quarterWind()).to.be.oneOf(data['quarterWinds']['word']);
-      });
-    });
+    it('should return a quarterWind', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['quarterWinds']['word']).returns('quarter wind');
+      expect(Faker.Compass.quarterWind()).to.eql('quarter wind');
+    }));
   });
 
   describe('#abbreviation', () => {
-    it('should return a abbreviation', () => {
-      const abbreviations = [
-        ...data['cardinals']['abbreviation'],
-        ...data['ordinals']['abbreviation'],
-        ...data['halfWinds']['abbreviation'],
-        ...data['quarterWinds']['abbreviation']
-      ];
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.abbreviation()).to.be.oneOf(abbreviations);
-      });
-    });
+    it('should return a abbreviation', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['abbreviations']).returns('abbreviation');
+      expect(Faker.Compass.abbreviation()).to.eql('abbreviation');
+    }));
 
-    it('should replace placeholders', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.abbreviation()).not.to.match(/#\{\w+\}/);
-      });
-    });
+    it('should replace placeholders', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['abbreviations']).returns('{cardinalAbbreviation} {ordinalAbbreviation} {halfWindAbbreviation} {quarterWindAbbreviation}');
+      this.stub(Faker.Compass, 'cardinalAbbreviation').returns('ca');
+      this.stub(Faker.Compass, 'ordinalAbbreviation').returns('oa');
+      this.stub(Faker.Compass, 'halfWindAbbreviation').returns('ha');
+      this.stub(Faker.Compass, 'quarterWindAbbreviation').returns('qa');
+      expect(Faker.Compass.abbreviation()).to.eql('ca oa ha qa');
+    }));
   });
 
   describe('#cardinalAbbreviation', () => {
-    it('should return a cardinalAbbreviation', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.cardinalAbbreviation()).to.be.oneOf(data['cardinals']['abbreviation']);
-      });
-    });
+    it('should return a cardinalAbbreviation', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['cardinals']['abbreviation']).returns('cardinal abbreviation');
+      expect(Faker.Compass.cardinalAbbreviation()).to.eql('cardinal abbreviation');
+    }));
   });
 
   describe('#ordinalAbbreviation', () => {
-    it('should return a ordinalAbbreviation', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.ordinalAbbreviation()).to.be.oneOf(data['ordinals']['abbreviation']);
-      });
-    });
+    it('should return a ordinalAbbreviation', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['ordinals']['abbreviation']).returns('ordinal abbreviation');
+      expect(Faker.Compass.ordinalAbbreviation()).to.eql('ordinal abbreviation');
+    }));
   });
 
   describe('#halfWindAbbreviation', () => {
-    it('should return a halfWindAbbreviation', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.halfWindAbbreviation()).to.be.oneOf(data['halfWinds']['abbreviation']);
-      });
-    });
+    it('should return a halfWindAbbreviation', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['halfWinds']['abbreviation']).returns('half wind abbreviation');
+      expect(Faker.Compass.halfWindAbbreviation()).to.eql('half wind abbreviation');
+    }));
   });
 
   describe('#quarterWindAbbreviation', () => {
-    it('should return a quarterWindAbbreviation', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.quarterWindAbbreviation()).to.be.oneOf(data['quarterWinds']['abbreviation']);
-      });
-    });
+    it('should return a quarterWindAbbreviation', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['quarterWinds']['abbreviation']).returns('quarter wind abbreviation');
+      expect(Faker.Compass.quarterWindAbbreviation()).to.eql('quarter wind abbreviation');
+    }));
   });
 
   describe('#azimuth', () => {
-    it('should return a azimuth', () => {
-      const azimuths = [
-        ...data['cardinals']['azimuth'],
-        ...data['ordinals']['azimuth'],
-        ...data['halfWinds']['azimuth'],
-        ...data['quarterWinds']['azimuth']
-      ];
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.azimuth()).to.be.oneOf(azimuths);
-      });
-    });
+    it('should return a azimuth', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['azimuths']).returns('azimuth');
+      expect(Faker.Compass.azimuth()).to.eql('azimuth');
+    }));
 
-    it('should replace placeholders', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.azimuth()).not.to.match(/#\{\w+\}/);
-      });
-    });
+    it('should replace placeholders', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['azimuths']).returns('{cardinalAzimuth} {ordinalAzimuth} {halfWindAzimuth} {quarterWindAzimuth}');
+      this.stub(Faker.Compass, 'cardinalAzimuth').returns('ca');
+      this.stub(Faker.Compass, 'ordinalAzimuth').returns('oa');
+      this.stub(Faker.Compass, 'halfWindAzimuth').returns('ha');
+      this.stub(Faker.Compass, 'quarterWindAzimuth').returns('qa');
+      expect(Faker.Compass.azimuth()).to.eql('ca oa ha qa');
+    }));
   });
 
   describe('#cardinalAzimuth', () => {
-    it('should return a cardinalAzimuth', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.cardinalAzimuth()).to.be.oneOf(data['cardinals']['azimuth']);
-      });
-    });
+    it('should return a cardinalAzimuth', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['cardinals']['azimuth']).returns('cardinal azimuth');
+      expect(Faker.Compass.cardinalAzimuth()).to.eql('cardinal azimuth');
+    }));
   });
 
   describe('#ordinalAzimuth', () => {
-    it('should return a ordinalAzimuth', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.ordinalAzimuth()).to.be.oneOf(data['ordinals']['azimuth']);
-      });
-    });
+    it('should return a ordinalAzimuth', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['ordinals']['azimuth']).returns('ordinal azimuth');
+      expect(Faker.Compass.ordinalAzimuth()).to.eql('ordinal azimuth');
+    }));
   });
 
   describe('#halfWindAzimuth', () => {
-    it('should return a halfWindAzimuth', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.halfWindAzimuth()).to.be.oneOf(data['halfWinds']['azimuth']);
-      });
-    });
+    it('should return a halfWindAzimuth', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['halfWinds']['azimuth']).returns('half wind azimuth');
+      expect(Faker.Compass.halfWindAzimuth()).to.eql('half wind azimuth');
+    }));
   });
 
   describe('#quarterWindAzimuth', () => {
-    it('should return a quarterWindAzimuth', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Compass.quarterWindAzimuth()).to.be.oneOf(data['quarterWinds']['azimuth']);
-      });
-    });
+    it('should return a quarterWindAzimuth', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['quarterWinds']['azimuth']).returns('quarter wind azimuth');
+      expect(Faker.Compass.quarterWindAzimuth()).to.eql('quarter wind azimuth');
+    }));
   });
 });
