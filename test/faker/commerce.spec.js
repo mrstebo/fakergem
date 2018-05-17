@@ -1,11 +1,9 @@
 'use strict';
 const expect = require('chai').expect;
-const orList = require('../support/regexp').orList;
 const sinon = require('sinon');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
 const Faker = require('../../src/faker');
 const data = require('../../data/commerce.json');
-const colorData = require('../../data/color.json');
 
 describe('Commerce', () => {
   describe('#color', () => {

@@ -98,7 +98,7 @@ export default class Company {
       this.faker.Number.between(1, 9),
       this.faker.Number.between(0, 9),
       this.faker.Number.between(2, 9),
-      [...Array(6).keys()].map(_ => this.faker.Number.between(0, 9)).join('')
+      this.faker.Number.number(6)
     ].join('');
     return `${base}${luhnAlgorithm(base)}`;
   }
