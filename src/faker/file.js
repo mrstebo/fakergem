@@ -14,7 +14,7 @@ export default class File {
   }
 
   fileName(dir=null, name=null, ext=null, directorySeparator='/') {
-    dir = dir || [...Array(2).keys()].map(_ => this.faker.Lorem.word()).join('-');
+    dir = dir || this.faker.Lorem.words(2).join('-');
     name = name || this.faker.Lorem.word();
     ext = ext || this.extension();
 

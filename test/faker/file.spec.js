@@ -1,55 +1,50 @@
 'use strict';
 const expect = require('chai').expect;
 const Faker = require('../../src/faker');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
 const data = require('../../data/file.json');
-const loremData = require('../../data/lorem.json');
 
 describe('File', () => {
   describe('#extension', () => {
-    it('should return an extension', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.File.extension()).to.be.oneOf(data['extensions']);
-      });
-    });
+    it('should return an extension', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['extensions']).returns('extension');
+      expect(Faker.File.extension()).to.eql('extension');
+    }));
   });
 
   describe('#mimeType', () => {
-    it('should return an extension', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.File.mimeType()).to.be.oneOf(data['mimeTypes']);
-      });
-    });
+    it('should return a mime type', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['mimeTypes']).returns('MIME Type');
+      expect(Faker.File.mimeType()).to.eql('MIME Type');
+    }));
   });
 
   describe('#fileName', () => {
-    it('should return a filename', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.File.fileName()).to.match(/^([a-z]|\-)+\/\w+\.\w+$/);
-      });
-    });
+    it('should return a filename', sinonTest(function() {
+      this.stub(Faker.Lorem, 'words').withArgs(2).returns(['word1', 'word2']);
+      this.stub(Faker.Lorem, 'word').returns('name');
+      this.stub(Faker.File, 'extension').returns('extension');
+      expect(Faker.File.fileName()).to.eql('word1-word2/name.extension');
+    }));
 
-    it('should return a filename with specified directory', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.File.fileName('test')).to.match(/^test\/\w+\.\w+$/);
-      });
-    });
+    it('should return a filename with specified directory', sinonTest(function() {
+      this.stub(Faker.Lorem, 'word').returns('name');
+      this.stub(Faker.File, 'extension').returns('extension');
+      expect(Faker.File.fileName('test')).to.eql('test/name.extension');
+    }));
 
-    it('should return a filename with specified name', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.File.fileName('test', 'name')).to.match(/^test\/name\.\w+$/);
-      });
-    });
+    it('should return a filename with specified name', sinonTest(function() {
+      this.stub(Faker.File, 'extension').returns('extension');
+      expect(Faker.File.fileName('test', 'my-file')).to.eql('test/my-file.extension');
+    }));
 
     it('should return a filename with specified extension', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.File.fileName('test', 'name', 'ext')).to.match(/^test\/name\.ext$/);
-      });
+      expect(Faker.File.fileName('test', 'my-file', 'ext')).to.eql('test/my-file.ext');
     });
 
     it('should return a filename with specified directory separator', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.File.fileName('test', 'name', 'ext', '#')).to.match(/^test#name\.ext$/);
-      });
+      expect(Faker.File.fileName('test', 'my-file', 'ext', '#')).to.eql('test#my-file.ext');
     });
   });
 });
