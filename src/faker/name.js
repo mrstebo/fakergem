@@ -7,16 +7,16 @@ export default class Name {
 
   name() {
     return [
-      this.faker.Random.element(data['firstNames']),
-      this.faker.Random.element(data['lastNames'])
+      this.firstName(),
+      this.lastName()
     ].join(' ');
   }
 
   nameWithMiddle() {
     return [
-      this.faker.Random.element(data['firstNames']),
-      this.faker.Random.element(data['firstNames']),
-      this.faker.Random.element(data['lastNames'])
+      this.firstName(),
+      this.firstName(),
+      this.lastName()
     ].join(' ');
   }
 
