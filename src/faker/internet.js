@@ -62,14 +62,18 @@ export default class Internet {
   userName(specifier=null, separators=null) {
     const userNameSeparator = this.faker.Random.element(separators || ['.', '_']);
     if (typeof specifier === 'string') {
-      return shuffle(specifier.match(/\w+/g).map(x => x)).join(userNameSeparator);
+      const specifiers = specifier.match(/\w+/g).map(x => x);
+      return this.faker.Random
+        .assortment(specifiers, specifiers.length)
+        .join(userNameSeparator)
+        .toLowerCase();
     }
-    const firstName = this.faker.Name.firstName().toLowerCase();
-    const lastName = this.faker.Name.lastName().toLowerCase();
+    const firstName = this.faker.Name.firstName();
+    const lastName = this.faker.Name.lastName();
     return this.faker.Random.element([
       firstName,
       [firstName, lastName].join(userNameSeparator)
-    ]);
+    ]).toLowerCase();
   }
 
   password(minLength=8, maxLength=16, mixCase=true, specialChars=false) {
@@ -149,8 +153,8 @@ export default class Internet {
     return `${scheme}://${host}${path}`;
   }
 
-  slug(words='', glue='') {
-    return (words || [...Array(2).keys()].map(_ => this.faker.Lorem.word()).join(' '))
+  slug(words=null, glue=null) {
+    return (words || this.faker.Lorem.words(2).join(' '))
       .replace(/\s+/g, glue || this.faker.Random.element(['-', '_', '.']))
       .toLowerCase();
   }
