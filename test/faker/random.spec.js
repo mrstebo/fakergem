@@ -21,6 +21,11 @@ describe('Random', () => {
       const result = Faker.Random.assortment(array, 6);
       expect(result.sort()).to.eql([1, 1, 2, 2, 3, 3]);
     });
+
+    it('should return correct number of elements', () => {
+      const array = ['a', 'b'];
+      expect(Faker.Random.assortment(array, 2)).to.have.lengthOf(2);
+    });
   });
 
   describe('#element', () => {

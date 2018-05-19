@@ -1,11 +1,5 @@
 import { itemFromCollection, randomNumber } from '../utils/random';
 
-function repeatArray(collection, n) {
-  return Array
-    .apply(null, {length: n * collection.length})
-    .map((e, i) => collection[i % collection.length]);
-}
-
 function shuffle(collection) {
     let index = -1;
     let length = collection.length;
@@ -25,7 +19,10 @@ export default class Random {
 
   assortment(array, n) {
     const count = Math.max(0, n);
-    const repeated = repeatArray(array, count / array.length);
+    const repeatCount = parseInt(count / array.length) || 1;
+    const repeated = Array
+      .apply(null, {length: repeatCount * array.length})
+      .map((e, i) => array[i % array.length]);
     return shuffle(repeated).slice(0, count);
   }
 
