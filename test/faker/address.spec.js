@@ -66,8 +66,8 @@ describe('Address', () => {
 
   describe('#buildingNumber', () => {
     it('should return a building number', sinonTest(function() {
-      this.stub(Faker.Number, 'between').returns(5);
-      expect(Faker.Address.buildingNumber()).to.eql('5');
+      this.stub(Faker.Number, 'between').returns(105);
+      expect(Faker.Address.buildingNumber()).to.eql('105');
     }));
 
     it('should return a number between 100 and 99999', () => {
