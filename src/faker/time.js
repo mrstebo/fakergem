@@ -50,7 +50,6 @@ export default class Time {
   get EVENING() { return EVENING; }
   get MIDNIGHT() { return MIDNIGHT; }
   get BETWEEN() { return BETWEEN; }
-  get TIME_RANGES() { return TIME_RANGES; }
 
   between(from, to, period=ALL, format=null) {
     const date = this.faker.Date.between(from, to);

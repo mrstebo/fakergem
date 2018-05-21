@@ -51,9 +51,11 @@ describe('#Date', () => {
 
     it('should return a date in between two dates except for the excepted date', () => {
       const from = new Date(2017, 0, 1);
-      const to = new Date(2017, 0, 2);
-      const except = new Date(2017, 0, 2);
-      expect(Faker.Date.betweenExcept(from, to, except)).to.eql(from);
+      const to = new Date(2017, 1, 5);
+      const except = new Date(2017, 0, 8);
+      [...Array(100).keys()].forEach(() => {
+        expect(Faker.Date.betweenExcept(from, to, except)).to.not.eql(except);
+      });
     });
   });
 
