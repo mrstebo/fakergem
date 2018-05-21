@@ -18,7 +18,7 @@ describe('#Date', () => {
   describe('#between', () => {
     it('should return a Date', () => {
       const date = new Date();
-      expect(Faker.Date.between(date, date)).to.eql(date);
+      expect(Faker.Date.between(date, date)).to.be.a('Date');
     });
 
     it('should handle string dates', () => {
@@ -39,7 +39,7 @@ describe('#Date', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 2);
       const except = new Date(2017, 0, 2);
-      expect(Faker.Date.betweenExcept(from, to, except)).to.eql(from);
+      expect(Faker.Date.betweenExcept(from, to, except)).to.be.a('Date');
     });
 
     it('should handle string dates', () => {
@@ -53,15 +53,13 @@ describe('#Date', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 2);
       const except = new Date(2017, 0, 2);
-      expect(Faker.Date.betweenExcept(from, to, except)).to.not.eql(except);
+      expect(Faker.Date.betweenExcept(from, to, except)).to.eql(from);
     });
   });
 
   describe('#forward', () => {
     it('should return a Date', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Date.forward()).to.be.a('Date');
-      });
+      expect(Faker.Date.forward()).to.be.a('Date');
     });
 
     it('should return a date in the future', sinonTest(function() {
@@ -74,17 +72,13 @@ describe('#Date', () => {
 
     it('should return a date no greater than the specified number of days', () => {
       const max = daysFromNow(5);
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Date.forward(5)).to.be.withinDate(new Date(), max);
-      });
+      expect(Faker.Date.forward(5)).to.be.withinDate(new Date(), max);
     });
   });
 
   describe('#backward', () => {
     it('should return a Date', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Date.backward()).to.be.a('Date');
-      });
+      expect(Faker.Date.backward()).to.be.a('Date');
     });
 
     it('should return a date in the past', sinonTest(function() {
@@ -97,26 +91,20 @@ describe('#Date', () => {
 
     it('should return a date no less than the specified number of days', () => {
       const min = daysFromNow(-5);
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Date.backward(5)).to.be.withinDate(min, new Date());
-      });
+      expect(Faker.Date.backward(5)).to.be.withinDate(min, new Date());
     });
   });
 
   describe('#birthday', () => {
     it('should return a Date', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Date.birthday()).to.be.a('Date');
-      });
+      expect(Faker.Date.birthday()).to.be.a('Date');
     });
 
     it('should return a birth date between two ages', () => {
       const now = new Date();
       const from = new Date(now.getFullYear() - 25, now.getMonth(), now.getDate());
       const to = new Date(now.getFullYear() - 18, now.getMonth(), now.getDate());
-      [...Array(100).keys()].forEach(_ => {
-        expect(Faker.Date.birthday(18, 25)).to.be.withinDate(from, to);
-      });
+      expect(Faker.Date.birthday(18, 25)).to.be.withinDate(from, to);
     });
   });
 });
