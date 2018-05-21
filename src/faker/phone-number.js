@@ -26,7 +26,7 @@ export default class PhoneNumber {
   subscriberNumber(length=4) {
     const min = Math.pow(10, length)/10;
     const max = (min * 10) - 1;
-    return this.faker.Number.between(min, max);
+    return `${this.faker.Number.between(min, max)}`;
   }
 
   extension(length=4) {
