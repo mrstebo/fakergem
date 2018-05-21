@@ -7,6 +7,7 @@
     "version:patch": "npm version patch",
     "prepublish": "./node_modules/.bin/gulp build",
     "test": "./node_modules/.bin/gulp test",
+    "test:cover": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli.js cover --report lcov --report html ./node_modules/mocha/bin/_mocha -- --recursive test/**/*.spec.js",
     "watch": "./node_modules/.bin/gulp watch"
   },
   "repository": {
@@ -41,12 +42,9 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-eslint": "^4.0.1",
-    "gulp-istanbul": "1.1.2",
-    "gulp-mocha": "3.0.1",
-    "gulp-util": "^3.0.8",
-    "isparta": "^4.0.0",
+    "istanbul": "1.0.0-alpha.2",
     "mocha": "^5.0.0",
-    "sinon": "^5.0.3",
+    "sinon": "^5.0.7",
     "sinon-test": "^2.1.0"
   },
   "dependencies": {

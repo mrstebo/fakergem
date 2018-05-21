@@ -2,10 +2,7 @@ const path = require('path');
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
-const istanbul = require('gulp-istanbul');
-const mocha = require('gulp-mocha');
-const gutil = require('gulp-util');
-const isparta = require('isparta');
+const spawn = require('child_process').spawn;
 
 gulp.task('lint', () => {
   return gulp.src('src/**/*.js')
@@ -22,28 +19,9 @@ gulp.task('build', ['lint'], () => {
     .pipe(gulp.dest('lib'));
 });
 
-gulp.task('istanbul', () => {
-  return gulp.src(['src/**/*.js'])
-    .pipe(istanbul({
-      instrumenter: isparta.Instrumenter,
-      includeUntested: true
-    }))
-    .pipe(istanbul.hookRequire());
-});
-
-gulp.task('test', ['istanbul'], () => {
-  return gulp.src('test/**/*.spec.js', { read: false })
-    .pipe(mocha({
-      reporter: 'spec',
-      compilers: 'js:babel-core/register',
-      colors: true,
-      harmony: true
-    }).on('error', function(err) {
-      console.error(err);
-      this.emit('end');
-    }))
-    .pipe(istanbul.writeReports())
-    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
+gulp.task('test', done => {
+  spawn('npm', ['run', 'test:cover'], {shell: true, stdio: 'inherit'})
+    .on('exit', done);
 });
 
 gulp.task('watch', ['test'], () => {
