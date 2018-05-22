@@ -1,16 +1,19 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/rick-and-morty.json');
 
-export function character() {
-  return itemFromCollection(data['characters']);
-}
+export default class RickAndMorty {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function location() {
-  return itemFromCollection(data['locations']);
-}
+  character() {
+    return this.faker.Random.element(data['characters']);
+  }
 
-export function quote() {
-  return itemFromCollection(data['quotes']);
-}
+  location() {
+    return this.faker.Random.element(data['locations']);
+  }
 
+  quote() {
+    return this.faker.Random.element(data['quotes']);
+  }
+}

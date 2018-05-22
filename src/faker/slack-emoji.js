@@ -1,48 +1,52 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/slack-emoji.json');
 
-export function people() {
-  return itemFromCollection(data['people']);
-}
+export default class SlackEmoji {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function nature() {
-  return itemFromCollection(data['nature']);
-}
+  people() {
+    return this.faker.Random.element(data['people']);
+  }
 
-export function foodAndDrink() {
-  return itemFromCollection(data['foodAndDrink']);
-}
+  nature() {
+    return this.faker.Random.element(data['nature']);
+  }
 
-export function celebration() {
-  return itemFromCollection(data['celebration']);
-}
+  foodAndDrink() {
+    return this.faker.Random.element(data['foodAndDrink']);
+  }
 
-export function activity() {
-  return itemFromCollection(data['activity']);
-}
+  celebration() {
+    return this.faker.Random.element(data['celebration']);
+  }
 
-export function travelAndPlaces() {
-  return itemFromCollection(data['travelAndPlaces']);
-}
+  activity() {
+    return this.faker.Random.element(data['activity']);
+  }
 
-export function objectsAndSymbols() {
-  return itemFromCollection(data['objectsAndSymbols']);
-}
+  travelAndPlaces() {
+    return this.faker.Random.element(data['travelAndPlaces']);
+  }
 
-export function custom() {
-  return itemFromCollection(data['custom']);
-}
+  objectsAndSymbols() {
+    return this.faker.Random.element(data['objectsAndSymbols']);
+  }
 
-export function emoji() {
-  return itemFromCollection([
-    ...data['people'],
-    ...data['nature'],
-    ...data['foodAndDrink'],
-    ...data['celebration'],
-    ...data['activity'],
-    ...data['travelAndPlaces'],
-    ...data['objectsAndSymbols'],
-    ...data['custom']
-  ]);
+  custom() {
+    return this.faker.Random.element(data['custom']);
+  }
+
+  emoji() {
+    return this.faker.Random.element([
+      ...data['people'],
+      ...data['nature'],
+      ...data['foodAndDrink'],
+      ...data['celebration'],
+      ...data['activity'],
+      ...data['travelAndPlaces'],
+      ...data['objectsAndSymbols'],
+      ...data['custom']
+    ]);
+  }
 }

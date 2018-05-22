@@ -1,26 +1,23 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/file.json');
-const loremData = require('../../data/lorem.json');
 
-export function extension() {
-  return itemFromCollection(data['extensions']);
-}
-export function mimeType() {
-  return itemFromCollection(data['mimeTypes']);
-}
-export function fileName(dir=null, name=null, ext=null, directorySeparator='/') {
-  dir = dir || slug();
-  name = name || word();
-  ext = ext || extension();
+export default class File {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-  return `${[dir, name].join(directorySeparator)}.${ext}`;
-}
+  extension() {
+    return this.faker.Random.element(data['extensions']);
+  }
 
-function slug() {
-  return [...Array(2).keys()].map(_ => word()).join('-');
-}
+  mimeType() {
+    return this.faker.Random.element(data['mimeTypes']);
+  }
 
-function word() {
-  return itemFromCollection(loremData['words']);
+  fileName(dir=null, name=null, ext=null, directorySeparator='/') {
+    dir = dir || this.faker.Lorem.words(2).join('-');
+    name = name || this.faker.Lorem.word();
+    ext = ext || this.extension();
+
+    return `${[dir, name].join(directorySeparator)}.${ext}`;
+  }
 }

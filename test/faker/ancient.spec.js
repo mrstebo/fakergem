@@ -1,38 +1,36 @@
 'use strict';
 const expect = require('chai').expect;
-const Ancient = require('../../src/faker/ancient');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/ancient.json');
 
 describe('Ancient', () => {
   describe('#god', () => {
-    it('should return a god', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Ancient.god()).to.be.oneOf(data['gods']);
-      });
-    });
+    it('should return a god', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['gods']).returns('god');
+      expect(Faker.Ancient.god()).to.eql('god');
+    }));
   });
 
   describe('#primordial', () => {
-    it('should return a primordial', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Ancient.primordial()).to.be.oneOf(data['primordials']);
-      });
-    });
+    it('should return a primordial', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['primordials']).returns('primordial');
+      expect(Faker.Ancient.primordial()).to.eql('primordial');
+    }));
   });
 
   describe('#titan', () => {
-    it('should return a titan', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Ancient.titan()).to.be.oneOf(data['titans']);
-      });
-    });
+    it('should return a titan', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['titans']).returns('titan');
+      expect(Faker.Ancient.titan()).to.eql('titan');
+    }));
   });
 
   describe('#hero', () => {
-    it('should return a hero', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Ancient.hero()).to.be.oneOf(data['heroes']);
-      });
-    });
+    it('should return a hero', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['heroes']).returns('hero');
+      expect(Faker.Ancient.hero()).to.eql('hero');
+    }));
   });
 });

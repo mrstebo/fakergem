@@ -1,13 +1,13 @@
 'use strict';
 const expect = require('chai').expect;
-const Hacker = require('../../src/faker/hacker');
+const Faker = require('../../src/faker');
 const data = require('../../data/hacker.json');
 
 describe('Hacker', () => {
   describe('#saySomethingSmart', () => {
     it('should replace placeholders', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Hacker.saySomethingSmart()).not.to.match(/\{\w+\}/);
+        expect(Faker.Hacker.saySomethingSmart()).not.to.match(/\{\w+\}/);
       });
     });
   });
@@ -15,7 +15,7 @@ describe('Hacker', () => {
   describe('#abbreviation', () => {
     it('should return a abbreviation', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Hacker.abbreviation()).to.be.oneOf(data['abbreviations']);
+        expect(Faker.Hacker.abbreviation()).to.be.oneOf(data['abbreviations']);
       });
     });
   });
@@ -23,7 +23,7 @@ describe('Hacker', () => {
   describe('#adjective', () => {
     it('should return a adjective', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Hacker.adjective()).to.be.oneOf(data['adjectives']);
+        expect(Faker.Hacker.adjective()).to.be.oneOf(data['adjectives']);
       });
     });
   });
@@ -31,7 +31,7 @@ describe('Hacker', () => {
   describe('#noun', () => {
     it('should return a noun', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Hacker.noun()).to.be.oneOf(data['nouns']);
+        expect(Faker.Hacker.noun()).to.be.oneOf(data['nouns']);
       });
     });
   });
@@ -39,7 +39,7 @@ describe('Hacker', () => {
   describe('#verb', () => {
     it('should return a verb', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Hacker.verb()).to.be.oneOf(data['verbs']);
+        expect(Faker.Hacker.verb()).to.be.oneOf(data['verbs']);
       });
     });
   });
@@ -47,7 +47,7 @@ describe('Hacker', () => {
   describe('#ingverb', () => {
     it('should return a ingverb', () => {
       [...Array(100).keys()].forEach(_ => {
-        expect(Hacker.ingverb()).to.be.oneOf(data['ingverbs']);
+        expect(Faker.Hacker.ingverb()).to.be.oneOf(data['ingverbs']);
       });
     });
   });

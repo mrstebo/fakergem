@@ -1,16 +1,19 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/zelda.json');
 
-export function game() {
-  return itemFromCollection(data['games']);
-}
+export default class Zelda {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function character() {
-  return itemFromCollection(data['characters']);
-}
+  game() {
+    return this.faker.Random.element(data['games']);
+  }
 
-export function location() {
-  return itemFromCollection(data['locations']);
-}
+  character() {
+    return this.faker.Random.element(data['characters']);
+  }
 
+  location() {
+    return this.faker.Random.element(data['locations']);
+  }
+}

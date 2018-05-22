@@ -1,115 +1,123 @@
-import * as Address from './faker/address';
-import * as Ancient from './faker/ancient';
-import * as App from './faker/app';
-import * as Avatar from './faker/avatar';
-import * as Bank from './faker/bank';
-import * as Beer from './faker/beer';
-import * as Bitcoin from './faker/bitcoin';
-import * as Book from './faker/book';
-import * as Boolean from './faker/boolean';
-import * as Business from './faker/business';
-import * as Cat from './faker/cat';
-import * as ChuckNorris from './faker/chuck-norris';
-import * as Coffee from './faker/coffee';
-import * as Color from './faker/color';
-import * as Commerce from './faker/commerce';
-import * as Company from './faker/company';
-import * as Compass from './faker/compass';
-import * as Crypto from './faker/crypto';
-import * as Date from './faker/date';
-import * as Demographic from './faker/demographic';
-import * as DragonBall from './faker/dragon-ball';
-import * as Educator from './faker/educator';
-import * as File from './faker/file';
-import * as Fillmurray from './faker/fillmurray';
-import * as Food from './faker/food';
-import * as Friends from './faker/friends';
-import * as GameOfThrones from './faker/game-of-thrones';
-import * as Hacker from './faker/hacker';
-import * as HarryPotter from './faker/harry-potter';
-import * as Hipster from './faker/hipster';
-import * as Internet from './faker/internet';
-import * as LordOfTheRings from './faker/lord-of-the-rings';
-import * as LoremFlickr from './faker/lorem-flickr';
-import * as LoremPixel from './faker/lorem-pixel';
-import * as Lorem from './faker/lorem';
-import * as Matz from './faker/matz';
-import * as Music from './faker/music';
-import * as Name from './faker/name';
-import * as Number from './faker/number';
-import * as PhoneNumber from './faker/phone-number';
-import * as Placeholdit from './faker/placeholdit';
-import * as Pokemon from './faker/pokemon';
-import * as RickAndMorty from './faker/rick-and-morty';
-import * as RockBand from './faker/rock-band';
-import * as RuPaul from './faker/ru-paul';
-import * as SlackEmoji from './faker/slack-emoji';
-import * as Space from './faker/space';
-import * as StarWars from './faker/star-wars';
-import * as Superhero from './faker/superhero';
-import * as Team from './faker/team';
-import * as Time from './faker/time';
-import * as TwinPeaks from './faker/twin-peaks';
-import * as Twitter from './faker/twitter';
-import * as University from './faker/university';
-import * as Vehicle from './faker/vehicle';
-import * as Zelda from './faker/zelda';
+import Address from './faker/address';
+import Ancient from './faker/ancient';
+import App from './faker/app';
+import Avatar from './faker/avatar';
+import Bank from './faker/bank';
+import Beer from './faker/beer';
+import Bitcoin from './faker/bitcoin';
+import Book from './faker/book';
+import Boolean from './faker/boolean';
+import Business from './faker/business';
+import Cat from './faker/cat';
+import ChuckNorris from './faker/chuck-norris';
+import Coffee from './faker/coffee';
+import Color from './faker/color';
+import Commerce from './faker/commerce';
+import Company from './faker/company';
+import Compass from './faker/compass';
+import Crypto from './faker/crypto';
+import DateFaker from './faker/date';
+import Demographic from './faker/demographic';
+import DragonBall from './faker/dragon-ball';
+import Educator from './faker/educator';
+import Fake from './faker/fake';
+import File from './faker/file';
+import Fillmurray from './faker/fillmurray';
+import Food from './faker/food';
+import Friends from './faker/friends';
+import GameOfThrones from './faker/game-of-thrones';
+import Hacker from './faker/hacker';
+import HarryPotter from './faker/harry-potter';
+import Hipster from './faker/hipster';
+import Internet from './faker/internet';
+import LordOfTheRings from './faker/lord-of-the-rings';
+import LoremFlickr from './faker/lorem-flickr';
+import LoremPixel from './faker/lorem-pixel';
+import Lorem from './faker/lorem';
+import Matz from './faker/matz';
+import Music from './faker/music';
+import Name from './faker/name';
+import Number from './faker/number';
+import PhoneNumber from './faker/phone-number';
+import Placeholdit from './faker/placeholdit';
+import Pokemon from './faker/pokemon';
+import Random from './faker/random';
+import RickAndMorty from './faker/rick-and-morty';
+import RockBand from './faker/rock-band';
+import RuPaul from './faker/ru-paul';
+import SlackEmoji from './faker/slack-emoji';
+import Space from './faker/space';
+import StarWars from './faker/star-wars';
+import Superhero from './faker/superhero';
+import Team from './faker/team';
+import Time from './faker/time';
+import TwinPeaks from './faker/twin-peaks';
+import Twitter from './faker/twitter';
+import University from './faker/university';
+import Vehicle from './faker/vehicle';
+import Zelda from './faker/zelda';
 
-module.exports = {
-  Address,
-  Ancient,
-  App,
-  Avatar,
-  Bank,
-  Beer,
-  Bitcoin,
-  Book,
-  Boolean,
-  Business,
-  Cat,
-  ChuckNorris,
-  Coffee,
-  Color,
-  Commerce,
-  Company,
-  Compass,
-  Crypto,
-  Date,
-  Demographic,
-  DragonBall,
-  Educator,
-  File,
-  Fillmurray,
-  Food,
-  Friends,
-  GameOfThrones,
-  Hacker,
-  HarryPotter,
-  Hipster,
-  Internet,
-  LordOfTheRings,
-  LoremFlickr,
-  LoremPixel,
-  Lorem,
-  Matz,
-  Music,
-  Name,
-  Number,
-  PhoneNumber,
-  Placeholdit,
-  Pokemon,
-  RickAndMorty,
-  RockBand,
-  RuPaul,
-  SlackEmoji,
-  Space,
-  StarWars,
-  Superhero,
-  Team,
-  Time,
-  TwinPeaks,
-  Twitter,
-  University,
-  Vehicle,
-  Zelda
+class Faker {
+  constructor() {
+    this.Address = new Address(this);
+    this.Ancient = new Ancient(this);
+    this.App = new App(this);
+    this.Avatar = new Avatar(this);
+    this.Bank = new Bank(this);
+    this.Beer = new Beer(this);
+    this.Bitcoin = new Bitcoin(this);
+    this.Book = new Book(this);
+    this.Boolean = new Boolean(this);
+    this.Business = new Business(this);
+    this.Cat = new Cat(this);
+    this.ChuckNorris = new ChuckNorris(this);
+    this.Coffee = new Coffee(this);
+    this.Color = new Color(this);
+    this.Commerce = new Commerce(this);
+    this.Company = new Company(this);
+    this.Compass = new Compass(this);
+    this.Crypto = new Crypto(this);
+    this.Date = new DateFaker(this);
+    this.Demographic = new Demographic(this);
+    this.DragonBall = new DragonBall(this);
+    this.Educator = new Educator(this);
+    this.Fake = new Fake(this);
+    this.File = new File(this);
+    this.Fillmurray = new Fillmurray(this);
+    this.Food = new Food(this);
+    this.Friends = new Friends(this);
+    this.GameOfThrones = new GameOfThrones(this);
+    this.Hacker = new Hacker(this);
+    this.HarryPotter = new HarryPotter(this);
+    this.Hipster = new Hipster(this);
+    this.Internet = new Internet(this);
+    this.LordOfTheRings = new LordOfTheRings(this);
+    this.LoremFlickr = new LoremFlickr(this);
+    this.LoremPixel = new LoremPixel(this);
+    this.Lorem = new Lorem(this);
+    this.Matz = new Matz(this);
+    this.Music = new Music(this);
+    this.Name = new Name(this);
+    this.Number = new Number(this);
+    this.PhoneNumber = new PhoneNumber(this);
+    this.Placeholdit = new Placeholdit(this);
+    this.Pokemon = new Pokemon(this);
+    this.Random = new Random(this);
+    this.RickAndMorty = new RickAndMorty(this);
+    this.RockBand = new RockBand(this);
+    this.RuPaul = new RuPaul(this);
+    this.SlackEmoji = new SlackEmoji(this);
+    this.Space = new Space(this);
+    this.StarWars = new StarWars(this);
+    this.Superhero = new Superhero(this);
+    this.Team = new Team(this);
+    this.Time = new Time(this);
+    this.TwinPeaks = new TwinPeaks(this);
+    this.Twitter = new Twitter(this);
+    this.University = new University(this);
+    this.Vehicle = new Vehicle(this);
+    this.Zelda = new Zelda(this);
+  }
 }
+
+module.exports = new Faker();

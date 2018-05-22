@@ -1,132 +1,117 @@
 'use strict';
 const expect = require('chai').expect;
-const orList = require('../support/regexp').orList;
-const Company = require('../../src/faker/company');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/company.json');
 
 describe('Company', () => {
   describe('#name', () => {
-    it('should return a name', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.name()).to.be.oneOf(data['names']);
-      });
-    });
+    it('should return a name', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['names']).returns('name');
+      expect(Faker.Company.name()).to.eql('name');
+    }));
   });
 
   describe('#suffix', () => {
-    it('should return a suffix', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.suffix()).to.be.oneOf(data['suffixes']);
-      });
-    });
+    it('should return a suffix', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['suffixes']).returns('suffix');
+      expect(Faker.Company.suffix()).to.eql('suffix');
+    }));
   });
 
   describe('#catchPhrase', () => {
-    it('should return a catchPhrase', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.catchPhrase()).to.match(/.*?\s.*?\s.*/);
-      });
-    });
-
-    it('should contain a buzzword', () => {
-      const buzzwords = [
-        ...data['buzzwords'][0],
-        ...data['buzzwords'][1],
-        ...data['buzzwords'][2]
-      ];
-      const re = new RegExp(`(${orList(buzzwords)})`);
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.catchPhrase()).to.match(re);
-      });
-    });
+    it('should return a catchPhrase', sinonTest(function() {
+      const randomStub = this.stub(Faker.Random, 'element');
+      randomStub.withArgs(data['buzzwords'][0]).returns('b1');
+      randomStub.withArgs(data['buzzwords'][1]).returns('b2');
+      randomStub.withArgs(data['buzzwords'][2]).returns('b3');
+      expect(Faker.Company.catchPhrase()).to.eql('b1 b2 b3');
+    }));
   });
 
   describe('#buzzword', () => {
-    it('should return a buzzword', () => {
+    it('should return a buzzword', sinonTest(function() {
       const buzzwords = [
         ...data['buzzwords'][0],
         ...data['buzzwords'][1],
         ...data['buzzwords'][2]
       ];
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.buzzword()).to.be.oneOf(buzzwords);
-      });
-    });
+      this.stub(Faker.Random, 'element').withArgs(buzzwords).returns('buzzword');
+      expect(Faker.Company.buzzword()).to.eql('buzzword');
+    }));
   });
 
   describe('#bs', () => {
-    it('should return a bs', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.bs()).to.match(/.*?\s.*?\s.*/);
-      });
-    });
-
-    it('should contain a bs', () => {
-      const bsData = [
-        ...data['bs'][0],
-        ...data['bs'][1],
-        ...data['bs'][2]
-      ];
-      const re = new RegExp(`(${orList(bsData)})`);
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.bs()).to.match(re);
-      });
-    });
+    it('should return a bs', sinonTest(function() {
+      const randomStub = this.stub(Faker.Random, 'element');
+      randomStub.withArgs(data['bs'][0]).returns('bs1');
+      randomStub.withArgs(data['bs'][1]).returns('bs2');
+      randomStub.withArgs(data['bs'][2]).returns('bs3');
+      expect(Faker.Company.bs()).to.eql('bs1 bs2 bs3');
+    }));
   });
 
   describe('#ein', () => {
-    it('should return an EIN', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.ein()).to.match(/^\d{2}-\d{7}$/);
-      });
-    });
+    it('should return an EIN', sinonTest(function() {
+      this.stub(Faker.Number, 'between').withArgs(0, 9).returns(1);
+      expect(Faker.Company.ein()).to.eql('11-1111111');
+    }));
   });
 
   describe('#dunsNumber', () => {
-    it('should return a DUNS Number', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.dunsNumber()).to.match(/^\d{2}-\d{3}-\d{4}$/);
-      });
-    });
+    it('should return a DUNS Number', sinonTest(function() {
+      this.stub(Faker.Number, 'between').withArgs(0, 9).returns(1);
+      expect(Faker.Company.dunsNumber()).to.eql('11-111-1111');
+    }));
   });
 
   describe('#logo', () => {
-    it('should return URL to a logo', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.logo()).to.match(/https:\/\/pigment.github.io\/fake-logos\/logos\/medium\/color\/\d{1,2}\.png/);
-      });
-    });
+    it('should return URL to a logo', sinonTest(function() {
+      this.stub(Faker.Number, 'between').withArgs(1, 14).returns(11);
+      expect(Faker.Company.logo()).to.eql('https://pigment.github.io/fake-logos/logos/medium/color/11.png');
+    }));
   });
 
   describe('#swedishOrganisationNumber', () => {
-    it('should return a Swedish Organisation Number', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.swedishOrganisationNumber()).to.match(/^[1-9]\d[2-9]\d{6}\d+$/);
-      });
-    });
+    it('should return a Swedish Organisation Number', sinonTest(function() {
+      const betweenStub = this.stub(Faker.Number, 'between');
+      betweenStub.withArgs(1, 9).returns(1);
+      betweenStub.withArgs(0, 9).returns(2);
+      betweenStub.withArgs(2, 9).returns(3);
+      this.stub(Faker.Number, 'number').withArgs(6).returns('888888');
+      expect(Faker.Company.swedishOrganisationNumber()).to.eql('12388888810');
+    }));
+
+    it('should handle sums of modulo 10', sinonTest(function() {
+      const betweenStub = this.stub(Faker.Number, 'between');
+      betweenStub.withArgs(1, 9).returns(1);
+      betweenStub.withArgs(0, 9).returns(0);
+      betweenStub.withArgs(2, 9).returns(5);
+      this.stub(Faker.Number, 'number').withArgs(6).returns('22223');
+      expect(Faker.Company.swedishOrganisationNumber()).to.eql('105222230');
+    }));
   });
 
   describe('#norwegianOrganisationNumber', () => {
-    it('should return a Norwegian Organisation Number', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.norwegianOrganisationNumber()).to.match(/^[8-9]\d{8}$/);
-      });
-    });
+    it('should return a Norwegian Organisation Number', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs([8, 9]).returns(9);
+      this.stub(Faker.Number, 'between').withArgs(0, 10000000).returns(24);
+      expect(Faker.Company.norwegianOrganisationNumber()).to.eql('900000247');
+    }));
   });
 
   describe('#australianBusinessNumber', () => {
-    it('should return a Australian Business Number', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.australianBusinessNumber()).to.match(/^\d{11}$/);
-      });
-    });
+    it('should return a Australian Business Number', sinonTest(function() {
+      this.stub(Faker.Number, 'between').withArgs(0, 1000000000).returns(182);
+      expect(Faker.Company.australianBusinessNumber()).to.eql('98000000182');
+    }));
   });
 
   describe('#profession', () => {
-    it('should return a profession', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(Company.profession()).to.be.oneOf(data['professions']);
-      });
-    });
+    it('should return a profession', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['professions']).returns('profession');
+      expect(Faker.Company.profession()).to.eql('profession');
+    }));
   });
 });

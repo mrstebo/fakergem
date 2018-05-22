@@ -1,11 +1,11 @@
 export function randomNumber(min, max) {
-  return min + Math.floor(Math.random() * (max - min));
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export function randomFloat(min, max) {
-  return min + Math.random() * (max - min);
+  return Math.random() * (max - min) + min;
 }
 
 export function itemFromCollection(collection) {
-  return collection[randomNumber(0, collection.length)];
+  return collection[randomNumber(0, collection.length - 1)];
 }
