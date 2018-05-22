@@ -8,7 +8,7 @@ const data = require('../../data/internet.json');
 describe('Internet', () => {
   describe('#email', () => {
     it('should return an email address', sinonTest(function() {
-      this.stub(Faker.Internet, 'userName').withArgs(null).returns('test-user');
+      this.stub(Faker.Internet, 'userName').withArgs(undefined).returns('test-user');
       this.stub(Faker.Internet, 'domainName').returns('beef.com');
       expect(Faker.Internet.email()).to.eql('test-user@beef.com');
     }));
@@ -16,7 +16,7 @@ describe('Internet', () => {
 
   describe('#freeEmail', () => {
     it('should return a free email address', sinonTest(function() {
-      this.stub(Faker.Internet, 'userName').withArgs(null).returns('test-user');
+      this.stub(Faker.Internet, 'userName').withArgs(undefined).returns('test-user');
       this.stub(Faker.Random, 'element').withArgs(data['freeEmails']).returns('x.z');
       expect(Faker.Internet.freeEmail()).to.eql('test-user@x.z');
     }));
@@ -24,7 +24,7 @@ describe('Internet', () => {
 
   describe('#safeEmail', () => {
     it('should return a safe email address', sinonTest(function() {
-      this.stub(Faker.Internet, 'userName').withArgs(null).returns('test-user');
+      this.stub(Faker.Internet, 'userName').withArgs(undefined).returns('test-user');
       this.stub(Faker.Random, 'element').withArgs(['org', 'com', 'net']).returns('xyz');
       expect(Faker.Internet.safeEmail()).to.eql('test-user@example.xyz');
     }));
@@ -40,7 +40,7 @@ describe('Internet', () => {
       expect(Faker.Internet.userName()).to.eql('username');
     }));
 
-    it('should return a username based off the specifier', sinonTest(function() {
+    it('should return a username with the specified specifier', sinonTest(function() {
       this.stub(Faker.Random, 'element').withArgs(['.', '_']).returns('|');
       this.stub(Faker.Random, 'assortment').withArgs(['I', 'am', 'a', 'user'], 4).returns(['I', 'am', 'a', 'user']);
       expect(Faker.Internet.userName('I am a user')).to.eql('i|am|a|user');
@@ -97,6 +97,10 @@ describe('Internet', () => {
 
     it('should replace ü with ue', () => {
       expect(Faker.Internet.fixUmlauts('ü')).to.eql('ue');
+    });
+
+    it('should handle empty parameters', () => {
+      expect(Faker.Internet.fixUmlauts()).to.eql('');
     });
   });
 

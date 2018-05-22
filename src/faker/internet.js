@@ -38,21 +38,21 @@ export default class Internet {
     this.faker = faker;
   }
 
-  email(name=null) {
+  email(name) {
     return [
       this.userName(name),
       this.domainName()
     ].join('@');
   }
 
-  freeEmail(name=null) {
+  freeEmail(name) {
     return [
       this.userName(name),
       this.faker.Random.element(data['freeEmails'])
     ].join('@');
   }
 
-  safeEmail(name=null) {
+  safeEmail(name) {
     return [
       this.userName(name),
       `example.${this.faker.Random.element(['org', 'com', 'net'])}`
@@ -93,8 +93,8 @@ export default class Internet {
     ].join('.');
   }
 
-  fixUmlauts(value='') {
-    return value
+  fixUmlauts(value) {
+    return (value || '')
       .replace(/ä/g, 'ae')
       .replace(/ö/g, 'oe')
       .replace(/ü/g, 'ue');
