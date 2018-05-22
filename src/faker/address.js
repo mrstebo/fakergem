@@ -1,10 +1,10 @@
 const data = require('../../data/address.json');
 
 function parseFormat(faker, format) {
-  return faker.Fake
-    .f(format.replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`))
-    .replace(/#/, faker.Number.between(1, 9))
-    .replace(/#/g, _ => faker.Number.between(0, 9));
+  const text = format
+    .replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`)
+    .replace(/#/, faker.Number.between(1, 9));
+  return faker.Fake.f(text);
 }
 
 export default class Address {
