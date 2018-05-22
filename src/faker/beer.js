@@ -30,10 +30,10 @@ export default class Beer {
   }
 
   alcohol() {
-    return `${this.faker.Number.between(2.0, 10.0).toFixed(1)}%`;
+    return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}%`;
   }
 
   blg() {
-    return `${this.faker.Number.between(2.0, 10.0).toFixed(1)}°Blg`
+    return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}°Blg`
   }
 }

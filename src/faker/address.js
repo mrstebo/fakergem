@@ -85,10 +85,10 @@ export default class Address {
   }
 
   latitude() {
-    return ''+(this.faker.Number.between(0.00, 180.00) - 90);
+    return ''+(this.faker.Number.betweenF(0.00, 180.00) - 90);
   }
 
   longitude() {
-    return ''+(this.faker.Number.between(0.00, 360.00) - 180);
+    return ''+(this.faker.Number.betweenF(0.00, 360.00) - 180);
   }
 }

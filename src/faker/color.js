@@ -27,17 +27,17 @@ export default class Color {
   hslColor() {
     return [
       this.faker.Number.between(0, 360),
-      Math.round(this.faker.Number.between(0.00, 1.00), 2),
-      Math.round(this.faker.Number.between(0.00, 1.00), 2)
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2),
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2)
     ];
   }
 
   hslaColor() {
     return [
       this.faker.Number.between(0, 360),
-      Math.round(this.faker.Number.between(0.00, 1.00), 2),
-      Math.round(this.faker.Number.between(0.00, 1.00), 2),
-      this.faker.Number.between(0.00, 1.00)
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2),
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2),
+      this.faker.Number.betweenF(0.00, 1.00)
     ];
   }
 }

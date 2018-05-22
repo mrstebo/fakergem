@@ -173,15 +173,15 @@ describe('Address', () => {
 
   describe('#latitude', () => {
     it('should return a latitude', sinonTest(function() {
-      this.stub(Faker.Number, 'between').withArgs(0.00, 180.00).returns(120);
-      expect(Faker.Address.latitude()).to.eql('30');
+      this.stub(Faker.Number, 'betweenF').withArgs(0.00, 180.00).returns(120.0351);
+      expect(Faker.Address.latitude()).to.eql('30.0351');
     }));
   });
 
   describe('#longitude', () => {
     it('should return a longitude', sinonTest(function() {
-      this.stub(Faker.Number, 'between').withArgs(0.00, 360.00).returns(200);
-      expect(Faker.Address.longitude()).to.eql('20');
+      this.stub(Faker.Number, 'betweenF').withArgs(0.00, 360.00).returns(200.2315);
+      expect(Faker.Address.longitude()).to.eql('20.23150000000001');
     }));
   });
 });

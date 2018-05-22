@@ -28,7 +28,7 @@ export default class Demographic {
   height(unit='metric') {
     switch(unit) {
       case 'metric':
-        return `${this.faker.Number.between(1.45, 2.13).toFixed(2)}`;
+        return `${this.faker.Number.betweenF(1.45, 2.13).toFixed(2)}`;
       case 'imperial':
         const inches = this.faker.Number.between(57, 86);
         return `${Math.floor(inches / 12)} ft, ${inches % 12} in`;

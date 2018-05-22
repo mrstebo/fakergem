@@ -43,7 +43,7 @@ describe('Demographic', () => {
 
   describe('#height', () => {
     it('should return a height', sinonTest(function() {
-      this.stub(Faker.Number, 'between').withArgs(1.45, 2.13).returns(1.57);
+      this.stub(Faker.Number, 'betweenF').withArgs(1.45, 2.13).returns(1.57);
       expect(Faker.Demographic.height()).to.eql('1.57');
     }));
 

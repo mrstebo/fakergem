@@ -50,14 +50,14 @@ describe('Beer', () => {
 
   describe('#alcohol', () => {
     it('should return a decimal number with a % suffix', sinonTest(function() {
-      this.stub(Faker.Number, 'between').withArgs(2.0, 10.0).returns(8.95);
+      this.stub(Faker.Number, 'betweenF').withArgs(2.0, 10.0).returns(8.95);
       expect(Faker.Beer.alcohol()).to.eql('8.9%');
     }));
   });
 
   describe('#blg', () => {
     it('should return a number with a °Blg suffix', sinonTest(function() {
-      this.stub(Faker.Number, 'between').withArgs(2.0, 10.0).returns(5.62);
+      this.stub(Faker.Number, 'betweenF').withArgs(2.0, 10.0).returns(5.62);
       expect(Faker.Beer.blg()).to.eql('5.6°Blg');
     }));
   });
