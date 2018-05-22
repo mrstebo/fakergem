@@ -24,14 +24,10 @@ describe('Commerce', () => {
     }));
 
     it('should contain no more than the max number of departments if specified', sinonTest(function() {
-      this.stub(Faker.Number, 'between').withArgs(1, 5).returns(5);
+      this.stub(Faker.Number, 'between').withArgs(1, 1).returns(1);
       this.stub(Faker.Random, 'element').withArgs(data['departments'])
-        .onCall(0).returns('d1')
-        .onCall(1).returns('d2')
-        .onCall(2).returns('d3')
-        .onCall(3).returns('d4')
-        .onCall(4).returns('d5');
-      expect(Faker.Commerce.department(5)).to.eql('d1, d2, d3, d4 & d5');
+        .onFirstCall().returns('d1');
+      expect(Faker.Commerce.department(1)).to.eql('d1');
     }));
 
     it('should return fixed number of departments if specified', sinonTest(function() {
@@ -40,6 +36,14 @@ describe('Commerce', () => {
         .onSecondCall().returns('d2')
         .onThirdCall().returns('d3');
       expect(Faker.Commerce.department(3, true)).to.eql('d1, d2 & d3');
+    }));
+
+    it('should not have duplicate departments', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['departments'])
+      .onFirstCall().returns('d1')
+      .onSecondCall().returns('d1')
+      .onThirdCall().returns('d2');
+      expect(Faker.Commerce.department(2, true)).to.eql('d1 & d2');
     }));
   });
 
