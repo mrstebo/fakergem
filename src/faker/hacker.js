@@ -1,13 +1,8 @@
 const data = require('../../data/hacker.json');
 
-function parse(hacker, format) {
-  return format
-    .replace(/\{abbreviation\}/g, hacker.abbreviation())
-    .replace(/\{adjective\}/g, hacker.adjective())
-    .replace(/\{noun\}/g, hacker.noun())
-    .replace(/\{verb\}/g, hacker.verb())
-    .replace(/\{ingverb\}/g, hacker.ingverb())
-    .replace(/^(\w)/, m => m[0].toUpperCase());
+function parse(faker, format) {
+  const text = format.replace(/\{(\w+)\}/g, m => `{Hacker.${m.substring(1)}`);
+  return faker.Fake.f(text).replace(/^(\w)/, m => m[0].toUpperCase());
 }
 
 export default class Hacker {
@@ -16,7 +11,7 @@ export default class Hacker {
   }
 
   saySomethingSmart() {
-    return parse(this, this.faker.Random.element(data['phrases']));
+    return parse(this.faker, this.faker.Random.element(data['phrases']));
   }
 
   abbreviation() {

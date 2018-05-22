@@ -1,4 +1,4 @@
-function parse(faker, match) {
+function parseModule(faker, match) {
   const v = match.replace(/[{}]/g, '').split('.');
   const module = v[0];
   const method = v[1];
@@ -24,6 +24,8 @@ export default class Fake {
       throw new Error('A string must be specified');
     }
 
-    return str.replace(/\{(\w+)\.(\w+)\}/g, m => parse(this.faker, m));
+    return str
+      .replace(/\{(\w+)\.(\w+)\}/g, m => parseModule(this.faker, m))
+      .replace(/#/g, _ => this.faker.Number.between(0, 9))
   }
 }
