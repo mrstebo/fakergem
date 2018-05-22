@@ -12,6 +12,13 @@ describe('Hipster', () => {
       this.stub(Faker.Random, 'element').withArgs(data['words']).returns('word');
       expect(Faker.Hipster.word()).to.eql('word');
     }));
+
+    it('should make sure only a single word is returned', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['words'])
+        .onFirstCall().returns('two words')
+        .onSecondCall().returns('word');
+      expect(Faker.Hipster.word()).to.eql('word');
+    }));
   });
 
   describe('#words', () => {
