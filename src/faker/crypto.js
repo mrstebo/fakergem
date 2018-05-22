@@ -1,33 +1,33 @@
-import { itemFromCollection } from '../utils/random';
 import crypto from 'crypto';
 
-// 0-9, a-z
-const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));
+const CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyz';
 
-export function md5() {
-  const hash = crypto.createHash('md5');
-  hash.update(characters(255));
-  return hash.digest('hex');
-}
+export default class Crypto {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function sha1() {
-  const hash = crypto.createHash('sha1');
-  hash.update(characters(255));
-  return hash.digest('hex');
-}
+  md5() {
+    const hash = crypto.createHash('md5');
+    const array = CHARACTERS.split('');
+    const characters = this.faker.Random.assortment(array, 255).join('');
+    hash.update(characters);
+    return hash.digest('hex');
+  }
 
-export function sha256() {
-  const hash = crypto.createHash('sha256');
-  hash.update(characters(255));
-  return hash.digest('hex');
-}
+  sha1() {
+    const hash = crypto.createHash('sha1');
+    const array = CHARACTERS.split('');
+    const characters = this.faker.Random.assortment(array, 255).join('');
+    hash.update(characters);
+    return hash.digest('hex');
+  }
 
-function characters(charCount) {
-  return [...Array(resolveNumber(charCount)).keys()]
-    .map(_ => itemFromCollection(CHARACTERS))
-    .join('');
-}
-
-function resolveNumber(n) {
-  return parseInt(n) < 0 ? 0 : parseInt(n);
+  sha256() {
+    const hash = crypto.createHash('sha256');
+    const array = CHARACTERS.split('');
+    const characters = this.faker.Random.assortment(array, 255).join('');
+    hash.update(characters);
+    return hash.digest('hex');
+  }
 }

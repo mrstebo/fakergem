@@ -1,8 +1,11 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/university.json');
 
-export function name() {
-  return itemFromCollection(data['names']);
-}
+export default class University {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
+  name() {
+    return this.faker.Random.element(data['names']);
+  }
+}

@@ -1,75 +1,69 @@
 'use strict';
 const expect = require('chai').expect;
-const SlackEmoji = require('../../src/faker/slack-emoji');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/slack-emoji.json');
 
 describe('SlackEmoji', () => {
   describe('#people', () => {
-    it('should return an emoji from the people category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.people()).to.be.oneOf(data['people']);
-      });
-    });
+    it('should return an emoji from the people category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['people']).returns('person');
+      expect(Faker.SlackEmoji.people()).to.eql('person');
+    }));
   });
 
   describe('#nature', () => {
-    it('should return an emoji from the nature category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.nature()).to.be.oneOf(data['nature']);
-      });
-    });
+    it('should return an emoji from the nature category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['nature']).returns('nature');
+      expect(Faker.SlackEmoji.nature()).to.eql('nature');
+    }));
   });
 
   describe('#foodAndDrink', () => {
-    it('should return an emoji from the food and drink category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.foodAndDrink()).to.be.oneOf(data['foodAndDrink']);
-      });
-    });
+    it('should return an emoji from the food and drink category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['foodAndDrink']).returns('food and drink');
+      expect(Faker.SlackEmoji.foodAndDrink()).to.eql('food and drink');
+    }));
   });
 
   describe('#celebration', () => {
-    it('should return an emoji from the celebration category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.celebration()).to.be.oneOf(data['celebration']);
-      });
-    });
+    it('should return an emoji from the celebration category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['celebration']).returns('celebration');
+      expect(Faker.SlackEmoji.celebration()).to.eql('celebration');
+    }));
   });
 
   describe('#activity', () => {
-    it('should return an emoji from the activity category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.activity()).to.be.oneOf(data['activity']);
-      });
-    });
+    it('should return an emoji from the activity category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['activity']).returns('activity');
+      expect(Faker.SlackEmoji.activity()).to.eql('activity');
+    }));
   });
 
   describe('#travelAndPlaces', () => {
-    it('should return an emoji from the travel and places category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.travelAndPlaces()).to.be.oneOf(data['travelAndPlaces']);
-      });
-    });
+    it('should return an emoji from the travel and places category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['travelAndPlaces']).returns('travel and places');
+      expect(Faker.SlackEmoji.travelAndPlaces()).to.eql('travel and places');
+    }));
   });
 
   describe('#objectsAndSymbols', () => {
-    it('should return an emoji from the objects and symbols category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.objectsAndSymbols()).to.be.oneOf(data['objectsAndSymbols']);
-      });
-    });
+    it('should return an emoji from the objects and symbols category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['objectsAndSymbols']).returns('person');
+      expect(Faker.SlackEmoji.objectsAndSymbols()).to.eql('person');
+    }));
   });
 
   describe('#custom', () => {
-    it('should return an emoji from the custom category', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.custom()).to.be.oneOf(data['custom']);
-      });
-    });
+    it('should return an emoji from the custom category', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['custom']).returns('custom');
+      expect(Faker.SlackEmoji.custom()).to.eql('custom');
+    }));
   });
 
   describe('#emoji', () => {
-    it('should return an emoji from any category', () => {
+    it('should return an emoji from any category', sinonTest(function() {
       const emojis = [
         ...data['people'],
         ...data['nature'],
@@ -80,9 +74,8 @@ describe('SlackEmoji', () => {
         ...data['objectsAndSymbols'],
         ...data['custom']
       ];
-      [...Array(100).keys()].forEach(_ => {
-        expect(SlackEmoji.emoji()).to.be.oneOf(emojis);
-      });
-    });
+      this.stub(Faker.Random, 'element').withArgs(emojis).returns('emoji');
+      expect(Faker.SlackEmoji.emoji()).to.eql('emoji');
+    }));
   });
 });

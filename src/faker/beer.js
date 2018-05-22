@@ -1,35 +1,39 @@
-import { itemFromCollection, randomNumber, randomFloat } from '../utils/random';
-
 const data = require('../../data/beer.json');
 
-export function name() {
-  return itemFromCollection(data['names']);
-}
+export default class Beer {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function style() {
-  return itemFromCollection(data['styles']);
-}
+  name() {
+    return this.faker.Random.element(data['names']);
+  }
 
-export function hop() {
-  return itemFromCollection(data['hops']);
-}
+  style() {
+    return this.faker.Random.element(data['styles']);
+  }
 
-export function yeast() {
-  return itemFromCollection(data['yeasts']);
-}
+  hop() {
+    return this.faker.Random.element(data['hops']);
+  }
 
-export function malt() {
-  return itemFromCollection(data['malts']);
-}
+  yeast() {
+    return this.faker.Random.element(data['yeasts']);
+  }
 
-export function ibu() {
-  return `${randomNumber(10, 100)} IBU`;
-}
+  malt() {
+    return this.faker.Random.element(data['malts']);
+  }
 
-export function alcohol() {
-  return `${randomFloat(2.0, 10.0).toFixed(1)}%`;
-}
+  ibu() {
+    return `${this.faker.Number.between(10, 99)} IBU`;
+  }
 
-export function blg() {
-  return `${randomFloat(2.0, 10.0).toFixed(1)}°Blg`
+  alcohol() {
+    return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}%`;
+  }
+
+  blg() {
+    return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}°Blg`
+  }
 }

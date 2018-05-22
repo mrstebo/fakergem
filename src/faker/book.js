@@ -1,23 +1,26 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/book.json');
-const nameData = require('../../data/name.json');
 
-export function title() {
-  return itemFromCollection(data['titles']);
-}
+export default class Book {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function author() {
-  return [
-    itemFromCollection(nameData['firstNames']),
-    itemFromCollection(nameData['lastNames'])
-  ].join(' ');
-}
+  title() {
+    return this.faker.Random.element(data['titles']);
+  }
 
-export function publisher() {
-  return itemFromCollection(data['publishers']);
-}
+  author() {
+    return [
+      this.faker.Name.firstName(),
+      this.faker.Name.lastName()
+    ].join(' ');
+  }
 
-export function genre() {
-  return itemFromCollection(data['genres']);
+  publisher() {
+    return this.faker.Random.element(data['publishers']);
+  }
+
+  genre() {
+    return this.faker.Random.element(data['genres']);
+  }
 }

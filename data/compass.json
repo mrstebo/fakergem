@@ -128,21 +128,21 @@
     ]
   },
   "directions": [
-    "#{cardinal}",
-    "#{ordinal}",
-    "#{halfWind}",
-    "#{quarterWind}"
+    "{cardinal}",
+    "{ordinal}",
+    "{halfWind}",
+    "{quarterWind}"
   ],
   "abbreviations": [
-    "#{cardinalAbbreviation}",
-    "#{ordinalAbbreviation}",
-    "#{halfWindAbbreviation}",
-    "#{quarterWindAbbreviation}"
+    "{cardinalAbbreviation}",
+    "{ordinalAbbreviation}",
+    "{halfWindAbbreviation}",
+    "{quarterWindAbbreviation}"
   ],
   "azimuths": [
-    "#{cardinalAzimuth}",
-    "#{ordinalAzimuth}",
-    "#{halfWindAzimuth}",
-    "#{quarterWindAzimuth}"
+    "{cardinalAzimuth}",
+    "{ordinalAzimuth}",
+    "{halfWindAzimuth}",
+    "{quarterWindAzimuth}"
   ]
 }

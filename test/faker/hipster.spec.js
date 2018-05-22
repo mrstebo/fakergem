@@ -1,135 +1,189 @@
 'use strict';
 const expect = require('chai').expect;
-const Hipster = require('../../src/faker/hipster');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/hipster.json');
 const loremData = require('../../data/lorem.json');
 
 describe('Hipster', () => {
   describe('#word', () => {
-    it('should return a string', () => {
-      expect(Hipster.word()).to.be.a('string');
-    });
-
-    it('should return a word', () => {
-      expect(Hipster.word()).to.be.oneOf(data['words']);
-    });
+    it('should return a word', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['words']).returns('word');
+      expect(Faker.Hipster.word()).to.eql('word');
+    }));
   });
 
   describe('#words', () => {
-    it('should return an array', () => {
-      expect(Hipster.words()).to.be.a('array');
-    });
+    it('should return words', sinonTest(function() {
+      this.stub(Faker.Random, 'assortment').withArgs(data['words'], 3).returns([
+        'I',
+        'am',
+        'Sparta!'
+      ]);
+      expect(Faker.Hipster.words()).to.eql(['I', 'am', 'Sparta!']);
+    }));
 
     it('should return a specified number of words', () => {
-      expect(Hipster.words(50)).to.have.lengthOf(50);
+      expect(Faker.Hipster.words(50)).to.have.lengthOf(50);
     });
 
-    it('should return words', () => {
-      Hipster.words(50).forEach(word => {
-        expect(word).to.be.oneOf(data['words']);
-      });
-    });
+    it('should convert spaces to words by default', sinonTest(function() {
+      this.stub(Faker.Random, 'assortment').returns(['I', 'word with space', 'Sparta!']);
+      this.stub(Faker.Random, 'element').withArgs(data['words']).returns('AM');
+      expect(Faker.Hipster.words()).to.eql(['I', 'AM', 'Sparta!']);
+    }));
 
-    it('should return supplemental words if specified', () => {
-      const supplementals = Hipster.words(200, true)
-        .filter(word => loremData['words'].indexOf(word) >= 0);
-      expect(supplementals).to.have.length.within(0, 200);
-    });
+    it('should return supplemental words if specified', sinonTest(function() {
+      this.stub(Faker.Random, 'assortment').withArgs([...data['words'], loremData['words']], 3).returns([
+        'I',
+        'am',
+        'Sparta!'
+      ]);
+      expect(Faker.Hipster.words(3, true)).to.eql(['I', 'am', 'Sparta!']);
+    }));
+
+    it('should not convert spaces if specified', sinonTest(function() {
+      this.stub(Faker.Random, 'assortment').returns(['I', '', 'Sparta!']);
+      expect(Faker.Hipster.words(3, true, true)).to.eql(['I', '', 'Sparta!']);
+    }));
   });
 
   describe('#sentence', () => {
-    it('should return a string', () => {
-      expect(Hipster.sentence()).to.be.a('string');
-    });
+    it('should return a sentence', sinonTest(function() {
+      this.stub(Faker.Hipster, 'words').returns([
+        'this', 'is', 'a', 'sentence'
+      ]);
+      expect(Faker.Hipster.sentence()).to.eql('This is a sentence.');
+    }));
 
-    it('should return minimum specified number of words', () => {
-      expect(Hipster.sentence(10, false, 0).match(/\w+[\s\.]/g) || []).to.have.length.above(9);
-    });
+    it('should return a sentence with a specified number of words', sinonTest(function() {
+      this.stub(Faker.Number, 'between').withArgs(0, 6).returns(1);
+      this.stub(Faker.Hipster, 'words').withArgs(7, false, true).returns([
+        'this', 'is', 'a', 'much', 'longer', 'sentence'
+      ]);
+      expect(Faker.Hipster.sentence(6)).to.eql('This is a much longer sentence.');
+    }));
 
-    it('should return supplemental words if specified', () => {
-      const supplementals = Hipster.sentence(50, true)
-        .split(' ')
-        .filter(word => loremData['words'].indexOf(word) >= 0);
-      expect(supplementals).to.have.length.within(0, 50);
-    });
+    it('should return supplemental words if specified', sinonTest(function() {
+      this.stub(Faker.Number, 'between').withArgs(0, 6).returns(1);
+      this.stub(Faker.Hipster, 'words').withArgs(5, true, true).returns([
+        'this', 'is', 'a', 'sentence'
+      ]);
+      expect(Faker.Hipster.sentence(4, true)).to.eql('This is a sentence.');
+    }));
 
-    it('should include random words if specified', () => {
-      const words = Hipster.sentence(0, false, 10).match(/\w+/g) || [];
-      expect(words).to.have.length.within(0, 10);
-    });
+    it('should include random words if specified', sinonTest(function() {
+      this.stub(Faker.Number, 'between').withArgs(0, 1).returns(1);
+      this.stub(Faker.Hipster, 'words').withArgs(5, false, true).returns([
+        'this', 'is', 'a', 'sentence'
+      ]);
+      expect(Faker.Hipster.sentence(4, false, 1)).to.eql('This is a sentence.');
+    }));
 
     it('should return empty string if number of words is less than 1', () => {
-      expect(Hipster.sentence(-1, false, 0)).to.equal('');
+      expect(Faker.Hipster.sentence(-1, false, 0)).to.eql('');
     });
   });
 
   describe('#sentences', () => {
-    it('should return an array', () => {
-      expect(Hipster.sentences()).to.be.a('array');
-    });
+    it('should return sentences', sinonTest(function() {
+      this.stub(Faker.Hipster, 'sentence').withArgs(3, false).returns('This is Sparta.');
+      expect(Faker.Hipster.sentences()).to.eql([
+        'This is Sparta.',
+        'This is Sparta.',
+        'This is Sparta.'
+      ]);
+    }));
 
     it('should return a specified number of sentences', () => {
-      expect(Hipster.sentences(50)).to.have.lengthOf(50);
+      expect(Faker.Hipster.sentences(5)).to.have.lengthOf(5);
     });
 
-    it('should return supplemental words if specified', () => {
-      const supplementals = Hipster.sentences(50, true)
-        .filter(sentence => sentence.split(' ')
-          .filter(word => loremData['words'].indexOf(word) >= 0)
-        );
-      expect(supplementals).to.have.length.within(0, 50);
-    });
+    it('should return supplemental words if specified', sinonTest(function() {
+      this.stub(Faker.Hipster, 'sentence').withArgs(3, true).returns('This is Sparta.');
+      expect(Faker.Hipster.sentences(3, true)).to.eql([
+        'This is Sparta.',
+        'This is Sparta.',
+        'This is Sparta.'
+      ]);
+    }));
 
     it('should return empty array if number of sentences is less than 1', () => {
-      expect(Hipster.sentences(-1)).to.have.lengthOf(0);
+      expect(Faker.Hipster.sentences(-1)).to.have.lengthOf(0);
     });
   });
 
   describe('#paragraph', () => {
-    it('should return a string', () => {
-      expect(Hipster.paragraph()).to.be.a('string');
-    });
+    it('should return a paragraph', sinonTest(function() {
+      this.stub(Faker.Hipster, 'sentences').returns([
+        'This is a test.',
+        'This was a test.',
+        'The test has finished.'
+      ]);
+      expect(Faker.Hipster.paragraph()).to.eql('This is a test. This was a test. The test has finished.');
+    }));
 
-    it('should return a specified number of sentences', () => {
-      expect(Hipster.paragraph(10, false, 0).match(/.*?\./g)).to.have.lengthOf(10);
-    });
+    it('should return a specified number of sentences', sinonTest(function() {
+      this.stub(Faker.Number, 'between').returns(0);
+      this.stub(Faker.Hipster, 'sentences').withArgs(3, false).returns([
+        'This is a test.',
+        'This was a test.',
+        'The test has finished.'
+      ]);
+      expect(Faker.Hipster.paragraph(3)).to.eql('This is a test. This was a test. The test has finished.');
+    }));
 
-    it('should return supplemental words if specified', () => {
-      const supplementals = Hipster.paragraph(50, true)
-        .split(' ')
-        .filter(word => loremData['words'].indexOf(word) >= 0);
-      expect(supplementals).to.have.length.within(0, 50);
-    });
+    it('should return supplemental words if specified', sinonTest(function() {
+      this.stub(Faker.Number, 'between').returns(0);
+      this.stub(Faker.Hipster, 'sentences').withArgs(3, true).returns([
+        'This is a test.',
+        'This was a test.',
+        'The test has finished.'
+      ]);
+      expect(Faker.Hipster.paragraph(3, true)).to.eql('This is a test. This was a test. The test has finished.');
+    }));
 
-    it('should include random sentences if specified', () => {
-      const sentences = Hipster.paragraph(0, false, 10).match(/.*?\./g) || [];
-      expect(sentences).to.have.length.within(0, 10);
-    });
+    it('should include random sentences if specified', sinonTest(function() {
+      this.stub(Faker.Number, 'between').returns(1);
+      this.stub(Faker.Hipster, 'sentences').withArgs(3, true).returns([
+        'This is a test.',
+        'This was a test.',
+        'The test has finished.'
+      ]);
+      expect(Faker.Hipster.paragraph(2, true, 1)).to.eql('This is a test. This was a test. The test has finished.');
+    }));
 
     it('should return empty string if number of sentences is less than 1', () => {
-      expect(Hipster.paragraph(-1, false, 0)).to.equal('');
+      expect(Faker.Hipster.paragraph(-1, false, 0)).to.equal('');
     });
   });
 
   describe('#paragraphs', () => {
-    it('should return an array', () => {
-      expect(Hipster.paragraphs()).to.be.a('array');
-    });
+    it('should return paragraphs', sinonTest(function() {
+      this.stub(Faker.Hipster, 'paragraph').returns('This is a test.');
+      expect(Faker.Hipster.paragraphs()).to.eql([
+        'This is a test.',
+        'This is a test.',
+        'This is a test.'
+      ]);
+    }));
 
     it('should return a specified number of paragraphs', () => {
-      expect(Hipster.paragraphs(50)).to.have.lengthOf(50);
+      expect(Faker.Hipster.paragraphs(50)).to.have.lengthOf(50);
     });
 
-    it('should return supplemental words if specified', () => {
-      const supplementals = Hipster.paragraphs(50, true)
-        .filter(paragraph => paragraph.split(' ')
-          .filter(word => loremData['words'].indexOf(word) >= 0)
-        );
-      expect(supplementals).to.have.length.within(0, 50);
-    });
+    it('should return supplemental words if specified', sinonTest(function() {
+      this.stub(Faker.Hipster, 'paragraph').withArgs(3, true).returns('This is a test.');
+      expect(Faker.Hipster.paragraphs(3, true)).to.eql([
+        'This is a test.',
+        'This is a test.',
+        'This is a test.'
+      ]);
+    }));
 
     it('should return empty array if number of paragraphs is less than 1', () => {
-      expect(Hipster.paragraphs(-1)).to.have.lengthOf(0);
+      expect(Faker.Hipster.paragraphs(-1)).to.have.lengthOf(0);
     });
   });
 });

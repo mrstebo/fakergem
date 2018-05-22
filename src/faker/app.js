@@ -1,22 +1,25 @@
-import { itemFromCollection, randomNumber } from '../utils/random';
-
 const data = require('../../data/app.json');
-const nameData = require('../../data/name.json');
 
-export function name() {
-  return itemFromCollection(data['names']);
-}
+export default class App {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function version() {
-  return itemFromCollection(data['versions'])
-    .split('.')
-    .map(x => x.replace(/#/g, () => randomNumber(0, 10)))
-    .join('.');
-}
+  name() {
+    return this.faker.Random.element(data['names']);
+  }
 
-export function author() {
-  return [
-    itemFromCollection(nameData['firstNames']),
-    itemFromCollection(nameData['lastNames'])
-  ].join(' ');
+  version() {
+    return this.faker.Random.element(data['versions'])
+      .split('.')
+      .map(x => x.replace(/#/g, () => this.faker.Number.between(0, 9)))
+      .join('.');
+  }
+
+  author() {
+    return [
+      this.faker.Name.firstName(),
+      this.faker.Name.lastName()
+    ].join(' ');
+  }
 }

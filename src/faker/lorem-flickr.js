@@ -1,36 +1,5 @@
 const SUPPORTED_COLORIZATIONS = ['red', 'green', 'blue'];
 
-export function image(size='300x300', searchTerms=[], matchAll=false) {
-  return buildUrl(size, null, searchTerms, matchAll);
-}
-
-export function grayscaleImage(size='300x300', searchTerms=['all'], matchAll=false) {
-  if (!hasSearchTerms(searchTerms)) {
-    throw new Error('Search terms must be specified for grayscale images');
-  }
-
-  return buildUrl(size, 'g', searchTerms, matchAll);
-}
-
-export function pixelatedImage(size='300x300', searchTerms=['all'], matchAll=false) {
-  if (!hasSearchTerms(searchTerms)) {
-    throw new Error('Search terms must be specified for pixelated images');
-  }
-
-  return buildUrl(size, 'p', searchTerms, matchAll);
-}
-
-export function colorizedImage(size='300x300', color='red', searchTerms=['all'], matchAll=false) {
-  if (!hasSearchTerms(searchTerms)) {
-    throw new Error('Search terms must be specified for colorized images');
-  }
-  if (!isColorizationSupported(color)) {
-    throw new Error(`Supported colorizations are ${SUPPORTED_COLORIZATIONS.join(', ')}`);
-  }
-
-  return buildUrl(size, color, searchTerms, matchAll);
-}
-
 function buildUrl(size, format, searchTerms, matchAll) {
   if (!isValidSize(size)) {
     throw new Error('Size should be specified in format 300x300');
@@ -60,4 +29,41 @@ function isColorizationSupported(color) {
 
 function isValidSize(size) {
   return /^\d+x\d+$/.test(size);
+}
+
+export default class LoremFlickr {
+  constructor(faker) {
+    this.faker = faker;
+  }
+
+  image(size='300x300', searchTerms=[], matchAll=false) {
+    return buildUrl(size, null, searchTerms, matchAll);
+  }
+
+  grayscaleImage(size='300x300', searchTerms=['all'], matchAll=false) {
+    if (!hasSearchTerms(searchTerms)) {
+      throw new Error('Search terms must be specified for grayscale images');
+    }
+
+    return buildUrl(size, 'g', searchTerms, matchAll);
+  }
+
+  pixelatedImage(size='300x300', searchTerms=['all'], matchAll=false) {
+    if (!hasSearchTerms(searchTerms)) {
+      throw new Error('Search terms must be specified for pixelated images');
+    }
+
+    return buildUrl(size, 'p', searchTerms, matchAll);
+  }
+
+  colorizedImage(size='300x300', color='red', searchTerms=['all'], matchAll=false) {
+    if (!hasSearchTerms(searchTerms)) {
+      throw new Error('Search terms must be specified for colorized images');
+    }
+    if (!isColorizationSupported(color)) {
+      throw new Error(`Supported colorizations are ${SUPPORTED_COLORIZATIONS.join(', ')}`);
+    }
+
+    return buildUrl(size, color, searchTerms, matchAll);
+  }
 }

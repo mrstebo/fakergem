@@ -1,12 +1,8 @@
 const path = require('path');
 const gulp = require('gulp');
 const babel = require('gulp-babel');
-const coveralls = require('gulp-coveralls');
 const eslint = require('gulp-eslint');
-const istanbul = require('gulp-istanbul');
-const mocha = require('gulp-mocha');
-const gutil = require('gulp-util');
-const isparta = require('isparta');
+const spawn = require('child_process').spawn;
 
 gulp.task('lint', () => {
   return gulp.src('src/**/*.js')
@@ -23,37 +19,16 @@ gulp.task('build', ['lint'], () => {
     .pipe(gulp.dest('lib'));
 });
 
-gulp.task('istanbul', () => {
-  return gulp.src(['src/**/*.js'])
-    .pipe(istanbul({
-      instrumenter: isparta.Instrumenter,
-      includeUntested: true
-    }))
-    .pipe(istanbul.hookRequire());
-});
-
-gulp.task('test', ['istanbul'], () => {
-  return gulp.src('test/**/*.spec.js', { read: false })
-    .pipe(mocha({
-      reporter: 'spec',
-      compilers: 'js:babel-core/register',
-      colors: true,
-      harmony: true
-    }))
-    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
-    // .pipe(istanbul.writeReports())
-});
-
-gulp.task('coveralls', ['istanbul', 'test'], () => {
-  if (!process.env.CI) {
-    return;
-  }
-  return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
-    .pipe(coveralls());
+gulp.task('test', done => {
+  spawn('npm', ['run', 'test:cover'], {shell: true, stdio: ['inherit', 'inherit', 'ignore']})
+    .on('exit', code => {
+      console.log('Exited with code:', code);
+      done();
+    });
 });
 
 gulp.task('watch', ['test'], () => {
   gulp.watch(['src/**/*.js', 'test/**/*.spec.js'], ['test']);
 });
 
-gulp.task('default', ['test', 'coveralls']);
+gulp.task('default', ['test']);

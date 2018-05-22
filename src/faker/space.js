@@ -1,56 +1,59 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/space.json');
 
-export function planet() {
-  return itemFromCollection(data['planets']);
-}
+export default class Space {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function moon() {
-  return itemFromCollection(data['moons']);
-}
+  planet() {
+    return this.faker.Random.element(data['planets']);
+  }
 
-export function galaxy() {
-  return itemFromCollection(data['galaxies']);
-}
+  moon() {
+    return this.faker.Random.element(data['moons']);
+  }
 
-export function nebula() {
-  return itemFromCollection(data['nebulas']);
-}
+  galaxy() {
+    return this.faker.Random.element(data['galaxies']);
+  }
 
-export function starCluster() {
-  return itemFromCollection(data['starClusters']);
-}
+  nebula() {
+    return this.faker.Random.element(data['nebulas']);
+  }
 
-export function constellation() {
-  return itemFromCollection(data['constellations']);
-}
+  starCluster() {
+    return this.faker.Random.element(data['starClusters']);
+  }
 
-export function star() {
-  return itemFromCollection(data['stars']);
-}
+  constellation() {
+    return this.faker.Random.element(data['constellations']);
+  }
 
-export function agency() {
-  return itemFromCollection(data['agencies']);
-}
+  star() {
+    return this.faker.Random.element(data['stars']);
+  }
 
-export function agencyAbv() {
-  return itemFromCollection(data['agencyAbvs']);
-}
+  agency() {
+    return this.faker.Random.element(data['agencies']);
+  }
 
-export function nasaSpaceCraft() {
-  return itemFromCollection(data['nasaSpaceCrafts']);
-}
+  agencyAbv() {
+    return this.faker.Random.element(data['agencyAbvs']);
+  }
 
-export function company() {
-  return itemFromCollection(data['companies']);
-}
+  nasaSpaceCraft() {
+    return this.faker.Random.element(data['nasaSpaceCrafts']);
+  }
 
-export function distanceMeasurement() {
-  return itemFromCollection(data['distanceMeasurements']);
-}
+  company() {
+    return this.faker.Random.element(data['companies']);
+  }
 
-export function meteorite() {
-  return itemFromCollection(data['meteorites']);
-}
+  distanceMeasurement() {
+    return this.faker.Random.element(data['distanceMeasurements']);
+  }
 
+  meteorite() {
+    return this.faker.Random.element(data['meteorites']);
+  }
+}

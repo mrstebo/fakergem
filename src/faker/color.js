@@ -1,37 +1,43 @@
-import { randomNumber, randomFloat, itemFromCollection } from '../utils/random';
-
 const data = require('../../data/color.json');
-
-export function hexColor() {
-  return `#${leftPad(randomNumber(0, 0xffffff).toString(16), 6, '0')}`;
-}
-
-export function colorName() {
-  return itemFromCollection(data['colorNames']);
-}
-
-export function rgbColor() {
-  return [...Array(3).keys()].map(_ => randomNumber(0, 255));
-}
-
-export function hslColor() {
-  return [
-    randomNumber(0, 360),
-    Math.round(randomFloat(0, 1), 2),
-    Math.round(randomFloat(0, 1), 2)
-  ];
-}
-
-export function hslaColor() {
-  return [
-    randomNumber(0, 360),
-    Math.round(randomFloat(0, 1), 2),
-    Math.round(randomFloat(0, 1), 2),
-    randomFloat(0, 1)
-  ];
-}
 
 function leftPad(text, length, paddingCharacter) {
   let padding = [...Array(length)].map(_ => paddingCharacter).join('');
   return (padding + text).slice(-length);
+}
+
+export default class Color {
+  constructor(faker) {
+    this.faker = faker;
+  }
+
+  hexColor() {
+    const n = this.faker.Number.between(0, 0xffffff);
+    return `#${leftPad(n.toString(16), 6, '0')}`;
+  }
+
+  colorName() {
+    return this.faker.Random.element(data['colorNames']);
+  }
+
+  rgbColor() {
+    return [...Array(3).keys()]
+      .map(_ => this.faker.Number.between(0, 255));
+  }
+
+  hslColor() {
+    return [
+      this.faker.Number.between(0, 360),
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2),
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2)
+    ];
+  }
+
+  hslaColor() {
+    return [
+      this.faker.Number.between(0, 360),
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2),
+      Math.round(this.faker.Number.betweenF(0.00, 1.00), 2),
+      this.faker.Number.betweenF(0.00, 1.00)
+    ];
+  }
 }

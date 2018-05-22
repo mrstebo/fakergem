@@ -1,20 +1,23 @@
-import { itemFromCollection } from '../utils/random';
-
 const data = require('../../data/game-of-thrones.json');
 
-export function character() {
-  return itemFromCollection(data['characters']);
-}
+export default class GameOfThrones {
+  constructor(faker) {
+    this.faker = faker;
+  }
 
-export function house() {
-  return itemFromCollection(data['houses']);
-}
+  character() {
+    return this.faker.Random.element(data['characters']);
+  }
 
-export function city() {
-  return itemFromCollection(data['cities']);
-}
+  house() {
+    return this.faker.Random.element(data['houses']);
+  }
 
-export function dragon() {
-  return itemFromCollection(data['dragons']);
-}
+  city() {
+    return this.faker.Random.element(data['cities']);
+  }
 
+  dragon() {
+    return this.faker.Random.element(data['dragons']);
+  }
+}

@@ -1,33 +1,31 @@
 'use strict';
 const expect = require('chai').expect;
-const App = require('../../src/faker/app');
+const sinon = require('sinon');
+const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
+const Faker = require('../../src/faker');
 const data = require('../../data/app.json');
-const nameData = require('../../data/name.json');
 
 describe('App', () => {
   describe('#name', () => {
-    it('should return a name', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(App.name()).to.be.oneOf(data['names']);
-      });
-    });
+    it('returns a name', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['names']).returns('x');
+      expect(Faker.App.name()).to.eql('x');
+    }));
   });
 
   describe('#version', () => {
-    it('should return a version format', () => {
-      [...Array(100).keys()].forEach(_ => {
-        expect(App.version()).to.match(/(?:#|\d+)\.(?:[#]+|\d+)(?:\.(?:[#]+|\d+))?/);
-      });
-    });
+    it('returns a version format', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['versions']).returns('#.#.#.#');
+      this.stub(Faker.Number, 'between').withArgs(0, 9).returns(1);
+      expect(Faker.App.version()).to.eql('1.1.1.1');
+    }));
   });
 
   describe('#author', () => {
-    it('should return a name', () => {
-      [...Array(100).keys()].forEach(_ => {
-        const author = App.author();
-        expect(author.split(' ')[0]).to.be.oneOf(nameData['firstNames']);
-        expect(author.split(' ')[1]).to.be.oneOf(nameData['lastNames']);
-      });
-    });
+    it('returns a name', sinonTest(function() {
+      this.stub(Faker.Name, 'firstName').returns('John');
+      this.stub(Faker.Name, 'lastName').returns('Smith');
+      expect(Faker.App.author()).to.eql('John Smith');
+    }));
   });
 });
