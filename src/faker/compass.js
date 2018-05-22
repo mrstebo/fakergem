@@ -1,19 +1,8 @@
 const data = require('../../data/compass.json');
 
-function parse(compass, text) {
-  return text
-    .replace(/\{cardinal\}/, compass.cardinal())
-    .replace(/\{ordinal\}/, compass.ordinal())
-    .replace(/\{halfWind\}/, compass.halfWind())
-    .replace(/\{quarterWind\}/, compass.quarterWind())
-    .replace(/\{cardinalAbbreviation\}/, compass.cardinalAbbreviation())
-    .replace(/\{ordinalAbbreviation\}/, compass.ordinalAbbreviation())
-    .replace(/\{halfWindAbbreviation\}/, compass.halfWindAbbreviation())
-    .replace(/\{quarterWindAbbreviation\}/, compass.quarterWindAbbreviation())
-    .replace(/\{cardinalAzimuth\}/, compass.cardinalAzimuth())
-    .replace(/\{ordinalAzimuth\}/, compass.ordinalAzimuth())
-    .replace(/\{halfWindAzimuth\}/, compass.halfWindAzimuth())
-    .replace(/\{quarterWindAzimuth\}/, compass.quarterWindAzimuth());
+function parse(faker, format) {
+  const text = format.replace(/\{(\w+)\}/g, m => `{Compass.${m.substring(1)}`);
+  return faker.Fake.f(text);
 }
 
 export default class Compass {
@@ -22,7 +11,7 @@ export default class Compass {
   }
 
   direction() {
-    return parse(this, this.faker.Random.element(data['directions']));
+    return parse(this.faker, this.faker.Random.element(data['directions']));
   }
 
   cardinal() {
@@ -42,7 +31,7 @@ export default class Compass {
   }
 
   abbreviation() {
-    return parse(this, this.faker.Random.element(data['abbreviations']));
+    return parse(this.faker, this.faker.Random.element(data['abbreviations']));
   }
 
   cardinalAbbreviation() {
@@ -62,7 +51,7 @@ export default class Compass {
   }
 
   azimuth() {
-    return parse(this, this.faker.Random.element(data['azimuths']));
+    return parse(this.faker, this.faker.Random.element(data['azimuths']));
   }
 
   cardinalAzimuth() {
