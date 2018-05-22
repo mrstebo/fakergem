@@ -115,6 +115,26 @@ describe('Number', () => {
     });
   });
 
+  describe('#betweenF', () => {
+    it('should return a value between 1 and 5000 by default', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Faker.Number.betweenF()).to.be.within(1.00, 5000.00);
+      });
+    });
+
+    it('should return a value within the specified range', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Faker.Number.betweenF(5.10, 5.90)).to.be.within(5.10, 5.90);
+      });
+    });
+
+    it('should handle from being greater than to', () => {
+      [...Array(100).keys()].forEach(_ => {
+        expect(Faker.Number.betweenF(5.90, 5.10)).to.be.within(5.10, 5.90);
+      });
+    });
+  });
+
   describe('#positive', () => {
     it('should return a value between 1 and 5000 by default', () => {
       [...Array(100).keys()].forEach(_ => {

@@ -1,9 +1,5 @@
 import { randomNumber, randomFloat } from '../utils/random';
 
-function isDecimal(n) {
-  return !!(''+n).match(/\./);
-}
-
 function nonZeroDigit() {
   return randomNumber(1, 9);
 }
@@ -54,12 +50,16 @@ export default class Number {
       .join('');
   }
 
-  between(from=1.00, to=5000.00) {
+  between(from=1, to=5000) {
     let min = Math.min(from, to);
     let max = Math.max(from, to);
-    return isDecimal(min) || isDecimal(max)
-      ? randomFloat(min, max)
-      : randomNumber(min, max);
+    return randomNumber(min, max);
+  }
+
+  betweenF(from=1.00, to=5000.00) {
+    let min = Math.min(from, to);
+    let max = Math.max(from, to);
+    return randomFloat(min, max);
   }
 
   positive(from=1.00, to=5000.00) {
