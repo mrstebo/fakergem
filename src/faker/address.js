@@ -1,6 +1,6 @@
 const data = require('../../data/address.json');
 
-function parseFormat(faker, format) {
+function parse(faker, format) {
   const text = format
     .replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`)
     .replace(/#/, faker.Number.between(1, 9));
@@ -14,23 +14,23 @@ export default class Address {
 
   city() {
     const format = this.faker.Random.element(data['cities']);
-    return parseFormat(this.faker, format);
+    return parse(this.faker, format);
   }
 
   streetName() {
     const format = this.faker.Random.element(data['streetNames']);
-    return parseFormat(this.faker, format);
+    return parse(this.faker, format);
   }
 
   streetAddress() {
     const format = this.faker.Random.element(data['streetAddresses']);
-    return parseFormat(this.faker, format);
+    return parse(this.faker, format);
   }
 
   secondaryAddress() {
     const prefix = this.faker.Random.element(data['secondaryAddressPrefixes']);
     const format = `${prefix} ###`;
-    return parseFormat(this.faker, format);
+    return parse(this.faker, format);
   }
 
   buildingNumber() {
@@ -41,7 +41,7 @@ export default class Address {
     const format = stateAbbreviation == ''
       ? this.faker.Random.element(data['postcodes'])
       : data['postcodeByState'][stateAbbreviation];
-    return parseFormat(this.faker, format);
+    return parse(this.faker, format);
   }
 
   zip(stateAbbreviation = '') {
