@@ -1,2 +1,7 @@
 /coverage
+/src
+/test
+.babelrc
+.eslintrc
 .travis.yml
+Gulpfile.js
