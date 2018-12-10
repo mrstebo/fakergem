@@ -39,7 +39,7 @@
     "coveralls": "^3.0.1",
     "eslint": "^5.0.0",
     "eslint-config-es2015": "^1.1.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-eslint": "^5.0.0",
     "istanbul": "1.0.0-alpha.2",
