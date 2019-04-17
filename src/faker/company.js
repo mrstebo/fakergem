@@ -1,5 +1,10 @@
 const data = require('../../data/company.json');
 
+function parse(faker, format) {
+  const text = format.replace(/\{(\w+)\}/g, m => `{Company.${m.substring(1)}`);
+  return faker.Fake.f(text);
+}
+
 function luhnAlgorithm(number) {
   let sum = 0;
   `${number}`
@@ -42,7 +47,7 @@ export default class Company {
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return parse(this.faker, this.faker.Random.element(data['names']));
   }
 
   suffix() {
