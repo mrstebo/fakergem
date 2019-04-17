@@ -11,6 +11,13 @@ describe('Company', () => {
       this.stub(Faker.Random, 'element').withArgs(data['names']).returns('name');
       expect(Faker.Company.name()).to.eql('name');
     }));
+
+    it('should run the name through the fake faker', sinonTest(function() {
+      this.stub(Faker.Random, 'element').withArgs(data['names']).returns('{Name.lastName} {suffix}');
+      this.stub(Faker.Name, 'lastName').returns('Hirthe');
+      this.stub(Faker.Company, 'suffix').returns('Inc');
+      expect(Faker.Company.name()).to.eql('Hirthe Inc');
+    }));
   });
 
   describe('#suffix', () => {
