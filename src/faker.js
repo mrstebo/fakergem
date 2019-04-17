@@ -10,6 +10,7 @@ import Boolean from './faker/boolean';
 import Business from './faker/business';
 import Cat from './faker/cat';
 import ChuckNorris from './faker/chuck-norris';
+import Code from './faker/code';
 import Coffee from './faker/coffee';
 import Color from './faker/color';
 import Commerce from './faker/commerce';
@@ -71,6 +72,7 @@ class Faker {
     this.Business = new Business(this);
     this.Cat = new Cat(this);
     this.ChuckNorris = new ChuckNorris(this);
+    this.Code = new Code(this);
     this.Coffee = new Coffee(this);
     this.Color = new Color(this);
     this.Commerce = new Commerce(this);

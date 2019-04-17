@@ -79,6 +79,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#Code', () => {
+    it('should be an object', () => {
+      expect(Faker.Code).to.be.a('object');
+    });
+  });
+
   describe('#Coffee', () => {
     it('should be an object', () => {
       expect(Faker.Coffee).to.be.a('object');
