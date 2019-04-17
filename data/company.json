@@ -496,9 +496,9 @@
     ]
   ],
   "names": [
-    "#{Name.last_name} #{suffix}",
-    "#{Name.last_name}-#{Name.last_name}",
-    "#{Name.last_name}, #{Name.last_name} and #{Name.last_name}"
+    "{Name.lastName} {suffix}",
+    "{Name.lastName}-{Name.lastName}",
+    "{Name.lastName}, {Name.lastName} and {Name.lastName}"
   ],
   "industries": [
     "Defense & Space",
