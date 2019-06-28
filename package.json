@@ -41,7 +41,7 @@
     "eslint-config-es2015": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
-    "gulp-eslint": "^5.0.0",
+    "gulp-eslint": "^6.0.0",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "^5.0.0",
     "sinon": "^6.0.0",
