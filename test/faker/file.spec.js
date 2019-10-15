@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const Faker = require('../../src/faker');
+const Faker = require('../../src/index');
 const sinon = require('sinon');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
 const data = require('../../data/file.json');

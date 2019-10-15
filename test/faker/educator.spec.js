@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const orList = require('../support/regexp').orList;
 const sinon = require('sinon');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
-const Faker = require('../../src/faker');
+const Faker = require('../../src/index');
 const data = require('../../data/educator.json');
 
 describe('Educator', () => {

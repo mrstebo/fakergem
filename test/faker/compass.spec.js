@@ -2,7 +2,7 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
-const Faker = require('../../src/faker');
+const Faker = require('../../src/index');
 const data = require('../../data/compass.json');
 
 describe('Compass', () => {

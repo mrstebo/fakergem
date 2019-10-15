@@ -57,7 +57,7 @@ import University from './faker/university';
 import Vehicle from './faker/vehicle';
 import Zelda from './faker/zelda';
 
-class Faker {
+export default class Faker {
   constructor() {
     this.Address = new Address(this);
     this.Ancient = new Ancient(this);
@@ -119,5 +119,3 @@ class Faker {
     this.Zelda = new Zelda(this);
   }
 }
-
-module.exports = new Faker();

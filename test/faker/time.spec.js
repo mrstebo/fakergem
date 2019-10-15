@@ -3,7 +3,7 @@ const chai = require('chai');
 const { expect } = chai;
 const sinon = require('sinon');
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
-const Faker = require('../../src/faker');
+const Faker = require('../../src/index');
 
 chai.use(require('chai-datetime'));
 

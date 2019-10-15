@@ -7,6 +7,10 @@ function parse(faker, format) {
   return faker.Fake.f(text);
 }
 
+/**
+ * @export
+ * @class
+ */
 export default class Address {
   constructor(faker) {
     this.faker = faker;
