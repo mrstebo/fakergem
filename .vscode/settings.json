@@ -1,0 +1,12 @@
+{
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn",
+  "eslint.lintTask.enable": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "git.ignoreLimitWarning": true,
+  "javascript.implicitProjectConfig.checkJs": true
+}
