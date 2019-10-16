@@ -3,7 +3,7 @@ import { Faker } from '../faker';
 import data from '../../data/internet.json';
 
 // 0-9, a-z
-const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97 + i)));
+const CHARACTERS = Array(10).concat([...Array(26).map(i => String.fromCharCode(97 + i))]);
 const SYMBOLS = ['!', '@', '#', '$', '%', '^', '&', '*'];
 const PRIVATE_NET_REGEX = [
   /^10\./, // 10.0.0.0    – 10.255.255.255
@@ -25,11 +25,11 @@ const RESERVED_NETS_REGEX = [
   /^(24\d|25[0-5])\./, // 240.0.0.0    – 255.255.255.254  and  255.255.255.255
 ];
 
-function privateNetChecker(addr) {
+function privateNetChecker(addr: string): boolean {
   return PRIVATE_NET_REGEX.some(x => addr.match(x));
 }
 
-function reservedNetChecker(addr) {
+function reservedNetChecker(addr: string): boolean {
   return [...PRIVATE_NET_REGEX, ...RESERVED_NETS_REGEX].some(x => addr.match(x));
 }
 
@@ -40,22 +40,25 @@ export class Internet {
     this.faker = faker;
   }
 
-  email(name) {
+  email(name: string | null = null): string {
     return [this.userName(name), this.domainName()].join('@');
   }
 
-  freeEmail(name) {
+  freeEmail(name: string | null = null): string {
     return [this.userName(name), this.faker.Random.element(data.freeEmails)].join('@');
   }
 
-  safeEmail(name) {
+  safeEmail(name: string | null = null): string {
     return [this.userName(name), `example.${this.faker.Random.element(['org', 'com', 'net'])}`].join('@');
   }
 
-  userName(specifier = null, separators = null) {
+  userName(
+    specifier: string | null = null,
+    separators: string | null = null
+  ): string {
     const userNameSeparator = this.faker.Random.element(separators || ['.', '_']);
     if (typeof specifier === 'string') {
-      const specifiers = specifier.match(/\w+/g).map(x => x);
+      const specifiers = (specifier.match(/\w+/g) || []).map(x => x);
       return this.faker.Random.assortment(specifiers, specifiers.length)
         .join(userNameSeparator)
         .toLowerCase();
@@ -65,36 +68,41 @@ export class Internet {
     return this.faker.Random.element([firstName, [firstName, lastName].join(userNameSeparator)]).toLowerCase();
   }
 
-  password(minLength = 8, maxLength = 16, mixCase = true, specialChars = false) {
+  password(
+    minLength: number = 8,
+    maxLength: number = 16,
+    mixCase: boolean = true,
+    specialChars: boolean = false
+  ): string {
     const diffLength = maxLength - minLength;
     const extraCharacters = this.faker.Number.between(0, diffLength);
     const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
-    return [...Array(minLength + extraCharacters).keys()].reduce((result, val, index) => {
+    return Array(minLength + extraCharacters).reduce((result, val, index) => {
       const c = this.faker.Random.element(chars).toString();
       return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
     }, '');
   }
 
-  domainName() {
+  domainName(): string {
     return [this.domainWord(), this.domainSuffix()].join('.');
   }
 
-  fixUmlauts(value) {
+  fixUmlauts(value: string): string {
     return (value || '')
       .replace(/ä/g, 'ae')
       .replace(/ö/g, 'oe')
       .replace(/ü/g, 'ue');
   }
 
-  domainWord() {
+  domainWord(): string {
     return this.faker.Name.lastName();
   }
 
-  domainSuffix() {
+  domainSuffix(): string {
     return this.faker.Random.element(data.domainSuffixes);
   }
 
-  ipV4Address() {
+  ipV4Address(): string {
     return [
       this.faker.Number.between(2, 254),
       this.faker.Number.between(2, 254),
@@ -103,7 +111,7 @@ export class Internet {
     ].join('.');
   }
 
-  privateIPV4Address() {
+  privateIPV4Address(): string {
     let addr;
     do {
       addr = this.ipV4Address();
@@ -111,7 +119,7 @@ export class Internet {
     return addr;
   }
 
-  publicIPV4Address() {
+  publicIPV4Address(): string {
     let addr;
     do {
       addr = this.ipV4Address();
@@ -119,34 +127,41 @@ export class Internet {
     return addr;
   }
 
-  ipV4CIDR() {
+  ipV4CIDR(): string {
     return `${this.ipV4Address()}/${this.faker.Number.between(1, 32)}`;
   }
 
-  ipV6Address() {
-    return [...Array(8).keys()].map(_ => this.faker.Number.between(4096, 65535).toString(16)).join(':');
+  ipV6Address(): string {
+    return Array(8).map(_ => this.faker.Number.between(4096, 65535).toString(16)).join(':');
   }
 
-  ipV6CIDR() {
+  ipV6CIDR(): string {
     return `${this.ipV6Address()}/${this.faker.Number.between(1, 128)}`;
   }
 
-  macAddress(prefix = '') {
+  macAddress(prefix: string = ''): string {
     const prefixDigits = prefix
       .split(':')
       .filter(x => x)
       .map(x => parseInt(x, 16));
-    const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(x => this.faker.Number.between(0, 255));
+    const addressDigits = Array(6 - prefixDigits.length).map(x => this.faker.Number.between(0, 255));
     return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
   }
 
-  url(host = null, path = null, scheme = 'http') {
+  url(
+    host: string | null = null,
+    path: string | null = null,
+    scheme: string = 'http'
+  ): string {
     host = host || this.domainName();
     path = path || `/${this.userName()}`;
     return `${scheme}://${host}${path}`;
   }
 
-  slug(words = null, glue = null) {
+  slug(
+    words: string | null = null,
+    glue: string | null = null
+  ): string {
     return (words || this.faker.Lorem.words(2).join(' '))
       .replace(/\s+/g, glue || this.faker.Random.element(['-', '_', '.']))
       .toLowerCase();
