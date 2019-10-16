@@ -15,7 +15,7 @@ function decimalPart(digits) {
 }
 
 function leadingZeroNumber(digits) {
-  return [...Array(digits).keys()].map(_ => randomNumber(0, 9)).join('');
+  return Array(digits).map(_ => randomNumber(0, 9)).join('');
 }
 
 export class Number {
@@ -46,7 +46,7 @@ export class Number {
   }
 
   hexadecimal(digits = 6) {
-    return [...Array(digits).keys()].map(_ => randomNumber(0, 15).toString(16)).join('');
+    return Array(digits).map(_ => randomNumber(0, 15).toString(16)).join('');
   }
 
   between(from = 1, to = 5000) {
