@@ -8,18 +8,18 @@ export class App {
     this.faker = faker;
   }
 
-  name() {
-    return this.faker.Random.element(data['names']);
+  name(): string {
+    return this.faker.Random.element(data.names);
   }
 
-  version() {
-    return this.faker.Random.element(data['versions'])
+  version(): string {
+    return this.faker.Random.element(data.versions)
       .split('.')
       .map(x => x.replace(/#/g, () => this.faker.Number.between(0, 9)))
       .join('.');
   }
 
-  author() {
+  author(): string {
     return [this.faker.Name.firstName(), this.faker.Name.lastName()].join(' ');
   }
 }
