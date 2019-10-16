@@ -19,7 +19,7 @@ function daysFromNow(n) {
   return d;
 }
 
-module.exports =  class DateFaker {
+module.exports = class DateFaker {
   constructor(faker) {
     this.faker = faker;
   }

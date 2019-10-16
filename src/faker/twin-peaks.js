@@ -1,6 +1,6 @@
 const data = require("../../data/twin-peaks.json");
 
-module.exports =  class TwinPeaks {
+module.exports = class TwinPeaks {
   constructor(faker) {
     this.faker = faker;
   }

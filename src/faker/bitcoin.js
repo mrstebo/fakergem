@@ -22,7 +22,7 @@ function base58(text) {
   return bs58.encode(new Buffer(text, "ascii"));
 }
 
-module.exports =  class Bitcoin {
+module.exports = class Bitcoin {
   constructor(faker) {
     this.faker = faker;
   }

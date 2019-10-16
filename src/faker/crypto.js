@@ -2,7 +2,7 @@ const crypto = require("crypto");
 
 const CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
 
-module.exports =  class Crypto {
+module.exports = class Crypto {
   constructor(faker) {
     this.faker = faker;
   }

@@ -1,6 +1,6 @@
 const data = require("../../data/game-of-thrones.json");
 
-module.exports =  class GameOfThrones {
+module.exports = class GameOfThrones {
   constructor(faker) {
     this.faker = faker;
   }

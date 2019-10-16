@@ -6,7 +6,7 @@ function isValidBoolean(value) {
   return /(true|false)/.test(value);
 }
 
-module.exports =  class Fillmurray {
+module.exports = class Fillmurray {
   constructor(faker) {
     this.faker = faker;
   }

@@ -41,7 +41,7 @@ function leftPad(text, length, paddingCharacter) {
   return (padding + text).slice(-length);
 }
 
-module.exports =  class Company {
+module.exports = class Company {
   constructor(faker) {
     this.faker = faker;
   }

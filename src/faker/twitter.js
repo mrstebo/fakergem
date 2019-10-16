@@ -1,4 +1,4 @@
-module.exports =  class Twitter {
+module.exports = class Twitter {
   constructor(faker) {
     this.faker = faker;
   }

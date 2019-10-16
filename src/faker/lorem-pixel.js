@@ -12,7 +12,7 @@ function isNumberValid(number) {
   return number === null || [...Array(10).keys()].map(i => i+1).indexOf(parseInt(number)) >= 0;
 }
 
-module.exports =  class LoremPixel {
+module.exports = class LoremPixel {
   constructor(faker) {
     this.faker = faker;
   }

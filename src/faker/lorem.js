@@ -11,7 +11,7 @@ function capitalize(text) {
   return text.replace(/\b\w/, x => x.toUpperCase());
 }
 
-module.exports =  class Lorem {
+module.exports = class Lorem {
   constructor(faker) {
     this.faker = faker;
   }

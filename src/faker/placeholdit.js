@@ -15,7 +15,7 @@ function isValidColorValue(color) {
   return true;
 }
 
-module.exports =  class Placeholdit {
+module.exports = class Placeholdit {
   constructor(faker) {
     this.faker = faker;
   }

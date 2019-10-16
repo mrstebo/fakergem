@@ -5,7 +5,7 @@ function parse(faker, format) {
   return faker.Fake.f(text);
 }
 
-module.exports =  class Compass {
+module.exports = class Compass {
   constructor(faker) {
     this.faker = faker;
   }

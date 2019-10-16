@@ -1,6 +1,6 @@
 const data = require("../../data/slack-emoji.json");
 
-module.exports =  class SlackEmoji {
+module.exports = class SlackEmoji {
   constructor(faker) {
     this.faker = faker;
   }

@@ -18,7 +18,7 @@ function mergeCategories(categories) {
   return [commaSeparated, lastCategory].join(separator);
 }
 
-module.exports =  class Commerce {
+module.exports = class Commerce {
   constructor(faker) {
     this.faker = faker;
   }

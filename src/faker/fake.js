@@ -14,7 +14,7 @@ function parseModule(faker, match) {
   return faker[module][method]();
 }
 
-module.exports =  class Fake {
+module.exports = class Fake {
   constructor(faker) {
     this.faker = faker;
   }

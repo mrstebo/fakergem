@@ -4,7 +4,7 @@ function capitalize(text) {
   return text.replace(/\b\w/, x => x.toUpperCase());
 }
 
-module.exports =  class StarWars {
+module.exports = class StarWars {
   constructor(faker) {
     this.faker = faker;
   }

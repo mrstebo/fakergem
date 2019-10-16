@@ -1,6 +1,6 @@
 const data = require("../../data/rock-band.json");
 
-module.exports =  class RockBand {
+module.exports = class RockBand {
   constructor(faker) {
     this.faker = faker;
   }

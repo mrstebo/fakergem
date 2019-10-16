@@ -1,6 +1,6 @@
 const data = require("../../data/zelda.json");
 
-module.exports =  class Zelda {
+module.exports = class Zelda {
   constructor(faker) {
     this.faker = faker;
   }

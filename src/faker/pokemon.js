@@ -1,6 +1,6 @@
 const data = require("../../data/pokemon.json");
 
-module.exports =  class Pokemon {
+module.exports = class Pokemon {
   constructor(faker) {
     this.faker = faker;
   }

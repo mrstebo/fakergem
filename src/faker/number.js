@@ -19,7 +19,7 @@ function leadingZeroNumber(digits) {
     .join("");
 }
 
-module.exports =  class Number {
+module.exports = class Number {
   constructor(faker) {
     this.faker = faker;
   }

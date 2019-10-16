@@ -37,7 +37,7 @@ function daysFromNow(n) {
   d.setDate(d.getDate() + n);
   return d;
 }
-module.exports =  class Time {
+module.exports = class Time {
   constructor(faker) {
     this.faker = faker;
   }

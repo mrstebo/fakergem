@@ -1,4 +1,4 @@
-module.exports =  class Boolean {
+module.exports = class Boolean {
   constructor(faker) {
     this.faker = faker;
   }

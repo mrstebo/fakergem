@@ -9,7 +9,7 @@ function capitalize(text) {
   return text.replace(/\b\w/, x => x.toUpperCase());
 }
 
-module.exports =  class Hipster {
+module.exports = class Hipster {
   constructor(faker) {
     this.faker = faker;
   }

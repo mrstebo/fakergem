@@ -5,7 +5,7 @@ function leftPad(text, length, paddingCharacter) {
   return (padding + text).slice(-length);
 }
 
-module.exports =  class Color {
+module.exports = class Color {
   constructor(faker) {
     this.faker = faker;
   }

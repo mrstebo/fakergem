@@ -12,7 +12,7 @@ function shuffle(collection) {
   return result;
 }
 
-module.exports =  class Random {
+module.exports = class Random {
   constructor(faker) {
     this.faker = faker;
   }

@@ -1,6 +1,6 @@
 const data = require("../../data/phone-number.json");
 
-module.exports =  class PhoneNumber {
+module.exports = class PhoneNumber {
   constructor(faker) {
     this.faker = faker;
   }

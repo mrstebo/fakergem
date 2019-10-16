@@ -12,7 +12,7 @@ function words(faker) {
   return faker.Lorem.words(3).join("-");
 }
 
-module.exports =  class Avatar {
+module.exports = class Avatar {
   constructor(faker) {
     this.faker = faker;
   }

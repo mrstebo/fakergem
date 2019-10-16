@@ -5,7 +5,7 @@ function parse(faker, format) {
   return faker.Fake.f(text).replace(/^(\w)/, m => m[0].toUpperCase());
 }
 
-module.exports =  class Hacker {
+module.exports = class Hacker {
   constructor(faker) {
     this.faker = faker;
   }

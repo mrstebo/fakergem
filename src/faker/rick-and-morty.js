@@ -1,6 +1,6 @@
 const data = require("../../data/rick-and-morty.json");
 
-module.exports =  class RickAndMorty {
+module.exports = class RickAndMorty {
   constructor(faker) {
     this.faker = faker;
   }

@@ -1,6 +1,6 @@
 const data = require("../../data/space.json");
 
-module.exports =  class Space {
+module.exports = class Space {
   constructor(faker) {
     this.faker = faker;
   }

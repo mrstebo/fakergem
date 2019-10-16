@@ -1,6 +1,6 @@
 const data = require("../../data/bank.json");
 
-module.exports =  class Bank {
+module.exports = class Bank {
   constructor(faker) {
     this.faker = faker;
   }

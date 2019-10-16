@@ -1,6 +1,6 @@
 const data = require("../../data/lord-of-the-rings.json");
 
-module.exports =  class LordOfTheRings {
+module.exports = class LordOfTheRings {
   constructor(faker) {
     this.faker = faker;
   }

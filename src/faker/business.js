@@ -7,7 +7,7 @@ function daysFromNow(n) {
   return d;
 }
 
-module.exports =  class Business {
+module.exports = class Business {
   constructor(faker) {
     this.faker = faker;
   }

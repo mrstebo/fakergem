@@ -12,7 +12,7 @@ function calculateVinWeight(character, i) {
   (VIN_CHARS.indexOf(character) % 10) * VIN_MAP.indexOf(VIN_WEIGHTS[i]);
 }
 
-module.exports =  class Vehicle {
+module.exports = class Vehicle {
   constructor(faker) {
     this.faker = faker;
   }

@@ -9,7 +9,7 @@ function parse(faker, format) {
     .replace(/\{name2\}/g, faker.Random.element(data["name2"]));
 }
 
-module.exports =  class Coffee {
+module.exports = class Coffee {
   constructor(faker) {
     this.faker = faker;
   }
