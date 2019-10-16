@@ -24,7 +24,7 @@ function isCategorySupported(category) {
 }
 
 function isNumberValid(number) {
-  return number === null || [...Array(10).keys()].map(i => i + 1).indexOf(parseInt(number)) >= 0;
+  return number === null || Array(10).map(i => i + 1).indexOf(parseInt(number)) >= 0;
 }
 
 export class LoremPixel {
