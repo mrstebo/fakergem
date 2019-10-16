@@ -1,15 +1,6 @@
 import { Faker } from '../faker';
 import data from '../../data/coffee.json';
 
-function parse(faker, format) {
-  return format
-    .replace(/\{intensifier\}/g, faker.Random.element(data.intensifiers))
-    .replace(/\{body\}/g, faker.Random.element(data.bodies))
-    .replace(/\{descriptor\}/g, faker.Random.element(data.descriptors))
-    .replace(/\{name1\}/g, faker.Random.element(data.name1))
-    .replace(/\{name2\}/g, faker.Random.element(data.name2));
-}
-
 export class Coffee {
   private faker: Faker;
 
@@ -17,24 +8,33 @@ export class Coffee {
     this.faker = faker;
   }
 
-  blendName() {
+  blendName(): string {
     const blendName = this.faker.Random.element(data.blendNames);
-    return parse(this.faker, blendName);
+    return this.parse(blendName);
   }
 
-  origin() {
+  origin(): string {
     const country = this.faker.Random.element(data.countries);
     const key = country.replace(/\s/, '_').toLowerCase();
     const region = this.faker.Random.element(data.regions[key]);
     return `${region}, ${country}`;
   }
 
-  variety() {
+  variety(): string {
     return this.faker.Random.element(data.varieties);
   }
 
-  notes() {
+  notes(): string {
     const notes = this.faker.Random.element(data.notes);
-    return parse(this.faker, notes);
+    return this.parse(notes);
+  }
+
+  private parse(format: string): string {
+    return format
+      .replace(/\{intensifier\}/g, this.faker.Random.element(data.intensifiers))
+      .replace(/\{body\}/g, this.faker.Random.element(data.bodies))
+      .replace(/\{descriptor\}/g, this.faker.Random.element(data.descriptors))
+      .replace(/\{name1\}/g, this.faker.Random.element(data.name1))
+      .replace(/\{name2\}/g, this.faker.Random.element(data.name2));
   }
 }
