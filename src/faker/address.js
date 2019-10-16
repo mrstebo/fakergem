@@ -13,10 +13,6 @@ module.exports = class Address {
    *
    * @param {import("../faker")} faker
    */
-  /**
-   *
-   * @param {import("../faker")} faker
-   */
   constructor(faker) {
     this.faker = faker;
   }
