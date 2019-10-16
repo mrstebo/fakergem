@@ -1,9 +1,6 @@
 import { Faker } from '../faker';
 import data from '../../data/star-wars.json';
-
-function capitalize(text) {
-  return text.replace(/\b\w/, x => x.toUpperCase());
-}
+import { capitalize } from '../utils/text-helpers';
 
 export class StarWars {
   private faker: Faker;
@@ -12,33 +9,33 @@ export class StarWars {
     this.faker = faker;
   }
 
-  character() {
+  character(): string {
     return this.faker.Random.element(data.characters);
   }
 
-  droid() {
+  droid(): string {
     return this.faker.Random.element(data.droids);
   }
 
-  planet() {
+  planet(): string {
     return this.faker.Random.element(data.planets);
   }
 
-  quote() {
+  quote(): string {
     return this.faker.Random.element(data.quotes);
   }
 
-  specie() {
+  specie(): string {
     return this.faker.Random.element(data.species);
   }
 
-  vehicle() {
+  vehicle(): string {
     return this.faker.Random.element(data.vehicles);
   }
 
-  wookieSentence() {
+  wookieSentence(): string {
     return capitalize(
-      [...Array(this.faker.Number.between(1, 10)).keys()]
+      Array(this.faker.Number.between(1, 10))
         .map(_ => this.faker.Random.element(data.wookieWords))
         .join(' ') + this.faker.Random.element(['.', '?', '!']),
     );
