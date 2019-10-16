@@ -1,5 +1,5 @@
 function getDateObject(date) {
-  if (typeof(date) == 'string') {
+  if (typeof(date) == "string") {
     return new Date(Date.parse(date));
   }
   date.setHours(0, 0, 0, 0);
@@ -19,7 +19,7 @@ function daysFromNow(n) {
   return d;
 }
 
-export default class DateFaker {
+module.exports =  class DateFaker {
   constructor(faker) {
     this.faker = faker;
   }
@@ -69,4 +69,4 @@ export default class DateFaker {
     const date = this.between(from, to);
     return getDateObject(date);
   }
-}
+};

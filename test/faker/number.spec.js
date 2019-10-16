@@ -66,7 +66,7 @@ describe('Number', () => {
 
     it('should be within delta range', () => {
       let n = 10000;
-      let values = [...Array(n).keys()].map(_ => Faker.Number.normal(150.0, 100.0));
+      let values = [...Array(n).keys()].map(() => Faker.Number.normal(150.0, 100.0));
       let mean = values.reduce((acc, val) => acc + val) / n;
       let variance = values.reduce((acc, val) => acc + Math.pow(val - mean, 2) / (n - 1));
       let standardDeviation = Math.sqrt(variance);

@@ -1,4 +1,4 @@
-export default class Boolean {
+module.exports =  class Boolean {
   constructor(faker) {
     this.faker = faker;
   }
@@ -6,4 +6,4 @@ export default class Boolean {
   boolean(trueRatio=0.5) {
     return Math.random() < trueRatio;
   }
-}
+};

@@ -1,4 +1,4 @@
-export default collection => {
+module.exports = collection => {
   let i, j, k;
   const result = [...collection];
   for (i = collection.length; i > 0; i--) {
@@ -8,4 +8,4 @@ export default collection => {
     result[j] = k;
   }
   return result;
-}
+};

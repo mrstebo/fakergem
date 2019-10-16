@@ -1,15 +1,15 @@
-const data = require('../../data/pokemon.json');
+const data = require("../../data/pokemon.json");
 
-export default class Pokemon {
+module.exports =  class Pokemon {
   constructor(faker) {
     this.faker = faker;
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data["names"]);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data["locations"]);
   }
-}
+};

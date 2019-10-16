@@ -1,13 +1,13 @@
-import {format as formatDate} from '../utils/date-helper';
+const { format: formatDate } = require("../utils/date-helper");
 
-const ALL = 'ALL';
-const DAY = 'DAY';
-const NIGHT = 'NIGHT';
-const MORNING = 'MORNING';
-const AFTERNOON = 'AFTERNOON';
-const EVENING = 'EVENING';
-const MIDNIGHT = 'MIDNIGHT';
-const BETWEEN = 'BETWEEN';
+const ALL = "ALL";
+const DAY = "DAY";
+const NIGHT = "NIGHT";
+const MORNING = "MORNING";
+const AFTERNOON = "AFTERNOON";
+const EVENING = "EVENING";
+const MIDNIGHT = "MIDNIGHT";
+const BETWEEN = "BETWEEN";
 
 const TIME_RANGES = {
   [ALL]: { start: 0, end: 23 },
@@ -16,13 +16,13 @@ const TIME_RANGES = {
   [MORNING]: { start: 6, end: 11 },
   [AFTERNOON]: { start: 12, end: 17 },
   [EVENING]: { start: 17, end: 21 },
-  [MIDNIGHT]: { start: 0, end: 4 }
+  [MIDNIGHT]: { start: 0, end: 4 },
 };
 
 function rangeFor(period) {
   const range = TIME_RANGES[period];
   if (!range) {
-    throw new Error('invalid period: ' + period);
+    throw new Error(`invalid period: ${period}`);
   }
   return range;
 }
@@ -37,7 +37,7 @@ function daysFromNow(n) {
   d.setDate(d.getDate() + n);
   return d;
 }
-export default class Time {
+module.exports =  class Time {
   constructor(faker) {
     this.faker = faker;
   }
@@ -88,13 +88,13 @@ export default class Time {
     const date = this.faker.Date.between(from, to);
     const range = rangeFor(period);
     const time = new Date(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-        this.faker.Number.between(range.start, range.end),
-        this.faker.Number.between(0, 59),
-        this.faker.Number.between(0, 59)
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      this.faker.Number.between(range.start, range.end),
+      this.faker.Number.between(0, 59),
+      this.faker.Number.between(0, 59)
     );
     return timeWithFormat(time, format);
   }
-}
+};

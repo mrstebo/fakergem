@@ -1,11 +1,11 @@
-import { randomNumber, randomFloat } from '../utils/random';
+const { randomNumber, randomFloat } = require("../utils/random");
 
 function nonZeroDigit() {
   return randomNumber(1, 9);
 }
 
 function decimalPart(digits) {
-  let num = '';
+  let num = "";
   if (digits > 1) {
     num = `${nonZeroDigit()}`;
     digits -= 1;
@@ -15,17 +15,17 @@ function decimalPart(digits) {
 
 function leadingZeroNumber(digits) {
   return [...Array(digits).keys()]
-    .map(_ => randomNumber(0, 9))
-    .join('');
+    .map(() => randomNumber(0, 9))
+    .join("");
 }
 
-export default class Number {
+module.exports =  class Number {
   constructor(faker) {
     this.faker = faker;
   }
 
   number(digits=10) {
-    let num = '';
+    let num = "";
     if (digits > 1) {
       num = `${nonZeroDigit()}`;
       digits -= 1;
@@ -46,8 +46,8 @@ export default class Number {
 
   hexadecimal(digits=6) {
     return [...Array(digits).keys()]
-      .map(_ => randomNumber(0, 15).toString(16))
-      .join('');
+      .map(() => randomNumber(0, 15).toString(16))
+      .join("");
   }
 
   between(from=1, to=5000) {
@@ -75,4 +75,4 @@ export default class Number {
   digit() {
     return randomNumber(0, 9);
   }
-}
+};

@@ -11,7 +11,7 @@ describe('Boolean', () => {
     });
 
     it('should return true or false', () => {
-      [...Array(100).keys()].map(_ => {
+      [...Array(100).keys()].map(() => {
         expect(Faker.Boolean.boolean()).to.be.oneOf([true, false]);
       });
     });

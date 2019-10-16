@@ -1,4 +1,4 @@
-const SUPPORTED_FORMATS = ['png', 'jpg', 'gif', 'jpeg'];
+const SUPPORTED_FORMATS = ["png", "jpg", "gif", "jpeg"];
 
 function isValidSize(size) {
   return /^\d+x\d+$/.test(size);
@@ -10,22 +10,22 @@ function isSupportedFormat(format) {
 
 function isValidColorValue(color) {
   if (color) {
-    return new RegExp(/(?:^[0-9a-f]{3}$)|(?:^[0-9a-f]{6}$)/.source, 'i').test(color);
+    return new RegExp(/(?:^[0-9a-f]{3}$)|(?:^[0-9a-f]{6}$)/.source, "i").test(color);
   }
   return true;
 }
 
-export default class Placeholdit {
+module.exports =  class Placeholdit {
   constructor(faker) {
     this.faker = faker;
   }
 
-  image(size='300x300', format='png', backgroundColor=null, textColor=null, text=null) {
+  image(size="300x300", format="png", backgroundColor=null, textColor=null, text=null) {
     if (!isValidSize(size)) {
-      throw new Error('Size should be specified in format 300x300');
+      throw new Error("Size should be specified in format 300x300");
     }
     if (!isSupportedFormat(format)) {
-      throw new Error(`Supported formats are ${SUPPORTED_FORMATS.join(', ')}`);
+      throw new Error(`Supported formats are ${SUPPORTED_FORMATS.join(", ")}`);
     }
     if (!isValidColorValue(backgroundColor)) {
       throw new Error("backgroundColor must be a hex value without '#'");
@@ -46,4 +46,4 @@ export default class Placeholdit {
     }
     return url;
   }
-}
+};

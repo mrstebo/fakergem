@@ -1,11 +1,11 @@
-const data = require('../../data/dragon-ball.json');
+const data = require("../../data/dragon-ball.json");
 
-export default class DragonBall {
+module.exports =  class DragonBall {
   constructor(faker) {
     this.faker = faker;
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data["characters"]);
   }
-}
+};

@@ -1,19 +1,19 @@
-const data = require('../../data/friends.json');
+const data = require("../../data/friends.json");
 
-export default class Friends {
+module.exports =  class Friends {
   constructor(faker) {
     this.faker = faker;
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data["characters"]);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data["locations"]);
   }
 
   quote() {
-    return this.faker.Random.element(data['quotes']);
+    return this.faker.Random.element(data["quotes"]);
   }
-}
+};

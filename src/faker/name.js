@@ -1,6 +1,6 @@
-const data = require('../../data/name.json');
+const data = require("../../data/name.json");
 
-export default class Name {
+module.exports =  class Name {
   constructor(faker) {
     this.faker = faker;
   }
@@ -8,39 +8,39 @@ export default class Name {
   name() {
     return [
       this.firstName(),
-      this.lastName()
-    ].join(' ');
+      this.lastName(),
+    ].join(" ");
   }
 
   nameWithMiddle() {
     return [
       this.firstName(),
       this.firstName(),
-      this.lastName()
-    ].join(' ');
+      this.lastName(),
+    ].join(" ");
   }
 
   firstName() {
-    return this.faker.Random.element(data['firstNames']);
+    return this.faker.Random.element(data["firstNames"]);
   }
 
   lastName() {
-    return this.faker.Random.element(data['lastNames']);
+    return this.faker.Random.element(data["lastNames"]);
   }
 
   prefix() {
-    return this.faker.Random.element(data['prefixes']);
+    return this.faker.Random.element(data["prefixes"]);
   }
 
   suffix() {
-    return this.faker.Random.element(data['suffixes']);
+    return this.faker.Random.element(data["suffixes"]);
   }
 
   title() {
     return [
-      this.faker.Random.element(data['titles']['descriptor']),
-      this.faker.Random.element(data['titles']['level']),
-      this.faker.Random.element(data['titles']['job'])
-    ].join(' ');
+      this.faker.Random.element(data["titles"]["descriptor"]),
+      this.faker.Random.element(data["titles"]["level"]),
+      this.faker.Random.element(data["titles"]["job"]),
+    ].join(" ");
   }
-}
+};

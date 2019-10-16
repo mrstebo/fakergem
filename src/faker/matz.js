@@ -1,11 +1,11 @@
-const data = require('../../data/matz.json');
+const data = require("../../data/matz.json");
 
-export default class Matz {
+module.exports =  class Matz {
   constructor(faker) {
     this.faker = faker;
   }
 
   quote() {
-    return this.faker.Random.element(data['quotes']);
+    return this.faker.Random.element(data["quotes"]);
   }
-}
+};

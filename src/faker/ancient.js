@@ -1,23 +1,23 @@
-const data = require('../../data/ancient.json');
+const data = require("../../data/ancient.json");
 
-export default class Ancient {
+module.exports =  class Ancient {
   constructor(faker) {
     this.faker = faker;
   }
 
   god() {
-    return this.faker.Random.element(data['gods']);
+    return this.faker.Random.element(data["gods"]);
   }
 
   primordial() {
-    return this.faker.Random.element(data['primordials']);
+    return this.faker.Random.element(data["primordials"]);
   }
 
   titan() {
-    return this.faker.Random.element(data['titans']);
+    return this.faker.Random.element(data["titans"]);
   }
 
   hero() {
-    return this.faker.Random.element(data['heroes']);
+    return this.faker.Random.element(data["heroes"]);
   }
-}
+};

@@ -1,19 +1,19 @@
-const data = require('../../data/zelda.json');
+const data = require("../../data/zelda.json");
 
-export default class Zelda {
+module.exports =  class Zelda {
   constructor(faker) {
     this.faker = faker;
   }
 
   game() {
-    return this.faker.Random.element(data['games']);
+    return this.faker.Random.element(data["games"]);
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data["characters"]);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data["locations"]);
   }
-}
+};

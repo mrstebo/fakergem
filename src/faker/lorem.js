@@ -1,4 +1,4 @@
-const data = require('../../data/lorem.json');
+const data = require("../../data/lorem.json");
 
 // 0-9, a-z
 const CHARACTERS = [...Array(10).keys()].concat([...Array(26).keys()].map(i => String.fromCharCode(97+i)));
@@ -11,17 +11,17 @@ function capitalize(text) {
   return text.replace(/\b\w/, x => x.toUpperCase());
 }
 
-export default class Lorem {
+module.exports =  class Lorem {
   constructor(faker) {
     this.faker = faker;
   }
 
   word() {
-    return this.faker.Random.element(data['words']);
+    return this.faker.Random.element(data["words"]);
   }
 
   words(num=3, supplemental=false) {
-    const wordList = supplemental ? [...data['words'], data['supplemental']] : data['words'];
+    const wordList = supplemental ? [...data["words"], data["supplemental"]] : data["words"];
     const words = this.faker.Random.assortment(wordList, resolveNumber(num));
     return words;
   }
@@ -32,7 +32,7 @@ export default class Lorem {
 
   characters(charCount=255) {
     return [...Array(resolveNumber(charCount)).keys()]
-      .map(_ => this.character()).join('');
+      .map(() => this.character()).join("");
   }
 
   sentence(wordCount=4, supplemental=false, randomWordsToAdd=6) {
@@ -40,25 +40,25 @@ export default class Lorem {
       this.words(
         resolveNumber(wordCount) + this.faker.Number.between(0, randomWordsToAdd),
         supplemental
-      ).join(' ')
+      ).join(" ")
     );
     return text.length > 0 ? `${text}.` : text;
   }
 
   sentences(sentenceCount=3, supplemental=false) {
     return [...Array(resolveNumber(sentenceCount)).keys()]
-    .map(_ => this.sentence(3, supplemental));
+      .map(() => this.sentence(3, supplemental));
   }
 
   paragraph(sentenceCount=3, supplemental=false, randomSentencesToAdd=3) {
     return this.sentences(
       resolveNumber(sentenceCount) + this.faker.Number.between(0, randomSentencesToAdd),
       supplemental
-    ).join(' ');
+    ).join(" ");
   }
 
   paragraphs(paragraphCount=3, supplemental=false) {
     return [...Array(resolveNumber(paragraphCount)).keys()]
-      .map(_ => this.paragraph(3, supplemental));
+      .map(() => this.paragraph(3, supplemental));
   }
-}
+};

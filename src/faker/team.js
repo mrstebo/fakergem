@@ -1,16 +1,16 @@
-const data = require('../../data/team.json');
+const data = require("../../data/team.json");
 
-export default class Team {
+module.exports =  class Team {
   constructor(faker) {
     this.faker = faker;
   }
 
   creature() {
-    return this.faker.Random.element(data['creatures']);
+    return this.faker.Random.element(data["creatures"]);
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data["names"]);
   }
 
   state() {
@@ -18,6 +18,6 @@ export default class Team {
   }
 
   sport() {
-    return this.faker.Random.element(data['sports']);
+    return this.faker.Random.element(data["sports"]);
   }
-}
+};

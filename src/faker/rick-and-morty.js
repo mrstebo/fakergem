@@ -1,19 +1,19 @@
-const data = require('../../data/rick-and-morty.json');
+const data = require("../../data/rick-and-morty.json");
 
-export default class RickAndMorty {
+module.exports =  class RickAndMorty {
   constructor(faker) {
     this.faker = faker;
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data["characters"]);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data["locations"]);
   }
 
   quote() {
-    return this.faker.Random.element(data['quotes']);
+    return this.faker.Random.element(data["quotes"]);
   }
-}
+};

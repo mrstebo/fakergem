@@ -1,9 +1,9 @@
-const data = require('../../data/commerce.json');
+const data = require("../../data/commerce.json");
 
 function buildCategories(faker, num) {
   const categories = [];
   while (categories.length < num) {
-    const category = faker.Random.element(data['departments']);
+    const category = faker.Random.element(data["departments"]);
     if (categories.indexOf(category) < 0) {
       categories.push(category);
     }
@@ -12,13 +12,13 @@ function buildCategories(faker, num) {
 }
 
 function mergeCategories(categories) {
-  const separator = ' & ';
-  const commaSeparated = categories.slice(0, -1).join(', ');
+  const separator = " & ";
+  const commaSeparated = categories.slice(0, -1).join(", ");
   const lastCategory = categories.slice(-1);
   return [commaSeparated, lastCategory].join(separator);
 }
 
-export default class Commerce {
+module.exports =  class Commerce {
   constructor(faker) {
     this.faker = faker;
   }
@@ -35,22 +35,22 @@ export default class Commerce {
 
   productName() {
     return [
-      this.faker.Random.element(data['productNames']['adjective']),
-      this.faker.Random.element(data['productNames']['material']),
-      this.faker.Random.element(data['productNames']['product'])
-    ].join(' ');
+      this.faker.Random.element(data["productNames"]["adjective"]),
+      this.faker.Random.element(data["productNames"]["material"]),
+      this.faker.Random.element(data["productNames"]["product"]),
+    ].join(" ");
   }
 
-  price(range={min: 0.00, max: 100.00}) {
+  price(range={ min: 0.00, max: 100.00 }) {
     const n = this.faker.Number.between(range.min, range.max);
     return (Math.floor(n * 100) / 100.0).toFixed(2);
   }
 
   promotionCode(digits=6) {
     return [
-      this.faker.Random.element(data['promotionCodes']['adjective']),
-      this.faker.Random.element(data['promotionCodes']['noun']),
-      this.faker.Number.number(digits)
-    ].join('');
+      this.faker.Random.element(data["promotionCodes"]["adjective"]),
+      this.faker.Random.element(data["promotionCodes"]["noun"]),
+      this.faker.Number.number(digits),
+    ].join("");
   }
-}
+};

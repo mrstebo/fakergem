@@ -1,4 +1,4 @@
-export default class Twitter {
+module.exports =  class Twitter {
   constructor(faker) {
     this.faker = faker;
   }
@@ -6,8 +6,8 @@ export default class Twitter {
   user(includeStatus=true, includeEmail=false) {
     const userId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
-    const backgroundImageUrl = this.faker.LoremPixel.image('600x400');
-    const profileImageUrl = this.faker.Avatar.image(userId, '48x48');
+    const backgroundImageUrl = this.faker.LoremPixel.image("600x400");
+    const profileImageUrl = this.faker.Avatar.image(userId, "48x48");
     const user = {
       id: userId,
       id_str: `${userId}`,
@@ -32,11 +32,11 @@ export default class Twitter {
       notifications: false,
       profile_background_color: this.faker.Color.hexColor(),
       profile_background_image_url_https: backgroundImageUrl,
-      profile_background_image_url: backgroundImageUrl.replace('https://', 'http://'),
+      profile_background_image_url: backgroundImageUrl.replace("https://", "http://"),
       profile_background_tile: this.faker.Boolean.boolean(0.1),
-      profile_banner_url: this.faker.LoremPixel.image('1500x500'),
+      profile_banner_url: this.faker.LoremPixel.image("1500x500"),
       profile_image_url_https: profileImageUrl,
-      profile_image_url: profileImageUrl.replace('https://', 'http://'),
+      profile_image_url: profileImageUrl.replace("https://", "http://"),
       profile_link_color: this.faker.Color.hexColor(),
       profile_sidebar_border_color: this.faker.Color.hexColor(),
       profile_sidebar_fill_color: this.faker.Color.hexColor(),
@@ -46,13 +46,13 @@ export default class Twitter {
       screen_name: this.screenName(),
       statuses_count: this.faker.Number.between(1, 100000),
       time_zone: this.faker.Address.timeZone(),
-      url: 'http://example.com',
+      url: "http://example.com",
       utc_offset: this._utcOffset(),
-      verified: this.faker.Boolean.boolean(0.1)
+      verified: this.faker.Boolean.boolean(0.1),
     };
 
-    if (includeStatus) user['status'] = this.status(false);
-    if (includeEmail) user['email'] = this.faker.Internet.safeEmail();
+    if (includeStatus) user["status"] = this.status(false);
+    if (includeEmail) user["email"] = this.faker.Internet.safeEmail();
 
     return user;
   }
@@ -82,13 +82,13 @@ export default class Twitter {
       retweet_count: this.faker.Number.between(1, 10000),
       retweeted_status:  null,
       retweeted: false,
-      source: `<a href=\"${this.faker.Internet.url('example.com')}\" rel=\"nofollow\">${this.faker.Company.name}</a>`,
+      source: `<a href="${this.faker.Internet.url("example.com")}" rel="nofollow">${this.faker.Company.name}</a>`,
       text: this.faker.Lorem.sentence(),
-      truncated: false
+      truncated: false,
     };
 
-    if (includeUser) status['user'] = this.user(false);
-    if (includePhoto) status['text'] = `${status['text']} ${status['entities']['media'][0]['url']}`;
+    if (includeUser) status["user"] = this.user(false);
+    if (includePhoto) status["text"] = `${status["text"]} ${status["entities"]["media"][0]["url"]}`;
 
     return status;
   }
@@ -104,11 +104,11 @@ export default class Twitter {
   _userEntities() {
     return {
       url:  {
-        urls: []
+        urls: [],
       },
       description:  {
-        urls: []
-      }
+        urls: [],
+      },
     };
   }
 
@@ -117,52 +117,52 @@ export default class Twitter {
       hashtags:  [],
       symbols:  [],
       user_mentions:  [],
-      urls:  []
+      urls:  [],
     };
 
-    if (includePhoto) entities['media'] = [this._photoEntity()];
+    if (includePhoto) entities["media"] = [this._photoEntity()];
 
     return entities;
   }
 
   _photoEntity() {
-    const mediaUrl = this.faker.LoremPixel.image('1064x600');
+    const mediaUrl = this.faker.LoremPixel.image("1064x600");
     const mediaId = this.faker.Number.between(1, 9223372036854775807);
     return {
       id: mediaId,
       id_str: `${mediaId}`,
       indices:  [
         103,
-        126
+        126,
       ],
-      media_url: mediaUrl.sub('https://', 'http://'),
+      media_url: mediaUrl.sub("https://", "http://"),
       media_url_https: mediaUrl,
-      url: this.faker.Internet.url('example.com'),
-      display_url: 'example.com',
-      expanded_url: this.faker.Internet.url('example.com'),
-      type: 'photo',
+      url: this.faker.Internet.url("example.com"),
+      display_url: "example.com",
+      expanded_url: this.faker.Internet.url("example.com"),
+      type: "photo",
       sizes:  {
         medium:  {
           w: 1064,
           h: 600,
-          resize: 'fit'
+          resize: "fit",
         },
         large:  {
           w: 1064,
           h: 600,
-          resize: 'fit'
+          resize: "fit",
         },
         small:  {
           w: 680,
           h: 383,
-          resize: 'fit'
+          resize: "fit",
         },
         thumb:  {
           w: 150,
           h: 150,
-          resize: 'crop'
-        }
-      }
+          resize: "crop",
+        },
+      },
     };
   }
-}
+};

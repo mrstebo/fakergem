@@ -1,4 +1,4 @@
-const data = require('../../data/business.json');
+const data = require("../../data/business.json");
 
 function daysFromNow(n) {
   const d = new Date();
@@ -7,13 +7,13 @@ function daysFromNow(n) {
   return d;
 }
 
-export default class Business {
+module.exports =  class Business {
   constructor(faker) {
     this.faker = faker;
   }
 
   creditCardNumber() {
-    return this.faker.Random.element(data['creditCardNumbers']);
+    return this.faker.Random.element(data["creditCardNumbers"]);
   }
 
   creditCardExpiryDate() {
@@ -21,6 +21,6 @@ export default class Business {
   }
 
   creditCardType() {
-    return this.faker.Random.element(data['creditCardTypes']);
+    return this.faker.Random.element(data["creditCardTypes"]);
   }
-}
+};

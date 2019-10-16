@@ -1,9 +1,9 @@
-import crypto from 'crypto';
-import bs58 from 'bs58';
+const crypto = require("crypto");
+const bs58 = require("bs58");
 
 const PROTOCOL_VERSION = {
   main: 0,
-  testnet: 111
+  testnet: 111,
 };
 
 function addressFor(network) {
@@ -14,24 +14,24 @@ function addressFor(network) {
 }
 
 function digest(text) {
-  const hash = crypto.createHash('sha256');
+  const hash = crypto.createHash("sha256");
   return hash.digest(text);
 }
 
 function base58(text) {
-  return bs58.encode(new Buffer(text, 'ascii'));
+  return bs58.encode(new Buffer(text, "ascii"));
 }
 
-export default class Bitcoin {
+module.exports =  class Bitcoin {
   constructor(faker) {
     this.faker = faker;
   }
 
   address() {
-    return addressFor('main');
+    return addressFor("main");
   }
 
   testnetAddress() {
-    return addressFor('testnet');
+    return addressFor("testnet");
   }
-}
+};

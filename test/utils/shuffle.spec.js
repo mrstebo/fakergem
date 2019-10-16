@@ -1,6 +1,6 @@
 'use strict';
 const expect = require('chai').expect;
-const shuffle = require('../../src/utils/shuffle').default;
+const shuffle = require('../../src/utils/shuffle');
 
 describe('shuffle', () => {
   it('should shuffle an array', () => {

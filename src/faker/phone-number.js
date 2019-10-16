@@ -1,26 +1,26 @@
-const data = require('../../data/phone-number.json');
+const data = require("../../data/phone-number.json");
 
-export default class PhoneNumber {
+module.exports =  class PhoneNumber {
   constructor(faker) {
     this.faker = faker;
   }
 
   phoneNumber() {
-    const format = this.faker.Random.element(data['phoneNumber']['formats']);
-    return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
+    const format = this.faker.Random.element(data["phoneNumber"]["formats"]);
+    return format.replace(/#/g, () => this.faker.Number.between(0, 9));
   }
 
   cellPhone() {
-    const format = this.faker.Random.element(data['cellPhone']['formats']);
-    return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
+    const format = this.faker.Random.element(data["cellPhone"]["formats"]);
+    return format.replace(/#/g, () => this.faker.Number.between(0, 9));
   }
 
   areaCode() {
-    return this.faker.Random.element(data['areaCodes']);
+    return this.faker.Random.element(data["areaCodes"]);
   }
 
   exchangeCode() {
-    return this.faker.Random.element(data['exchangeCodes']);
+    return this.faker.Random.element(data["exchangeCodes"]);
   }
 
   subscriberNumber(length=4) {
@@ -32,4 +32,4 @@ export default class PhoneNumber {
   extension(length=4) {
     return this.subscriberNumber(length);
   }
-}
+};

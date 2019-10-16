@@ -1,3 +1,3 @@
-const Faker = require("./faker").default;
+const Faker = require("./faker");
 const faker = new Faker();
 module.exports = faker;

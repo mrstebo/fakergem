@@ -1,28 +1,28 @@
-const data = require('../../data/beer.json');
+const data = require("../../data/beer.json");
 
-export default class Beer {
+module.exports =  class Beer {
   constructor(faker) {
     this.faker = faker;
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data["names"]);
   }
 
   style() {
-    return this.faker.Random.element(data['styles']);
+    return this.faker.Random.element(data["styles"]);
   }
 
   hop() {
-    return this.faker.Random.element(data['hops']);
+    return this.faker.Random.element(data["hops"]);
   }
 
   yeast() {
-    return this.faker.Random.element(data['yeasts']);
+    return this.faker.Random.element(data["yeasts"]);
   }
 
   malt() {
-    return this.faker.Random.element(data['malts']);
+    return this.faker.Random.element(data["malts"]);
   }
 
   ibu() {
@@ -34,6 +34,6 @@ export default class Beer {
   }
 
   blg() {
-    return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}°Blg`
+    return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}°Blg`;
   }
-}
+};

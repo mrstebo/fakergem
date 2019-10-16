@@ -1,11 +1,11 @@
-const data = require('../../data/chuck-norris.json');
+const data = require("../../data/chuck-norris.json");
 
-export default class ChuckNorris {
+module.exports =  class ChuckNorris {
   constructor(faker) {
     this.faker = faker;
   }
 
   fact() {
-    return this.faker.Random.element(data['facts']);
+    return this.faker.Random.element(data["facts"]);
   }
-}
+};

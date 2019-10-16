@@ -1,23 +1,23 @@
-const data = require('../../data/game-of-thrones.json');
+const data = require("../../data/game-of-thrones.json");
 
-export default class GameOfThrones {
+module.exports =  class GameOfThrones {
   constructor(faker) {
     this.faker = faker;
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data["characters"]);
   }
 
   house() {
-    return this.faker.Random.element(data['houses']);
+    return this.faker.Random.element(data["houses"]);
   }
 
   city() {
-    return this.faker.Random.element(data['cities']);
+    return this.faker.Random.element(data["cities"]);
   }
 
   dragon() {
-    return this.faker.Random.element(data['dragons']);
+    return this.faker.Random.element(data["dragons"]);
   }
-}
+};
