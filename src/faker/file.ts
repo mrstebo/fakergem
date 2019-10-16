@@ -9,11 +9,11 @@ export class File {
   }
 
   extension() {
-    return this.faker.Random.element(data['extensions']);
+    return this.faker.Random.element(data.extensions);
   }
 
   mimeType() {
-    return this.faker.Random.element(data['mimeTypes']);
+    return this.faker.Random.element(data.mimeTypes);
   }
 
   fileName(dir = null, name = null, ext = null, directorySeparator = '/') {

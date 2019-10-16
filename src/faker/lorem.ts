@@ -20,11 +20,11 @@ export class Lorem {
   }
 
   word() {
-    return this.faker.Random.element(data['words']);
+    return this.faker.Random.element(data.words);
   }
 
   words(num = 3, supplemental = false) {
-    const wordList = supplemental ? [...data['words'], data['supplemental']] : data['words'];
+    const wordList = supplemental ? [...data.words, data.supplemental] : data.words;
     const words = this.faker.Random.assortment(wordList, resolveNumber(num));
     return words;
   }

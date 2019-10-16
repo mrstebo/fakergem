@@ -9,23 +9,23 @@ export class Beer {
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data.names);
   }
 
   style() {
-    return this.faker.Random.element(data['styles']);
+    return this.faker.Random.element(data.styles);
   }
 
   hop() {
-    return this.faker.Random.element(data['hops']);
+    return this.faker.Random.element(data.hops);
   }
 
   yeast() {
-    return this.faker.Random.element(data['yeasts']);
+    return this.faker.Random.element(data.yeasts);
   }
 
   malt() {
-    return this.faker.Random.element(data['malts']);
+    return this.faker.Random.element(data.malts);
   }
 
   ibu() {

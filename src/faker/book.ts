@@ -9,7 +9,7 @@ export class Book {
   }
 
   title() {
-    return this.faker.Random.element(data['titles']);
+    return this.faker.Random.element(data.titles);
   }
 
   author() {
@@ -17,10 +17,10 @@ export class Book {
   }
 
   publisher() {
-    return this.faker.Random.element(data['publishers']);
+    return this.faker.Random.element(data.publishers);
   }
 
   genre() {
-    return this.faker.Random.element(data['genres']);
+    return this.faker.Random.element(data.genres);
   }
 }

@@ -14,26 +14,26 @@ export class Hacker {
   }
 
   saySomethingSmart() {
-    return parse(this.faker, this.faker.Random.element(data['phrases']));
+    return parse(this.faker, this.faker.Random.element(data.phrases));
   }
 
   abbreviation() {
-    return this.faker.Random.element(data['abbreviations']);
+    return this.faker.Random.element(data.abbreviations);
   }
 
   adjective() {
-    return this.faker.Random.element(data['adjectives']);
+    return this.faker.Random.element(data.adjectives);
   }
 
   noun() {
-    return this.faker.Random.element(data['nouns']);
+    return this.faker.Random.element(data.nouns);
   }
 
   verb() {
-    return this.faker.Random.element(data['verbs']);
+    return this.faker.Random.element(data.verbs);
   }
 
   ingverb() {
-    return this.faker.Random.element(data['ingverbs']);
+    return this.faker.Random.element(data.ingverbs);
   }
 }

@@ -17,26 +17,26 @@ export class Name {
   }
 
   firstName() {
-    return this.faker.Random.element(data['firstNames']);
+    return this.faker.Random.element(data.firstNames);
   }
 
   lastName() {
-    return this.faker.Random.element(data['lastNames']);
+    return this.faker.Random.element(data.lastNames);
   }
 
   prefix() {
-    return this.faker.Random.element(data['prefixes']);
+    return this.faker.Random.element(data.prefixes);
   }
 
   suffix() {
-    return this.faker.Random.element(data['suffixes']);
+    return this.faker.Random.element(data.suffixes);
   }
 
   title() {
     return [
-      this.faker.Random.element(data['titles']['descriptor']),
-      this.faker.Random.element(data['titles']['level']),
-      this.faker.Random.element(data['titles']['job']),
+      this.faker.Random.element(data.titles.descriptor),
+      this.faker.Random.element(data.titles.level),
+      this.faker.Random.element(data.titles.job),
     ].join(' ');
   }
 }

@@ -9,18 +9,18 @@ export class HarryPotter {
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data.characters);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data.locations);
   }
 
   quote() {
-    return this.faker.Random.element(data['quotes']);
+    return this.faker.Random.element(data.quotes);
   }
 
   book() {
-    return this.faker.Random.element(data['books']);
+    return this.faker.Random.element(data.books);
   }
 }

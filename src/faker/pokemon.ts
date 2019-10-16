@@ -9,10 +9,10 @@ export class Pokemon {
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data.names);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data.locations);
   }
 }

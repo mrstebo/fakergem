@@ -14,62 +14,62 @@ export class Compass {
   }
 
   direction() {
-    return parse(this.faker, this.faker.Random.element(data['directions']));
+    return parse(this.faker, this.faker.Random.element(data.directions));
   }
 
   cardinal() {
-    return this.faker.Random.element(data['cardinals']['word']);
+    return this.faker.Random.element(data.cardinals.word);
   }
 
   ordinal() {
-    return this.faker.Random.element(data['ordinals']['word']);
+    return this.faker.Random.element(data.ordinals.word);
   }
 
   halfWind() {
-    return this.faker.Random.element(data['halfWinds']['word']);
+    return this.faker.Random.element(data.halfWinds.word);
   }
 
   quarterWind() {
-    return this.faker.Random.element(data['quarterWinds']['word']);
+    return this.faker.Random.element(data.quarterWinds.word);
   }
 
   abbreviation() {
-    return parse(this.faker, this.faker.Random.element(data['abbreviations']));
+    return parse(this.faker, this.faker.Random.element(data.abbreviations));
   }
 
   cardinalAbbreviation() {
-    return this.faker.Random.element(data['cardinals']['abbreviation']);
+    return this.faker.Random.element(data.cardinals.abbreviation);
   }
 
   ordinalAbbreviation() {
-    return this.faker.Random.element(data['ordinals']['abbreviation']);
+    return this.faker.Random.element(data.ordinals.abbreviation);
   }
 
   halfWindAbbreviation() {
-    return this.faker.Random.element(data['halfWinds']['abbreviation']);
+    return this.faker.Random.element(data.halfWinds.abbreviation);
   }
 
   quarterWindAbbreviation() {
-    return this.faker.Random.element(data['quarterWinds']['abbreviation']);
+    return this.faker.Random.element(data.quarterWinds.abbreviation);
   }
 
   azimuth() {
-    return parse(this.faker, this.faker.Random.element(data['azimuths']));
+    return parse(this.faker, this.faker.Random.element(data.azimuths));
   }
 
   cardinalAzimuth() {
-    return this.faker.Random.element(data['cardinals']['azimuth']);
+    return this.faker.Random.element(data.cardinals.azimuth);
   }
 
   ordinalAzimuth() {
-    return this.faker.Random.element(data['ordinals']['azimuth']);
+    return this.faker.Random.element(data.ordinals.azimuth);
   }
 
   halfWindAzimuth() {
-    return this.faker.Random.element(data['halfWinds']['azimuth']);
+    return this.faker.Random.element(data.halfWinds.azimuth);
   }
 
   quarterWindAzimuth() {
-    return this.faker.Random.element(data['quarterWinds']['azimuth']);
+    return this.faker.Random.element(data.quarterWinds.azimuth);
   }
 }

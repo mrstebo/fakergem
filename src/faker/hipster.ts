@@ -18,12 +18,12 @@ export class Hipster {
   }
 
   word() {
-    const item = this.faker.Random.element(data['words']);
+    const item = this.faker.Random.element(data.words);
     return item.match(/\s/) ? this.word() : item; // Make sure we get a single word
   }
 
   words(num = 3, supplemental = false, spacesAllowed = false) {
-    const wordList = supplemental ? [...data['words'], loremData['words']] : data['words'];
+    const wordList = supplemental ? [...data.words, loremdata.words] : data.words;
     const words = this.faker.Random.assortment(wordList, resolveNumber(num));
     return spacesAllowed ? words : words.map(x => (`${x}`.match(/\s/) ? this.word() : x));
   }

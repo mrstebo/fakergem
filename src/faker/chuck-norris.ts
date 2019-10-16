@@ -9,6 +9,6 @@ export class ChuckNorris {
   }
 
   fact() {
-    return this.faker.Random.element(data['facts']);
+    return this.faker.Random.element(data.facts);
   }
 }

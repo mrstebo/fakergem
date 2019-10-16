@@ -9,6 +9,6 @@ export class DragonBall {
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data.characters);
   }
 }

@@ -9,21 +9,21 @@ export class PhoneNumber {
   }
 
   phoneNumber() {
-    const format = this.faker.Random.element(data['phoneNumber']['formats']);
+    const format = this.faker.Random.element(data.phoneNumber.formats);
     return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
   }
 
   cellPhone() {
-    const format = this.faker.Random.element(data['cellPhone']['formats']);
+    const format = this.faker.Random.element(data.cellPhone.formats);
     return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
   }
 
   areaCode() {
-    return this.faker.Random.element(data['areaCodes']);
+    return this.faker.Random.element(data.areaCodes);
   }
 
   exchangeCode() {
-    return this.faker.Random.element(data['exchangeCodes']);
+    return this.faker.Random.element(data.exchangeCodes);
   }
 
   subscriberNumber(length = 4) {

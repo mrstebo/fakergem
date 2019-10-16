@@ -21,7 +21,7 @@ export class Vehicle {
   }
 
   vin() {
-    const details = this.faker.Random.element(data['manufactures'].map(x => ({ wmi: x[1], wmiExt: x[2] })));
+    const details = this.faker.Random.element(data.manufactures.map(x => ({ wmi: x[1], wmiExt: x[2] })));
     const vin = [...Array(14).keys()]
       .map(_ => this.faker.Random.element(VIN_CHARS.split('').filter(x => x != '.')))
       .join('');
@@ -34,13 +34,13 @@ export class Vehicle {
       });
     }
 
-    buffer[10] = this.faker.Random.element(data['years']);
+    buffer[10] = this.faker.Random.element(data.years);
     buffer[8] = vinChecksum(buffer);
 
     return buffer.join('');
   }
 
   manufacture() {
-    return this.faker.Random.element(data['manufactures'].map(x => x[0]));
+    return this.faker.Random.element(data.manufactures.map(x => x[0]));
   }
 }

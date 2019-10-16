@@ -9,54 +9,54 @@ export class Space {
   }
 
   planet() {
-    return this.faker.Random.element(data['planets']);
+    return this.faker.Random.element(data.planets);
   }
 
   moon() {
-    return this.faker.Random.element(data['moons']);
+    return this.faker.Random.element(data.moons);
   }
 
   galaxy() {
-    return this.faker.Random.element(data['galaxies']);
+    return this.faker.Random.element(data.galaxies);
   }
 
   nebula() {
-    return this.faker.Random.element(data['nebulas']);
+    return this.faker.Random.element(data.nebulas);
   }
 
   starCluster() {
-    return this.faker.Random.element(data['starClusters']);
+    return this.faker.Random.element(data.starClusters);
   }
 
   constellation() {
-    return this.faker.Random.element(data['constellations']);
+    return this.faker.Random.element(data.constellations);
   }
 
   star() {
-    return this.faker.Random.element(data['stars']);
+    return this.faker.Random.element(data.stars);
   }
 
   agency() {
-    return this.faker.Random.element(data['agencies']);
+    return this.faker.Random.element(data.agencies);
   }
 
   agencyAbv() {
-    return this.faker.Random.element(data['agencyAbvs']);
+    return this.faker.Random.element(data.agencyAbvs);
   }
 
   nasaSpaceCraft() {
-    return this.faker.Random.element(data['nasaSpaceCrafts']);
+    return this.faker.Random.element(data.nasaSpaceCrafts);
   }
 
   company() {
-    return this.faker.Random.element(data['companies']);
+    return this.faker.Random.element(data.companies);
   }
 
   distanceMeasurement() {
-    return this.faker.Random.element(data['distanceMeasurements']);
+    return this.faker.Random.element(data.distanceMeasurements);
   }
 
   meteorite() {
-    return this.faker.Random.element(data['meteorites']);
+    return this.faker.Random.element(data.meteorites);
   }
 }

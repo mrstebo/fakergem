@@ -49,23 +49,23 @@ export class Company {
   }
 
   name() {
-    return parse(this.faker, this.faker.Random.element(data['names']));
+    return parse(this.faker, this.faker.Random.element(data.names));
   }
 
   suffix() {
-    return this.faker.Random.element(data['suffixes']);
+    return this.faker.Random.element(data.suffixes);
   }
 
   catchPhrase() {
-    return [...Array(3).keys()].map(i => this.faker.Random.element(data['buzzwords'][i])).join(' ');
+    return [...Array(3).keys()].map(i => this.faker.Random.element(data.buzzwords[i])).join(' ');
   }
 
   buzzword() {
-    return this.faker.Random.element([...data['buzzwords'][0], ...data['buzzwords'][1], ...data['buzzwords'][2]]);
+    return this.faker.Random.element([...data.buzzwords[0], ...data.buzzwords[1], ...data.buzzwords[2]]);
   }
 
   bs() {
-    return [...Array(3).keys()].map(i => this.faker.Random.element(data['bs'][i])).join(' ');
+    return [...Array(3).keys()].map(i => this.faker.Random.element(data.bs[i])).join(' ');
   }
 
   ein() {
@@ -114,6 +114,6 @@ export class Company {
   }
 
   profession() {
-    return this.faker.Random.element(data['professions']);
+    return this.faker.Random.element(data.professions);
   }
 }

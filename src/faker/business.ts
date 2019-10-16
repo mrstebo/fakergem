@@ -16,7 +16,7 @@ export class Business {
   }
 
   creditCardNumber() {
-    return this.faker.Random.element(data['creditCardNumbers']);
+    return this.faker.Random.element(data.creditCardNumbers);
   }
 
   creditCardExpiryDate() {
@@ -24,6 +24,6 @@ export class Business {
   }
 
   creditCardType() {
-    return this.faker.Random.element(data['creditCardTypes']);
+    return this.faker.Random.element(data.creditCardTypes);
   }
 }

@@ -9,6 +9,6 @@ export class University {
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data.names);
   }
 }

@@ -4,7 +4,7 @@ import data from '../../data/commerce.json';
 function buildCategories(faker, num) {
   const categories = [];
   while (categories.length < num) {
-    const category = faker.Random.element(data['departments']);
+    const category = faker.Random.element(data.departments);
     if (categories.indexOf(category) < 0) {
       categories.push(category);
     }
@@ -38,9 +38,9 @@ export class Commerce {
 
   productName() {
     return [
-      this.faker.Random.element(data['productNames']['adjective']),
-      this.faker.Random.element(data['productNames']['material']),
-      this.faker.Random.element(data['productNames']['product']),
+      this.faker.Random.element(data.productNames.adjective),
+      this.faker.Random.element(data.productNames.material),
+      this.faker.Random.element(data.productNames.product),
     ].join(' ');
   }
 
@@ -51,8 +51,8 @@ export class Commerce {
 
   promotionCode(digits = 6) {
     return [
-      this.faker.Random.element(data['promotionCodes']['adjective']),
-      this.faker.Random.element(data['promotionCodes']['noun']),
+      this.faker.Random.element(data.promotionCodes.adjective),
+      this.faker.Random.element(data.promotionCodes.noun),
       this.faker.Number.number(digits),
     ].join('');
   }

@@ -9,14 +9,14 @@ export class Music {
   }
 
   key() {
-    return [this.faker.Random.element(data['keys']), this.faker.Random.element(data['keyVariants'])].join('');
+    return [this.faker.Random.element(data.keys), this.faker.Random.element(data.keyVariants)].join('');
   }
 
   chord() {
-    return [this.faker.Random.element(data['keys']), this.faker.Random.element(data['chordTypes'])].join('');
+    return [this.faker.Random.element(data.keys), this.faker.Random.element(data.chordTypes)].join('');
   }
 
   instrument() {
-    return this.faker.Random.element(data['instruments']);
+    return this.faker.Random.element(data.instruments);
   }
 }

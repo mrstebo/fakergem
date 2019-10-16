@@ -9,14 +9,14 @@ export class Cat {
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data.names);
   }
 
   breed() {
-    return this.faker.Random.element(data['breeds']);
+    return this.faker.Random.element(data.breeds);
   }
 
   registry() {
-    return this.faker.Random.element(data['registries']);
+    return this.faker.Random.element(data.registries);
   }
 }

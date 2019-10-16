@@ -9,23 +9,23 @@ export class Demographic {
   }
 
   race() {
-    return this.faker.Random.element(data['races']);
+    return this.faker.Random.element(data.races);
   }
 
   educationalAttainment() {
-    return this.faker.Random.element(data['educationalAttainments']);
+    return this.faker.Random.element(data.educationalAttainments);
   }
 
   demonym() {
-    return this.faker.Random.element(data['demonyms']);
+    return this.faker.Random.element(data.demonyms);
   }
 
   maritalStatus() {
-    return this.faker.Random.element(data['maritalStatuses']);
+    return this.faker.Random.element(data.maritalStatuses);
   }
 
   sex() {
-    return this.faker.Random.element(data['sexes']);
+    return this.faker.Random.element(data.sexes);
   }
 
   height(unit = 'metric') {

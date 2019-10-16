@@ -9,6 +9,6 @@ export class Matz {
   }
 
   quote() {
-    return this.faker.Random.element(data['quotes']);
+    return this.faker.Random.element(data.quotes);
   }
 }

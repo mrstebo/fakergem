@@ -9,11 +9,11 @@ export class Team {
   }
 
   creature() {
-    return this.faker.Random.element(data['creatures']);
+    return this.faker.Random.element(data.creatures);
   }
 
   name() {
-    return this.faker.Random.element(data['names']);
+    return this.faker.Random.element(data.names);
   }
 
   state() {
@@ -21,6 +21,6 @@ export class Team {
   }
 
   sport() {
-    return this.faker.Random.element(data['sports']);
+    return this.faker.Random.element(data.sports);
   }
 }

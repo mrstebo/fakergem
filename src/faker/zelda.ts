@@ -9,14 +9,14 @@ export class Zelda {
   }
 
   game() {
-    return this.faker.Random.element(data['games']);
+    return this.faker.Random.element(data.games);
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data.characters);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data.locations);
   }
 }

@@ -9,10 +9,10 @@ export class LordOfTheRings {
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data.characters);
   }
 
   location() {
-    return this.faker.Random.element(data['locations']);
+    return this.faker.Random.element(data.locations);
   }
 }

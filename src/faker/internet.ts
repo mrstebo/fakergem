@@ -45,7 +45,7 @@ export class Internet {
   }
 
   freeEmail(name) {
-    return [this.userName(name), this.faker.Random.element(data['freeEmails'])].join('@');
+    return [this.userName(name), this.faker.Random.element(data.freeEmails)].join('@');
   }
 
   safeEmail(name) {
@@ -91,7 +91,7 @@ export class Internet {
   }
 
   domainSuffix() {
-    return this.faker.Random.element(data['domainSuffixes']);
+    return this.faker.Random.element(data.domainSuffixes);
   }
 
   ipV4Address() {

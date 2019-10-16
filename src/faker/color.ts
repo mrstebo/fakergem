@@ -19,7 +19,7 @@ export class Color {
   }
 
   colorName() {
-    return this.faker.Random.element(data['colorNames']);
+    return this.faker.Random.element(data.colorNames);
   }
 
   rgbColor() {

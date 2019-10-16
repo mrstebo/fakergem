@@ -9,14 +9,14 @@ export class Food {
   }
 
   ingredient() {
-    return this.faker.Random.element(data['ingredients']);
+    return this.faker.Random.element(data.ingredients);
   }
 
   spice() {
-    return this.faker.Random.element(data['spices']);
+    return this.faker.Random.element(data.spices);
   }
 
   measurement() {
-    return this.faker.Random.element(data['measurements']);
+    return this.faker.Random.element(data.measurements);
   }
 }

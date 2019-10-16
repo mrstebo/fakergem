@@ -9,18 +9,18 @@ export class GameOfThrones {
   }
 
   character() {
-    return this.faker.Random.element(data['characters']);
+    return this.faker.Random.element(data.characters);
   }
 
   house() {
-    return this.faker.Random.element(data['houses']);
+    return this.faker.Random.element(data.houses);
   }
 
   city() {
-    return this.faker.Random.element(data['cities']);
+    return this.faker.Random.element(data.cities);
   }
 
   dragon() {
-    return this.faker.Random.element(data['dragons']);
+    return this.faker.Random.element(data.dragons);
   }
 }
