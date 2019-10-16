@@ -71,7 +71,7 @@ describe("Address", () => {
     }));
 
     it("should return a number between 100 and 99999", () => {
-      [...Array(100).keys()].forEach(_ => {
+      [...Array(100).keys()].forEach(() => {
         expect(Faker.Address.buildingNumber()).to.match(/^\d{3}[0-9]?[0-9]?$/);
       });
     });
