@@ -1,6 +1,11 @@
 const data = require("../../data/game-of-thrones.json");
 
 module.exports = class GameOfThrones {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -20,4 +25,5 @@ module.exports = class GameOfThrones {
   dragon() {
     return this.faker.Random.element(data["dragons"]);
   }
+
 };

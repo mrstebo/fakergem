@@ -10,6 +10,11 @@ function capitalize(text) {
 }
 
 module.exports = class Hipster {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -53,4 +58,5 @@ module.exports = class Hipster {
     return [...Array(resolveNumber(paragraphCount)).keys()]
       .map(() => this.paragraph(3, supplemental));
   }
+
 };

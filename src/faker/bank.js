@@ -1,6 +1,11 @@
 const data = require("../../data/bank.json");
 
 module.exports = class Bank {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -24,4 +29,5 @@ module.exports = class Bank {
       .join("");
     return `${bcc}${ilc}${ib}`;
   }
+
 };

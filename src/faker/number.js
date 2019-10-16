@@ -20,6 +20,11 @@ function leadingZeroNumber(digits) {
 }
 
 module.exports = class Number {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -75,4 +80,5 @@ module.exports = class Number {
   digit() {
     return randomNumber(0, 9);
   }
+
 };

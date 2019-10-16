@@ -1,6 +1,11 @@
 const data = require("../../data/app.json");
 
 module.exports = class App {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -22,4 +27,5 @@ module.exports = class App {
       this.faker.Name.lastName(),
     ].join(" ");
   }
+
 };

@@ -1,6 +1,11 @@
 const data = require("../../data/phone-number.json");
 
 module.exports = class PhoneNumber {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -32,4 +37,5 @@ module.exports = class PhoneNumber {
   extension(length=4) {
     return this.subscriberNumber(length);
   }
+
 };

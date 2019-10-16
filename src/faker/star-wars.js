@@ -5,6 +5,11 @@ function capitalize(text) {
 }
 
 module.exports = class StarWars {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -40,4 +45,5 @@ module.exports = class StarWars {
         .join(" ") + this.faker.Random.element([".", "?", "!"])
     );
   }
+
 };

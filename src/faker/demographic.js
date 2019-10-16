@@ -1,6 +1,11 @@
 const data = require("../../data/demographic.json");
 
 module.exports = class Demographic {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -35,4 +40,5 @@ module.exports = class Demographic {
         return `${Math.floor(inches / 12)} ft, ${inches % 12} in`;
     }
   }
+
 };

@@ -57,7 +57,8 @@ const University = require("./faker/university");
 const Vehicle = require("./faker/vehicle");
 const Zelda = require("./faker/zelda");
 
-module.exports =  class Faker {
+module.exports = class Faker {
+
   constructor() {
     this.Address = new Address(this);
     this.Ancient = new Ancient(this);
@@ -118,4 +119,5 @@ module.exports =  class Faker {
     this.Vehicle = new Vehicle(this);
     this.Zelda = new Zelda(this);
   }
+
 };

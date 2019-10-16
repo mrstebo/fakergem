@@ -1,6 +1,11 @@
 const data = require("../../data/twin-peaks.json");
 
 module.exports = class TwinPeaks {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -16,4 +21,5 @@ module.exports = class TwinPeaks {
   quote() {
     return this.faker.Random.element(data["quotes"]);
   }
+
 };

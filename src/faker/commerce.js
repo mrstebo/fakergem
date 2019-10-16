@@ -19,6 +19,11 @@ function mergeCategories(categories) {
 }
 
 module.exports = class Commerce {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -53,4 +58,5 @@ module.exports = class Commerce {
       this.faker.Number.number(digits),
     ].join("");
   }
+
 };

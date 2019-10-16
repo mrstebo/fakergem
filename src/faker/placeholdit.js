@@ -16,6 +16,11 @@ function isValidColorValue(color) {
 }
 
 module.exports = class Placeholdit {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -46,4 +51,5 @@ module.exports = class Placeholdit {
     }
     return url;
   }
+
 };

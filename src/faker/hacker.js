@@ -6,6 +6,11 @@ function parse(faker, format) {
 }
 
 module.exports = class Hacker {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -33,4 +38,5 @@ module.exports = class Hacker {
   ingverb() {
     return this.faker.Random.element(data["ingverbs"]);
   }
+
 };

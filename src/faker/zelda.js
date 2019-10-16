@@ -1,6 +1,11 @@
 const data = require("../../data/zelda.json");
 
 module.exports = class Zelda {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -16,4 +21,5 @@ module.exports = class Zelda {
   location() {
     return this.faker.Random.element(data["locations"]);
   }
+
 };

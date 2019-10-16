@@ -32,6 +32,11 @@ function reservedNetChecker(addr) {
 }
 
 module.exports = class Internet {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -156,4 +161,5 @@ module.exports = class Internet {
       .replace(/\s+/g, glue || this.faker.Random.element(["-", "_", "."]))
       .toLowerCase();
   }
+
 };

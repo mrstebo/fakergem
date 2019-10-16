@@ -12,6 +12,11 @@ function capitalize(text) {
 }
 
 module.exports = class Lorem {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -61,4 +66,5 @@ module.exports = class Lorem {
     return [...Array(resolveNumber(paragraphCount)).keys()]
       .map(() => this.paragraph(3, supplemental));
   }
+
 };

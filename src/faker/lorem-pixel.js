@@ -13,6 +13,11 @@ function isNumberValid(number) {
 }
 
 module.exports = class LoremPixel {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -45,4 +50,5 @@ module.exports = class LoremPixel {
       [category, number, text].filter(x => x).join("/"),
     ].filter(x => x).join("/");
   }
+
 };

@@ -1,6 +1,11 @@
 const data = require("../../data/lord-of-the-rings.json");
 
 module.exports = class LordOfTheRings {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -12,4 +17,5 @@ module.exports = class LordOfTheRings {
   location() {
     return this.faker.Random.element(data["locations"]);
   }
+
 };

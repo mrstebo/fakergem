@@ -7,6 +7,11 @@ function isValidBoolean(value) {
 }
 
 module.exports = class Fillmurray {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -29,4 +34,5 @@ module.exports = class Fillmurray {
       height,
     ].filter(x => x).join("/");
   }
+
 };

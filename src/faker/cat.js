@@ -1,6 +1,11 @@
 const data = require("../../data/cat.json");
 
 module.exports = class Cat {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -16,4 +21,5 @@ module.exports = class Cat {
   registry() {
     return this.faker.Random.element(data["registries"]);
   }
+
 };

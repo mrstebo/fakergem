@@ -1,6 +1,11 @@
 const data = require("../../data/space.json");
 
 module.exports = class Space {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -56,4 +61,5 @@ module.exports = class Space {
   meteorite() {
     return this.faker.Random.element(data["meteorites"]);
   }
+
 };

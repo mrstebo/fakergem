@@ -42,6 +42,11 @@ function leftPad(text, length, paddingCharacter) {
 }
 
 module.exports = class Company {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -125,4 +130,5 @@ module.exports = class Company {
   profession() {
     return this.faker.Random.element(data["professions"]);
   }
+
 };

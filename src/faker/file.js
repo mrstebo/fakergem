@@ -1,6 +1,11 @@
 const data = require("../../data/file.json");
 
 module.exports = class File {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -20,4 +25,5 @@ module.exports = class File {
 
     return `${[dir, name].join(directorySeparator)}.${ext}`;
   }
+
 };

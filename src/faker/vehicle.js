@@ -13,6 +13,11 @@ function calculateVinWeight(character, i) {
 }
 
 module.exports = class Vehicle {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -42,4 +47,5 @@ module.exports = class Vehicle {
   manufacture() {
     return this.faker.Random.element(data["manufactures"].map(x => x[0]));
   }
+
 };

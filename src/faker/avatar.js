@@ -13,6 +13,11 @@ function words(faker) {
 }
 
 module.exports = class Avatar {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -29,4 +34,5 @@ module.exports = class Avatar {
 
     return `https://robohash.org/${filename}?size=${size}&set=${set}${bgsetQuery}`;
   }
+
 };

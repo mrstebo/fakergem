@@ -15,6 +15,11 @@ function parseModule(faker, match) {
 }
 
 module.exports = class Fake {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -28,4 +33,5 @@ module.exports = class Fake {
       .replace(/\{(\w+)\.(\w+)\}/g, m => parseModule(this.faker, m))
       .replace(/#/g, () => this.faker.Number.between(0, 9));
   }
+
 };

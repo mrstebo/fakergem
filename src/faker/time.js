@@ -38,6 +38,11 @@ function daysFromNow(n) {
   return d;
 }
 module.exports = class Time {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -97,4 +102,5 @@ module.exports = class Time {
     );
     return timeWithFormat(time, format);
   }
+
 };

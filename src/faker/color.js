@@ -6,6 +6,11 @@ function leftPad(text, length, paddingCharacter) {
 }
 
 module.exports = class Color {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -40,4 +45,5 @@ module.exports = class Color {
       this.faker.Number.betweenF(0.00, 1.00),
     ];
   }
+
 };

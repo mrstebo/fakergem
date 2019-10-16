@@ -23,6 +23,11 @@ function base58(text) {
 }
 
 module.exports = class Bitcoin {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -34,4 +39,5 @@ module.exports = class Bitcoin {
   testnetAddress() {
     return addressFor("testnet");
   }
+
 };

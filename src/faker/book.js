@@ -1,6 +1,11 @@
 const data = require("../../data/book.json");
 
 module.exports = class Book {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -23,4 +28,5 @@ module.exports = class Book {
   genre() {
     return this.faker.Random.element(data["genres"]);
   }
+
 };

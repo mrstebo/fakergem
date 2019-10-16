@@ -10,6 +10,11 @@ function parse(faker, format) {
 }
 
 module.exports = class Coffee {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -34,4 +39,5 @@ module.exports = class Coffee {
     const notes = this.faker.Random.element(data["notes"]);
     return parse(this.faker, notes);
   }
+
 };

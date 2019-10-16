@@ -1,6 +1,11 @@
 const data = require("../../data/beer.json");
 
 module.exports = class Beer {
+
+  /**
+   *
+   * @param {import("../faker")} faker
+   */
   constructor(faker) {
     this.faker = faker;
   }
@@ -36,4 +41,5 @@ module.exports = class Beer {
   blg() {
     return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}°Blg`;
   }
+
 };
