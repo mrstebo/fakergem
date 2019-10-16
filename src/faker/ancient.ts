@@ -8,19 +8,19 @@ export class Ancient {
     this.faker = faker;
   }
 
-  god() {
-    return this.faker.Random.element(data['gods']);
+  god(): string {
+    return this.faker.Random.element(data.gods);
   }
 
-  primordial() {
-    return this.faker.Random.element(data['primordials']);
+  primordial(): string {
+    return this.faker.Random.element(data.primordials);
   }
 
-  titan() {
-    return this.faker.Random.element(data['titans']);
+  titan(): string {
+    return this.faker.Random.element(data.titans);
   }
 
-  hero() {
-    return this.faker.Random.element(data['heroes']);
+  hero(): string {
+    return this.faker.Random.element(data.heroes);
   }
 }
