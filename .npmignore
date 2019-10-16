@@ -5,4 +5,7 @@
 .babelrc
 .eslintrc
 .travis.yml
+.prettierrc
+tsconfig.json
+tslint.json
 Gulpfile.js
