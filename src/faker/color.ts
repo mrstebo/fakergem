@@ -1,10 +1,6 @@
 import { Faker } from '../faker';
 import data from '../../data/color.json';
-
-function leftPad(text, length, paddingCharacter) {
-  let padding = [...Array(length)].map(_ => paddingCharacter).join('');
-  return (padding + text).slice(-length);
-}
+import { leftPad } from '../utils/text-helpers';
 
 export class Color {
   private faker: Faker;
@@ -13,20 +9,20 @@ export class Color {
     this.faker = faker;
   }
 
-  hexColor() {
+  hexColor(): string {
     const n = this.faker.Number.between(0, 0xffffff);
     return `#${leftPad(n.toString(16), 6, '0')}`;
   }
 
-  colorName() {
+  colorName(): string {
     return this.faker.Random.element(data.colorNames);
   }
 
-  rgbColor() {
-    return [...Array(3).keys()].map(_ => this.faker.Number.between(0, 255));
+  rgbColor() : Array<string> {
+    return Array(3).map(_ => this.faker.Number.between(0, 255));
   }
 
-  hslColor() {
+  hslColor(): Array<string> {
     return [
       this.faker.Number.between(0, 360),
       Math.round(this.faker.Number.betweenF(0.0, 1.0), 2),
@@ -34,7 +30,7 @@ export class Color {
     ];
   }
 
-  hslaColor() {
+  hslaColor(): Array<string> {
     return [
       this.faker.Number.between(0, 360),
       Math.round(this.faker.Number.betweenF(0.0, 1.0), 2),
