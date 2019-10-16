@@ -26,17 +26,17 @@ export class Commerce {
     this.faker = faker;
   }
 
-  color() {
+  color(): string {
     return this.faker.Color.colorName();
   }
 
-  department(max = 3, fixedAmount = false) {
+  department(max: number = 3, fixedAmount: boolean = false): string {
     const num = fixedAmount ? max : this.faker.Number.between(1, max);
     const categories = buildCategories(this.faker, num);
     return num > 1 ? mergeCategories(categories) : categories[0];
   }
 
-  productName() {
+  productName(): string {
     return [
       this.faker.Random.element(data.productNames.adjective),
       this.faker.Random.element(data.productNames.material),
@@ -44,12 +44,12 @@ export class Commerce {
     ].join(' ');
   }
 
-  price(range = { min: 0.0, max: 100.0 }) {
+  price(range = { min: 0.0, max: 100.0 }): string {
     const n = this.faker.Number.between(range.min, range.max);
     return (Math.floor(n * 100) / 100.0).toFixed(2);
   }
 
-  promotionCode(digits = 6) {
+  promotionCode(digits: number = 6): string {
     return [
       this.faker.Random.element(data.promotionCodes.adjective),
       this.faker.Random.element(data.promotionCodes.noun),
