@@ -2,7 +2,7 @@
   "name": "fakergem",
   "version": "1.0.3",
   "description": "A javascript version of the Faker ruby gem",
-  "main": "./lib/faker.js",
+  "main": "./lib/index.js",
   "scripts": {
     "version:patch": "npm version patch",
     "build": "./node_modules/.bin/tsc",
