@@ -1,0 +1,39 @@
+import { Faker } from '../faker';
+import data from '../../data/hacker.json';
+
+function parse(faker, format) {
+  const text = format.replace(/\{(\w+)\}/g, m => `{Hacker.${m.substring(1)}`);
+  return faker.Fake.f(text).replace(/^(\w)/, m => m[0].toUpperCase());
+}
+
+export class Hacker {
+  private faker: Faker;
+
+  constructor(faker: Faker) {
+    this.faker = faker;
+  }
+
+  saySomethingSmart() {
+    return parse(this.faker, this.faker.Random.element(data['phrases']));
+  }
+
+  abbreviation() {
+    return this.faker.Random.element(data['abbreviations']);
+  }
+
+  adjective() {
+    return this.faker.Random.element(data['adjectives']);
+  }
+
+  noun() {
+    return this.faker.Random.element(data['nouns']);
+  }
+
+  verb() {
+    return this.faker.Random.element(data['verbs']);
+  }
+
+  ingverb() {
+    return this.faker.Random.element(data['ingverbs']);
+  }
+}
