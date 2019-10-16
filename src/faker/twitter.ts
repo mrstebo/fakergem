@@ -1,4 +1,11 @@
 import { Faker } from '../faker';
+import {
+  TwitterPhotoEntity,
+  TwitterStatus,
+  TwitterStatusEntities,
+  TwitterUser,
+  TwitterUserEntities,
+} from '../types/Twitter';
 
 export class Twitter {
   private faker: Faker;
@@ -7,7 +14,10 @@ export class Twitter {
     this.faker = faker;
   }
 
-  user(includeStatus = true, includeEmail = false) {
+  user(
+    includeStatus: boolean = true,
+    includeEmail: boolean = false
+  ): TwitterUser {
     const userId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const backgroundImageUrl = this.faker.LoremPixel.image('600x400');
@@ -20,7 +30,8 @@ export class Twitter {
       default_profile_image: this.faker.Boolean.boolean(0.1),
       default_profile: this.faker.Boolean.boolean(0.1),
       description: this.faker.Lorem.sentence(),
-      entities: this._userEntities(),
+      email: includeEmail ? this.faker.Internet.safeEmail() : undefined,
+      entities: this.userEntities(),
       favourites_count: this.faker.Number.between(1, 100000),
       follow_request_sent: false,
       followers_count: this.faker.Number.between(1, 10000000),
@@ -48,20 +59,21 @@ export class Twitter {
       profile_use_background_image: this.faker.Boolean.boolean(0.4),
       protected: this.faker.Boolean.boolean(0.1),
       screen_name: this.screenName(),
+      status: includeStatus ? this.status(false) : undefined,
       statuses_count: this.faker.Number.between(1, 100000),
       time_zone: this.faker.Address.timeZone(),
       url: 'http://example.com',
-      utc_offset: this._utcOffset(),
+      utc_offset: this.utcOffset(),
       verified: this.faker.Boolean.boolean(0.1),
     };
-
-    if (includeStatus) user['status'] = this.status(false);
-    if (includeEmail) user['email'] = this.faker.Internet.safeEmail();
 
     return user;
   }
 
-  status(includeUser = true, includePhoto = false) {
+  status(
+    includeUser: boolean = true,
+    includePhoto: boolean = false
+  ): TwitterStatus {
     const statusId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const status = {
@@ -70,7 +82,7 @@ export class Twitter {
       contributors: null,
       coordinates: null,
       created_at: createdAt,
-      entities: this._statusEntities(includePhoto),
+      entities: this.statusEntities(includePhoto),
       favourite_count: this.faker.Number.between(1, 10000),
       favourited: false,
       geo: null,
@@ -89,23 +101,23 @@ export class Twitter {
       source: `<a href=\"${this.faker.Internet.url('example.com')}\" rel=\"nofollow\">${this.faker.Company.name}</a>`,
       text: this.faker.Lorem.sentence(),
       truncated: false,
+      user: includeUser ? this.user(false) : undefined,
     };
 
-    if (includeUser) status['user'] = this.user(false);
-    if (includePhoto) status['text'] = `${status['text']} ${status['entities']['media'][0]['url']}`;
+    if (includePhoto) status.text = `${status['text']} ${status.entities.media[0]['url']}`;
 
     return status;
   }
 
-  screenName() {
+  screenName(): string {
     return this.faker.Internet.userName().substring(0, 20);
   }
 
-  _utcOffset() {
+  private utcOffset(): string {
     return this.faker.Number.between(-43200, 50400);
   }
 
-  _userEntities() {
+  private userEntities(): TwitterUserEntities {
     return {
       url: {
         urls: [],
@@ -116,20 +128,17 @@ export class Twitter {
     };
   }
 
-  _statusEntities(includePhoto) {
-    const entities = {
+  private statusEntities(includePhoto: boolean): TwitterStatusEntities {
+    return {
       hashtags: [],
       symbols: [],
       user_mentions: [],
       urls: [],
+      media: includePhoto ? [this.photoEntity()] : [],
     };
-
-    if (includePhoto) entities['media'] = [this._photoEntity()];
-
-    return entities;
   }
 
-  _photoEntity() {
+  private photoEntity(): TwitterPhotoEntity {
     const mediaUrl = this.faker.LoremPixel.image('1064x600');
     const mediaId = this.faker.Number.between(1, 9223372036854775807);
     return {
