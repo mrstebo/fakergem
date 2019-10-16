@@ -8,19 +8,19 @@ export class HarryPotter {
     this.faker = faker;
   }
 
-  character() {
+  character(): string {
     return this.faker.Random.element(data.characters);
   }
 
-  location() {
+  location(): string {
     return this.faker.Random.element(data.locations);
   }
 
-  quote() {
+  quote(): string {
     return this.faker.Random.element(data.quotes);
   }
 
-  book() {
+  book(): string {
     return this.faker.Random.element(data.books);
   }
 }

@@ -15,15 +15,15 @@ export class Business {
     this.faker = faker;
   }
 
-  creditCardNumber() {
+  creditCardNumber(): string {
     return this.faker.Random.element(data.creditCardNumbers);
   }
 
-  creditCardExpiryDate() {
+  creditCardExpiryDate(): Date {
     return daysFromNow(365 * this.faker.Number.between(1, 5));
   }
 
-  creditCardType() {
+  creditCardType(): string {
     return this.faker.Random.element(data.creditCardTypes);
   }
 }

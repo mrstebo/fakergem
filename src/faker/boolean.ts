@@ -7,7 +7,7 @@ export class Boolean {
     this.faker = faker;
   }
 
-  boolean(trueRatio = 0.5) {
+  boolean(trueRatio: number = 0.5): boolean {
     return Math.random() < trueRatio;
   }
 }

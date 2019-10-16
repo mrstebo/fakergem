@@ -8,7 +8,7 @@ export class University {
     this.faker = faker;
   }
 
-  name() {
+  name(): string {
     return this.faker.Random.element(data.names);
   }
 }

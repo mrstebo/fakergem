@@ -8,19 +8,19 @@ export class Team {
     this.faker = faker;
   }
 
-  creature() {
+  creature(): string {
     return this.faker.Random.element(data.creatures);
   }
 
-  name() {
+  name(): string {
     return this.faker.Random.element(data.names);
   }
 
-  state() {
+  state(): string {
     return this.faker.Address.state();
   }
 
-  sport() {
+  sport(): string {
     return this.faker.Random.element(data.sports);
   }
 }

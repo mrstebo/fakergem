@@ -8,39 +8,39 @@ export class SlackEmoji {
     this.faker = faker;
   }
 
-  people() {
+  people(): string {
     return this.faker.Random.element(data.people);
   }
 
-  nature() {
+  nature(): string {
     return this.faker.Random.element(data.nature);
   }
 
-  foodAndDrink() {
+  foodAndDrink(): string {
     return this.faker.Random.element(data.foodAndDrink);
   }
 
-  celebration() {
+  celebration(): string {
     return this.faker.Random.element(data.celebration);
   }
 
-  activity() {
+  activity(): string {
     return this.faker.Random.element(data.activity);
   }
 
-  travelAndPlaces() {
+  travelAndPlaces(): string {
     return this.faker.Random.element(data.travelAndPlaces);
   }
 
-  objectsAndSymbols() {
+  objectsAndSymbols(): string {
     return this.faker.Random.element(data.objectsAndSymbols);
   }
 
-  custom() {
+  custom(): string {
     return this.faker.Random.element(data.custom);
   }
 
-  emoji() {
+  emoji(): string {
     return this.faker.Random.element([
       ...data.people,
       ...data.nature,

@@ -8,15 +8,15 @@ export class Food {
     this.faker = faker;
   }
 
-  ingredient() {
+  ingredient(): string {
     return this.faker.Random.element(data.ingredients);
   }
 
-  spice() {
+  spice(): string {
     return this.faker.Random.element(data.spices);
   }
 
-  measurement() {
+  measurement(): string {
     return this.faker.Random.element(data.measurements);
   }
 }

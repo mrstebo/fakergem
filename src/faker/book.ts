@@ -8,19 +8,19 @@ export class Book {
     this.faker = faker;
   }
 
-  title() {
+  title(): string {
     return this.faker.Random.element(data.titles);
   }
 
-  author() {
+  author(): string {
     return [this.faker.Name.firstName(), this.faker.Name.lastName()].join(' ');
   }
 
-  publisher() {
+  publisher(): string {
     return this.faker.Random.element(data.publishers);
   }
 
-  genre() {
+  genre(): string {
     return this.faker.Random.element(data.genres);
   }
 }

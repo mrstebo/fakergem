@@ -8,15 +8,20 @@ export class File {
     this.faker = faker;
   }
 
-  extension() {
+  extension(): string {
     return this.faker.Random.element(data.extensions);
   }
 
-  mimeType() {
+  mimeType(): string {
     return this.faker.Random.element(data.mimeTypes);
   }
 
-  fileName(dir = null, name = null, ext = null, directorySeparator = '/') {
+  fileName(
+    dir: string | null = null,
+    name: string | null = null,
+    ext: string | null = null,
+    directorySeparator: string = '/'
+  ): string {
     dir = dir || this.faker.Lorem.words(2).join('-');
     name = name || this.faker.Lorem.word();
     ext = ext || this.extension();

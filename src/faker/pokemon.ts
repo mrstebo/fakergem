@@ -8,11 +8,11 @@ export class Pokemon {
     this.faker = faker;
   }
 
-  name() {
+  name(): string {
     return this.faker.Random.element(data.names);
   }
 
-  location() {
+  location(): string {
     return this.faker.Random.element(data.locations);
   }
 }

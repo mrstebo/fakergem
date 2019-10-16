@@ -10,11 +10,11 @@ export class Avatar {
   }
 
   image(
-    slug: null | string = null,
+    slug: string | null = null,
     size: string = '300x300',
     format: string = 'png',
     set: string = 'set1',
-    bgset: null | string = null
+    bgset: string | null = null
   ): string {
     if (!this.isValidSize(size)) {
       throw new Error('Size should be specified in format 300x300');

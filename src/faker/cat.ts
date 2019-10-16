@@ -8,15 +8,15 @@ export class Cat {
     this.faker = faker;
   }
 
-  name() {
+  name(): string {
     return this.faker.Random.element(data.names);
   }
 
-  breed() {
+  breed(): string {
     return this.faker.Random.element(data.breeds);
   }
 
-  registry() {
+  registry(): string {
     return this.faker.Random.element(data.registries);
   }
 }

@@ -8,19 +8,19 @@ export class GameOfThrones {
     this.faker = faker;
   }
 
-  character() {
+  character(): string {
     return this.faker.Random.element(data.characters);
   }
 
-  house() {
+  house(): string {
     return this.faker.Random.element(data.houses);
   }
 
-  city() {
+  city(): string {
     return this.faker.Random.element(data.cities);
   }
 
-  dragon() {
+  dragon(): string {
     return this.faker.Random.element(data.dragons);
   }
 }

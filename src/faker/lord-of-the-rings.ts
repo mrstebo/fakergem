@@ -8,11 +8,11 @@ export class LordOfTheRings {
     this.faker = faker;
   }
 
-  character() {
+  character(): string {
     return this.faker.Random.element(data.characters);
   }
 
-  location() {
+  location(): string {
     return this.faker.Random.element(data.locations);
   }
 }

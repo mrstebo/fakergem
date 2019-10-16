@@ -8,26 +8,26 @@ export class Superhero {
     this.faker = faker;
   }
 
-  name() {
+  name(): string {
     return this.faker.Random.element(data.names)
       .replace('{prefix}', this.faker.Random.element(data.prefixes))
       .replace('{suffix}', this.faker.Random.element(data.suffixes))
       .replace('{descriptor}', this.faker.Random.element(data.descriptors));
   }
 
-  power() {
+  power(): string {
     return this.faker.Random.element(data.powers);
   }
 
-  prefix() {
+  prefix(): string {
     return this.faker.Random.element(data.prefixes);
   }
 
-  suffix() {
+  suffix(): string {
     return this.faker.Random.element(data.suffixes);
   }
 
-  descriptor() {
+  descriptor(): string {
     return this.faker.Random.element(data.descriptors);
   }
 }

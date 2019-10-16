@@ -13,63 +13,63 @@ export class Compass {
     this.faker = faker;
   }
 
-  direction() {
+  direction(): string {
     return parse(this.faker, this.faker.Random.element(data.directions));
   }
 
-  cardinal() {
+  cardinal(): string {
     return this.faker.Random.element(data.cardinals.word);
   }
 
-  ordinal() {
+  ordinal(): string {
     return this.faker.Random.element(data.ordinals.word);
   }
 
-  halfWind() {
+  halfWind(): string {
     return this.faker.Random.element(data.halfWinds.word);
   }
 
-  quarterWind() {
+  quarterWind(): string {
     return this.faker.Random.element(data.quarterWinds.word);
   }
 
-  abbreviation() {
+  abbreviation(): string {
     return parse(this.faker, this.faker.Random.element(data.abbreviations));
   }
 
-  cardinalAbbreviation() {
+  cardinalAbbreviation(): string {
     return this.faker.Random.element(data.cardinals.abbreviation);
   }
 
-  ordinalAbbreviation() {
+  ordinalAbbreviation(): string {
     return this.faker.Random.element(data.ordinals.abbreviation);
   }
 
-  halfWindAbbreviation() {
+  halfWindAbbreviation(): string {
     return this.faker.Random.element(data.halfWinds.abbreviation);
   }
 
-  quarterWindAbbreviation() {
+  quarterWindAbbreviation(): string {
     return this.faker.Random.element(data.quarterWinds.abbreviation);
   }
 
-  azimuth() {
+  azimuth(): string {
     return parse(this.faker, this.faker.Random.element(data.azimuths));
   }
 
-  cardinalAzimuth() {
+  cardinalAzimuth(): string {
     return this.faker.Random.element(data.cardinals.azimuth);
   }
 
-  ordinalAzimuth() {
+  ordinalAzimuth(): string {
     return this.faker.Random.element(data.ordinals.azimuth);
   }
 
-  halfWindAzimuth() {
+  halfWindAzimuth(): string {
     return this.faker.Random.element(data.halfWinds.azimuth);
   }
 
-  quarterWindAzimuth() {
+  quarterWindAzimuth(): string {
     return this.faker.Random.element(data.quarterWinds.azimuth);
   }
 }

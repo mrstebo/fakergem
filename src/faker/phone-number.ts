@@ -8,31 +8,31 @@ export class PhoneNumber {
     this.faker = faker;
   }
 
-  phoneNumber() {
+  phoneNumber(): string {
     const format = this.faker.Random.element(data.phoneNumber.formats);
     return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
   }
 
-  cellPhone() {
+  cellPhone(): string {
     const format = this.faker.Random.element(data.cellPhone.formats);
     return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
   }
 
-  areaCode() {
+  areaCode(): string {
     return this.faker.Random.element(data.areaCodes);
   }
 
-  exchangeCode() {
+  exchangeCode(): string {
     return this.faker.Random.element(data.exchangeCodes);
   }
 
-  subscriberNumber(length = 4) {
+  subscriberNumber(length: number = 4): string {
     const min = Math.pow(10, length) / 10;
     const max = min * 10 - 1;
     return `${this.faker.Number.between(min, max)}`;
   }
 
-  extension(length = 4) {
+  extension(length: number = 4): string {
     return this.subscriberNumber(length);
   }
 }

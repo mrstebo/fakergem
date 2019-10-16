@@ -8,7 +8,7 @@ export class ChuckNorris {
     this.faker = faker;
   }
 
-  fact() {
+  fact(): string {
     return this.faker.Random.element(data.facts);
   }
 }

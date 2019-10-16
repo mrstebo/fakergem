@@ -8,55 +8,55 @@ export class Space {
     this.faker = faker;
   }
 
-  planet() {
+  planet(): string {
     return this.faker.Random.element(data.planets);
   }
 
-  moon() {
+  moon(): string {
     return this.faker.Random.element(data.moons);
   }
 
-  galaxy() {
+  galaxy(): string {
     return this.faker.Random.element(data.galaxies);
   }
 
-  nebula() {
+  nebula(): string {
     return this.faker.Random.element(data.nebulas);
   }
 
-  starCluster() {
+  starCluster(): string {
     return this.faker.Random.element(data.starClusters);
   }
 
-  constellation() {
+  constellation(): string {
     return this.faker.Random.element(data.constellations);
   }
 
-  star() {
+  star(): string {
     return this.faker.Random.element(data.stars);
   }
 
-  agency() {
+  agency(): string {
     return this.faker.Random.element(data.agencies);
   }
 
-  agencyAbv() {
+  agencyAbv(): string {
     return this.faker.Random.element(data.agencyAbvs);
   }
 
-  nasaSpaceCraft() {
+  nasaSpaceCraft(): string {
     return this.faker.Random.element(data.nasaSpaceCrafts);
   }
 
-  company() {
+  company(): string {
     return this.faker.Random.element(data.companies);
   }
 
-  distanceMeasurement() {
+  distanceMeasurement(): string {
     return this.faker.Random.element(data.distanceMeasurements);
   }
 
-  meteorite() {
+  meteorite(): string {
     return this.faker.Random.element(data.meteorites);
   }
 }

@@ -13,27 +13,27 @@ export class Hacker {
     this.faker = faker;
   }
 
-  saySomethingSmart() {
+  saySomethingSmart(): string {
     return parse(this.faker, this.faker.Random.element(data.phrases));
   }
 
-  abbreviation() {
+  abbreviation(): string {
     return this.faker.Random.element(data.abbreviations);
   }
 
-  adjective() {
+  adjective(): string {
     return this.faker.Random.element(data.adjectives);
   }
 
-  noun() {
+  noun(): string {
     return this.faker.Random.element(data.nouns);
   }
 
-  verb() {
+  verb(): string {
     return this.faker.Random.element(data.verbs);
   }
 
-  ingverb() {
+  ingverb(): string {
     return this.faker.Random.element(data.ingverbs);
   }
 }

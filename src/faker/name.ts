@@ -8,31 +8,31 @@ export class Name {
     this.faker = faker;
   }
 
-  name() {
+  name(): string {
     return [this.firstName(), this.lastName()].join(' ');
   }
 
-  nameWithMiddle() {
+  nameWithMiddle(): string {
     return [this.firstName(), this.firstName(), this.lastName()].join(' ');
   }
 
-  firstName() {
+  firstName(): string {
     return this.faker.Random.element(data.firstNames);
   }
 
-  lastName() {
+  lastName(): string {
     return this.faker.Random.element(data.lastNames);
   }
 
-  prefix() {
+  prefix(): string {
     return this.faker.Random.element(data.prefixes);
   }
 
-  suffix() {
+  suffix(): string {
     return this.faker.Random.element(data.suffixes);
   }
 
-  title() {
+  title(): string {
     return [
       this.faker.Random.element(data.titles.descriptor),
       this.faker.Random.element(data.titles.level),

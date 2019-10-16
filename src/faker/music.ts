@@ -8,15 +8,15 @@ export class Music {
     this.faker = faker;
   }
 
-  key() {
+  key(): string {
     return [this.faker.Random.element(data.keys), this.faker.Random.element(data.keyVariants)].join('');
   }
 
-  chord() {
+  chord(): string {
     return [this.faker.Random.element(data.keys), this.faker.Random.element(data.chordTypes)].join('');
   }
 
-  instrument() {
+  instrument(): string {
     return this.faker.Random.element(data.instruments);
   }
 }

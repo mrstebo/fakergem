@@ -8,25 +8,25 @@ export class Educator {
     this.faker = faker;
   }
 
-  university() {
+  university(): string {
     const name = this.faker.Random.element(data.names);
     const tertiaryType = this.faker.Random.element(data.tertiaries.types);
     return `${name} ${tertiaryType}`;
   }
 
-  secondarySchool() {
+  secondarySchool(): string {
     const name = this.faker.Random.element(data.names);
     const secondary = this.faker.Random.element(data.secondaries);
     return `${name} ${secondary}`;
   }
 
-  course() {
+  course(): string {
     const courseType = this.faker.Random.element(data.tertiaries.course.types);
     const courseSubject = this.faker.Random.element(data.tertiaries.course.subjects);
     return `${courseType} ${courseSubject}`;
   }
 
-  campus() {
+  campus(): string {
     const name = this.faker.Random.element(data.names);
     return `${name} Campus`;
   }

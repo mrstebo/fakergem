@@ -8,7 +8,7 @@ export class RuPaul {
     this.faker = faker;
   }
 
-  quote() {
+  quote(): string {
     return this.faker.Random.element(data.quotes);
   }
 }

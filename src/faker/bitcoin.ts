@@ -30,11 +30,11 @@ export class Bitcoin {
     this.faker = faker;
   }
 
-  address() {
+  address(): string {
     return addressFor('main');
   }
 
-  testnetAddress() {
+  testnetAddress(): string {
     return addressFor('testnet');
   }
 }

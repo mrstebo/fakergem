@@ -8,35 +8,35 @@ export class Beer {
     this.faker = faker;
   }
 
-  name() {
+  name(): string {
     return this.faker.Random.element(data.names);
   }
 
-  style() {
+  style(): string {
     return this.faker.Random.element(data.styles);
   }
 
-  hop() {
+  hop(): string {
     return this.faker.Random.element(data.hops);
   }
 
-  yeast() {
+  yeast(): string {
     return this.faker.Random.element(data.yeasts);
   }
 
-  malt() {
+  malt(): string {
     return this.faker.Random.element(data.malts);
   }
 
-  ibu() {
+  ibu(): string {
     return `${this.faker.Number.between(10, 99)} IBU`;
   }
 
-  alcohol() {
+  alcohol(): string {
     return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}%`;
   }
 
-  blg() {
+  blg(): string {
     return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}°Blg`;
   }
 }
