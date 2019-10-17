@@ -152,6 +152,18 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.11.1.tgz#1fd7b821f798b7fa29f667a1be8f3442bb8922a3"
   integrity sha512-TJtwsqZ39pqcljJpajeoofYRfeZ7/I/OMUQ5pR4q5wOKf2ocrUvBAZUMhWsOvKx3dVc/aaV5GluBivt0sWqA5A==
 
+"@types/sinon-test@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@types/sinon-test/-/sinon-test-2.4.0.tgz#4e1e37cebc9bf8dca787aaf6de6a8ad5b21d5b94"
+  integrity sha512-YW723M2ZdAuaAzZImRv9ujoXqqtjrwYFPG0m9t5lnnKZH9w0hbZGDeSjCcVcPZ83hsVKJvQnsDa3KQZvgkkTew==
+  dependencies:
+    "@types/sinon" "*"
+
+"@types/sinon@*", "@types/sinon@^7.5.0":
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-7.5.0.tgz#f5a10c27175465a0b001b68d8b9f761582967cc6"
+  integrity sha512-NyzhuSBy97B/zE58cDw4NyGvByQbAHNP9069KVSgnXt/sc0T6MFRh0InKAeBVHJWdSXG1S3+PxgVIgKo9mTHbw==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

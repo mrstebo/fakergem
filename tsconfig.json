@@ -11,6 +11,12 @@
       "es6"
     ]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "test"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "lib",
+    "node_modules",
+    "test",
+  ]
 }
