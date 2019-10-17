@@ -8,13 +8,13 @@ export class Number {
     this.faker = faker;
   }
 
-  number(digits: number = 10): string {
+  number(digits: number = 10): number {
     let num = '';
     if (digits > 1) {
       num = `${this.nonZeroDigit()}`;
       digits -= 1;
     }
-    return num + this.leadingZeroNumber(digits);
+    return parseInt(num + this.leadingZeroNumber(digits));
   }
 
   decimal(
