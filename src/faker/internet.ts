@@ -54,7 +54,7 @@ export class Internet {
 
   userName(
     specifier: string | null = null,
-    separators: string | null = null
+    separators: Array<string> | null = null
   ): string {
     const userNameSeparator = this.faker.Random.element(separators || ['.', '_']);
     if (typeof specifier === 'string') {
