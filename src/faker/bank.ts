@@ -22,7 +22,8 @@ export class Bank {
     const ilc = Array(details.ibanLetterCode)
       .map(() => String.fromCharCode(65 + this.faker.Number.between(0, 25)))
       .join('');
-    const ib = Array(details.ibanDigits).fill('')
+    const ib = Array(details.ibanDigits)
+      .fill('')
       .map(() => this.faker.Number.between(0, 9))
       .join('');
     return `${bcc}${ilc}${ib}`;

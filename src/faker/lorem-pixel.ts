@@ -28,7 +28,7 @@ export class LoremPixel {
     isGray: boolean = false,
     category: string | null = null,
     number: number | null = null,
-    text: string | null = null
+    text: string | null = null,
   ): string {
     if (!this.isValidSize(size)) {
       throw new Error('Size should be specified in format 300x300');
@@ -69,6 +69,12 @@ export class LoremPixel {
   }
 
   private isNumberValid(number: number | null): boolean {
-    return number === null || Array(10).fill(null).map(i => i + 1).indexOf(number) >= 0;
+    return (
+      number === null ||
+      Array(10)
+        .fill(null)
+        .map(i => i + 1)
+        .indexOf(number) >= 0
+    );
   }
 }

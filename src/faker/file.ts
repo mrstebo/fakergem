@@ -20,7 +20,7 @@ export class File {
     dir: string | null = null,
     name: string | null = null,
     ext: string | null = null,
-    directorySeparator: string = '/'
+    directorySeparator: string = '/',
   ): string {
     dir = dir || this.faker.Lorem.words(2).join('-');
     name = name || this.faker.Lorem.word();

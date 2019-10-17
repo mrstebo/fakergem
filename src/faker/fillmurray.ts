@@ -7,11 +7,7 @@ export class Fillmurray {
     this.faker = faker;
   }
 
-  image(
-    grayscale: boolean | string = false,
-    width: number | string = 200,
-    height: number | string = 200
-  ): string {
+  image(grayscale: boolean | string = false, width: number | string = 200, height: number | string = 200): string {
     if (!this.isValidNumber(width)) {
       throw new Error('Width should be a number');
     }

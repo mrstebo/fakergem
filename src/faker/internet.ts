@@ -3,7 +3,11 @@ import { Faker } from '../faker';
 import data from '../data/internet.json';
 
 // 0-9, a-z
-const CHARACTERS = Array(10).concat([...Array(26).fill(null).map(i => String.fromCharCode(97 + i))]);
+const CHARACTERS = Array(10).concat([
+  ...Array(26)
+    .fill(null)
+    .map(i => String.fromCharCode(97 + i)),
+]);
 const SYMBOLS = ['!', '@', '#', '$', '%', '^', '&', '*'];
 const PRIVATE_NET_REGEX = [
   /^10\./, // 10.0.0.0    – 10.255.255.255
@@ -52,10 +56,7 @@ export class Internet {
     return [this.userName(name), `example.${this.faker.Random.element(['org', 'com', 'net'])}`].join('@');
   }
 
-  userName(
-    specifier: string | null = null,
-    separators: Array<string> | null = null
-  ): string {
+  userName(specifier: string | null = null, separators: Array<string> | null = null): string {
     const userNameSeparator = this.faker.Random.element(separators || ['.', '_']);
     if (typeof specifier === 'string') {
       const specifiers = (specifier.match(/\w+/g) || []).map(x => x);
@@ -72,7 +73,7 @@ export class Internet {
     minLength: number = 8,
     maxLength: number = 16,
     mixCase: boolean = true,
-    specialChars: boolean = false
+    specialChars: boolean = false,
   ): string {
     const diffLength = maxLength - minLength;
     const extraCharacters = this.faker.Number.between(0, diffLength);
@@ -132,7 +133,10 @@ export class Internet {
   }
 
   ipV6Address(): string {
-    return Array(8).fill(null).map(_ => this.faker.Number.between(4096, 65535).toString(16)).join(':');
+    return Array(8)
+      .fill(null)
+      .map(_ => this.faker.Number.between(4096, 65535).toString(16))
+      .join(':');
   }
 
   ipV6CIDR(): string {
@@ -144,24 +148,19 @@ export class Internet {
       .split(':')
       .filter(x => x)
       .map(x => parseInt(x, 16));
-    const addressDigits = Array(6 - prefixDigits.length).fill(null).map(x => this.faker.Number.between(0, 255));
+    const addressDigits = Array(6 - prefixDigits.length)
+      .fill(null)
+      .map(x => this.faker.Number.between(0, 255));
     return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
   }
 
-  url(
-    host: string | null = null,
-    path: string | null = null,
-    scheme: string = 'http'
-  ): string {
+  url(host: string | null = null, path: string | null = null, scheme: string = 'http'): string {
     host = host || this.domainName();
     path = path || `/${this.userName()}`;
     return `${scheme}://${host}${path}`;
   }
 
-  slug(
-    words: string | null = null,
-    glue: string | null = null
-  ): string {
+  slug(words: string | null = null, glue: string | null = null): string {
     return (words || this.faker.Lorem.words(2).join(' '))
       .replace(/\s+/g, glue || this.faker.Random.element(['-', '_', '.']))
       .toLowerCase();

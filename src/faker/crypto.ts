@@ -1,8 +1,6 @@
 import { Faker } from '../faker';
 import crypto from 'crypto';
 
-
-
 export class Crypto {
   private CHARACTERS: string = '0123456789abcdefghijklmnopqrstuvwxyz';
 

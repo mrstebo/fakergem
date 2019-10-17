@@ -14,7 +14,7 @@ export class Placeholdit {
     format: string = 'png',
     backgroundColor: string | null = null,
     textColor: string | null = null,
-    text: string | null = null
+    text: string | null = null,
   ): string {
     if (!this.isValidSize(size)) {
       throw new Error('Size should be specified in format 300x300');

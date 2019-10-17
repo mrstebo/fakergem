@@ -14,10 +14,7 @@ export class Twitter {
     this.faker = faker;
   }
 
-  user(
-    includeStatus: boolean = true,
-    includeEmail: boolean = false
-  ): TwitterUser {
+  user(includeStatus: boolean = true, includeEmail: boolean = false): TwitterUser {
     const userId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const backgroundImageUrl = this.faker.LoremPixel.image('600x400');
@@ -70,10 +67,7 @@ export class Twitter {
     return user;
   }
 
-  status(
-    includeUser: boolean = true,
-    includePhoto: boolean = false
-  ): TwitterStatus {
+  status(includeUser: boolean = true, includePhoto: boolean = false): TwitterStatus {
     const statusId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const status = {

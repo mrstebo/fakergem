@@ -18,8 +18,10 @@ export class Color {
     return this.faker.Random.element(data.colorNames);
   }
 
-  rgbColor() : Array<number> {
-    return Array(3).fill(null).map(_ => this.faker.Number.between(0, 255));
+  rgbColor(): Array<number> {
+    return Array(3)
+      .fill(null)
+      .map(_ => this.faker.Number.between(0, 255));
   }
 
   hslColor(): Array<number> {

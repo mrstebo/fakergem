@@ -18,7 +18,10 @@ export class Company {
   }
 
   catchPhrase(): string {
-    return Array(3).fill(null).map(i => this.faker.Random.element(data.buzzwords[i])).join(' ');
+    return Array(3)
+      .fill(null)
+      .map(i => this.faker.Random.element(data.buzzwords[i]))
+      .join(' ');
   }
 
   buzzword(): string {
@@ -26,7 +29,10 @@ export class Company {
   }
 
   bs(): string {
-    return Array(3).fill(null).map(i => this.faker.Random.element(data.bs[i])).join(' ');
+    return Array(3)
+      .fill(null)
+      .map(i => this.faker.Random.element(data.bs[i]))
+      .join(' ');
   }
 
   ein(): string {
@@ -49,12 +55,14 @@ export class Company {
   }
 
   swedishOrganisationNumber(): string {
-    const base = parseInt([
-      this.faker.Number.between(1, 9),
-      this.faker.Number.between(0, 9),
-      this.faker.Number.between(2, 9),
-      this.faker.Number.number(6),
-    ].join(''));
+    const base = parseInt(
+      [
+        this.faker.Number.between(1, 9),
+        this.faker.Number.between(0, 9),
+        this.faker.Number.between(2, 9),
+        this.faker.Number.number(6),
+      ].join(''),
+    );
     return `${base}${this.luhnAlgorithm(base)}`;
   }
 
@@ -62,10 +70,11 @@ export class Company {
     let mod11Check = null;
     let base = 0;
     while (mod11Check == null) {
-      base = parseInt([
-        this.faker.Random.element([8, 9]),
-        leftPad(this.faker.Number.between(0, 10000000).toString(), 7, '0')
-      ].join(''));
+      base = parseInt(
+        [this.faker.Random.element([8, 9]), leftPad(this.faker.Number.between(0, 10000000).toString(), 7, '0')].join(
+          '',
+        ),
+      );
       mod11Check = this.mod11(base);
     }
     return `${base}${mod11Check}`;
@@ -101,7 +110,7 @@ export class Company {
       .split('')
       .reverse()
       .reduce((acc, val, index) => {
-        return acc = ''+val.charCodeAt(0) * weight[index - 1];
+        return (acc = '' + val.charCodeAt(0) * weight[index - 1]);
       });
     const remainder = parseInt(sum) % 11;
 
