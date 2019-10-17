@@ -33,8 +33,10 @@
   },
   "homepage": "https://github.com/mrstebo/fakergem#readme",
   "devDependencies": {
+    "@types/bs58": "^4.0.0",
     "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.1",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^9.0.0",
