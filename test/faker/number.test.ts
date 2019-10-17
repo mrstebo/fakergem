@@ -4,12 +4,6 @@ import Faker from '../../src/index';
 
 describe('Number', () => {
   describe('#number', () => {
-    it('should return a number string', () => {
-      Array(100).fill(null).forEach(_ => {
-        expect(Faker.Number.number()).to.be.a('string');
-      });
-    });
-
     it('should return 10 digits by default', () => {
       Array(100).fill(null).forEach(_ => {
         expect(Faker.Number.number()).to.match(/^\d{10}$/);

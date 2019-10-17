@@ -31,10 +31,11 @@ export class Lorem {
     return this.faker.Random.element(CHARACTERS);
   }
 
-  characters(charCount: number = 255): Array<string> {
+  characters(charCount: number = 255): string {
     return Array(resolveNumber(charCount))
       .fill(null)
-      .map(_ => this.character());
+      .map(_ => this.character())
+      .join('');
   }
 
   sentence(wordCount: number = 4, supplemental: boolean = false, randomWordsToAdd: number = 6): string {

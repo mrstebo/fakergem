@@ -10,7 +10,7 @@ export class Random {
 
   assortment(array: Array<any>, n: number): Array<any> {
     const count = Math.max(0, n);
-    const repeatCount = count / array.length || 1;
+    const repeatCount = Math.floor(count / array.length) || 1;
     const repeated = Array(repeatCount * array.length)
       .fill(null)
       .map((e, i) => array[i % array.length]);
