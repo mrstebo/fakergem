@@ -55,25 +55,25 @@ describe('Internet', () => {
 
   describe('#password', () => {
     it('should return a password', () => {
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         expect(Faker.Internet.password()).to.match(/^[a-zA-Z0-9]+$/);
       });
     });
 
     it('should return a password between 8 and 16 alphanumeric characters by default', () => {
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         expect(Faker.Internet.password()).to.match(/^[a-zA-Z0-9]{8,16}$/);
       });
     });
 
     it('should return a lowercase password when mixCase is false', () => {
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         expect(Faker.Internet.password(8, 16, false)).to.match(/^[a-z0-9]+$/);
       });
     });
 
     it('should return a password with special characters when specialChars is true', () => {
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         expect(Faker.Internet.password(128, 128, true, true)).to.match(/[\!\@\#\$\%\^\&\*]/);
       });
     });
@@ -98,10 +98,6 @@ describe('Internet', () => {
 
     it('should replace ü with ue', () => {
       expect(Faker.Internet.fixUmlauts('ü')).to.eql('ue');
-    });
-
-    it('should handle empty parameters', () => {
-      expect(Faker.Internet.fixUmlauts()).to.eql('');
     });
   });
 

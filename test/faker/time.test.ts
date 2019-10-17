@@ -4,7 +4,6 @@ const { expect } = chai;
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
 
 chai.use(require('chai-datetime'));
 
@@ -14,12 +13,6 @@ describe('Time', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 0, 10);
       expect(Faker.Time.between(from, to)).to.be.a('Date');
-    });
-
-    it('should handle string dates', () => {
-      const from = new Date(2017, 0, 1);
-      const to = new Date(2017, 0, 10);
-      expect(Faker.Time.between('2017-01-01', '2017-01-10')).to.be.withinDate(from, to);
     });
 
     it('should return a date between two dates', () => {
@@ -48,12 +41,6 @@ describe('Time', () => {
       expect(Faker.Time.between(from, to, Faker.Time.EVENING).getHours()).to.be.within(17, 21);
       expect(Faker.Time.between(from, to, Faker.Time.MIDNIGHT).getHours()).to.be.within(0, 4);
       expect(Faker.Time.between(from, to, Faker.Time.BETWEEN).getHours()).to.be.within(0, 23);
-    });
-
-    it('should return a formatted date', () => {
-      const from = new Date(2018, 0, 12);
-      const to = new Date(2018, 1, 13);
-      expect(Faker.Time.between(from, to, Faker.Time.ALL, 'yyyy-MM-dd HH:mm:ss')).to.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/);
     });
   });
 
@@ -88,11 +75,6 @@ describe('Time', () => {
     it('should throw if BETWEEN period specified', () => {
       expect(() => Faker.Time.forward(10, Faker.Time.BETWEEN)).to.throw('invalid period');
     });
-
-    it('should return a formatted date', () => {
-      const date = new Date();
-      expect(Faker.Time.forward(10, Faker.Time.ALL, 'yyyy-MM-dd HH:mm:ss')).to.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/);
-    });
   });
 
   describe('#backward', () => {
@@ -125,11 +107,6 @@ describe('Time', () => {
 
     it('should throw if BETWEEN period specified', () => {
       expect(() => Faker.Time.backward(10, Faker.Time.BETWEEN)).to.throw('invalid period');
-    });
-
-    it('should return a formatted date', () => {
-      const date = new Date();
-      expect(Faker.Time.backward(10, Faker.Time.ALL, 'yyyy-MM-dd HH:mm:ss')).to.match(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/);
     });
   });
 });

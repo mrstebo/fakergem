@@ -66,7 +66,7 @@ describe('Commerce', () => {
 
     it('should return a price within the specified range', () => {
       const range = {min: 20.0, max: 40.0};
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         const price = parseFloat(Faker.Commerce.price(range));
         expect(price).to.be.within(range.min, range.max);
       });
@@ -83,7 +83,7 @@ describe('Commerce', () => {
     }));
 
     it('should end with number with specified number of digits', () => {
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         expect(Faker.Commerce.promotionCode(24)).to.match(/.*[0-9]{24}$/);
       });
     });

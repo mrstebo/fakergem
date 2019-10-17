@@ -1,6 +1,6 @@
 'use strict';
 import { expect } from 'chai';
-const Faker = require('../../src/faker');
+import Faker from '../../src/index';
 const data = require('../../data/lorem.json');
 
 describe('Lorem', () => {

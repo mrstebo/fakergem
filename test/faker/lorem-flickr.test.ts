@@ -1,6 +1,6 @@
 'use strict';
 import { expect } from 'chai';
-const Faker = require('../../src/faker');
+import Faker from '../../src/index';
 
 describe('LoremFlickr', () => {
   describe('#image', () => {
@@ -13,7 +13,6 @@ describe('LoremFlickr', () => {
     });
 
     it('should handle empty search terms', () => {
-      expect(Faker.LoremFlickr.image('300x300', null)).to.equal('http://loremflickr.com/300/300');
       expect(Faker.LoremFlickr.image('300x300', [])).to.equal('http://loremflickr.com/300/300');
     });
 
@@ -64,7 +63,6 @@ describe('LoremFlickr', () => {
     });
 
     it('should throw if no search terms specified', () => {
-      expect(() => Faker.LoremFlickr.grayscaleImage('300x300', null)).to.throw();
       expect(() => Faker.LoremFlickr.grayscaleImage('300x300', [])).to.throw();
     });
   });
@@ -97,7 +95,6 @@ describe('LoremFlickr', () => {
     });
 
     it('should throw if no search terms specified', () => {
-      expect(() => Faker.LoremFlickr.pixelatedImage('300x300', null)).to.throw();
       expect(() => Faker.LoremFlickr.pixelatedImage('300x300', [])).to.throw();
     });
   });
@@ -142,7 +139,6 @@ describe('LoremFlickr', () => {
     });
 
     it('should throw if no search terms specified', () => {
-      expect(() => Faker.LoremFlickr.colorizedImage('300x300', 'red', null)).to.throw();
       expect(() => Faker.LoremFlickr.colorizedImage('300x300', 'red', [])).to.throw();
     });
   });

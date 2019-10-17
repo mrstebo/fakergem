@@ -1,11 +1,11 @@
 'use strict';
 import { expect } from 'chai';
-const Faker = require('../../src/faker');
+import Faker from '../../src/index';
 
 describe('Bitcoin', () => {
   describe('#address', () => {
     it('should return a hash', () => {
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         expect(Faker.Bitcoin.address()).to.match(/[0-9a-zA-Z]+/);
       });
     });
@@ -13,7 +13,7 @@ describe('Bitcoin', () => {
 
   describe('#testnetAddress', () => {
     it('should return a hash', () => {
-      [...Array(100).keys()].forEach(_ => {
+      Array(100).forEach(_ => {
         expect(Faker.Bitcoin.testnetAddress()).to.match(/[0-9a-zA-Z]+/);
       });
     });

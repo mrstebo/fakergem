@@ -1,6 +1,6 @@
 'use strict';
 import { expect } from 'chai';
-const Faker = require('../../src/faker');
+import Faker from '../../src/index';
 
 describe('Random', () => {
   describe('#assortment', () => {
@@ -31,13 +31,9 @@ describe('Random', () => {
   describe('#element', () => {
     it('should return an element from an array', () => {
       const array = [1, 2, 3, 4, 5];
-      [...Array(100).keys()].forEach(() => {
+      Array(100).forEach(() => {
         expect(Faker.Random.element(array)).to.be.oneOf(array);
       });
-    });
-
-    it('should throw if array not specified', () => {
-      expect(() => Faker.Random.element()).to.throw('An array or string must be specified');
     });
 
     it('should return character if string present', () => {

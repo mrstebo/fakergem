@@ -87,7 +87,7 @@ describe('Company', () => {
       betweenStub.withArgs(1, 9).returns(1);
       betweenStub.withArgs(0, 9).returns(2);
       betweenStub.withArgs(2, 9).returns(3);
-      this.stub(Faker.Number, 'number').withArgs(6).returns('888888');
+      this.stub(Faker.Number, 'number').withArgs(6).returns(888888);
       expect(Faker.Company.swedishOrganisationNumber()).to.eql('12388888810');
     }));
 
@@ -96,7 +96,7 @@ describe('Company', () => {
       betweenStub.withArgs(1, 9).returns(1);
       betweenStub.withArgs(0, 9).returns(0);
       betweenStub.withArgs(2, 9).returns(5);
-      this.stub(Faker.Number, 'number').withArgs(6).returns('22223');
+      this.stub(Faker.Number, 'number').withArgs(6).returns(22223);
       expect(Faker.Company.swedishOrganisationNumber()).to.eql('105222230');
     }));
   });

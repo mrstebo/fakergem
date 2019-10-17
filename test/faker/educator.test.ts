@@ -1,6 +1,5 @@
 'use strict';
 import { expect } from 'chai';
-const orList = require('../support/regexp').orList;
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';

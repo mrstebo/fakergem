@@ -17,10 +17,6 @@ describe('Fake', () => {
       expect(Faker.Fake.f('#-##-###-####')).to.eql('5-55-555-5555');
     }));
 
-    it('throws an error if no string specified', () => {
-      expect(() => Faker.Fake.f()).to.throw('A string must be specified');
-    });
-
     it('throws error if module not found', () => {
       expect(() => Faker.Fake.f('{BAD.run}')).to.throw('Invalid module: BAD');
     });

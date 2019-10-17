@@ -8,7 +8,7 @@ const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
 
 chai.use(require('chai-datetime'));
 
-function daysFromNow(n) {
+function daysFromNow(n: number): Date {
   const d = new Date();
   d.setDate(d.getDate() + n);
   d.setHours(0, 0, 0, 0);
@@ -54,7 +54,7 @@ describe('#Date', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 1, 5);
       const except = new Date(2017, 0, 8);
-      [...Array(100).keys()].forEach(() => {
+      Array(100).forEach(() => {
         expect(Faker.Date.betweenExcept(from, to, except)).to.not.eql(except);
       });
     });
