@@ -21,7 +21,7 @@ export class Twitter {
     const userId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const backgroundImageUrl = this.faker.LoremPixel.image('600x400');
-    const profileImageUrl = this.faker.Avatar.image(userId, '48x48');
+    const profileImageUrl = this.faker.Avatar.image(userId.toString(), '48x48');
     const user = {
       id: userId,
       id_str: `${userId}`,
@@ -113,7 +113,7 @@ export class Twitter {
     return this.faker.Internet.userName().substring(0, 20);
   }
 
-  private utcOffset(): string {
+  private utcOffset(): number {
     return this.faker.Number.between(-43200, 50400);
   }
 
@@ -145,7 +145,7 @@ export class Twitter {
       id: mediaId,
       id_str: `${mediaId}`,
       indices: [103, 126],
-      media_url: mediaUrl.sub('https://', 'http://'),
+      media_url: mediaUrl.replace('https://', 'http://'),
       media_url_https: mediaUrl,
       url: this.faker.Internet.url('example.com'),
       display_url: 'example.com',

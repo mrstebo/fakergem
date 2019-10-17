@@ -10,12 +10,12 @@ export class PhoneNumber {
 
   phoneNumber(): string {
     const format = this.faker.Random.element(data.phoneNumber.formats);
-    return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
+    return format.replace(/#/g, () => this.faker.Number.between(0, 9));
   }
 
   cellPhone(): string {
     const format = this.faker.Random.element(data.cellPhone.formats);
-    return format.replace(/#/g, _ => this.faker.Number.between(0, 9));
+    return format.replace(/#/g, () => this.faker.Number.between(0, 9));
   }
 
   areaCode(): string {

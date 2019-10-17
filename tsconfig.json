@@ -6,7 +6,10 @@
     "outDir": "./lib",
     "strict": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": [
+      "es6"
+    ]
   },
   "include": ["src"],
   "exclude": ["node_modules", "test"]

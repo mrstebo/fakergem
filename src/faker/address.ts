@@ -90,7 +90,9 @@ export class Address {
   }
 
   private parse(faker: Faker, format: string): string {
-    const text = format.replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`).replace(/#/, faker.Number.between(1, 9));
+    const text = format
+      .replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`)
+      .replace(/#/, faker.Number.between(1, 9).toString());
     return faker.Fake.f(text);
   }
 }

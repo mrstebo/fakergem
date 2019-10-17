@@ -1,24 +1,6 @@
 import { Faker } from '../faker';
 import data from '../../data/commerce.json';
 
-function buildCategories(faker, num) {
-  const categories = [];
-  while (categories.length < num) {
-    const category = faker.Random.element(data.departments);
-    if (categories.indexOf(category) < 0) {
-      categories.push(category);
-    }
-  }
-  return categories;
-}
-
-function mergeCategories(categories) {
-  const separator = ' & ';
-  const commaSeparated = categories.slice(0, -1).join(', ');
-  const lastCategory = categories.slice(-1);
-  return [commaSeparated, lastCategory].join(separator);
-}
-
 export class Commerce {
   private faker: Faker;
 
@@ -32,8 +14,8 @@ export class Commerce {
 
   department(max: number = 3, fixedAmount: boolean = false): string {
     const num = fixedAmount ? max : this.faker.Number.between(1, max);
-    const categories = buildCategories(this.faker, num);
-    return num > 1 ? mergeCategories(categories) : categories[0];
+    const categories = this.buildCategories(num);
+    return num > 1 ? this.mergeCategories(categories) : categories[0];
   }
 
   productName(): string {
@@ -55,5 +37,23 @@ export class Commerce {
       this.faker.Random.element(data.promotionCodes.noun),
       this.faker.Number.number(digits),
     ].join('');
+  }
+
+  private buildCategories(num: number): Array<string> {
+    const categories = [];
+    while (categories.length < num) {
+      const category = this.faker.Random.element(data.departments);
+      if (categories.indexOf(category) < 0) {
+        categories.push(category);
+      }
+    }
+    return categories;
+  }
+
+  private mergeCategories(categories: Array<string>): string {
+    const separator = ' & ';
+    const commaSeparated = categories.slice(0, -1).join(', ');
+    const lastCategory = categories.slice(-1);
+    return [commaSeparated, lastCategory].join(separator);
   }
 }

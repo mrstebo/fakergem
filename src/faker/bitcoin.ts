@@ -1,29 +1,13 @@
 import { Faker } from '../faker';
-import crypto from 'crypto';
+import crypto, { HexBase64Latin1Encoding } from 'crypto';
 import bs58 from 'bs58';
 
-const PROTOCOL_VERSION = {
-  main: 0,
-  testnet: 111,
-};
-
-function addressFor(network) {
-  const version = PROTOCOL_VERSION[network];
-  const packed = String.fromCharCode(version) + crypto.randomBytes(20);
-  const checksum = digest(digest(packed)).slice(0, 3);
-  return base58(`${packed}${checksum}`);
-}
-
-function digest(text) {
-  const hash = crypto.createHash('sha256');
-  return hash.digest(text);
-}
-
-function base58(text) {
-  return bs58.encode(new Buffer(text, 'ascii'));
-}
-
 export class Bitcoin {
+  private PROTOCOL_VERSION: { [key: string]: number } = {
+    main: 0,
+    testnet: 111,
+  };
+
   private faker: Faker;
 
   constructor(faker: Faker) {
@@ -31,10 +15,26 @@ export class Bitcoin {
   }
 
   address(): string {
-    return addressFor('main');
+    return this.addressFor(this.PROTOCOL_VERSION['main']);
   }
 
   testnetAddress(): string {
-    return addressFor('testnet');
+    return this.addressFor(this.PROTOCOL_VERSION['testnet']);
+  }
+
+  private addressFor(version: number): string {
+    const packed = (String.fromCharCode(version) + crypto.randomBytes(20)) as HexBase64Latin1Encoding;
+    const packedDigest = this.digest(packed) as HexBase64Latin1Encoding;
+    const checksum = this.digest(packedDigest).slice(0, 3);
+    return this.base58(`${packed}${checksum}`);
+  }
+
+  private digest(text: HexBase64Latin1Encoding): string {
+    const hash = crypto.createHash('sha256');
+    return hash.digest(text);
+  }
+
+  private base58(text: string): string {
+    return bs58.encode(new Buffer(text, 'ascii'));
   }
 }

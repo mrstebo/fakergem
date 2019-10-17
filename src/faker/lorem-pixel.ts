@@ -1,49 +1,44 @@
 import { Faker } from '../faker';
-const SUPPORTED_CATEGORIES = [
-  'abstract',
-  'animals',
-  'business',
-  'cats',
-  'city',
-  'food',
-  'nightlife',
-  'fashion',
-  'people',
-  'nature',
-  'sports',
-  'technics',
-  'transport',
-];
-
-function isValidSize(size) {
-  return /^\d+x\d+$/.test(size);
-}
-
-function isCategorySupported(category) {
-  return !category || SUPPORTED_CATEGORIES.indexOf(category) >= 0;
-}
-
-function isNumberValid(number) {
-  return number === null || Array(10).map(i => i + 1).indexOf(parseInt(number)) >= 0;
-}
 
 export class LoremPixel {
+  private SUPPORTED_CATEGORIES: Array<string> = [
+    'abstract',
+    'animals',
+    'business',
+    'cats',
+    'city',
+    'food',
+    'nightlife',
+    'fashion',
+    'people',
+    'nature',
+    'sports',
+    'technics',
+    'transport',
+  ];
+
   private faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;
   }
 
-  image(size = '300x300', isGray = false, category = null, number = null, text = null) {
-    if (!isValidSize(size)) {
+  image(
+    size: string = '300x300',
+    isGray: boolean = false,
+    category: string | null = null,
+    number: number | null = null,
+    text: string | null = null
+  ): string {
+    if (!this.isValidSize(size)) {
       throw new Error('Size should be specified in format 300x300');
     }
 
-    if (!isCategorySupported(category)) {
-      throw new Error(`Supported categories are ${SUPPORTED_CATEGORIES.join(', ')}`);
+    if (!this.isCategorySupported(category)) {
+      throw new Error(`Supported categories are ${this.SUPPORTED_CATEGORIES.join(', ')}`);
     }
 
-    if (!isNumberValid(number)) {
+    if (!this.isNumberValid(number)) {
       throw new Error('Number must be between 1 and 10');
     }
 
@@ -63,5 +58,17 @@ export class LoremPixel {
     ]
       .filter(x => x)
       .join('/');
+  }
+
+  private isValidSize(size: string): boolean {
+    return /^\d+x\d+$/.test(size);
+  }
+
+  private isCategorySupported(category: string | null): boolean {
+    return !category || this.SUPPORTED_CATEGORIES.indexOf(category) >= 0;
+  }
+
+  private isNumberValid(number: number | null): boolean {
+    return number === null || Array(10).map(i => i + 1).indexOf(number) >= 0;
   }
 }

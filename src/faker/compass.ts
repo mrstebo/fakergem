@@ -1,11 +1,6 @@
 import { Faker } from '../faker';
 import data from '../../data/compass.json';
 
-function parse(faker, format) {
-  const text = format.replace(/\{(\w+)\}/g, m => `{Compass.${m.substring(1)}`);
-  return faker.Fake.f(text);
-}
-
 export class Compass {
   private faker: Faker;
 
@@ -14,7 +9,7 @@ export class Compass {
   }
 
   direction(): string {
-    return parse(this.faker, this.faker.Random.element(data.directions));
+    return this.parse(this.faker.Random.element(data.directions));
   }
 
   cardinal(): string {
@@ -34,7 +29,7 @@ export class Compass {
   }
 
   abbreviation(): string {
-    return parse(this.faker, this.faker.Random.element(data.abbreviations));
+    return this.parse(this.faker.Random.element(data.abbreviations));
   }
 
   cardinalAbbreviation(): string {
@@ -54,7 +49,7 @@ export class Compass {
   }
 
   azimuth(): string {
-    return parse(this.faker, this.faker.Random.element(data.azimuths));
+    return this.parse(this.faker.Random.element(data.azimuths));
   }
 
   cardinalAzimuth(): string {
@@ -71,5 +66,10 @@ export class Compass {
 
   quarterWindAzimuth(): string {
     return this.faker.Random.element(data.quarterWinds.azimuth);
+  }
+
+  private parse(format: string): string {
+    const text = format.replace(/\{(\w+)\}/g, m => `{Compass.${m.substring(1)}`);
+    return this.faker.Fake.f(text);
   }
 }

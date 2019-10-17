@@ -11,7 +11,7 @@ export class Random {
   assortment(array: Array<any>, n: number): Array<any> {
     const count = Math.max(0, n);
     const repeatCount = count / array.length || 1;
-    const repeated = Array.apply(null, { length: repeatCount * array.length }).map((e, i) => array[i % array.length]);
+    const repeated = Array(repeatCount * array.length).map((e, i) => array[i % array.length]);
     return shuffle(repeated).slice(0, count);
   }
 

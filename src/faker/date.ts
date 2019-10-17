@@ -1,26 +1,5 @@
 import { Faker } from '../faker';
 
-function getDateObject(date) {
-  if (typeof date == 'string') {
-    return new Date(Date.parse(date));
-  }
-  date.setHours(0, 0, 0, 0);
-  return date;
-}
-
-function datesAreEqual(date1, date2) {
-  return (
-    date1.getYear() === date2.getYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate()
-  );
-}
-
-function daysFromNow(n) {
-  const d = new Date();
-  d.setDate(d.getDate() + n);
-  d.setHours(0, 0, 0, 0);
-  return d;
-}
-
 export class DateFaker {
   private faker: Faker;
 
@@ -28,49 +7,72 @@ export class DateFaker {
     this.faker = faker;
   }
 
-  between(from, to) {
-    from = getDateObject(from);
-    to = getDateObject(to);
+  between(from: Date | string, to: Date | string): Date {
+    from = this.getDateObject(from);
+    to = this.getDateObject(to);
 
-    const fromMilli = Date.parse(from);
-    const toMilli = Date.parse(to);
-    const offset = this.faker.Number.between(0, toMilli - fromMilli);
-    const date = new Date(fromMilli + offset);
-    return getDateObject(date);
+    const fromMilliseconds = from.getTime();
+    const toMilliseconds = to.getTime();
+    const offset = this.faker.Number.between(0, toMilliseconds - fromMilliseconds);
+    const date = new Date(fromMilliseconds + offset);
+    return this.getDateObject(date);
   }
 
-  betweenExcept(from, to, except) {
-    from = getDateObject(from);
-    to = getDateObject(to);
-    except = getDateObject(except);
+  betweenExcept(from: Date | string, to: Date | string, except: Date | string): Date {
+    from = this.getDateObject(from);
+    to = this.getDateObject(to);
+    except = this.getDateObject(except);
 
     let date = this.between(from, to);
-    while (datesAreEqual(date, except)) {
+    while (this.datesAreEqual(date, except)) {
       date = this.between(from, to);
     }
-    return getDateObject(date);
+    return this.getDateObject(date);
   }
 
-  forward(days = 365) {
-    const from = daysFromNow(1);
-    const to = daysFromNow(days);
+  forward(days: number = 365): Date {
+    const from = this.daysFromNow(1);
+    const to = this.daysFromNow(days);
     const date = this.between(from, to);
-    return getDateObject(date);
+    return this.getDateObject(date);
   }
 
-  backward(days = 365) {
-    const from = daysFromNow(-days);
-    const to = daysFromNow(-1);
+  backward(days: number = 365): Date {
+    const from = this.daysFromNow(-days);
+    const to = this.daysFromNow(-1);
     const date = this.between(from, to);
-    return getDateObject(date);
+    return this.getDateObject(date);
   }
 
-  birthday(minAge = 18, maxAge = 65) {
+  birthday(minAge: number = 18, maxAge: number = 65): Date {
     const from = new Date();
     from.setFullYear(from.getFullYear() - maxAge);
     const to = new Date();
     to.setFullYear(to.getFullYear() - minAge);
     const date = this.between(from, to);
-    return getDateObject(date);
+    return this.getDateObject(date);
+  }
+
+  private getDateObject(date: Date | string): Date {
+    if (typeof date == 'string') {
+      return new Date(Date.parse(date));
+    }
+    date.setHours(0, 0, 0, 0);
+    return date;
+  }
+
+  private datesAreEqual(date1: Date, date2: Date): boolean {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
+  }
+
+  private daysFromNow(n: number): Date {
+    const d = new Date();
+    d.setDate(d.getDate() + n);
+    d.setHours(0, 0, 0, 0);
+    return d;
   }
 }

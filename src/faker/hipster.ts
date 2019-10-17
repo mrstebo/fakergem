@@ -1,5 +1,6 @@
 import { Faker } from '../faker';
 import data from '../../data/hipster.json';
+import loremData from '../../data/lorem.json';
 import { capitalize } from '../utils/text-helpers';
 import { resolveNumber } from '../utils/number-helpers';
 
@@ -20,7 +21,7 @@ export class Hipster {
     supplemental: boolean = false,
     spacesAllowed: boolean = false
   ): Array<string> {
-    const wordList = supplemental ? [...data.words, loremdata.words] : data.words;
+    const wordList = supplemental ? [...data.words, loremData.words] : data.words;
     const words = this.faker.Random.assortment(wordList, resolveNumber(num));
     return spacesAllowed ? words : words.map(x => (`${x}`.match(/\s/) ? this.word() : x));
   }

@@ -49,28 +49,31 @@ export class Company {
   }
 
   swedishOrganisationNumber(): string {
-    const base = [
+    const base = parseInt([
       this.faker.Number.between(1, 9),
       this.faker.Number.between(0, 9),
       this.faker.Number.between(2, 9),
       this.faker.Number.number(6),
-    ].join('');
+    ].join(''));
     return `${base}${this.luhnAlgorithm(base)}`;
   }
 
   norwegianOrganisationNumber(): string {
     let mod11Check = null;
-    let base = '';
+    let base = 0;
     while (mod11Check == null) {
-      base = [this.faker.Random.element([8, 9]), leftPad(this.faker.Number.between(0, 10000000), 7, '0')].join('');
+      base = parseInt([
+        this.faker.Random.element([8, 9]),
+        leftPad(this.faker.Number.between(0, 10000000).toString(), 7, '0')
+      ].join(''));
       mod11Check = this.mod11(base);
     }
     return `${base}${mod11Check}`;
   }
 
   australianBusinessNumber(): string {
-    const base = leftPad(this.faker.Number.between(0, 1000000000), 9, '0');
-    const abn = `00${base}`;
+    const base = leftPad(this.faker.Number.between(0, 1000000000).toString(), 9, '0');
+    const abn = `00${base}`.split('').map(parseInt);
     return `${99 - (this.abnChecksum(abn) % 89)}${base}`;
   }
 

@@ -1,8 +1,8 @@
 export interface TwitterUser {
-  id: string;
+  id: number;
   id_str: string;
   contributors_enabled: boolean;
-  created_at: string;
+  created_at: Date;
   default_profile_image: boolean;
   default_profile: boolean;
   description: string;
@@ -39,7 +39,7 @@ export interface TwitterUser {
   statuses_count: number;
   time_zone: string;
   url: string;
-  utc_offset: string;
+  utc_offset: number;
   verified: boolean;
 }
 
@@ -57,7 +57,7 @@ export interface TwitterStatus {
   id_str: string;
   contributors: null;
   coordinates: null;
-  created_at: string;
+  created_at: Date;
   entities: TwitterStatusEntities;
   favourite_count: number;
   favourited: boolean;

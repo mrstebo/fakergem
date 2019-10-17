@@ -1,40 +1,31 @@
 import { Faker } from '../faker';
 
-const SUPPORTED_FORMATS = ['png', 'jpg', 'gif', 'jpeg'];
-
-function isValidSize(size) {
-  return /^\d+x\d+$/.test(size);
-}
-
-function isSupportedFormat(format) {
-  return SUPPORTED_FORMATS.indexOf(format) >= 0;
-}
-
-function isValidColorValue(color) {
-  if (color) {
-    return new RegExp(/(?:^[0-9a-f]{3}$)|(?:^[0-9a-f]{6}$)/.source, 'i').test(color);
-  }
-  return true;
-}
-
 export class Placeholdit {
+  private SUPPORTED_FORMATS: Array<string> = ['png', 'jpg', 'gif', 'jpeg'];
+
   private faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;
   }
 
-  image(size = '300x300', format = 'png', backgroundColor = null, textColor = null, text = null) {
-    if (!isValidSize(size)) {
+  image(
+    size: string = '300x300',
+    format: string = 'png',
+    backgroundColor: string | null = null,
+    textColor: string | null = null,
+    text: string | null = null
+  ): string {
+    if (!this.isValidSize(size)) {
       throw new Error('Size should be specified in format 300x300');
     }
-    if (!isSupportedFormat(format)) {
-      throw new Error(`Supported formats are ${SUPPORTED_FORMATS.join(', ')}`);
+    if (!this.isSupportedFormat(format)) {
+      throw new Error(`Supported formats are ${this.SUPPORTED_FORMATS.join(', ')}`);
     }
-    if (!isValidColorValue(backgroundColor)) {
+    if (!this.isValidColorValue(backgroundColor)) {
       throw new Error("backgroundColor must be a hex value without '#'");
     }
-    if (!isValidColorValue(textColor)) {
+    if (!this.isValidColorValue(textColor)) {
       throw new Error("textColor must be a hex value without '#'");
     }
 
@@ -49,5 +40,20 @@ export class Placeholdit {
       url += `?text=${text}`;
     }
     return url;
+  }
+
+  private isValidSize(size: string): boolean {
+    return /^\d+x\d+$/.test(size);
+  }
+
+  private isSupportedFormat(format: string): boolean {
+    return this.SUPPORTED_FORMATS.indexOf(format) >= 0;
+  }
+
+  private isValidColorValue(color: string | null): boolean {
+    if (color) {
+      return new RegExp(/(?:^[0-9a-f]{3}$)|(?:^[0-9a-f]{6}$)/.source, 'i').test(color);
+    }
+    return true;
   }
 }

@@ -1,22 +1,5 @@
 import { Faker } from '../faker';
-import { randomNumber, randomFloat } from '../utils/random';
-
-function nonZeroDigit() {
-  return randomNumber(1, 9);
-}
-
-function decimalPart(digits) {
-  let num = '';
-  if (digits > 1) {
-    num = `${nonZeroDigit()}`;
-    digits -= 1;
-  }
-  return leadingZeroNumber(digits) + num;
-}
-
-function leadingZeroNumber(digits) {
-  return Array(digits).map(_ => randomNumber(0, 9)).join('');
-}
+import { between, betweenFloat } from '../utils/number-helpers';
 
 export class Number {
   private faker: Faker;
@@ -25,53 +8,88 @@ export class Number {
     this.faker = faker;
   }
 
-  number(digits = 10) {
+  number(digits: number = 10): string {
     let num = '';
     if (digits > 1) {
-      num = `${nonZeroDigit()}`;
+      num = `${this.nonZeroDigit()}`;
       digits -= 1;
     }
-    return num + leadingZeroNumber(digits);
+    return num + this.leadingZeroNumber(digits);
   }
 
-  decimal(leftDigits = 5, rightDigits = 2) {
-    return `${this.number(leftDigits)}.${decimalPart(rightDigits)}`;
+  decimal(
+    leftDigits: number = 5,
+    rightDigits: number = 2
+  ): string {
+    return `${this.number(leftDigits)}.${this.decimalPart(rightDigits)}`;
   }
 
-  normal(mean = 1, standardDeviation = 1) {
+  normal(
+    mean: number = 1,
+    standardDeviation: number = 1
+  ): number {
     let theta = 2 * Math.PI * Math.random();
     let rho = Math.sqrt(-2 * Math.log(1 - Math.random()));
     let scale = standardDeviation * rho;
     return mean + scale * Math.cos(theta);
   }
 
-  hexadecimal(digits = 6) {
-    return Array(digits).map(_ => randomNumber(0, 15).toString(16)).join('');
+  hexadecimal(digits: number = 6): string {
+    return Array(digits).map(_ => between(0, 15).toString(16)).join('');
   }
 
-  between(from = 1, to = 5000) {
+  between(
+    from: number = 1,
+    to: number = 5000
+  ): number {
     let min = Math.min(from, to);
     let max = Math.max(from, to);
-    return randomNumber(min, max);
+    return between(min, max);
   }
 
-  betweenF(from = 1.0, to = 5000.0) {
+  betweenF(
+    from: number = 1.0,
+    to: number = 5000.0
+  ): number {
     let min = Math.min(from, to);
     let max = Math.max(from, to);
-    return randomFloat(min, max);
+    return betweenFloat(min, max);
   }
 
-  positive(from = 1.0, to = 5000.0) {
+  positive(
+    from: number = 1.0,
+    to: number = 5000.0
+  ): number {
     let value = this.between(from, to);
     return value < 0 ? (value *= -1) : value;
   }
 
-  negative(from = -1.0, to = -5000.0) {
+  negative(
+    from: number = -1.0,
+    to: number = -5000.0
+  ): number {
     let value = this.between(from, to);
     return value < 0 ? value : (value *= -1);
   }
 
-  digit() {
-    return randomNumber(0, 9);
+  digit(): number {
+    return between(0, 9);
+  }
+
+  private nonZeroDigit(): number {
+    return between(1, 9);
+  }
+
+  private decimalPart(digits: number): string {
+    let num = '';
+    if (digits > 1) {
+      num = `${this.nonZeroDigit()}`;
+      digits -= 1;
+    }
+    return this.leadingZeroNumber(digits) + num;
+  }
+
+  private leadingZeroNumber(digits: number): string {
+    return Array(digits).map(_ => between(0, 9)).join('');
   }
 }

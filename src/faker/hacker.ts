@@ -1,11 +1,6 @@
 import { Faker } from '../faker';
 import data from '../../data/hacker.json';
 
-function parse(faker, format) {
-  const text = format.replace(/\{(\w+)\}/g, m => `{Hacker.${m.substring(1)}`);
-  return faker.Fake.f(text).replace(/^(\w)/, m => m[0].toUpperCase());
-}
-
 export class Hacker {
   private faker: Faker;
 
@@ -14,7 +9,7 @@ export class Hacker {
   }
 
   saySomethingSmart(): string {
-    return parse(this.faker, this.faker.Random.element(data.phrases));
+    return this.parse(this.faker.Random.element(data.phrases));
   }
 
   abbreviation(): string {
@@ -35,5 +30,10 @@ export class Hacker {
 
   ingverb(): string {
     return this.faker.Random.element(data.ingverbs);
+  }
+
+  private parse(format: string): string {
+    const text = format.replace(/\{(\w+)\}/g, m => `{Hacker.${m.substring(1)}`);
+    return this.faker.Fake.f(text).replace(/^(\w)/, m => m[0].toUpperCase());
   }
 }

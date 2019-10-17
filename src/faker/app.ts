@@ -13,9 +13,9 @@ export class App {
   }
 
   version(): string {
-    return this.faker.Random.element(data.versions)
+    return (this.faker.Random.element(data.versions) as string)
       .split('.')
-      .map(x => x.replace(/#/g, () => this.faker.Number.between(0, 9)))
+      .map(x => x.replace(/#/g, () => this.faker.Number.between(0, 9).toString()))
       .join('.');
   }
 

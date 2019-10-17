@@ -16,7 +16,8 @@ export class Coffee {
   origin(): string {
     const country = this.faker.Random.element(data.countries);
     const key = country.replace(/\s/, '_').toLowerCase();
-    const region = this.faker.Random.element(data.regions[key]);
+    const regions = data.regions as { [key: string]: any }
+    const region = this.faker.Random.element(regions[key]);
     return `${region}, ${country}`;
   }
 

@@ -18,23 +18,23 @@ export class Color {
     return this.faker.Random.element(data.colorNames);
   }
 
-  rgbColor() : Array<string> {
+  rgbColor() : Array<number> {
     return Array(3).map(_ => this.faker.Number.between(0, 255));
   }
 
-  hslColor(): Array<string> {
+  hslColor(): Array<number> {
     return [
       this.faker.Number.between(0, 360),
-      Math.round(this.faker.Number.betweenF(0.0, 1.0), 2),
-      Math.round(this.faker.Number.betweenF(0.0, 1.0), 2),
+      Math.round(this.faker.Number.betweenF(0.0, 1.0)),
+      Math.round(this.faker.Number.betweenF(0.0, 1.0)),
     ];
   }
 
-  hslaColor(): Array<string> {
+  hslaColor(): Array<number> {
     return [
       this.faker.Number.between(0, 360),
-      Math.round(this.faker.Number.betweenF(0.0, 1.0), 2),
-      Math.round(this.faker.Number.betweenF(0.0, 1.0), 2),
+      Math.round(this.faker.Number.betweenF(0.0, 1.0)),
+      Math.round(this.faker.Number.betweenF(0.0, 1.0)),
       this.faker.Number.betweenF(0.0, 1.0),
     ];
   }
