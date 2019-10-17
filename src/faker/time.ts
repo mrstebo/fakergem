@@ -1,28 +1,15 @@
 import { Faker } from '../faker';
 import { NumberRange } from '../types/NumberRange';
-import { format as formatDate } from '../utils/date-helpers';
 
-const ALL = 'ALL';
-const DAY = 'DAY';
-const NIGHT = 'NIGHT';
-const MORNING = 'MORNING';
-const AFTERNOON = 'AFTERNOON';
-const EVENING = 'EVENING';
-const MIDNIGHT = 'MIDNIGHT';
-const BETWEEN = 'BETWEEN';
-
-/**
- * @type { [key: string]: NumberRange }
- */
-const TIME_RANGES = {
-  [ALL]: { start: 0, end: 23 },
-  [DAY]: { start: 9, end: 17 },
-  [NIGHT]: { start: 18, end: 23 },
-  [MORNING]: { start: 6, end: 11 },
-  [AFTERNOON]: { start: 12, end: 17 },
-  [EVENING]: { start: 17, end: 21 },
-  [MIDNIGHT]: { start: 0, end: 4 },
-};
+export class TimeRange {
+  public static All: NumberRange = { start: 0, end: 23 };
+  public static Day: NumberRange = { start: 9, end: 17 };
+  public static Night: NumberRange = { start: 18, end: 23 };
+  public static Morning: NumberRange = { start: 6, end: 11 };
+  public static Afternoon: NumberRange = { start: 12, end: 17 };
+  public static Evening: NumberRange = { start: 17, end: 21 };
+  public static Midnight: NumberRange = { start: 0, end: 4 };
+}
 
 export class Time {
   private faker: Faker;
@@ -32,39 +19,38 @@ export class Time {
   }
 
   get ALL() {
-    return ALL;
+    return 'ALL';
   }
   get DAY() {
-    return DAY;
+    return 'DAY';
   }
   get NIGHT() {
-    return NIGHT;
+    return 'NIGHT';
   }
   get MORNING() {
-    return MORNING;
+    return 'MORNING';
   }
   get AFTERNOON() {
-    return AFTERNOON;
+    return 'AFTERNOON';
   }
   get EVENING() {
-    return EVENING;
+    return 'EVENING';
   }
   get MIDNIGHT() {
-    return MIDNIGHT;
+    return 'MIDNIGHT';
   }
   get BETWEEN() {
-    return BETWEEN;
+    return 'BETWEEN';
   }
 
   between(
     from: Date,
     to: Date,
-    period: string = ALL,
-    format: string | null = null
-  ): string {
+    period: string = this.ALL
+  ): Date  {
     const date = this.faker.Date.between(from, to);
     const time =
-      period === BETWEEN
+      period === this.BETWEEN
         ? date
         : new Date(
             date.getFullYear(),
@@ -74,14 +60,14 @@ export class Time {
             this.faker.Number.between(0, 59),
             this.faker.Number.between(0, 59),
           );
-    return this.timeWithFormat(time, format);
+
+    return time;
   }
 
   forward(
     days: number = 365,
-    period: string = ALL,
-    format: string | null = null
-  ): string {
+    period: string = this.ALL
+  ): Date  {
     const from = this.daysFromNow(1);
     const to = this.daysFromNow(days);
     const date = this.faker.Date.between(from, to);
@@ -94,14 +80,14 @@ export class Time {
       this.faker.Number.between(0, 59),
       this.faker.Number.between(0, 59),
     );
-    return this.timeWithFormat(time, format);
+
+    return time;
   }
 
   backward(
     days: number = 365,
-    period: string = ALL,
-    format: string | null = null
-  ): string {
+    period: string = this.ALL
+  ): Date {
     const from = this.daysFromNow(-days);
     const to = this.daysFromNow(-1);
     const date = this.faker.Date.between(from, to);
@@ -114,40 +100,36 @@ export class Time {
       this.faker.Number.between(0, 59),
       this.faker.Number.between(0, 59),
     );
-    return this.timeWithFormat(time, format);
+
+    return time;
   }
 
   private rangeFor(period: string): NumberRange {
     switch (period) {
-      case ALL:
-        return TIME_RANGES[ALL];
+      case this.ALL:
+        return TimeRange.All;
 
-      case DAY:
-        return TIME_RANGES[DAY];
+      case this.DAY:
+        return TimeRange.Day;
 
-      case NIGHT:
-        return TIME_RANGES[NIGHT];
+      case this.NIGHT:
+        return TimeRange.Night;
 
-      case MORNING:
-        return TIME_RANGES[MORNING];
+      case this.MORNING:
+        return TimeRange.Morning;
 
-      case AFTERNOON:
-        return TIME_RANGES[AFTERNOON];
+      case this.AFTERNOON:
+        return TimeRange.Afternoon;
 
-      case EVENING:
-        return TIME_RANGES[EVENING];
+      case this.EVENING:
+        return TimeRange.Evening;
 
-      case MIDNIGHT:
-        return TIME_RANGES[MIDNIGHT];
+      case this.MIDNIGHT:
+        return TimeRange.Midnight;
 
       default:
           throw new Error(`invalid period: ${period}`);
     }
-  }
-
-  private timeWithFormat(time: Date, format: string | null): string {
-    if (!format) return time.toString();
-    return formatDate(time, format);
   }
 
   private daysFromNow(n: number): Date {
