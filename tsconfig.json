@@ -1,14 +1,19 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
+    "rootDir": "./src",
     "outDir": "./lib",
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": [
       "es6"
+    ],
+    "types": [
+      "node"
     ]
   },
   "include": [
