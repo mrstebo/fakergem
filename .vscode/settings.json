@@ -8,5 +8,18 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "git.ignoreLimitWarning": true,
-  "javascript.implicitProjectConfig.checkJs": true
+  "javascript.implicitProjectConfig.checkJs": true,
+  "cSpell.words": [
+    "Bics",
+    "CIDR",
+    "Matz",
+    "bgset",
+    "colorizations",
+    "demonym",
+    "grayscale",
+    "iban",
+    "pixelated",
+    "testnet",
+    "wookie"
+  ]
 }
