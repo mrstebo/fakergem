@@ -1,4 +1,4 @@
-import data from '../../data/date.json';
+import data from '../data/date.json';
 import { leftPad } from './text-helpers';
 
 export function format(date: Date, format: string): string {

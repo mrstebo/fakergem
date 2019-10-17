@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
-import data from '../../data/game-of-thrones.json';
+import data from '../data/game-of-thrones.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
 
 describe('GameOfThrones', () => {

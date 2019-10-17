@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/company.json';
+import data from '../data/company.json';
 import { leftPad } from '../utils/text-helpers';
 
 export class Company {

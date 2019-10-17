@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/star-wars.json';
+import data from '../data/star-wars.json';
 import { capitalize } from '../utils/text-helpers';
 
 export class StarWars {

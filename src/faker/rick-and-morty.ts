@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/rick-and-morty.json';
+import data from '../data/rick-and-morty.json';
 
 export class RickAndMorty {
   private faker: Faker;

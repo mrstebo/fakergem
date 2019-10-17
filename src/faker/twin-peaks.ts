@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/twin-peaks.json';
+import data from '../data/twin-peaks.json';
 
 export class TwinPeaks {
   private faker: Faker;

@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/ancient.json';
+import data from '../data/ancient.json';
 
 export class Ancient {
   private faker: Faker;

@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/space.json';
+import data from '../data/space.json';
 
 export class Space {
   private faker: Faker;

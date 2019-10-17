@@ -1,6 +1,6 @@
 import { Faker } from '../faker';
 
-import data from '../../data/internet.json';
+import data from '../data/internet.json';
 
 // 0-9, a-z
 const CHARACTERS = Array(10).concat([...Array(26).fill(null).map(i => String.fromCharCode(97 + i))]);

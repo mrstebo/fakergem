@@ -1,7 +1,7 @@
 'use strict';
 import { expect } from 'chai';
 import Faker from '../../src/index';
-import data from '../../data/lorem.json';
+import data from '../data/lorem.json';
 
 describe('Lorem', () => {
   describe('#word', () => {

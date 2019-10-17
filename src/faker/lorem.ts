@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/lorem.json';
+import data from '../data/lorem.json';
 import { capitalize } from '../utils/text-helpers';
 import { resolveNumber } from '../utils/number-helpers';
 

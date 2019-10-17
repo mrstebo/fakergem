@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/color.json';
+import data from '../data/color.json';
 import { leftPad } from '../utils/text-helpers';
 
 export class Color {

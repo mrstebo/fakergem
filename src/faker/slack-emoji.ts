@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/slack-emoji.json';
+import data from '../data/slack-emoji.json';
 
 export class SlackEmoji {
   private faker: Faker;

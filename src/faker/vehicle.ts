@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/vehicle.json';
+import data from '../data/vehicle.json';
 
 export class Vehicle {
   private VIN_CHARS: string = '0123456789.ABCDEFGH..JKLMN.P.R..STUVWXYZ';

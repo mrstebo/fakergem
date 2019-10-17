@@ -1,5 +1,5 @@
 import { Faker } from '../faker';
-import data from '../../data/lord-of-the-rings.json';
+import data from '../data/lord-of-the-rings.json';
 
 export class LordOfTheRings {
   private faker: Faker;
