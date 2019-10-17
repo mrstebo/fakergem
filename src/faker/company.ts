@@ -37,14 +37,16 @@ export class Company {
 
   ein(): string {
     return Array(9)
-      .map(_ => this.faker.Number.between(0, 9))
+      .fill(null)
+      .map(() => this.faker.Number.between(0, 9))
       .join('')
       .replace(/(\d{2})(\d{7})/, '$1-$2');
   }
 
   dunsNumber(): string {
     return Array(9)
-      .map(_ => this.faker.Number.between(0, 9))
+      .fill(null)
+      .map(() => this.faker.Number.between(0, 9))
       .join('')
       .replace(/(\d{2})(\d{3})(\d{4})/, '$1-$2-$3');
   }

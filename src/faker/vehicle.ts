@@ -15,6 +15,7 @@ export class Vehicle {
   vin(): string {
     const details = this.faker.Random.element(data.manufactures.map(x => ({ wmi: x[1], wmiExt: x[2] })));
     const vin = Array(14)
+      .fill(null)
       .map(_ => this.faker.Random.element(this.VIN_CHARS.split('').filter(x => x != '.')))
       .join('');
 

@@ -78,10 +78,12 @@ export class Internet {
     const diffLength = maxLength - minLength;
     const extraCharacters = this.faker.Number.between(0, diffLength);
     const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
-    return Array(minLength + extraCharacters).reduce((result, val, index) => {
-      const c = this.faker.Random.element(chars).toString();
-      return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
-    }, '');
+    return Array(minLength + extraCharacters)
+      .fill(null)
+      .reduce((result, val, index) => {
+        const c = this.faker.Random.element(chars).toString();
+        return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
+      }, '');
   }
 
   domainName(): string {

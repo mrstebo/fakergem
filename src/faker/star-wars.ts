@@ -36,6 +36,7 @@ export class StarWars {
   wookieSentence(): string {
     return capitalize(
       Array(this.faker.Number.between(1, 10))
+        .fill(null)
         .map(_ => this.faker.Random.element(data.wookieWords))
         .join(' ') + this.faker.Random.element(['.', '?', '!']),
     );

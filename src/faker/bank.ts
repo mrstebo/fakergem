@@ -20,6 +20,7 @@ export class Bank {
     const details = data.ibanDetails.filter(x => x.bankCountryCode == bankCountryCode.toUpperCase())[0];
     const bcc = `${details.bankCountryCode}${this.faker.Number.between(10, 99)}`;
     const ilc = Array(details.ibanLetterCode)
+      .fill('0')
       .map(() => String.fromCharCode(65 + this.faker.Number.between(0, 25)))
       .join('');
     const ib = Array(details.ibanDigits)
