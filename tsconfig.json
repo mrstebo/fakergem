@@ -13,7 +13,12 @@
       "es6"
     ],
     "types": [
-      "node"
+      "bs58",
+      "chai",
+      "mocha",
+      "node",
+      "sinon",
+      "sinon-test"
     ]
   },
   "include": [

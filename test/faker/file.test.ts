@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import Faker from '../../src/index';
 import sinon from 'sinon';
 const sinonTest = require('sinon-test')(sinon, {useFakeTimers: false});
-import data from '../data/file.json';
+import data from '../../src/data/file.json';
 
 describe('File', () => {
   describe('#extension', () => {

@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
-import data from '../data/color.json';
+import data from '../../src/data/color.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
 
 describe('Color', () => {

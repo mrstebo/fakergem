@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
-import data from '../data/phone-number.json';
+import data from '../../src/data/phone-number.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
 
 describe('PhoneNumber', () => {

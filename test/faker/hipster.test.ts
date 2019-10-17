@@ -3,8 +3,8 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
-import data from '../data/hipster.json';
-import loremData from '../data/lorem.json';
+import data from '../../src/data/hipster.json';
+import loremData from '../../src/data/lorem.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
 
 describe('Hipster', () => {
