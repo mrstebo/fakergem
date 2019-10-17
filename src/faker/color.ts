@@ -19,7 +19,7 @@ export class Color {
   }
 
   rgbColor() : Array<number> {
-    return Array(3).map(_ => this.faker.Number.between(0, 255));
+    return Array(3).fill(null).map(_ => this.faker.Number.between(0, 255));
   }
 
   hslColor(): Array<number> {

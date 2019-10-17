@@ -44,7 +44,7 @@ export class Hipster {
     sentenceCount: number = 3,
     supplemental: boolean = false
   ): Array<string> {
-    return Array(resolveNumber(sentenceCount)).map(_ => this.sentence(3, supplemental));
+    return Array(resolveNumber(sentenceCount)).fill(null).map(_ => this.sentence(3, supplemental));
   }
 
   paragraph(
@@ -62,6 +62,6 @@ export class Hipster {
     paragraphCount: number = 3,
     supplemental: boolean = false
   ): Array<string> {
-    return Array(resolveNumber(paragraphCount)).map(_ => this.paragraph(3, supplemental));
+    return Array(resolveNumber(paragraphCount)).fill(null).map(_ => this.paragraph(3, supplemental));
   }
 }

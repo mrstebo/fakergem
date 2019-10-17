@@ -3,7 +3,7 @@ import { Faker } from '../faker';
 import data from '../../data/internet.json';
 
 // 0-9, a-z
-const CHARACTERS = Array(10).concat([...Array(26).map(i => String.fromCharCode(97 + i))]);
+const CHARACTERS = Array(10).concat([...Array(26).fill(null).map(i => String.fromCharCode(97 + i))]);
 const SYMBOLS = ['!', '@', '#', '$', '%', '^', '&', '*'];
 const PRIVATE_NET_REGEX = [
   /^10\./, // 10.0.0.0    – 10.255.255.255
@@ -132,7 +132,7 @@ export class Internet {
   }
 
   ipV6Address(): string {
-    return Array(8).map(_ => this.faker.Number.between(4096, 65535).toString(16)).join(':');
+    return Array(8).fill(null).map(_ => this.faker.Number.between(4096, 65535).toString(16)).join(':');
   }
 
   ipV6CIDR(): string {
@@ -144,7 +144,7 @@ export class Internet {
       .split(':')
       .filter(x => x)
       .map(x => parseInt(x, 16));
-    const addressDigits = Array(6 - prefixDigits.length).map(x => this.faker.Number.between(0, 255));
+    const addressDigits = Array(6 - prefixDigits.length).fill(null).map(x => this.faker.Number.between(0, 255));
     return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(':');
   }
 

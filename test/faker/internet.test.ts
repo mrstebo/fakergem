@@ -3,8 +3,8 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
+import data from '../../data/internet.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
-const data = require('../../data/internet.json');
 
 describe('Internet', () => {
   describe('#email', () => {
@@ -55,25 +55,25 @@ describe('Internet', () => {
 
   describe('#password', () => {
     it('should return a password', () => {
-      Array(100).forEach(_ => {
+      Array(100).fill(null).forEach(_ => {
         expect(Faker.Internet.password()).to.match(/^[a-zA-Z0-9]+$/);
       });
     });
 
     it('should return a password between 8 and 16 alphanumeric characters by default', () => {
-      Array(100).forEach(_ => {
+      Array(100).fill(null).forEach(_ => {
         expect(Faker.Internet.password()).to.match(/^[a-zA-Z0-9]{8,16}$/);
       });
     });
 
     it('should return a lowercase password when mixCase is false', () => {
-      Array(100).forEach(_ => {
+      Array(100).fill(null).forEach(_ => {
         expect(Faker.Internet.password(8, 16, false)).to.match(/^[a-z0-9]+$/);
       });
     });
 
     it('should return a password with special characters when specialChars is true', () => {
-      Array(100).forEach(_ => {
+      Array(100).fill(null).forEach(_ => {
         expect(Faker.Internet.password(128, 128, true, true)).to.match(/[\!\@\#\$\%\^\&\*]/);
       });
     });

@@ -3,8 +3,8 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
+import data from '../../data/lord-of-the-rings.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
-const data = require('../../data/lord-of-the-rings.json');
 
 describe('LordOfTheRings', () => {
   describe('#character', () => {

@@ -69,6 +69,6 @@ export class LoremPixel {
   }
 
   private isNumberValid(number: number | null): boolean {
-    return number === null || Array(10).map(i => i + 1).indexOf(number) >= 0;
+    return number === null || Array(10).fill(null).map(i => i + 1).indexOf(number) >= 0;
   }
 }

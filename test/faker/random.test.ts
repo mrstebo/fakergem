@@ -31,7 +31,7 @@ describe('Random', () => {
   describe('#element', () => {
     it('should return an element from an array', () => {
       const array = [1, 2, 3, 4, 5];
-      Array(100).forEach(() => {
+      Array(100).fill(null).forEach(() => {
         expect(Faker.Random.element(array)).to.be.oneOf(array);
       });
     });

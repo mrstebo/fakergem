@@ -4,7 +4,7 @@ import { capitalize } from '../utils/text-helpers';
 import { resolveNumber } from '../utils/number-helpers';
 
 // 0-9, a-z
-const CHARACTERS = Array(10).concat([...Array(26).map(i => String.fromCharCode(97 + i))]);
+const CHARACTERS = Array(10).concat([...Array(26).fill(null).map(i => String.fromCharCode(97 + i))]);
 
 export class Lorem {
   private faker: Faker;
@@ -33,7 +33,7 @@ export class Lorem {
   characters(
     charCount: number = 255
   ): Array<string> {
-    return Array(resolveNumber(charCount)).map(_ => this.character());
+    return Array(resolveNumber(charCount)).fill(null).map(_ => this.character());
   }
 
   sentence(
@@ -51,7 +51,7 @@ export class Lorem {
     sentenceCount: number = 3,
     supplemental: boolean = false
   ): Array<string> {
-    return Array(resolveNumber(sentenceCount)).map(_ => this.sentence(3, supplemental));
+    return Array(resolveNumber(sentenceCount)).fill(null).map(_ => this.sentence(3, supplemental));
   }
 
   paragraph(
@@ -69,6 +69,6 @@ export class Lorem {
     paragraphCount: number = 3,
     supplemental: boolean = false
   ): Array<string> {
-    return Array(resolveNumber(paragraphCount)).map(_ => this.paragraph(3, supplemental));
+    return Array(resolveNumber(paragraphCount)).fill(null).map(_ => this.paragraph(3, supplemental));
   }
 }

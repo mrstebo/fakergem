@@ -3,8 +3,8 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
+import data from '../../data/commerce.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
-const data = require('../../data/commerce.json');
 
 describe('Commerce', () => {
   describe('#color', () => {
@@ -66,7 +66,7 @@ describe('Commerce', () => {
 
     it('should return a price within the specified range', () => {
       const range = {min: 20.0, max: 40.0};
-      Array(100).forEach(_ => {
+      Array(100).fill(null).forEach(_ => {
         const price = parseFloat(Faker.Commerce.price(range));
         expect(price).to.be.within(range.min, range.max);
       });
@@ -83,7 +83,7 @@ describe('Commerce', () => {
     }));
 
     it('should end with number with specified number of digits', () => {
-      Array(100).forEach(_ => {
+      Array(100).fill(null).forEach(_ => {
         expect(Faker.Commerce.promotionCode(24)).to.match(/.*[0-9]{24}$/);
       });
     });

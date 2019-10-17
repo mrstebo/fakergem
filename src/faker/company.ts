@@ -18,7 +18,7 @@ export class Company {
   }
 
   catchPhrase(): string {
-    return Array(3).map(i => this.faker.Random.element(data.buzzwords[i])).join(' ');
+    return Array(3).fill(null).map(i => this.faker.Random.element(data.buzzwords[i])).join(' ');
   }
 
   buzzword(): string {
@@ -26,7 +26,7 @@ export class Company {
   }
 
   bs(): string {
-    return Array(3).map(i => this.faker.Random.element(data.bs[i])).join(' ');
+    return Array(3).fill(null).map(i => this.faker.Random.element(data.bs[i])).join(' ');
   }
 
   ein(): string {

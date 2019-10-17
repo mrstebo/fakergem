@@ -3,9 +3,9 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import SinonTest from 'sinon-test';
 import Faker from '../../src/index';
+import data from '../../data/hipster.json';
+import loremData from '../../data/lorem.json';
 const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
-const data = require('../../data/hipster.json');
-const loremData = require('../../data/lorem.json');
 
 describe('Hipster', () => {
   describe('#word', () => {

@@ -54,7 +54,7 @@ describe('#Date', () => {
       const from = new Date(2017, 0, 1);
       const to = new Date(2017, 1, 5);
       const except = new Date(2017, 0, 8);
-      Array(100).forEach(() => {
+      Array(100).fill(null).forEach(() => {
         expect(Faker.Date.betweenExcept(from, to, except)).to.not.eql(except);
       });
     });

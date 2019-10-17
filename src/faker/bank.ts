@@ -20,9 +20,11 @@ export class Bank {
     const details = data.ibanDetails.filter(x => x.bankCountryCode == bankCountryCode.toUpperCase())[0];
     const bcc = `${details.bankCountryCode}${this.faker.Number.between(10, 99)}`;
     const ilc = Array(details.ibanLetterCode)
-      .map(_ => String.fromCharCode(65 + this.faker.Number.between(0, 25)))
+      .map(() => String.fromCharCode(65 + this.faker.Number.between(0, 25)))
       .join('');
-    const ib = Array(details.ibanDigits).map(_ => this.faker.Number.between(0, 9)).join('');
+    const ib = Array(details.ibanDigits).fill('')
+      .map(() => this.faker.Number.between(0, 9))
+      .join('');
     return `${bcc}${ilc}${ib}`;
   }
 }

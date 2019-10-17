@@ -35,7 +35,7 @@ export class Number {
   }
 
   hexadecimal(digits: number = 6): string {
-    return Array(digits).map(_ => between(0, 15).toString(16)).join('');
+    return Array(digits).fill(null).map(_ => between(0, 15).toString(16)).join('');
   }
 
   between(
@@ -90,6 +90,6 @@ export class Number {
   }
 
   private leadingZeroNumber(digits: number): string {
-    return Array(digits).map(_ => between(0, 9)).join('');
+    return Array(digits).fill(null).map(_ => between(0, 9)).join('');
   }
 }
