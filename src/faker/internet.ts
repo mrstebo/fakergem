@@ -3,14 +3,7 @@ import { Faker } from '../faker';
 import data from '../data/internet.json';
 
 // 0-9, a-z
-const CHARACTERS: Array<string> = Array(10)
-  .fill(null)
-  .map((_, i) => i.toString())
-  .concat([
-  ...Array(26)
-    .fill(null)
-    .map((_, i) => String.fromCharCode(97 + i)),
-]);
+const CHARACTERS: Array<string> = '0123456789abcdefghijklmnopqrstuvwxyz'.split('');
 const SYMBOLS: Array<string> = ['!', '@', '#', '$', '%', '^', '&', '*'];
 const PRIVATE_NET_REGEX: Array<RegExp> = [
   /^10\./, // 10.0.0.0    – 10.255.255.255
