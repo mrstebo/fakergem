@@ -84,7 +84,7 @@ export class Company {
 
   australianBusinessNumber(): string {
     const base = leftPad(this.faker.Number.between(0, 1000000000).toString(), 9, '0');
-    const abn = `00${base}`.split('').map(parseInt);
+    const abn = `00${base}`.split('').map(x => parseInt(x));
     return `${99 - (this.abnChecksum(abn) % 89)}${base}`;
   }
 
@@ -121,9 +121,6 @@ export class Company {
 
   private abnChecksum(abn: Array<number>): number {
     const weights = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
-
-    return weights.reduce((acc, val, index) => {
-      return acc + val * abn[index - 1];
-    });
+    return weights.reduce((acc, val, index) => acc += val * abn[index], 0);
   }
 }

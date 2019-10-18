@@ -112,7 +112,7 @@ describe('Company', () => {
   describe('#australianBusinessNumber', () => {
     it('should return a Australian Business Number', sinonTest(function(this: typeof sinon) {
       this.stub(Faker.Number, 'between').withArgs(0, 1000000000).returns(182);
-      expect(Faker.Company.australianBusinessNumber()).to.eql('98000000182');
+      expect(Faker.Company.australianBusinessNumber()).to.eql('88000000182');
     }));
   });
 
