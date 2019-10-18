@@ -1,9 +1,9 @@
 'use strict';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
+const test = sinonTest(sinon, {useFakeTimers: false});
 
 describe('Twitter', () => {
   describe('#user', () => {
@@ -103,7 +103,7 @@ describe('Twitter', () => {
       expect(status.entities.media).to.have.lengthOf(1);
     });
 
-    it('should have url in text when includePhoto is true', sinonTest(function(this: typeof sinon) {
+    it('should have url in text when includePhoto is true', test(function(this: typeof sinon) {
       this.stub(Faker.Lorem, 'sentence').returns('test');
       this.stub(Faker.Internet, 'url').returns('http://test.com/image.png');
       expect(Faker.Twitter.status(true, true).text).to.equal('test http://test.com/image.png');
@@ -111,12 +111,12 @@ describe('Twitter', () => {
   });
 
   describe('#screenName', () => {
-    it('should contain an internet username', sinonTest(function(this: typeof sinon) {
+    it('should contain an internet username', test(function(this: typeof sinon) {
       this.stub(Faker.Internet, 'userName').returns('test_user');
       expect(Faker.Twitter.screenName()).to.equal('test_user');
     }));
 
-    it('should not be longer than 20 characters', sinonTest(function(this: typeof sinon) {
+    it('should not be longer than 20 characters', test(function(this: typeof sinon) {
       this.stub(Faker.Internet, 'userName').returns('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
       expect(Faker.Twitter.screenName()).to.have.lengthOf(20);
     }));

@@ -1,14 +1,14 @@
 'use strict';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
 import data from '../../src/data/educator.json';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
+const test = sinonTest(sinon, {useFakeTimers: false});
 
 describe('Educator', () => {
   describe('#university', () => {
-    it('should return a university', sinonTest(function(this: typeof sinon) {
+    it('should return a university', test(function(this: typeof sinon) {
       const randomStub = this.stub(Faker.Random, 'element');
       randomStub.withArgs(data['names']).returns('name');
       randomStub.withArgs(data['tertiaries']['types']).returns('tertiary');
@@ -17,7 +17,7 @@ describe('Educator', () => {
   });
 
   describe('#secondarySchool', () => {
-    it('should return a secondary school', sinonTest(function(this: typeof sinon) {
+    it('should return a secondary school', test(function(this: typeof sinon) {
       const randomStub = this.stub(Faker.Random, 'element');
       randomStub.withArgs(data['names']).returns('name');
       randomStub.withArgs(data['secondaries']).returns('secondary');
@@ -26,7 +26,7 @@ describe('Educator', () => {
   });
 
   describe('#course', () => {
-    it('should return a course', sinonTest(function(this: typeof sinon) {
+    it('should return a course', test(function(this: typeof sinon) {
       const randomStub = this.stub(Faker.Random, 'element');
       randomStub.withArgs(data['tertiaries']['course']['types']).returns('course');
       randomStub.withArgs(data['tertiaries']['course']['subjects']).returns('subject');
@@ -35,7 +35,7 @@ describe('Educator', () => {
   });
 
   describe('#campus', () => {
-    it('should return a campus', sinonTest(function(this: typeof sinon) {
+    it('should return a campus', test(function(this: typeof sinon) {
       this.stub(Faker.Random, 'element').withArgs(data['names']).returns('Name');
       expect(Faker.Educator.campus()).to.eql('Name Campus');
     }));

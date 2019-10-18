@@ -1,18 +1,18 @@
 'use strict';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
+const test = sinonTest(sinon, {useFakeTimers: false});
 
 describe('Fake', () => {
   describe('#f', () => {
-    it('returns value for faker method', sinonTest(function(this: typeof sinon) {
+    it('returns value for faker method', test(function(this: typeof sinon) {
       this.stub(Faker.Name, 'firstName').returns('Bob');
       expect(Faker.Fake.f('{Name.firstName}')).to.eql('Bob');
     }));
 
-    it('parses hashes as numbers', sinonTest(function(this: typeof sinon) {
+    it('parses hashes as numbers', test(function(this: typeof sinon) {
       this.stub(Faker.Number, 'between').withArgs(0, 9).returns(5);
       expect(Faker.Fake.f('#-##-###-####')).to.eql('5-55-555-5555');
     }));

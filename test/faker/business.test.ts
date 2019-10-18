@@ -1,21 +1,21 @@
 'use strict';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
 import data from '../../src/data/business.json';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
+const test = sinonTest(sinon, {useFakeTimers: false});
 
 describe('Business', () => {
   describe('#creditCardNumber', () => {
-    it('should return a credit card number', sinonTest(function(this: typeof sinon) {
+    it('should return a credit card number', test(function(this: typeof sinon) {
       this.stub(Faker.Random, 'element').withArgs(data['creditCardNumbers']).returns('123');
       expect(Faker.Business.creditCardNumber()).to.eql('123');
     }));
   });
 
   describe('#creditCardExpiryDate', () => {
-    it('should return a date in the future', sinonTest(function(this: typeof sinon) {
+    it('should return a date in the future', test(function(this: typeof sinon) {
       const expected = new Date();
       expected.setDate(expected.getDate() + (365 * 2));
       expected.setHours(0, 0, 0, 0);
@@ -25,7 +25,7 @@ describe('Business', () => {
   });
 
   describe('#creditCardType', () => {
-    it('should return a credit card type', sinonTest(function(this: typeof sinon) {
+    it('should return a credit card type', test(function(this: typeof sinon) {
       this.stub(Faker.Random, 'element').withArgs(data['creditCardTypes']).returns('Visa');
       expect(Faker.Business.creditCardType()).to.eql('Visa');
     }));

@@ -1,13 +1,13 @@
 'use strict';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
+const test = sinonTest(sinon, {useFakeTimers: false});
 
 describe('Avatar', () => {
   describe('#image', () => {
-    it('should return a url', sinonTest(function(this: typeof sinon) {
+    it('should return a url', test(function(this: typeof sinon) {
       this.stub(Faker.Lorem, 'words').withArgs(3).returns(['this', 'are', 'test']);
       expect(Faker.Avatar.image()).to.eql('https://robohash.org/this-are-test.png?size=300x300&set=set1');
     }));

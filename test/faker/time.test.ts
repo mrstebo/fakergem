@@ -2,7 +2,7 @@
 const chai = require('chai');
 const { expect } = chai;
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
 
 chai.use(require('chai-datetime'));

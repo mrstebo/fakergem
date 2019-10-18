@@ -1,21 +1,21 @@
 'use strict';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
 import data from '../../src/data/commerce.json';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
+const test = sinonTest(sinon, {useFakeTimers: false});
 
 describe('Commerce', () => {
   describe('#color', () => {
-    it('should return a color', sinonTest(function(this: typeof sinon) {
+    it('should return a color', test(function(this: typeof sinon) {
       this.stub(Faker.Color, 'colorName').returns('color');
       expect(Faker.Commerce.color()).to.eql('color');
     }));
   });
 
   describe('#department', () => {
-    it('should return a department', sinonTest(function(this: typeof sinon) {
+    it('should return a department', test(function(this: typeof sinon) {
       this.stub(Faker.Number, 'between').withArgs(1, 3).returns(3);
       this.stub(Faker.Random, 'element').withArgs(data['departments'])
         .onFirstCall().returns('d1')
@@ -24,14 +24,14 @@ describe('Commerce', () => {
       expect(Faker.Commerce.department()).to.eql('d1, d2 & d3');
     }));
 
-    it('should contain no more than the max number of departments if specified', sinonTest(function(this: typeof sinon) {
+    it('should contain no more than the max number of departments if specified', test(function(this: typeof sinon) {
       this.stub(Faker.Number, 'between').withArgs(1, 1).returns(1);
       this.stub(Faker.Random, 'element').withArgs(data['departments'])
         .onFirstCall().returns('d1');
       expect(Faker.Commerce.department(1)).to.eql('d1');
     }));
 
-    it('should return fixed number of departments if specified', sinonTest(function(this: typeof sinon) {
+    it('should return fixed number of departments if specified', test(function(this: typeof sinon) {
       this.stub(Faker.Random, 'element').withArgs(data['departments'])
         .onFirstCall().returns('d1')
         .onSecondCall().returns('d2')
@@ -39,7 +39,7 @@ describe('Commerce', () => {
       expect(Faker.Commerce.department(3, true)).to.eql('d1, d2 & d3');
     }));
 
-    it('should not have duplicate departments', sinonTest(function(this: typeof sinon) {
+    it('should not have duplicate departments', test(function(this: typeof sinon) {
       this.stub(Faker.Random, 'element').withArgs(data['departments'])
       .onFirstCall().returns('d1')
       .onSecondCall().returns('d1')
@@ -49,7 +49,7 @@ describe('Commerce', () => {
   });
 
   describe('#productName', () => {
-    it('should return a product name', sinonTest(function(this: typeof sinon) {
+    it('should return a product name', test(function(this: typeof sinon) {
       const fakerStub = this.stub(Faker.Random, 'element');
       fakerStub.withArgs(data['productNames']['adjective']).returns('adjective');
       fakerStub.withArgs(data['productNames']['material']).returns('material');
@@ -59,7 +59,7 @@ describe('Commerce', () => {
   });
 
   describe('#price', () => {
-    it('should return a price', sinonTest(function(this: typeof sinon) {
+    it('should return a price', test(function(this: typeof sinon) {
       this.stub(Faker.Number, 'between').withArgs(0.00, 100.00).returns(1.99);
       expect(Faker.Commerce.price()).to.eql('1.99');
     }));
@@ -74,7 +74,7 @@ describe('Commerce', () => {
   });
 
   describe('#promotionCode', () => {
-    it('should return a promotion code', sinonTest(function(this: typeof sinon) {
+    it('should return a promotion code', test(function(this: typeof sinon) {
       const fakerStub = this.stub(Faker.Random, 'element');
       fakerStub.withArgs(data['promotionCodes']['adjective']).returns('adjective');
       fakerStub.withArgs(data['promotionCodes']['noun']).returns('noun');

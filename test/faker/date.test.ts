@@ -2,9 +2,9 @@
 const chai = require('chai');
 const { expect } = chai;
 import sinon from 'sinon';
-import SinonTest from 'sinon-test';
+import sinonTest from 'sinon-test';
 import Faker from '../../src/index';
-const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
+const test = sinonTest(sinon, {useFakeTimers: false});
 
 chai.use(require('chai-datetime'));
 
@@ -65,7 +65,7 @@ describe('#Date', () => {
       expect(Faker.Date.forward()).to.be.a('Date');
     });
 
-    it('should return a date in the future', sinonTest(function(this: typeof sinon) {
+    it('should return a date in the future', test(function(this: typeof sinon) {
       const from = daysFromNow(1);
       const to = daysFromNow(365);
       const expected = daysFromNow(123);
@@ -84,7 +84,7 @@ describe('#Date', () => {
       expect(Faker.Date.backward()).to.be.a('Date');
     });
 
-    it('should return a date in the past', sinonTest(function(this: typeof sinon) {
+    it('should return a date in the past', test(function(this: typeof sinon) {
       const from = daysFromNow(-365);
       const to = daysFromNow(-1);
       const expected = daysFromNow(123);
