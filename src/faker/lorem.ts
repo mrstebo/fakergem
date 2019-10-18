@@ -7,7 +7,7 @@ import { resolveNumber } from '../utils/number-helpers';
 const CHARACTERS = Array(10).concat([
   ...Array(26)
     .fill(null)
-    .map(i => String.fromCharCode(97 + i)),
+    .map((_, i) => String.fromCharCode(97 + i)),
 ]);
 
 export class Lorem {

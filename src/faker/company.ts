@@ -20,7 +20,7 @@ export class Company {
   catchPhrase(): string {
     return Array(3)
       .fill(null)
-      .map(i => this.faker.Random.element(data.buzzwords[i]))
+      .map((_, i) => this.faker.Random.element(data.buzzwords[i]))
       .join(' ');
   }
 
@@ -31,7 +31,7 @@ export class Company {
   bs(): string {
     return Array(3)
       .fill(null)
-      .map(i => this.faker.Random.element(data.bs[i]))
+      .map((_, i) => this.faker.Random.element(data.bs[i]))
       .join(' ');
   }
 

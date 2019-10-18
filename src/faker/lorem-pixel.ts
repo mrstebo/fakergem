@@ -73,7 +73,7 @@ export class LoremPixel {
       number === null ||
       Array(10)
         .fill(null)
-        .map(i => i + 1)
+        .map((_, i) => i + 1)
         .indexOf(number) >= 0
     );
   }
