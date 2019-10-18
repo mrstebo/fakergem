@@ -35,7 +35,7 @@ export class Commerce {
     return [
       this.faker.Random.element(data.promotionCodes.adjective),
       this.faker.Random.element(data.promotionCodes.noun),
-      this.faker.Number.number(digits),
+      this.faker.Number.number(digits).toLocaleString('fullwide', { useGrouping: false }),
     ].join('');
   }
 
