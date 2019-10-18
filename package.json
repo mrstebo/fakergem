@@ -8,8 +8,7 @@
     "build": "./node_modules/.bin/tsc",
     "format": "./node_modules/.bin/prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "./node_modules/.bin/tslint -p tsconfig.json",
-    "test": "mocha -r ts-node/register test/**/*.test.ts",
-    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
+    "test": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts",
     "watch": "./node_modules/.bin/gulp watch",
     "prepublish": "npm run build"
   },
