@@ -3,13 +3,16 @@ import { Faker } from '../faker';
 import data from '../data/internet.json';
 
 // 0-9, a-z
-const CHARACTERS = Array(10).concat([
+const CHARACTERS: Array<string> = Array(10)
+  .fill(null)
+  .map((_, i) => i.toString())
+  .concat([
   ...Array(26)
     .fill(null)
-    .map(i => String.fromCharCode(97 + i)),
+    .map((_, i) => String.fromCharCode(97 + i)),
 ]);
-const SYMBOLS = ['!', '@', '#', '$', '%', '^', '&', '*'];
-const PRIVATE_NET_REGEX = [
+const SYMBOLS: Array<string> = ['!', '@', '#', '$', '%', '^', '&', '*'];
+const PRIVATE_NET_REGEX: Array<RegExp> = [
   /^10\./, // 10.0.0.0    – 10.255.255.255
   /^100\.(6[4-9]|[7-9]\d|1[0-1]\d|12[0-7])\./, // 100.64.0.0  – 100.127.255.255
   /^127\./, // 127.0.0.0   – 127.255.255.255
@@ -19,7 +22,7 @@ const PRIVATE_NET_REGEX = [
   /^192\.168\./, // 192.168.0.0 – 192.168.255.255
   /^198\.(1[8-9])\./, // 198.18.0.0  – 198.19.255.255
 ];
-const RESERVED_NETS_REGEX = [
+const RESERVED_NETS_REGEX: Array<RegExp> = [
   /^0\./, // 0.0.0.0      – 0.255.255.255
   /^192\.0\.2\./, // 192.0.2.0    – 192.0.2.255
   /^192\.88\.99\./, // 192.88.99.0  – 192.88.99.255
@@ -80,7 +83,7 @@ export class Internet {
     const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
     return Array(minLength + extraCharacters)
       .fill(null)
-      .reduce((result, val, index) => {
+      .reduce((result, _, index) => {
         const c = this.faker.Random.element(chars).toString();
         return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
       }, '');

@@ -9,7 +9,7 @@ const sinonTest = SinonTest.configureTest(sinon, {useFakeTimers: false});
 describe('Internet', () => {
   describe('#email', () => {
     it('should return an email address', sinonTest(function(this: typeof sinon) {
-      this.stub(Faker.Internet, 'userName').withArgs(undefined).returns('test-user');
+      this.stub(Faker.Internet, 'userName').withArgs(null).returns('test-user');
       this.stub(Faker.Internet, 'domainName').returns('beef.com');
       expect(Faker.Internet.email()).to.eql('test-user@beef.com');
     }));
@@ -17,7 +17,7 @@ describe('Internet', () => {
 
   describe('#freeEmail', () => {
     it('should return a free email address', sinonTest(function(this: typeof sinon) {
-      this.stub(Faker.Internet, 'userName').withArgs(undefined).returns('test-user');
+      this.stub(Faker.Internet, 'userName').withArgs(null).returns('test-user');
       this.stub(Faker.Random, 'element').withArgs(data['freeEmails']).returns('x.z');
       expect(Faker.Internet.freeEmail()).to.eql('test-user@x.z');
     }));
@@ -25,7 +25,7 @@ describe('Internet', () => {
 
   describe('#safeEmail', () => {
     it('should return a safe email address', sinonTest(function(this: typeof sinon) {
-      this.stub(Faker.Internet, 'userName').withArgs(undefined).returns('test-user');
+      this.stub(Faker.Internet, 'userName').withArgs(null).returns('test-user');
       this.stub(Faker.Random, 'element').withArgs(['org', 'com', 'net']).returns('xyz');
       expect(Faker.Internet.safeEmail()).to.eql('test-user@example.xyz');
     }));
