@@ -16,6 +16,7 @@ describe('Twitter', () => {
         'default_profile_image',
         'default_profile',
         'description',
+        'email',
         'entities',
         'favourites_count',
         'follow_request_sent',
