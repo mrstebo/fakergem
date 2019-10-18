@@ -121,6 +121,6 @@ export class Company {
 
   private abnChecksum(abn: Array<number>): number {
     const weights = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
-    return weights.reduce((acc, val, index) => acc += val * abn[index], 0);
+    return weights.reduce((acc, val, index) => (acc += val * abn[index]), 0);
   }
 }

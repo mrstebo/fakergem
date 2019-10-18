@@ -3,7 +3,7 @@ import data from '../data/lorem.json';
 import { capitalize } from '../utils/text-helpers';
 
 // 0-9, a-z
-const CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
+const CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyz';
 
 export class Lorem {
   private faker: Faker;
@@ -35,7 +35,10 @@ export class Lorem {
 
   sentence(wordCount: number = 4, supplemental: boolean = false, randomWordsToAdd: number = 6): string {
     const text = capitalize(
-      this.words(Math.max(0, wordCount) + this.faker.Number.between(0, Math.max(0, randomWordsToAdd)), supplemental).join(' '),
+      this.words(
+        Math.max(0, wordCount) + this.faker.Number.between(0, Math.max(0, randomWordsToAdd)),
+        supplemental,
+      ).join(' '),
     );
     return text.length > 0 ? `${text}.` : text;
   }
@@ -47,10 +50,7 @@ export class Lorem {
   }
 
   paragraph(sentenceCount: number = 3, supplemental: boolean = false, randomSentencesToAdd: number = 3): string {
-    return this.sentences(
-      sentenceCount + this.faker.Number.between(0, randomSentencesToAdd),
-      supplemental,
-    ).join(' ');
+    return this.sentences(sentenceCount + this.faker.Number.between(0, randomSentencesToAdd), supplemental).join(' ');
   }
 
   paragraphs(paragraphCount: number = 3, supplemental: boolean = false): Array<string> {
