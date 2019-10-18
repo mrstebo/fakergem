@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-- 6.3.0
-- '10'
+  - 6.3.0
+  - '10'
+cache: yarn
 after_success:
-- 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
+  - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
 deploy:
   provider: npm
   email: mrstebouk@gmail.com
