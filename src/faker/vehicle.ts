@@ -22,11 +22,9 @@ export class Vehicle {
     let buffer = `${details.wmi}${vin}`.split('');
 
     if (details.wmiExt) {
-      Array(2)
-        .fill(null)
-        .map(i => {
-          buffer[i + 12] = details.wmiExt[i];
-        });
+      for (let i = 0; i < 2; i++) {
+        buffer[i + 12] = details.wmiExt[i];
+      }
     }
 
     buffer[10] = this.faker.Random.element(data.years);
