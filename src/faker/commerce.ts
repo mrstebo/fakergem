@@ -2,7 +2,7 @@ import { Faker } from '../faker';
 import data from '../data/commerce.json';
 
 export class Commerce {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

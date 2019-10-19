@@ -34,7 +34,7 @@ function reservedNetChecker(addr: string): boolean {
 }
 
 export class Internet {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

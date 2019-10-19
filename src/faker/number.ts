@@ -2,7 +2,7 @@ import { Faker } from '../faker';
 import { between, betweenFloat } from '../utils/number-helpers';
 
 export class Number {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

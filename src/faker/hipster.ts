@@ -5,7 +5,7 @@ import { capitalize } from '../utils/text-helpers';
 import { resolveNumber } from '../utils/number-helpers';
 
 export class Hipster {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

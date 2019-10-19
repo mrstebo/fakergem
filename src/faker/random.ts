@@ -2,7 +2,7 @@ import { Faker } from '../faker';
 import { pickOne, shuffle } from '../utils/collection-helpers';
 
 export class Random {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

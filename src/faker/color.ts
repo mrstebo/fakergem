@@ -3,7 +3,7 @@ import data from '../data/color.json';
 import { leftPad } from '../utils/text-helpers';
 
 export class Color {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

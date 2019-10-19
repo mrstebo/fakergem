@@ -1,7 +1,7 @@
 import { Faker } from '../faker';
 
 export class Fake {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

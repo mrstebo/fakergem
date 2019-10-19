@@ -6,7 +6,7 @@ export class Vehicle {
   private VIN_MAP: string = '0123456789X';
   private VIN_WEIGHTS: string = '8765432X098765432';
 
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

@@ -3,7 +3,7 @@ import { Faker } from '../faker';
 export class Avatar {
   private SUPPORTED_FORMATS: Array<string> = ['png', 'jpg', 'bmp'];
 
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

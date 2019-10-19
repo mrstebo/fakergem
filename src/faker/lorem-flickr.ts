@@ -3,7 +3,7 @@ import { Faker } from '../faker';
 export class LoremFlickr {
   private SUPPORTED_COLORIZATIONS: Array<string> = ['red', 'green', 'blue'];
 
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

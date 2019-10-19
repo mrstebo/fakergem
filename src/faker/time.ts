@@ -12,7 +12,7 @@ export class TimeRange {
 }
 
 export class Time {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

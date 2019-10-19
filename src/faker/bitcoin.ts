@@ -8,7 +8,7 @@ export class Bitcoin {
     testnet: 111,
   };
 
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

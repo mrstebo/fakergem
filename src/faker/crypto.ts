@@ -4,7 +4,7 @@ import crypto from 'crypto';
 export class Crypto {
   private CHARACTERS: string = '0123456789abcdefghijklmnopqrstuvwxyz';
 
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

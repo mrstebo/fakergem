@@ -17,7 +17,7 @@ export class LoremPixel {
     'transport',
   ];
 
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

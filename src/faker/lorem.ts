@@ -6,7 +6,7 @@ import { capitalize } from '../utils/text-helpers';
 const CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyz';
 
 export class Lorem {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;

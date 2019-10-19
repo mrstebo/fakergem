@@ -3,7 +3,7 @@ import data from '../data/star-wars.json';
 import { capitalize } from '../utils/text-helpers';
 
 export class StarWars {
-  private faker: Faker;
+  private readonly faker: Faker;
 
   constructor(faker: Faker) {
     this.faker = faker;
