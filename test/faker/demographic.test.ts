@@ -52,5 +52,9 @@ describe('Demographic', () => {
       this.stub(Faker.Number, 'between').withArgs(57, 86).returns(62);
       expect(Faker.Demographic.height('imperial')).to.eql('5 ft, 2 in');
     }));
+
+    it('should return zero if unknown unit', () => {
+      expect(Faker.Demographic.height('unknown')).to.eql('0.00');
+    });
   });
 });
