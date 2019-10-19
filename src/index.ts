@@ -1,3 +1,6 @@
-import { Faker } from './faker';
+import { Faker as FakerClass } from './faker';
 
-export default new Faker();
+const instance = new FakerClass();
+
+export let Faker = instance;
+export default instance;
