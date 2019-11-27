@@ -57,6 +57,66 @@ const University = require("./faker/university");
 const Vehicle = require("./faker/vehicle");
 const Zelda = require("./faker/zelda");
 
+/**
+ * @property {Address} Address
+ * @property {Ancient} Ancient
+ * @property {App} App
+ * @property {Avatar} Avatar
+ * @property {Bank} Bank
+ * @property {Beer} Beer
+ * @property {Bitcoin} Bitcoin
+ * @property {Book} Book
+ * @property {Boolean} Boolean
+ * @property {Business} Business
+ * @property {Cat} Cat
+ * @property {ChuckNorris} ChuckNorris
+ * @property {Coffee} Coffee
+ * @property {Color} Color
+ * @property {Commerce} Commerce
+ * @property {Company} Company
+ * @property {Compass} Compass
+ * @property {Crypto} Crypto
+ * @property {Date} DateFaker
+ * @property {Demographic} Demographic
+ * @property {DragonBall} DragonBall
+ * @property {Educator} Educator
+ * @property {Fake} Fake
+ * @property {File} File
+ * @property {Fillmurray} Fillmurray
+ * @property {Food} Food
+ * @property {Friends} Friends
+ * @property {GameOfThrones} GameOfThrones
+ * @property {Hacker} Hacker
+ * @property {HarryPotter} HarryPotter
+ * @property {Hipster} Hipster
+ * @property {Internet} Internet
+ * @property {LordOfTheRings} LordOfTheRings
+ * @property {LoremFlickr} LoremFlickr
+ * @property {LoremPixel} LoremPixel
+ * @property {Lorem} Lorem
+ * @property {Matz} Matz
+ * @property {Music} Music
+ * @property {Name} Name
+ * @property {Number} Number
+ * @property {PhoneNumber} PhoneNumber
+ * @property {Placeholdit} Placeholdit
+ * @property {Pokemon} Pokemon
+ * @property {Random} Random
+ * @property {RickAndMorty} RickAndMorty
+ * @property {RockBand} RockBand
+ * @property {RuPaul} RuPaul
+ * @property {SlackEmoji} SlackEmoji
+ * @property {Space} Space
+ * @property {StarWars} StarWars
+ * @property {Superhero} Superhero
+ * @property {Team} Team
+ * @property {Time} Time
+ * @property {TwinPeaks} TwinPeaks
+ * @property {Twitter} Twitter
+ * @property {University} University
+ * @property {Vehicle} Vehicle
+ * @property {Zelda} Zelda
+ */
 class Faker {
 
   constructor() {
@@ -121,5 +181,7 @@ class Faker {
   }
 
 }
+
+exports.Faker = Faker;
 
 module.exports = Faker;
