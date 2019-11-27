@@ -12,15 +12,7 @@ function isNumberValid(number) {
   return number === null || [...Array(10).keys()].map(i => i+1).indexOf(parseInt(number)) >= 0;
 }
 
-class LoremPixel {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+function LoremPixel() {
 
   /**
    * @param {string} size
@@ -30,7 +22,7 @@ class LoremPixel {
    * @param {string} text
    * @returns {string}
    */
-  image(size="300x300", isGray=false, category=null, number=null, text=null) {
+  this.image = function(size="300x300", isGray=false, category=null, number=null, text=null) {
     if (!isValidSize(size)) {
       throw new Error("Size should be specified in format 300x300");
     }
@@ -57,7 +49,7 @@ class LoremPixel {
       size.replace(/x/, "/"),
       [category, number, text].filter(x => x).join("/"),
     ].filter(x => x).join("/");
-  }
+  };
 
 }
 

@@ -1,52 +1,48 @@
 const data = require("../../data/superhero.json");
 
-class Superhero {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Superhero(faker) {
 
   /**
    * @returns {string}
    */
-  name() {
-    return this.faker.Random.element(data["names"])
-      .replace("{prefix}", this.faker.Random.element(data["prefixes"]))
-      .replace("{suffix}", this.faker.Random.element(data["suffixes"]))
-      .replace("{descriptor}", this.faker.Random.element(data["descriptors"]));
-  }
+  this.name = function() {
+    return faker.Random.element(data["names"])
+      .replace("{prefix}", faker.Random.element(data["prefixes"]))
+      .replace("{suffix}", faker.Random.element(data["suffixes"]))
+      .replace("{descriptor}", faker.Random.element(data["descriptors"]));
+  };
 
   /**
    * @returns {string}
    */
-  power() {
-    return this.faker.Random.element(data["powers"]);
-  }
+  this.power = function() {
+    return faker.Random.element(data["powers"]);
+  };
 
   /**
    * @returns {string}
    */
-  prefix() {
-    return this.faker.Random.element(data["prefixes"]);
-  }
+  this.prefix = function() {
+    return faker.Random.element(data["prefixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  suffix() {
-    return this.faker.Random.element(data["suffixes"]);
-  }
+  this.suffix = function() {
+    return faker.Random.element(data["suffixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  descriptor() {
-    return this.faker.Random.element(data["descriptors"]);
-  }
+  this.descriptor = function() {
+    return faker.Random.element(data["descriptors"]);
+  };
 
 }
 

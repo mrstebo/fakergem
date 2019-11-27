@@ -1,42 +1,38 @@
 const data = require("../../data/team.json");
 
-class Team {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Team(faker) {
 
   /**
    * @returns {string}
    */
-  creature() {
-    return this.faker.Random.element(data["creatures"]);
-  }
+  this.creature = function() {
+    return faker.Random.element(data["creatures"]);
+  };
 
   /**
    * @returns {string}
    */
-  name() {
-    return this.faker.Random.element(data["names"]);
-  }
+  this.name = function() {
+    return faker.Random.element(data["names"]);
+  };
 
   /**
    * @returns {string}
    */
-  state() {
-    return this.faker.Address.state();
-  }
+  this.state = function() {
+    return faker.Address.state();
+  };
 
   /**
    * @returns {string}
    */
-  sport() {
-    return this.faker.Random.element(data["sports"]);
-  }
+  this.sport = function() {
+    return faker.Random.element(data["sports"]);
+  };
 
 }
 

@@ -1,41 +1,37 @@
 const data = require("../../data/music.json");
 
-class Music {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Music(faker) {
 
   /**
    * @returns {string}
    */
-  key() {
+  this.key = function() {
     return [
-      this.faker.Random.element(data["keys"]),
-      this.faker.Random.element(data["keyVariants"]),
+      faker.Random.element(data["keys"]),
+      faker.Random.element(data["keyVariants"]),
     ].join("");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  chord() {
+  this.chord = function() {
     return [
-      this.faker.Random.element(data["keys"]),
-      this.faker.Random.element(data["chordTypes"]),
+      faker.Random.element(data["keys"]),
+      faker.Random.element(data["chordTypes"]),
     ].join("");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  instrument() {
-    return this.faker.Random.element(data["instruments"]);
-  }
+  this.instrument = function() {
+    return faker.Random.element(data["instruments"]);
+  };
 
 }
 

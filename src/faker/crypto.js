@@ -2,48 +2,44 @@ const crypto = require("crypto");
 
 const CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
 
-class Crypto {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Crypto(faker) {
 
   /**
    * @returns {string}
    */
-  md5() {
+  this.md5 = function() {
     const hash = crypto.createHash("md5");
     const array = CHARACTERS.split("");
-    const characters = this.faker.Random.assortment(array, 255).join("");
+    const characters = faker.Random.assortment(array, 255).join("");
     hash.update(characters);
     return hash.digest("hex");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  sha1() {
+  this.sha1 = function() {
     const hash = crypto.createHash("sha1");
     const array = CHARACTERS.split("");
-    const characters = this.faker.Random.assortment(array, 255).join("");
+    const characters = faker.Random.assortment(array, 255).join("");
     hash.update(characters);
     return hash.digest("hex");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  sha256() {
+  this.sha256 = function() {
     const hash = crypto.createHash("sha256");
     const array = CHARACTERS.split("");
-    const characters = this.faker.Random.assortment(array, 255).join("");
+    const characters = faker.Random.assortment(array, 255).join("");
     hash.update(characters);
     return hash.digest("hex");
-  }
+  };
 
 }
 

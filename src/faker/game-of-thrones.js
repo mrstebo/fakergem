@@ -1,42 +1,38 @@
 const data = require("../../data/game-of-thrones.json");
 
-class GameOfThrones {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function GameOfThrones(faker) {
 
   /**
    * @returns {string}
    */
-  character() {
-    return this.faker.Random.element(data["characters"]);
-  }
+  this.character = function() {
+    return faker.Random.element(data["characters"]);
+  };
 
   /**
    * @returns {string}
    */
-  house() {
-    return this.faker.Random.element(data["houses"]);
-  }
+  this.house = function() {
+    return faker.Random.element(data["houses"]);
+  };
 
   /**
    * @returns {string}
    */
-  city() {
-    return this.faker.Random.element(data["cities"]);
-  }
+  this.city = function() {
+    return faker.Random.element(data["cities"]);
+  };
 
   /**
    * @returns {string}
    */
-  dragon() {
-    return this.faker.Random.element(data["dragons"]);
-  }
+  this.dragon = function() {
+    return faker.Random.element(data["dragons"]);
+  };
 
 }
 

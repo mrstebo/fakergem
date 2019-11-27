@@ -1,28 +1,24 @@
 const data = require("../../data/lord-of-the-rings.json");
 
-class LordOfTheRings {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function LordOfTheRings(faker) {
 
   /**
    * @returns {string}
    */
-  character() {
-    return this.faker.Random.element(data["characters"]);
-  }
+  this.character = function() {
+    return faker.Random.element(data["characters"]);
+  };
 
   /**
    * @returns {string}
    */
-  location() {
-    return this.faker.Random.element(data["locations"]);
-  }
+  this.location = function() {
+    return faker.Random.element(data["locations"]);
+  };
 
 }
 

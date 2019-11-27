@@ -6,15 +6,7 @@ function isValidBoolean(value) {
   return /(true|false)/.test(value);
 }
 
-class Fillmurray {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+function Fillmurray() {
 
   /**
    * @param {boolean} grayscale
@@ -22,7 +14,7 @@ class Fillmurray {
    * @param {number} height
    * @returns {string}
    */
-  image(grayscale=false, width=200, height=200) {
+  this.image = function(grayscale=false, width=200, height=200) {
     if (!isValidNumber(width)) {
       throw new Error("Width should be a number");
     }
@@ -39,7 +31,7 @@ class Fillmurray {
       width,
       height,
     ].filter(x => x).join("/");
-  }
+  };
 
 }
 

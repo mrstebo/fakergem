@@ -32,28 +32,24 @@ function daysFromNow(n) {
   return d;
 }
 
-class DateFaker {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function DateFaker(faker) {
 
   /**
    * @param {Date | string} from
    * @param {Date | string} to
    * @returns {Date}
    */
-  between(from, to) {
+  this.between = function(from, to) {
     const fromTime = getDateObject(from).getTime();
     const toTime = getDateObject(to).getTime();
-    const offset = this.faker.Number.between(0, toTime - fromTime);
+    const offset = faker.Number.between(0, toTime - fromTime);
     const date = new Date(fromTime + offset);
     return getDateObject(date);
-  }
+  };
 
   /**
    * @param {Date | string} from
@@ -61,7 +57,7 @@ class DateFaker {
    * @param {Date | string} except
    * @returns {Date}
    */
-  betweenExcept(from, to, except) {
+  this.betweenExcept = function(from, to, except) {
     from = getDateObject(from);
     to = getDateObject(to);
     except = getDateObject(except);
@@ -71,43 +67,43 @@ class DateFaker {
       date = this.between(from, to);
     }
     return getDateObject(date);
-  }
+  };
 
   /**
    * @param {number} days
    * @returns {Date}
    */
-  forward(days=365) {
+  this.forward = function(days=365) {
     const from = daysFromNow(1);
     const to = daysFromNow(days);
     const date = this.between(from, to);
     return getDateObject(date);
-  }
+  };
 
   /**
    * @param {number} days
    * @returns {Date}
    */
-  backward(days=365) {
+  this.backward = function(days=365) {
     const from = daysFromNow(-days);
     const to = daysFromNow(-1);
     const date = this.between(from, to);
     return getDateObject(date);
-  }
+  };
 
   /**
    * @param {number} minAge
    * @param {number} maxAge
    * @returns {Date}
    */
-  birthday(minAge=18, maxAge=65) {
+  this.birthday = function(minAge=18, maxAge=65) {
     const from = new Date();
     from.setFullYear(from.getFullYear() - maxAge);
     const to = new Date();
     to.setFullYear(to.getFullYear() - minAge);
     const date = this.between(from, to);
     return getDateObject(date);
-  }
+  };
 
 }
 

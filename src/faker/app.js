@@ -1,41 +1,37 @@
 const data = require("../../data/app.json");
 
-class App {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function App(faker) {
 
   /**
    * @returns {string}
    */
-  name() {
-    return this.faker.Random.element(data["names"]);
-  }
+  this.name = function() {
+    return faker.Random.element(data["names"]);
+  };
 
   /**
    * @returns {string}
    */
-  version() {
-    return this.faker.Random.element(data["versions"])
+  this.version = function() {
+    return faker.Random.element(data["versions"])
       .split(".")
-      .map(x => x.replace(/#/g, () => this.faker.Number.between(0, 9)))
+      .map(x => x.replace(/#/g, () => faker.Number.between(0, 9)))
       .join(".");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  author() {
+  this.author = function() {
     return [
-      this.faker.Name.firstName(),
-      this.faker.Name.lastName(),
+      faker.Name.firstName(),
+      faker.Name.lastName(),
     ].join(" ");
-  }
+  };
 
 }
 

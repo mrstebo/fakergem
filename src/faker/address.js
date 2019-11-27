@@ -1,155 +1,151 @@
 const data = require("../../data/address.json");
 
-function parse(faker, format) {
-  const text = format
-    .replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`)
-    .replace(/#/, faker.Number.between(1, 9));
-  return faker.Fake.f(text);
-}
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Address(faker) {
 
-class Address {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
+  function parse(format) {
+    const text = format
+      .replace(/\{(\w+)\}/g, m => `{Address.${m.substring(1)}`)
+      .replace(/#/, faker.Number.between(1, 9));
+    return faker.Fake.f(text);
   }
 
   /**
    * @returns {string}
    */
-  city() {
-    const format = this.faker.Random.element(data["cities"]);
-    return parse(this.faker, format);
-  }
+  this.city = function() {
+    const format = faker.Random.element(data["cities"]);
+    return parse(format);
+  };
 
   /**
    * @returns {string}
    */
-  streetName() {
-    const format = this.faker.Random.element(data["streetNames"]);
-    return parse(this.faker, format);
-  }
+  this.streetName = function() {
+    const format = faker.Random.element(data["streetNames"]);
+    return parse(format);
+  };
 
   /**
    * @returns {string}
    */
-  streetAddress() {
-    const format = this.faker.Random.element(data["streetAddresses"]);
-    return parse(this.faker, format);
-  }
+  this.streetAddress = function() {
+    const format = faker.Random.element(data["streetAddresses"]);
+    return parse(format);
+  };
 
   /**
    * @returns {string}
    */
-  secondaryAddress() {
-    const prefix = this.faker.Random.element(data["secondaryAddressPrefixes"]);
+  this.secondaryAddress = function() {
+    const prefix = faker.Random.element(data["secondaryAddressPrefixes"]);
     const format = `${prefix} ###`;
-    return parse(this.faker, format);
-  }
+    return parse(format);
+  };
 
   /**
    * @returns {string}
    */
-  buildingNumber() {
-    return ""+this.faker.Number.between(100, 99999);
-  }
+  this.buildingNumber = function() {
+    return ""+faker.Number.between(100, 99999);
+  };
 
   /**
    * @returns {string}
    */
-  zipCode(stateAbbreviation = "") {
+  this.zipCode = function(stateAbbreviation = "") {
     const format = stateAbbreviation == ""
-      ? this.faker.Random.element(data["postcodes"])
+      ? faker.Random.element(data["postcodes"])
       : data["postcodeByState"][stateAbbreviation];
-    return parse(this.faker, format);
-  }
+    return parse(format);
+  };
 
   /**
    * @returns {string}
    */
-  zip(stateAbbreviation = "") {
+  this.zip = function(stateAbbreviation = "") {
     return this.zipCode(stateAbbreviation);
-  }
+  };
 
   /**
    * @returns {string}
    */
-  postcode(stateAbbreviation = "") {
+  this.postcode = function(stateAbbreviation = "") {
     return this.zipCode(stateAbbreviation);
-  }
+  };
 
   /**
    * @returns {string}
    */
-  timeZone() {
-    return this.faker.Random.element(data["timeZones"]);
-  }
+  this.timeZone = function() {
+    return faker.Random.element(data["timeZones"]);
+  };
 
   /**
    * @returns {string}
    */
-  streetSuffix() {
-    return this.faker.Random.element(data["streetSuffixes"]);
-  }
+  this.streetSuffix = function() {
+    return faker.Random.element(data["streetSuffixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  citySuffix() {
-    return this.faker.Random.element(data["citySuffixes"]);
-  }
+  this.citySuffix = function() {
+    return faker.Random.element(data["citySuffixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  cityPrefix() {
-    return this.faker.Random.element(data["cityPrefixes"]);
-  }
+  this.cityPrefix = function() {
+    return faker.Random.element(data["cityPrefixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  state() {
-    return this.faker.Random.element(data["states"]);
-  }
+  this.state = function() {
+    return faker.Random.element(data["states"]);
+  };
 
   /**
    * @returns {string}
    */
-  stateAbbr() {
-    return this.faker.Random.element(data["stateAbbreviations"]);
-  }
+  this.stateAbbr = function() {
+    return faker.Random.element(data["stateAbbreviations"]);
+  };
 
   /**
    * @returns {string}
    */
-  country() {
-    return this.faker.Random.element(data["countries"]);
-  }
+  this.country = function() {
+    return faker.Random.element(data["countries"]);
+  };
 
   /**
    * @returns {string}
    */
-  countryCode() {
-    return this.faker.Random.element(data["countryCodes"]);
-  }
+  this.countryCode = function() {
+    return faker.Random.element(data["countryCodes"]);
+  };
 
   /**
    * @returns {string}
    */
-  latitude() {
-    return ""+(this.faker.Number.betweenF(0.00, 180.00) - 90);
-  }
+  this.latitude = function() {
+    return ""+(faker.Number.betweenF(0.00, 180.00) - 90);
+  };
 
   /**
    * @returns {string}
    */
-  longitude() {
-    return ""+(this.faker.Number.betweenF(0.00, 360.00) - 180);
-  }
+  this.longitude = function() {
+    return ""+(faker.Number.betweenF(0.00, 360.00) - 180);
+  };
 
 }
 

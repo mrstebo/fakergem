@@ -1,28 +1,24 @@
 const data = require("../../data/file.json");
 
-class File {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function File(faker) {
 
   /**
    * @returns {string}
    */
-  extension() {
-    return this.faker.Random.element(data["extensions"]);
-  }
+  this.extension = function() {
+    return faker.Random.element(data["extensions"]);
+  };
 
   /**
    * @returns {string}
    */
-  mimeType() {
-    return this.faker.Random.element(data["mimeTypes"]);
-  }
+  this.mimeType = function() {
+    return faker.Random.element(data["mimeTypes"]);
+  };
 
   /**
    * @param {string} dir
@@ -31,13 +27,13 @@ class File {
    * @param {string} directorySeparator
    * @returns {string}
    */
-  fileName(dir=null, name=null, ext=null, directorySeparator="/") {
-    dir = dir || this.faker.Lorem.words(2).join("-");
-    name = name || this.faker.Lorem.word();
+  this.fileName = function(dir=null, name=null, ext=null, directorySeparator="/") {
+    dir = dir || faker.Lorem.words(2).join("-");
+    name = name || faker.Lorem.word();
     ext = ext || this.extension();
 
     return `${[dir, name].join(directorySeparator)}.${ext}`;
-  }
+  };
 
 }
 

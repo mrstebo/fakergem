@@ -1,74 +1,70 @@
 const data = require("../../data/name.json");
 
-class Name {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Name(faker) {
 
   /**
    * @returns {string}
    */
-  name() {
+  this.name = function() {
     return [
       this.firstName(),
       this.lastName(),
     ].join(" ");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  nameWithMiddle() {
+  this.nameWithMiddle = function() {
     return [
       this.firstName(),
       this.firstName(),
       this.lastName(),
     ].join(" ");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  firstName() {
-    return this.faker.Random.element(data["firstNames"]);
-  }
+  this.firstName = function() {
+    return faker.Random.element(data["firstNames"]);
+  };
 
   /**
    * @returns {string}
    */
-  lastName() {
-    return this.faker.Random.element(data["lastNames"]);
-  }
+  this.lastName = function() {
+    return faker.Random.element(data["lastNames"]);
+  };
 
   /**
    * @returns {string}
    */
-  prefix() {
-    return this.faker.Random.element(data["prefixes"]);
-  }
+  this.prefix = function() {
+    return faker.Random.element(data["prefixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  suffix() {
-    return this.faker.Random.element(data["suffixes"]);
-  }
+  this.suffix = function() {
+    return faker.Random.element(data["suffixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  title() {
+  this.title = function() {
     return [
-      this.faker.Random.element(data["titles"]["descriptor"]),
-      this.faker.Random.element(data["titles"]["level"]),
-      this.faker.Random.element(data["titles"]["job"]),
+      faker.Random.element(data["titles"]["descriptor"]),
+      faker.Random.element(data["titles"]["level"]),
+      faker.Random.element(data["titles"]["job"]),
     ].join(" ");
-  }
+  };
 
 }
 

@@ -31,15 +31,7 @@ function isValidSize(size) {
   return /^\d+x\d+$/.test(size);
 }
 
-class LoremFlickr {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+function LoremFlickr() {
 
   /**
    * @param {string} size
@@ -47,9 +39,9 @@ class LoremFlickr {
    * @param {boolean} matchAll
    * @returns {string}
    */
-  image(size="300x300", searchTerms=[], matchAll=false) {
+  this.image = function(size="300x300", searchTerms=[], matchAll=false) {
     return buildUrl(size, null, searchTerms, matchAll);
-  }
+  };
 
   /**
    * @param {string} size
@@ -57,13 +49,13 @@ class LoremFlickr {
    * @param {boolean} matchAll
    * @returns {string}
    */
-  grayscaleImage(size="300x300", searchTerms=["all"], matchAll=false) {
+  this.grayscaleImage = function(size="300x300", searchTerms=["all"], matchAll=false) {
     if (!hasSearchTerms(searchTerms)) {
       throw new Error("Search terms must be specified for grayscale images");
     }
 
     return buildUrl(size, "g", searchTerms, matchAll);
-  }
+  };
 
   /**
    * @param {string} size
@@ -71,13 +63,13 @@ class LoremFlickr {
    * @param {boolean} matchAll
    * @returns {string}
    */
-  pixelatedImage(size="300x300", searchTerms=["all"], matchAll=false) {
+  this.pixelatedImage = function(size="300x300", searchTerms=["all"], matchAll=false) {
     if (!hasSearchTerms(searchTerms)) {
       throw new Error("Search terms must be specified for pixelated images");
     }
 
     return buildUrl(size, "p", searchTerms, matchAll);
-  }
+  };
 
   /**
    * @param {string} size
@@ -86,7 +78,7 @@ class LoremFlickr {
    * @param {boolean} matchAll
    * @returns {string}
    */
-  colorizedImage(size="300x300", color="red", searchTerms=["all"], matchAll=false) {
+  this.colorizedImage = function(size="300x300", color="red", searchTerms=["all"], matchAll=false) {
     if (!hasSearchTerms(searchTerms)) {
       throw new Error("Search terms must be specified for colorized images");
     }
@@ -95,7 +87,7 @@ class LoremFlickr {
     }
 
     return buildUrl(size, color, searchTerms, matchAll);
-  }
+  };
 
 }
 

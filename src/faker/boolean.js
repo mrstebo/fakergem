@@ -1,20 +1,12 @@
-class Boolean {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+function Boolean() {
 
   /**
    * @param {number} trueRatio
    * @returns {boolean}
    */
-  boolean(trueRatio=0.5) {
+  this.boolean = function(trueRatio=0.5) {
     return Math.random() < trueRatio;
-  }
+  };
 
 }
 

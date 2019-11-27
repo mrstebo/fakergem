@@ -12,25 +12,21 @@ function calculateVinWeight(character, i) {
   (VIN_CHARS.indexOf(character) % 10) * VIN_MAP.indexOf(VIN_WEIGHTS[i]);
 }
 
-class Vehicle {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Vehicle(faker) {
 
   /**
    * @returns {string}
    */
-  vin() {
-    const details = this.faker.Random.element(
+  this.vin = function() {
+    const details = faker.Random.element(
       data["manufactures"].map(x => ({ wmi: x[1], wmiExt: x[2] }))
     );
     const vin = [...Array(14).keys()]
-      .map(() => this.faker.Random.element(VIN_CHARS.split("").filter(x => x != ".")))
+      .map(() => faker.Random.element(VIN_CHARS.split("").filter(x => x != ".")))
       .join("");
 
     let buffer = `${details.wmi}${vin}`.split("");
@@ -41,18 +37,18 @@ class Vehicle {
       });
     }
 
-    buffer[10] = this.faker.Random.element(data["years"]);
+    buffer[10] = faker.Random.element(data["years"]);
     buffer[8] = vinChecksum(buffer);
 
     return buffer.join("");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  manufacture() {
-    return this.faker.Random.element(data["manufactures"].map(x => x[0]));
-  }
+  this.manufacture = function() {
+    return faker.Random.element(data["manufactures"].map(x => x[0]));
+  };
 
 }
 

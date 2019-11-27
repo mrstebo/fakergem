@@ -1,35 +1,31 @@
 const data = require("../../data/zelda.json");
 
-class Zelda {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Zelda(faker) {
 
   /**
    * @returns {string}
    */
-  game() {
-    return this.faker.Random.element(data["games"]);
-  }
+  this.game = function() {
+    return faker.Random.element(data["games"]);
+  };
 
   /**
    * @returns {string}
    */
-  character() {
-    return this.faker.Random.element(data["characters"]);
-  }
+  this.character = function() {
+    return faker.Random.element(data["characters"]);
+  };
 
   /**
    * @returns {string}
    */
-  location() {
-    return this.faker.Random.element(data["locations"]);
-  }
+  this.location = function() {
+    return faker.Random.element(data["locations"]);
+  };
 
 }
 

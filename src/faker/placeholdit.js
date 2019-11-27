@@ -15,15 +15,7 @@ function isValidColorValue(color) {
   return true;
 }
 
-class Placeholdit {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+function Placeholdit() {
 
   /**
    * @param {string} size
@@ -33,7 +25,7 @@ class Placeholdit {
    * @param {string} text
    * @returns {string}
    */
-  image(size="300x300", format="png", backgroundColor=null, textColor=null, text=null) {
+  this.image = function(size="300x300", format="png", backgroundColor=null, textColor=null, text=null) {
     if (!isValidSize(size)) {
       throw new Error("Size should be specified in format 300x300");
     }
@@ -58,7 +50,7 @@ class Placeholdit {
       url += `?text=${text}`;
     }
     return url;
-  }
+  };
 
 }
 

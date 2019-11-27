@@ -14,29 +14,25 @@ function parseModule(faker, match) {
   return faker[module][method]();
 }
 
-class Fake {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Fake(faker) {
 
   /**
    * @param {string} str
    * @returns {string}
    */
-  f(str) {
+  this.f = function(str) {
     if (typeof str !== "string" || str.length === 0) {
       throw new Error("A string must be specified");
     }
 
     return str
-      .replace(/\{(\w+)\.(\w+)\}/g, m => parseModule(this.faker, m))
-      .replace(/#/g, () => this.faker.Number.between(0, 9));
-  }
+      .replace(/\{(\w+)\.(\w+)\}/g, m => parseModule(faker, m))
+      .replace(/#/g, () => faker.Number.between(0, 9));
+  };
 
 }
 

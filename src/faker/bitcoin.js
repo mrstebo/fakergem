@@ -22,29 +22,21 @@ function base58(text) {
   return bs58.encode(new Buffer(text, "ascii"));
 }
 
-class Bitcoin {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+function Bitcoin() {
 
   /**
    * @returns {string}
    */
-  address() {
+  this.address = function() {
     return addressFor("main");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  testnetAddress() {
+  this.testnetAddress = function() {
     return addressFor("testnet");
-  }
+  };
 
 }
 

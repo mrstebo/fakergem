@@ -31,70 +31,66 @@ function reservedNetChecker(addr) {
   return [...PRIVATE_NET_REGEX, ...RESERVED_NETS_REGEX].some(x => addr.match(x));
 }
 
-class Internet {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Internet(faker) {
 
   /**
    * @param {string} name
    * @returns {string}
    */
-  email(name) {
+  this.email = function(name) {
     return [
       this.userName(name),
       this.domainName(),
     ].join("@");
-  }
+  };
 
   /**
    * @param {string} name
    * @returns {string}
    */
-  freeEmail(name) {
+  this.freeEmail = function(name) {
     return [
       this.userName(name),
-      this.faker.Random.element(data["freeEmails"]),
+      faker.Random.element(data["freeEmails"]),
     ].join("@");
-  }
+  };
 
   /**
    * @param {string} name
    * @returns {string}
    */
-  safeEmail(name) {
+  this.safeEmail = function(name) {
     return [
       this.userName(name),
-      `example.${this.faker.Random.element(["org", "com", "net"])}`,
+      `example.${faker.Random.element(["org", "com", "net"])}`,
     ].join("@");
-  }
+  };
 
   /**
    * @param {string} specifier
    * @param {string} separators
    * @returns {string}
    */
-  userName(specifier=null, separators=null) {
-    const userNameSeparator = this.faker.Random.element(separators || [".", "_"]);
+  this.userName = function(specifier=null, separators=null) {
+    const userNameSeparator = faker.Random.element(separators || [".", "_"]);
     if (typeof specifier === "string") {
       const specifiers = specifier.match(/\w+/g).map(x => x);
-      return this.faker.Random
+      return faker.Random
         .assortment(specifiers, specifiers.length)
         .join(userNameSeparator)
         .toLowerCase();
     }
-    const firstName = this.faker.Name.firstName();
-    const lastName = this.faker.Name.lastName();
-    return this.faker.Random.element([
+    const firstName = faker.Name.firstName();
+    const lastName = faker.Name.lastName();
+    return faker.Random.element([
       firstName,
       [firstName, lastName].join(userNameSeparator),
     ]).toLowerCase();
-  }
+  };
 
   /**
    * @param {number} minLength
@@ -103,111 +99,111 @@ class Internet {
    * @param {boolean} specialChars
    * @returns {string}
    */
-  password(minLength=8, maxLength=16, mixCase=true, specialChars=false) {
+  this.password = function(minLength=8, maxLength=16, mixCase=true, specialChars=false) {
     const diffLength = maxLength - minLength;
-    const extraCharacters = this.faker.Number.between(0, diffLength);
+    const extraCharacters = faker.Number.between(0, diffLength);
     const chars = specialChars ? [...CHARACTERS, ...SYMBOLS] : CHARACTERS;
     return [...Array(minLength + extraCharacters).keys()].reduce((result, val, index) => {
-      const c = this.faker.Random.element(chars).toString();
+      const c = faker.Random.element(chars).toString();
       return result + (mixCase && index % 2 == 0 ? c.toUpperCase() : c);
     }, "");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  domainName() {
+  this.domainName = function() {
     return [
       this.domainWord(),
       this.domainSuffix(),
     ].join(".");
-  }
+  };
 
   /**
    * @param {string} value
    * @returns {string}
    */
-  fixUmlauts(value) {
+  this.fixUmlauts = function(value) {
     return (value || "")
       .replace(/ä/g, "ae")
       .replace(/ö/g, "oe")
       .replace(/ü/g, "ue");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  domainWord() {
-    return this.faker.Name.lastName();
-  }
+  this.domainWord = function() {
+    return faker.Name.lastName();
+  };
 
   /**
    * @returns {string}
    */
-  domainSuffix() {
-    return this.faker.Random.element(data["domainSuffixes"]);
-  }
+  this.domainSuffix = function() {
+    return faker.Random.element(data["domainSuffixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  ipV4Address() {
+  this.ipV4Address = function() {
     return [
-      this.faker.Number.between(2, 254),
-      this.faker.Number.between(2, 254),
-      this.faker.Number.between(2, 254),
-      this.faker.Number.between(2, 254),
+      faker.Number.between(2, 254),
+      faker.Number.between(2, 254),
+      faker.Number.between(2, 254),
+      faker.Number.between(2, 254),
     ].join(".");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  privateIPV4Address() {
+  this.privateIPV4Address = function() {
     let addr;
     do { addr = this.ipV4Address(); } while (!privateNetChecker(addr));
     return addr;
-  }
+  };
 
   /**
    * @returns {string}
    */
-  publicIPV4Address() {
+  this.publicIPV4Address = function() {
     let addr;
     do { addr = this.ipV4Address(); } while (reservedNetChecker(addr));
     return addr;
-  }
+  };
 
   /**
    * @returns {string}
    */
-  ipV4CIDR() {
-    return `${this.ipV4Address()}/${this.faker.Number.between(1, 32)}`;
-  }
+  this.ipV4CIDR = function() {
+    return `${this.ipV4Address()}/${faker.Number.between(1, 32)}`;
+  };
 
   /**
    * @returns {string}
    */
-  ipV6Address() {
-    return [...Array(8).keys()].map(() => this.faker.Number.between(4096, 65535).toString(16)).join(":");
-  }
+  this.ipV6Address = function() {
+    return [...Array(8).keys()].map(() => faker.Number.between(4096, 65535).toString(16)).join(":");
+  };
 
   /**
    * @returns {string}
    */
-  ipV6CIDR() {
-    return `${this.ipV6Address()}/${this.faker.Number.between(1, 128)}`;
-  }
+  this.ipV6CIDR = function() {
+    return `${this.ipV6Address()}/${faker.Number.between(1, 128)}`;
+  };
 
   /**
    * @param {string} prefix
    * @returns {string}
    */
-  macAddress(prefix="") {
+  this.macAddress = function(prefix="") {
     const prefixDigits = prefix.split(":").filter(x => x).map(x => parseInt(x, 16));
-    const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(() => this.faker.Number.between(0, 255));
+    const addressDigits = [...Array(6 - prefixDigits.length).keys()].map(() => faker.Number.between(0, 255));
     return [...prefixDigits, ...addressDigits].map(x => x.toString(16)).join(":");
-  }
+  };
 
   /**
    * @param {string} host
@@ -215,22 +211,22 @@ class Internet {
    * @param {string} scheme
    * @returns {string}
    */
-  url(host=null, path=null, scheme="http") {
+  this.url = function(host=null, path=null, scheme="http") {
     host = host || this.domainName();
     path = path || `/${this.userName()}`;
     return `${scheme}://${host}${path}`;
-  }
+  };
 
   /**
    * @param {string[]} words
    * @param {string} glue
    * @returns {string}
    */
-  slug(words=null, glue=null) {
-    return (words || this.faker.Lorem.words(2).join(" "))
-      .replace(/\s+/g, glue || this.faker.Random.element(["-", "_", "."]))
+  this.slug = function(words=null, glue=null) {
+    return (words || faker.Lorem.words(2).join(" "))
+      .replace(/\s+/g, glue || faker.Random.element(["-", "_", "."]))
       .toLowerCase();
-  }
+  };
 
 }
 

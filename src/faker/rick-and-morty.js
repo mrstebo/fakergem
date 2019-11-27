@@ -1,35 +1,31 @@
 const data = require("../../data/rick-and-morty.json");
 
-class RickAndMorty {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function RickAndMorty(faker) {
 
   /**
    * @returns {string}
    */
-  character() {
-    return this.faker.Random.element(data["characters"]);
-  }
+  this.character = function() {
+    return faker.Random.element(data["characters"]);
+  };
 
   /**
    * @returns {string}
    */
-  location() {
-    return this.faker.Random.element(data["locations"]);
-  }
+  this.location = function() {
+    return faker.Random.element(data["locations"]);
+  };
 
   /**
    * @returns {string}
    */
-  quote() {
-    return this.faker.Random.element(data["quotes"]);
-  }
+  this.quote = function() {
+    return faker.Random.element(data["quotes"]);
+  };
 
 }
 

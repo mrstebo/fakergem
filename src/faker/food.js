@@ -1,35 +1,31 @@
 const data = require("../../data/food.json");
 
-class Food {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Food(faker) {
 
   /**
    * @returns {string}
    */
-  ingredient() {
-    return this.faker.Random.element(data["ingredients"]);
-  }
+  this.ingredient = function() {
+    return faker.Random.element(data["ingredients"]);
+  };
 
   /**
    * @returns {string}
    */
-  spice() {
-    return this.faker.Random.element(data["spices"]);
-  }
+  this.spice = function() {
+    return faker.Random.element(data["spices"]);
+  };
 
   /**
    * @returns {string}
    */
-  measurement() {
-    return this.faker.Random.element(data["measurements"]);
-  }
+  this.measurement = function() {
+    return faker.Random.element(data["measurements"]);
+  };
 
 }
 

@@ -46,24 +46,20 @@ function daysFromNow(n) {
   return d;
 }
 
-class Time {
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Time(faker) {
 
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
-
-  get ALL() { return ALL; }
-  get DAY() { return DAY; }
-  get NIGHT() { return NIGHT; }
-  get MORNING() { return MORNING; }
-  get AFTERNOON() { return AFTERNOON; }
-  get EVENING() { return EVENING; }
-  get MIDNIGHT() { return MIDNIGHT; }
-  get BETWEEN() { return BETWEEN; }
+  this.ALL = ALL;
+  this.DAY = DAY;
+  this.NIGHT = NIGHT;
+  this.MORNING = MORNING;
+  this.AFTERNOON = AFTERNOON;
+  this.EVENING = EVENING;
+  this.MIDNIGHT = MIDNIGHT;
+  this.BETWEEN = BETWEEN;
 
   /**
    * @param {Date | string} from
@@ -72,20 +68,20 @@ class Time {
    * @param {string} format
    * @returns {Date}
    */
-  between(from, to, period=ALL, format=null) {
-    const date = this.faker.Date.between(from, to);
+  this.between = function(from, to, period=ALL, format=null) {
+    const date = faker.Date.between(from, to);
     const time = period === BETWEEN
       ? date
       : new Date(
         date.getFullYear(),
         date.getMonth(),
         date.getDate(),
-        this.faker.Number.between(rangeFor(period).start, rangeFor(period).end),
-        this.faker.Number.between(0, 59),
-        this.faker.Number.between(0, 59)
+        faker.Number.between(rangeFor(period).start, rangeFor(period).end),
+        faker.Number.between(0, 59),
+        faker.Number.between(0, 59)
       );
     return timeWithFormat(time, format);
-  }
+  };
 
   /**
    * @param {number} days
@@ -93,21 +89,21 @@ class Time {
    * @param {string} format
    * @returns {Date}
    */
-  forward(days=365, period=ALL, format=null) {
+  this.forward = function(days=365, period=ALL, format=null) {
     const from = daysFromNow(1);
     const to = daysFromNow(days);
-    const date = this.faker.Date.between(from, to);
+    const date = faker.Date.between(from, to);
     const range = rangeFor(period);
     const time = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDate(),
-      this.faker.Number.between(range.start, range.end),
-      this.faker.Number.between(0, 59),
-      this.faker.Number.between(0, 59)
+      faker.Number.between(range.start, range.end),
+      faker.Number.between(0, 59),
+      faker.Number.between(0, 59)
     );
     return timeWithFormat(time, format);
-  }
+  };
 
   /**
    * @param {number} days
@@ -115,21 +111,21 @@ class Time {
    * @param {string} format
    * @returns {Date}
    */
-  backward(days=365, period=ALL, format=null) {
+  this.backward = function(days=365, period=ALL, format=null) {
     const from = daysFromNow(-days);
     const to = daysFromNow(-1);
-    const date = this.faker.Date.between(from, to);
+    const date = faker.Date.between(from, to);
     const range = rangeFor(period);
     const time = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDate(),
-      this.faker.Number.between(range.start, range.end),
-      this.faker.Number.between(0, 59),
-      this.faker.Number.between(0, 59)
+      faker.Number.between(range.start, range.end),
+      faker.Number.between(0, 59),
+      faker.Number.between(0, 59)
     );
     return timeWithFormat(time, format);
-  }
+  };
 
 }
 

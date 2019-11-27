@@ -1,105 +1,101 @@
 const data = require("../../data/space.json");
 
-class Space {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Space(faker) {
 
   /**
    * @returns {string}
    */
-  planet() {
-    return this.faker.Random.element(data["planets"]);
-  }
+  this.planet = function() {
+    return faker.Random.element(data["planets"]);
+  };
 
   /**
    * @returns {string}
    */
-  moon() {
-    return this.faker.Random.element(data["moons"]);
-  }
+  this.moon = function() {
+    return faker.Random.element(data["moons"]);
+  };
 
   /**
    * @returns {string}
    */
-  galaxy() {
-    return this.faker.Random.element(data["galaxies"]);
-  }
+  this.galaxy = function() {
+    return faker.Random.element(data["galaxies"]);
+  };
 
   /**
    * @returns {string}
    */
-  nebula() {
-    return this.faker.Random.element(data["nebulas"]);
-  }
+  this.nebula = function() {
+    return faker.Random.element(data["nebulas"]);
+  };
 
   /**
    * @returns {string}
    */
-  starCluster() {
-    return this.faker.Random.element(data["starClusters"]);
-  }
+  this.starCluster = function() {
+    return faker.Random.element(data["starClusters"]);
+  };
 
   /**
    * @returns {string}
    */
-  constellation() {
-    return this.faker.Random.element(data["constellations"]);
-  }
+  this.constellation = function() {
+    return faker.Random.element(data["constellations"]);
+  };
 
   /**
    * @returns {string}
    */
-  star() {
-    return this.faker.Random.element(data["stars"]);
-  }
+  this.star = function() {
+    return faker.Random.element(data["stars"]);
+  };
 
   /**
    * @returns {string}
    */
-  agency() {
-    return this.faker.Random.element(data["agencies"]);
-  }
+  this.agency = function() {
+    return faker.Random.element(data["agencies"]);
+  };
 
   /**
    * @returns {string}
    */
-  agencyAbv() {
-    return this.faker.Random.element(data["agencyAbvs"]);
-  }
+  this.agencyAbv = function() {
+    return faker.Random.element(data["agencyAbvs"]);
+  };
 
   /**
    * @returns {string}
    */
-  nasaSpaceCraft() {
-    return this.faker.Random.element(data["nasaSpaceCrafts"]);
-  }
+  this.nasaSpaceCraft = function() {
+    return faker.Random.element(data["nasaSpaceCrafts"]);
+  };
 
   /**
    * @returns {string}
    */
-  company() {
-    return this.faker.Random.element(data["companies"]);
-  }
+  this.company = function() {
+    return faker.Random.element(data["companies"]);
+  };
 
   /**
    * @returns {string}
    */
-  distanceMeasurement() {
-    return this.faker.Random.element(data["distanceMeasurements"]);
-  }
+  this.distanceMeasurement = function() {
+    return faker.Random.element(data["distanceMeasurements"]);
+  };
 
   /**
    * @returns {string}
    */
-  meteorite() {
-    return this.faker.Random.element(data["meteorites"]);
-  }
+  this.meteorite = function() {
+    return faker.Random.element(data["meteorites"]);
+  };
 
 }
 

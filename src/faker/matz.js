@@ -1,21 +1,17 @@
 const data = require("../../data/matz.json");
 
-class Matz {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Matz(faker) {
 
   /**
    * @returns {string}
    */
-  quote() {
-    return this.faker.Random.element(data["quotes"]);
-  }
+  this.quote = function() {
+    return faker.Random.element(data["quotes"]);
+  };
 
 }
 

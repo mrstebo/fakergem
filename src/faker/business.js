@@ -7,36 +7,32 @@ function daysFromNow(n) {
   return d;
 }
 
-class Business {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Business(faker) {
 
   /**
    * @returns {string}
    */
-  creditCardNumber() {
-    return this.faker.Random.element(data["creditCardNumbers"]);
-  }
+  this.creditCardNumber = function() {
+    return faker.Random.element(data["creditCardNumbers"]);
+  };
 
   /**
    * @returns {Date}
    */
-  creditCardExpiryDate() {
-    return daysFromNow(365 * this.faker.Number.between(1, 5));
-  }
+  this.creditCardExpiryDate = function() {
+    return daysFromNow(365 * faker.Number.between(1, 5));
+  };
 
   /**
    * @returns {string}
    */
-  creditCardType() {
-    return this.faker.Random.element(data["creditCardTypes"]);
-  }
+  this.creditCardType = function() {
+    return faker.Random.element(data["creditCardTypes"]);
+  };
 
 }
 

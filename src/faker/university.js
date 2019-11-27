@@ -1,21 +1,17 @@
 const data = require("../../data/university.json");
 
-class University {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function University(faker) {
 
   /**
    * @returns {string}
    */
-  name() {
-    return this.faker.Random.element(data["names"]);
-  }
+  this.name = function() {
+    return faker.Random.element(data["names"]);
+  };
 
 }
 

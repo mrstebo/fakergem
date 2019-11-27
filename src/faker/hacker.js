@@ -5,57 +5,53 @@ function parse(faker, format) {
   return faker.Fake.f(text).replace(/^(\w)/, m => m[0].toUpperCase());
 }
 
-class Hacker {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Hacker(faker) {
 
   /**
    * @returns {string}
    */
-  saySomethingSmart() {
-    return parse(this.faker, this.faker.Random.element(data["phrases"]));
-  }
+  this.saySomethingSmart = function() {
+    return parse(faker, faker.Random.element(data["phrases"]));
+  };
 
   /**
    * @returns {string}
    */
-  abbreviation() {
-    return this.faker.Random.element(data["abbreviations"]);
-  }
+  this.abbreviation = function() {
+    return faker.Random.element(data["abbreviations"]);
+  };
 
   /**
    * @returns {string}
    */
-  adjective() {
-    return this.faker.Random.element(data["adjectives"]);
-  }
+  this.adjective = function() {
+    return faker.Random.element(data["adjectives"]);
+  };
 
   /**
    * @returns {string}
    */
-  noun() {
-    return this.faker.Random.element(data["nouns"]);
-  }
+  this.noun = function() {
+    return faker.Random.element(data["nouns"]);
+  };
 
   /**
    * @returns {string}
    */
-  verb() {
-    return this.faker.Random.element(data["verbs"]);
-  }
+  this.verb = function() {
+    return faker.Random.element(data["verbs"]);
+  };
 
   /**
    * @returns {string}
    */
-  ingverb() {
-    return this.faker.Random.element(data["ingverbs"]);
-  }
+  this.ingverb = function() {
+    return faker.Random.element(data["ingverbs"]);
+  };
 
 }
 

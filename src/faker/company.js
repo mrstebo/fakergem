@@ -1,10 +1,5 @@
 const data = require("../../data/company.json");
 
-function parse(faker, format) {
-  const text = format.replace(/\{(\w+)\}/g, m => `{Company.${m.substring(1)}`);
-  return faker.Fake.f(text);
-}
-
 function luhnAlgorithm(number) {
   let sum = 0;
   `${number}`
@@ -41,131 +36,132 @@ function leftPad(text, length, paddingCharacter) {
   return (padding + text).slice(-length);
 }
 
-class Company {
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Company(faker) {
 
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
+  function parse(format) {
+    const text = format.replace(/\{(\w+)\}/g, m => `{Company.${m.substring(1)}`);
+    return faker.Fake.f(text);
   }
 
   /**
    * @returns {string}
    */
-  name() {
-    return parse(this.faker, this.faker.Random.element(data["names"]));
-  }
+  this.name = function() {
+    return parse(faker.Random.element(data["names"]));
+  };
 
   /**
    * @returns {string}
    */
-  suffix() {
-    return this.faker.Random.element(data["suffixes"]);
-  }
+  this.suffix = function() {
+    return faker.Random.element(data["suffixes"]);
+  };
 
   /**
    * @returns {string}
    */
-  catchPhrase() {
+  this.catchPhrase = function() {
     return [...Array(3).keys()]
-      .map(i => this.faker.Random.element(data["buzzwords"][i]))
+      .map(i => faker.Random.element(data["buzzwords"][i]))
       .join(" ");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  buzzword() {
-    return this.faker.Random.element([
+  this.buzzword = function() {
+    return faker.Random.element([
       ...data["buzzwords"][0],
       ...data["buzzwords"][1],
       ...data["buzzwords"][2],
     ]);
-  }
+  };
 
   /**
    * @returns {string}
    */
-  bs() {
+  this.bs = function() {
     return [...Array(3).keys()]
-      .map(i => this.faker.Random.element(data["bs"][i]))
+      .map(i => faker.Random.element(data["bs"][i]))
       .join(" ");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  ein() {
+  this.ein = function() {
     return [...Array(9).keys()]
-      .map(() => this.faker.Number.between(0, 9))
+      .map(() => faker.Number.between(0, 9))
       .join("")
       .replace(/(\d{2})(\d{7})/, "$1-$2");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  dunsNumber() {
+  this.dunsNumber = function() {
     return [...Array(9).keys()]
-      .map(() => this.faker.Number.between(0, 9))
+      .map(() => faker.Number.between(0, 9))
       .join("")
       .replace(/(\d{2})(\d{3})(\d{4})/, "$1-$2-$3");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  logo() {
-    const number = this.faker.Number.between(1, 14);
+  this.logo = function() {
+    const number = faker.Number.between(1, 14);
     return `https://pigment.github.io/fake-logos/logos/medium/color/${number}.png`;
-  }
+  };
 
   /**
    * @returns {string}
    */
-  swedishOrganisationNumber() {
+  this.swedishOrganisationNumber = function() {
     const base = [
-      this.faker.Number.between(1, 9),
-      this.faker.Number.between(0, 9),
-      this.faker.Number.between(2, 9),
-      this.faker.Number.number(6),
+      faker.Number.between(1, 9),
+      faker.Number.between(0, 9),
+      faker.Number.between(2, 9),
+      faker.Number.number(6),
     ].join("");
     return `${base}${luhnAlgorithm(base)}`;
-  }
+  };
 
   /**
    * @returns {string}
    */
-  norwegianOrganisationNumber() {
+  this.norwegianOrganisationNumber = function() {
     let mod11Check = null;
     let base = "";
     while (mod11Check == null) {
       base = [
-        this.faker.Random.element([8, 9]),
-        leftPad(this.faker.Number.between(0, 10000000), 7, "0"),
+        faker.Random.element([8, 9]),
+        leftPad(faker.Number.between(0, 10000000), 7, "0"),
       ].join("");
       mod11Check = mod11(base);
     }
     return `${base}${mod11Check}`;
-  }
+  };
 
   /**
    * @returns {string}
    */
-  australianBusinessNumber() {
-    const base = leftPad(this.faker.Number.between(0, 1000000000), 9, "0");
+  this.australianBusinessNumber = function() {
+    const base = leftPad(faker.Number.between(0, 1000000000), 9, "0");
     const abn = `00${base}`;
     return `${(99 - abnChecksum(abn) % 89)}${base}`;
-  }
+  };
 
   /**
    * @returns {string}
    */
-  profession() {
-    return this.faker.Random.element(data["professions"]);
-  }
+  this.profession = function() {
+    return faker.Random.element(data["professions"]);
+  };
 
 }
 

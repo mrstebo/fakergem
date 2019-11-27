@@ -1,45 +1,41 @@
 const data = require("../../data/book.json");
 
-class Book {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Book(faker) {
 
   /**
    * @returns {string}
    */
-  title() {
-    return this.faker.Random.element(data["titles"]);
-  }
+  this.title = function() {
+    return faker.Random.element(data["titles"]);
+  };
 
   /**
    * @returns {string}
    */
-  author() {
+  this.author = function() {
     return [
-      this.faker.Name.firstName(),
-      this.faker.Name.lastName(),
+      faker.Name.firstName(),
+      faker.Name.lastName(),
     ].join(" ");
-  }
+  };
 
   /**
    * @returns {string}
    */
-  publisher() {
-    return this.faker.Random.element(data["publishers"]);
-  }
+  this.publisher = function() {
+    return faker.Random.element(data["publishers"]);
+  };
 
   /**
    * @returns {string}
    */
-  genre() {
-    return this.faker.Random.element(data["genres"]);
-  }
+  this.genre = function() {
+    return faker.Random.element(data["genres"]);
+  };
 
 }
 

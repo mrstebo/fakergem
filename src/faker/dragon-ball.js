@@ -1,21 +1,17 @@
 const data = require("../../data/dragon-ball.json");
 
-class DragonBall {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function DragonBall(faker) {
 
   /**
    * @returns {string}
    */
-  character() {
-    return this.faker.Random.element(data["characters"]);
-  }
+  this.character = function() {
+    return faker.Random.element(data["characters"]);
+  };
 
 }
 

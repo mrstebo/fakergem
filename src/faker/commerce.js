@@ -1,15 +1,6 @@
 const data = require("../../data/commerce.json");
 
-function buildCategories(faker, num) {
-  const categories = [];
-  while (categories.length < num) {
-    const category = faker.Random.element(data["departments"]);
-    if (categories.indexOf(category) < 0) {
-      categories.push(category);
-    }
-  }
-  return categories;
-}
+
 
 function mergeCategories(categories) {
   const separator = " & ";
@@ -18,64 +9,71 @@ function mergeCategories(categories) {
   return [commaSeparated, lastCategory].join(separator);
 }
 
-class Commerce {
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Commerce(faker) {
 
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
+  function buildCategories(num) {
+    const categories = [];
+    while (categories.length < num) {
+      const category = faker.Random.element(data["departments"]);
+      if (categories.indexOf(category) < 0) {
+        categories.push(category);
+      }
+    }
+    return categories;
   }
 
   /**
    * @returns {string}
    */
-  color() {
-    return this.faker.Color.colorName();
-  }
+  this.color = function() {
+    return faker.Color.colorName();
+  };
 
   /**
    * @param {number} max
    * @param {boolean} fixedAmount
    * @returns {string}
    */
-  department(max=3, fixedAmount=false) {
-    const num = fixedAmount ? max : this.faker.Number.between(1, max);
-    const categories = buildCategories(this.faker, num);
+  this.department = function(max=3, fixedAmount=false) {
+    const num = fixedAmount ? max : faker.Number.between(1, max);
+    const categories = buildCategories(num);
     return num > 1 ? mergeCategories(categories) : categories[0];
-  }
+  };
 
   /**
    * @returns {string}
    */
-  productName() {
+  this.productName = function() {
     return [
-      this.faker.Random.element(data["productNames"]["adjective"]),
-      this.faker.Random.element(data["productNames"]["material"]),
-      this.faker.Random.element(data["productNames"]["product"]),
+      faker.Random.element(data["productNames"]["adjective"]),
+      faker.Random.element(data["productNames"]["material"]),
+      faker.Random.element(data["productNames"]["product"]),
     ].join(" ");
-  }
+  };
 
   /**
    * @param {{ min: number, max: number }} range
    * @returns {string}
    */
-  price(range={ min: 0.00, max: 100.00 }) {
-    const n = this.faker.Number.between(range.min, range.max);
+  this.price = function(range={ min: 0.00, max: 100.00 }) {
+    const n = faker.Number.between(range.min, range.max);
     return (Math.floor(n * 100) / 100.0).toFixed(2);
-  }
+  };
 
   /**
    * @returns {string}
    */
-  promotionCode(digits=6) {
+  this.promotionCode = function(digits=6) {
     return [
-      this.faker.Random.element(data["promotionCodes"]["adjective"]),
-      this.faker.Random.element(data["promotionCodes"]["noun"]),
-      this.faker.Number.number(digits),
+      faker.Random.element(data["promotionCodes"]["adjective"]),
+      faker.Random.element(data["promotionCodes"]["noun"]),
+      faker.Number.number(digits),
     ].join("");
-  }
+  };
 
 }
 

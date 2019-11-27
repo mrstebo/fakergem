@@ -1,76 +1,72 @@
 const data = require("../../data/slack-emoji.json");
 
-class SlackEmoji {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function SlackEmoji(faker) {
 
   /**
    * @returns {string}
    */
-  people() {
-    return this.faker.Random.element(data["people"]);
-  }
+  this.people = function() {
+    return faker.Random.element(data["people"]);
+  };
 
   /**
    * @returns {string}
    */
-  nature() {
-    return this.faker.Random.element(data["nature"]);
-  }
+  this.nature = function() {
+    return faker.Random.element(data["nature"]);
+  };
 
   /**
    * @returns {string}
    */
-  foodAndDrink() {
-    return this.faker.Random.element(data["foodAndDrink"]);
-  }
+  this.foodAndDrink = function() {
+    return faker.Random.element(data["foodAndDrink"]);
+  };
 
   /**
    * @returns {string}
    */
-  celebration() {
-    return this.faker.Random.element(data["celebration"]);
-  }
+  this.celebration = function() {
+    return faker.Random.element(data["celebration"]);
+  };
 
   /**
    * @returns {string}
    */
-  activity() {
-    return this.faker.Random.element(data["activity"]);
-  }
+  this.activity = function() {
+    return faker.Random.element(data["activity"]);
+  };
 
   /**
    * @returns {string}
    */
-  travelAndPlaces() {
-    return this.faker.Random.element(data["travelAndPlaces"]);
-  }
+  this.travelAndPlaces = function() {
+    return faker.Random.element(data["travelAndPlaces"]);
+  };
 
   /**
    * @returns {string}
    */
-  objectsAndSymbols() {
-    return this.faker.Random.element(data["objectsAndSymbols"]);
-  }
+  this.objectsAndSymbols = function() {
+    return faker.Random.element(data["objectsAndSymbols"]);
+  };
 
   /**
    * @returns {string}
    */
-  custom() {
-    return this.faker.Random.element(data["custom"]);
-  }
+  this.custom = function() {
+    return faker.Random.element(data["custom"]);
+  };
 
   /**
    * @returns {string}
    */
-  emoji() {
-    return this.faker.Random.element([
+  this.emoji = function() {
+    return faker.Random.element([
       ...data["people"],
       ...data["nature"],
       ...data["foodAndDrink"],
@@ -80,7 +76,7 @@ class SlackEmoji {
       ...data["objectsAndSymbols"],
       ...data["custom"],
     ]);
-  }
+  };
 
 }
 

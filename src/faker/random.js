@@ -12,15 +12,7 @@ function shuffle(collection) {
   return result;
 }
 
-class Random {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+function Random() {
 
   /**
    *
@@ -28,26 +20,26 @@ class Random {
    * @param {number} n
    * @returns {any}
    */
-  assortment(array, n) {
+  this.assortment = function(array, n) {
     const count = Math.max(0, n);
     const repeatCount = parseInt(count / array.length) || 1;
     const repeated = Array
       .apply(null, { length: repeatCount * array.length })
       .map((_, i) => array[i % array.length]);
     return shuffle(repeated).slice(0, count);
-  }
+  };
 
   /**
    *
    * @param {string | any[]} array
    * @returns {any}
    */
-  element(array) {
+  this.element = function(array) {
     if (!array) {
       throw new Error("An array or string must be specified");
     }
     return itemFromCollection(array);
-  }
+  };
 
 }
 

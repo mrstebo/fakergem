@@ -1,35 +1,31 @@
 const data = require("../../data/friends.json");
 
-class Friends {
-
-  /**
-   *
-   * @param {import('../faker').Faker} faker
-   */
-  constructor(faker) {
-    this.faker = faker;
-  }
+/**
+ *
+ * @param {import('../faker').Faker} faker
+ */
+function Friends(faker) {
 
   /**
    * @returns {string}
    */
-  character() {
-    return this.faker.Random.element(data["characters"]);
-  }
+  this.character = function() {
+    return faker.Random.element(data["characters"]);
+  };
 
   /**
    * @returns {string}
    */
-  location() {
-    return this.faker.Random.element(data["locations"]);
-  }
+  this.location = function() {
+    return faker.Random.element(data["locations"]);
+  };
 
   /**
    * @returns {string}
    */
-  quote() {
-    return this.faker.Random.element(data["quotes"]);
-  }
+  this.quote = function() {
+    return faker.Random.element(data["quotes"]);
+  };
 
 }
 
