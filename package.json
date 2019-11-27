@@ -2,15 +2,13 @@
   "name": "fakergem",
   "version": "1.0.3",
   "description": "A javascript version of the Faker ruby gem",
-  "main": "./lib/faker.js",
+  "main": "./src/index.js",
   "types": "./types/types.d.ts",
   "scripts": {
     "version:patch": "npm version patch",
-    "build": "./node_modules/.bin/babel -d ./lib ./src -s",
     "lint": "./node_modules/.bin/eslint --fix ./src",
     "test": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli.js cover --report lcov --report html ./node_modules/mocha/bin/_mocha -- --recursive test/**/*.spec.js",
     "watch": "./node_modules/.bin/mocha --watch --recursive test/**/*.spec.js",
-    "prepublish": "npm run build",
     "docs": "./node_modules/.bin/jsdoc -t node_modules/tsd-jsdoc/dist -r ./src -d ./types"
   },
   "repository": {
