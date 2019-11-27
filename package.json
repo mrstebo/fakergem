@@ -9,7 +9,8 @@
     "test": "./node_modules/.bin/gulp test",
     "test:cover": "./node_modules/.bin/babel-node ./node_modules/istanbul/lib/cli.js cover --report lcov --report html ./node_modules/mocha/bin/_mocha -- --recursive test/**/*.spec.js",
     "watch": "./node_modules/.bin/gulp watch",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "docs": "./node_modules/.bin/jsdoc -t node_modules/tsd-jsdoc/dist -r ./src -d ./types"
   },
   "repository": {
     "type": "git",
