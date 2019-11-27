@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "A javascript version of the Faker ruby gem",
   "main": "./lib/faker.js",
+  "types": "./types/types.d.ts",
   "scripts": {
     "version:patch": "npm version patch",
     "build": "./node_modules/.bin/gulp build",
