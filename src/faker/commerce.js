@@ -28,16 +28,27 @@ class Commerce {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   color() {
     return this.faker.Color.colorName();
   }
 
+  /**
+   * @param {number} max
+   * @param {boolean} fixedAmount
+   * @returns {string}
+   */
   department(max=3, fixedAmount=false) {
     const num = fixedAmount ? max : this.faker.Number.between(1, max);
     const categories = buildCategories(this.faker, num);
     return num > 1 ? mergeCategories(categories) : categories[0];
   }
 
+  /**
+   * @returns {string}
+   */
   productName() {
     return [
       this.faker.Random.element(data["productNames"]["adjective"]),
@@ -46,11 +57,18 @@ class Commerce {
     ].join(" ");
   }
 
+  /**
+   * @param {{ min: number, max: number }} range
+   * @returns {string}
+   */
   price(range={ min: 0.00, max: 100.00 }) {
     const n = this.faker.Number.between(range.min, range.max);
     return (Math.floor(n * 100) / 100.0).toFixed(2);
   }
 
+  /**
+   * @returns {string}
+   */
   promotionCode(digits=6) {
     return [
       this.faker.Random.element(data["promotionCodes"]["adjective"]),

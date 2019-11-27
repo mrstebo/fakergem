@@ -22,6 +22,12 @@ class Random {
     this.faker = faker;
   }
 
+  /**
+   *
+   * @param {any[]} array
+   * @param {number} n
+   * @returns {any}
+   */
   assortment(array, n) {
     const count = Math.max(0, n);
     const repeatCount = parseInt(count / array.length) || 1;
@@ -31,6 +37,11 @@ class Random {
     return shuffle(repeated).slice(0, count);
   }
 
+  /**
+   *
+   * @param {string | any[]} array
+   * @returns {any}
+   */
   element(array) {
     if (!array) {
       throw new Error("An array or string must be specified");

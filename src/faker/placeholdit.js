@@ -25,6 +25,14 @@ class Placeholdit {
     this.faker = faker;
   }
 
+  /**
+   * @param {string} size
+   * @param {string} format
+   * @param {string} backgroundColor
+   * @param {string} textColor
+   * @param {string} text
+   * @returns {string}
+   */
   image(size="300x300", format="png", backgroundColor=null, textColor=null, text=null) {
     if (!isValidSize(size)) {
       throw new Error("Size should be specified in format 300x300");

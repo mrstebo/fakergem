@@ -10,6 +10,9 @@ class RockBand {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   name() {
     return this.faker.Random.element(data["names"]);
   }

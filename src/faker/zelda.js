@@ -10,14 +10,23 @@ class Zelda {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   game() {
     return this.faker.Random.element(data["games"]);
   }
 
+  /**
+   * @returns {string}
+   */
   character() {
     return this.faker.Random.element(data["characters"]);
   }
 
+  /**
+   * @returns {string}
+   */
   location() {
     return this.faker.Random.element(data["locations"]);
   }

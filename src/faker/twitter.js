@@ -8,6 +8,11 @@ class Twitter {
     this.faker = faker;
   }
 
+  /**
+   * @param {boolean} includeStatus
+   * @param {boolean} includeEmail
+   * @returns {Object}
+   */
   user(includeStatus=true, includeEmail=false) {
     const userId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
@@ -62,6 +67,11 @@ class Twitter {
     return user;
   }
 
+  /**
+   * @param {boolean} includeUser
+   * @param {boolean} includePhoto
+   * @returns {Object}
+   */
   status(includeUser=true, includePhoto=false) {
     const statusId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
@@ -98,14 +108,23 @@ class Twitter {
     return status;
   }
 
+  /**
+   * @returns {string}
+   */
   screenName() {
     return this.faker.Internet.userName().substring(0, 20);
   }
 
+  /**
+   * @returns {number}
+   */
   _utcOffset() {
     return this.faker.Number.between(-43200, 50400);
   }
 
+  /**
+   * @returns {Object}
+   */
   _userEntities() {
     return {
       url:  {
@@ -117,6 +136,10 @@ class Twitter {
     };
   }
 
+  /**
+   * @param {boolean} includePhoto
+   * @returns {Object}
+   */
   _statusEntities(includePhoto) {
     const entities = {
       hashtags:  [],
@@ -130,6 +153,9 @@ class Twitter {
     return entities;
   }
 
+  /**
+   * @returns {Object}
+   */
   _photoEntity() {
     const mediaUrl = this.faker.LoremPixel.image("1064x600");
     const mediaId = this.faker.Number.between(1, 9223372036854775807);

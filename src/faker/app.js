@@ -10,10 +10,16 @@ class App {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   name() {
     return this.faker.Random.element(data["names"]);
   }
 
+  /**
+   * @returns {string}
+   */
   version() {
     return this.faker.Random.element(data["versions"])
       .split(".")
@@ -21,6 +27,9 @@ class App {
       .join(".");
   }
 
+  /**
+   * @returns {string}
+   */
   author() {
     return [
       this.faker.Name.firstName(),

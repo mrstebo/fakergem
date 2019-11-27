@@ -32,10 +32,16 @@ class Bitcoin {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   address() {
     return addressFor("main");
   }
 
+  /**
+   * @returns {string}
+   */
   testnetAddress() {
     return addressFor("testnet");
   }

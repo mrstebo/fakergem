@@ -1,4 +1,8 @@
-module.exports = collection => {
+/**
+ * @param {any[]} collection
+ * @returns {any[]}
+ */
+function shuffle(collection) {
   let i, j, k;
   const result = [...collection];
   for (i = collection.length; i > 0; i--) {
@@ -8,4 +12,6 @@ module.exports = collection => {
     result[j] = k;
   }
   return result;
-};
+}
+
+module.exports =  shuffle;

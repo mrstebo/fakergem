@@ -22,6 +22,9 @@ class Vehicle {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   vin() {
     const details = this.faker.Random.element(
       data["manufactures"].map(x => ({ wmi: x[1], wmiExt: x[2] }))
@@ -44,6 +47,9 @@ class Vehicle {
     return buffer.join("");
   }
 
+  /**
+   * @returns {string}
+   */
   manufacture() {
     return this.faker.Random.element(data["manufactures"].map(x => x[0]));
   }

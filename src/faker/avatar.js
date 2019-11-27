@@ -22,6 +22,14 @@ class Avatar {
     this.faker = faker;
   }
 
+  /**
+   * @param {string} slug
+   * @param {string} size
+   * @param {string} format
+   * @param {string} set
+   * @param {string} bgset
+   * @returns {string}
+   */
   image(slug=null, size="300x300", format="png", set="set1", bgset=null) {
     if (!isValidSize(size)) {
       throw new Error("Size should be specified in format 300x300");

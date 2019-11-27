@@ -16,6 +16,12 @@ class Fillmurray {
     this.faker = faker;
   }
 
+  /**
+   * @param {boolean} grayscale
+   * @param {number} width
+   * @param {number} height
+   * @returns {string}
+   */
   image(grayscale=false, width=200, height=200) {
     if (!isValidNumber(width)) {
       throw new Error("Width should be a number");

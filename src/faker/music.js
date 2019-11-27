@@ -10,6 +10,9 @@ class Music {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   key() {
     return [
       this.faker.Random.element(data["keys"]),
@@ -17,6 +20,9 @@ class Music {
     ].join("");
   }
 
+  /**
+   * @returns {string}
+   */
   chord() {
     return [
       this.faker.Random.element(data["keys"]),
@@ -24,6 +30,9 @@ class Music {
     ].join("");
   }
 
+  /**
+   * @returns {string}
+   */
   instrument() {
     return this.faker.Random.element(data["instruments"]);
   }

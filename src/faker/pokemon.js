@@ -10,10 +10,16 @@ class Pokemon {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   name() {
     return this.faker.Random.element(data["names"]);
   }
 
+  /**
+   * @returns {string}
+   */
   location() {
     return this.faker.Random.element(data["locations"]);
   }

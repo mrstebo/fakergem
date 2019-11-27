@@ -10,10 +10,16 @@ class Book {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   title() {
     return this.faker.Random.element(data["titles"]);
   }
 
+  /**
+   * @returns {string}
+   */
   author() {
     return [
       this.faker.Name.firstName(),
@@ -21,10 +27,16 @@ class Book {
     ].join(" ");
   }
 
+  /**
+   * @returns {string}
+   */
   publisher() {
     return this.faker.Random.element(data["publishers"]);
   }
 
+  /**
+   * @returns {string}
+   */
   genre() {
     return this.faker.Random.element(data["genres"]);
   }

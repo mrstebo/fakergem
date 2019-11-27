@@ -8,6 +8,10 @@ class Boolean {
     this.faker = faker;
   }
 
+  /**
+   * @param {number} trueRatio
+   * @returns {boolean}
+   */
   boolean(trueRatio=0.5) {
     return Math.random() < trueRatio;
   }

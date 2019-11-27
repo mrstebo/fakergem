@@ -10,10 +10,16 @@ class LordOfTheRings {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   character() {
     return this.faker.Random.element(data["characters"]);
   }
 
+  /**
+   * @returns {string}
+   */
   location() {
     return this.faker.Random.element(data["locations"]);
   }

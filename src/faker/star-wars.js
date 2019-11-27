@@ -14,30 +14,51 @@ class StarWars {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   character() {
     return this.faker.Random.element(data["characters"]);
   }
 
+  /**
+   * @returns {string}
+   */
   droid() {
     return this.faker.Random.element(data["droids"]);
   }
 
+  /**
+   * @returns {string}
+   */
   planet() {
     return this.faker.Random.element(data["planets"]);
   }
 
+  /**
+   * @returns {string}
+   */
   quote() {
     return this.faker.Random.element(data["quotes"]);
   }
 
+  /**
+   * @returns {string}
+   */
   specie() {
     return this.faker.Random.element(data["species"]);
   }
 
+  /**
+   * @returns {string}
+   */
   vehicle() {
     return this.faker.Random.element(data["vehicles"]);
   }
 
+  /**
+   * @returns {string}
+   */
   wookieSentence() {
     return capitalize(
       [...Array(this.faker.Number.between(1, 10)).keys()]

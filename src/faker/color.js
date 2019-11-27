@@ -15,20 +15,32 @@ class Color {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   hexColor() {
     const n = this.faker.Number.between(0, 0xffffff);
     return `#${leftPad(n.toString(16), 6, "0")}`;
   }
 
+  /**
+   * @returns {string}
+   */
   colorName() {
     return this.faker.Random.element(data["colorNames"]);
   }
 
+  /**
+   * @returns {number[]}
+   */
   rgbColor() {
     return [...Array(3).keys()]
       .map(() => this.faker.Number.between(0, 255));
   }
 
+  /**
+   * @returns {number[]}
+   */
   hslColor() {
     return [
       this.faker.Number.between(0, 360),
@@ -37,6 +49,9 @@ class Color {
     ];
   }
 
+  /**
+   * @returns {number[]}
+   */
   hslaColor() {
     return [
       this.faker.Number.between(0, 360),

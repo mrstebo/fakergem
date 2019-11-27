@@ -22,6 +22,14 @@ class LoremPixel {
     this.faker = faker;
   }
 
+  /**
+   * @param {string} size
+   * @param {boolean} isGray
+   * @param {string} category
+   * @param {number} number
+   * @param {string} text
+   * @returns {string}
+   */
   image(size="300x300", isGray=false, category=null, number=null, text=null) {
     if (!isValidSize(size)) {
       throw new Error("Size should be specified in format 300x300");

@@ -10,26 +10,45 @@ class Demographic {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   race() {
     return this.faker.Random.element(data["races"]);
   }
 
+  /**
+   * @returns {string}
+   */
   educationalAttainment() {
     return this.faker.Random.element(data["educationalAttainments"]);
   }
 
+  /**
+   * @returns {string}
+   */
   demonym() {
     return this.faker.Random.element(data["demonyms"]);
   }
 
+  /**
+   * @returns {string}
+   */
   maritalStatus() {
     return this.faker.Random.element(data["maritalStatuses"]);
   }
 
+  /**
+   * @returns {string}
+   */
   sex() {
     return this.faker.Random.element(data["sexes"]);
   }
 
+  /**
+   * @param {string} unit
+   * @returns {string}
+   */
   height(unit="metric") {
     const inches = this.faker.Number.between(57, 86);
 

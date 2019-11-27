@@ -24,6 +24,10 @@ class Fake {
     this.faker = faker;
   }
 
+  /**
+   * @param {string} str
+   * @returns {string}
+   */
   f(str) {
     if (typeof str !== "string" || str.length === 0) {
       throw new Error("A string must be specified");

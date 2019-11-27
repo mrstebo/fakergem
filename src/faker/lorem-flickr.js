@@ -41,10 +41,22 @@ class LoremFlickr {
     this.faker = faker;
   }
 
+  /**
+   * @param {string} size
+   * @param {string[]} searchTerms
+   * @param {boolean} matchAll
+   * @returns {string}
+   */
   image(size="300x300", searchTerms=[], matchAll=false) {
     return buildUrl(size, null, searchTerms, matchAll);
   }
 
+  /**
+   * @param {string} size
+   * @param {string[]} searchTerms
+   * @param {boolean} matchAll
+   * @returns {string}
+   */
   grayscaleImage(size="300x300", searchTerms=["all"], matchAll=false) {
     if (!hasSearchTerms(searchTerms)) {
       throw new Error("Search terms must be specified for grayscale images");
@@ -53,6 +65,12 @@ class LoremFlickr {
     return buildUrl(size, "g", searchTerms, matchAll);
   }
 
+  /**
+   * @param {string} size
+   * @param {string[]} searchTerms
+   * @param {boolean} matchAll
+   * @returns {string}
+   */
   pixelatedImage(size="300x300", searchTerms=["all"], matchAll=false) {
     if (!hasSearchTerms(searchTerms)) {
       throw new Error("Search terms must be specified for pixelated images");
@@ -61,6 +79,13 @@ class LoremFlickr {
     return buildUrl(size, "p", searchTerms, matchAll);
   }
 
+  /**
+   * @param {string} size
+   * @param {string} color
+   * @param {string[]} searchTerms
+   * @param {boolean} matchAll
+   * @returns {string}
+   */
   colorizedImage(size="300x300", color="red", searchTerms=["all"], matchAll=false) {
     if (!hasSearchTerms(searchTerms)) {
       throw new Error("Search terms must be specified for colorized images");

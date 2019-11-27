@@ -10,6 +10,9 @@ class DragonBall {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   character() {
     return this.faker.Random.element(data["characters"]);
   }

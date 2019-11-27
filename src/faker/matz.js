@@ -10,6 +10,9 @@ class Matz {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   quote() {
     return this.faker.Random.element(data["quotes"]);
   }

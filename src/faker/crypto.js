@@ -12,6 +12,9 @@ class Crypto {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   md5() {
     const hash = crypto.createHash("md5");
     const array = CHARACTERS.split("");
@@ -20,6 +23,9 @@ class Crypto {
     return hash.digest("hex");
   }
 
+  /**
+   * @returns {string}
+   */
   sha1() {
     const hash = crypto.createHash("sha1");
     const array = CHARACTERS.split("");
@@ -28,6 +34,9 @@ class Crypto {
     return hash.digest("hex");
   }
 
+  /**
+   * @returns {string}
+   */
   sha256() {
     const hash = crypto.createHash("sha256");
     const array = CHARACTERS.split("");

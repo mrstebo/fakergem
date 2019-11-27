@@ -19,11 +19,17 @@ class Coffee {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   blendName() {
     const blendName = this.faker.Random.element(data["blendNames"]);
     return parse(this.faker, blendName);
   }
 
+  /**
+   * @returns {string}
+   */
   origin() {
     const country = this.faker.Random.element(data["countries"]);
     const key = country.replace(/\s/, "_").toLowerCase();
@@ -31,10 +37,16 @@ class Coffee {
     return `${region}, ${country}`;
   }
 
+  /**
+   * @returns {string}
+   */
   variety() {
     return this.faker.Random.element(data["varieties"]);
   }
 
+  /**
+   * @returns {string}
+   */
   notes() {
     const notes = this.faker.Random.element(data["notes"]);
     return parse(this.faker, notes);

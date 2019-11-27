@@ -51,20 +51,32 @@ class Company {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   name() {
     return parse(this.faker, this.faker.Random.element(data["names"]));
   }
 
+  /**
+   * @returns {string}
+   */
   suffix() {
     return this.faker.Random.element(data["suffixes"]);
   }
 
+  /**
+   * @returns {string}
+   */
   catchPhrase() {
     return [...Array(3).keys()]
       .map(i => this.faker.Random.element(data["buzzwords"][i]))
       .join(" ");
   }
 
+  /**
+   * @returns {string}
+   */
   buzzword() {
     return this.faker.Random.element([
       ...data["buzzwords"][0],
@@ -73,12 +85,18 @@ class Company {
     ]);
   }
 
+  /**
+   * @returns {string}
+   */
   bs() {
     return [...Array(3).keys()]
       .map(i => this.faker.Random.element(data["bs"][i]))
       .join(" ");
   }
 
+  /**
+   * @returns {string}
+   */
   ein() {
     return [...Array(9).keys()]
       .map(() => this.faker.Number.between(0, 9))
@@ -86,6 +104,9 @@ class Company {
       .replace(/(\d{2})(\d{7})/, "$1-$2");
   }
 
+  /**
+   * @returns {string}
+   */
   dunsNumber() {
     return [...Array(9).keys()]
       .map(() => this.faker.Number.between(0, 9))
@@ -93,11 +114,17 @@ class Company {
       .replace(/(\d{2})(\d{3})(\d{4})/, "$1-$2-$3");
   }
 
+  /**
+   * @returns {string}
+   */
   logo() {
     const number = this.faker.Number.between(1, 14);
     return `https://pigment.github.io/fake-logos/logos/medium/color/${number}.png`;
   }
 
+  /**
+   * @returns {string}
+   */
   swedishOrganisationNumber() {
     const base = [
       this.faker.Number.between(1, 9),
@@ -108,6 +135,9 @@ class Company {
     return `${base}${luhnAlgorithm(base)}`;
   }
 
+  /**
+   * @returns {string}
+   */
   norwegianOrganisationNumber() {
     let mod11Check = null;
     let base = "";
@@ -121,12 +151,18 @@ class Company {
     return `${base}${mod11Check}`;
   }
 
+  /**
+   * @returns {string}
+   */
   australianBusinessNumber() {
     const base = leftPad(this.faker.Number.between(0, 1000000000), 9, "0");
     const abn = `00${base}`;
     return `${(99 - abnChecksum(abn) % 89)}${base}`;
   }
 
+  /**
+   * @returns {string}
+   */
   profession() {
     return this.faker.Random.element(data["professions"]);
   }

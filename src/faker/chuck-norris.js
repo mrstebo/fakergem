@@ -10,6 +10,9 @@ class ChuckNorris {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   fact() {
     return this.faker.Random.element(data["facts"]);
   }

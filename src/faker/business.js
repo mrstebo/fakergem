@@ -17,14 +17,23 @@ class Business {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   creditCardNumber() {
     return this.faker.Random.element(data["creditCardNumbers"]);
   }
 
+  /**
+   * @returns {Date}
+   */
   creditCardExpiryDate() {
     return daysFromNow(365 * this.faker.Number.between(1, 5));
   }
 
+  /**
+   * @returns {string}
+   */
   creditCardType() {
     return this.faker.Random.element(data["creditCardTypes"]);
   }

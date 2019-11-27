@@ -10,18 +10,30 @@ class GameOfThrones {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   character() {
     return this.faker.Random.element(data["characters"]);
   }
 
+  /**
+   * @returns {string}
+   */
   house() {
     return this.faker.Random.element(data["houses"]);
   }
 
+  /**
+   * @returns {string}
+   */
   city() {
     return this.faker.Random.element(data["cities"]);
   }
 
+  /**
+   * @returns {string}
+   */
   dragon() {
     return this.faker.Random.element(data["dragons"]);
   }

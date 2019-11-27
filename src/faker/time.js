@@ -19,6 +19,10 @@ const TIME_RANGES = {
   [MIDNIGHT]: { start: 0, end: 4 },
 };
 
+/**
+ * @param {string} period
+ * @returns {{ start: number, end: number }}
+ */
 function rangeFor(period) {
   const range = TIME_RANGES[period];
   if (!range) {
@@ -32,11 +36,16 @@ function timeWithFormat(time, format) {
   return formatDate(time, format);
 }
 
+/**
+ * @param {number} n
+ * @returns {Date}
+ */
 function daysFromNow(n) {
   const d = new Date();
   d.setDate(d.getDate() + n);
   return d;
 }
+
 class Time {
 
   /**
@@ -56,6 +65,13 @@ class Time {
   get MIDNIGHT() { return MIDNIGHT; }
   get BETWEEN() { return BETWEEN; }
 
+  /**
+   * @param {Date | string} from
+   * @param {Date | string} to
+   * @param {string} period
+   * @param {string} format
+   * @returns {Date}
+   */
   between(from, to, period=ALL, format=null) {
     const date = this.faker.Date.between(from, to);
     const time = period === BETWEEN
@@ -71,6 +87,12 @@ class Time {
     return timeWithFormat(time, format);
   }
 
+  /**
+   * @param {number} days
+   * @param {string} period
+   * @param {string} format
+   * @returns {Date}
+   */
   forward(days=365, period=ALL, format=null) {
     const from = daysFromNow(1);
     const to = daysFromNow(days);
@@ -87,6 +109,12 @@ class Time {
     return timeWithFormat(time, format);
   }
 
+  /**
+   * @param {number} days
+   * @param {string} period
+   * @param {string} format
+   * @returns {Date}
+   */
   backward(days=365, period=ALL, format=null) {
     const from = daysFromNow(-days);
     const to = daysFromNow(-1);

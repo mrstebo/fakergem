@@ -10,14 +10,24 @@ class Bank {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   name() {
     return this.faker.Random.element(data["names"]);
   }
 
+  /**
+   * @returns {string}
+   */
   swiftBic() {
     return this.faker.Random.element(data["swiftBics"]);
   }
 
+  /**
+   * @param {string} bankCountryCode
+   * @returns {string}
+   */
   iban(bankCountryCode="GB") {
     const details = data["ibanDetails"].find(x => x["bankCountryCode"] == bankCountryCode.toUpperCase());
     const bcc = `${details["bankCountryCode"]}${this.faker.Number.between(10, 99)}`;

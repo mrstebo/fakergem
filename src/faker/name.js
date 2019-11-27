@@ -10,6 +10,9 @@ class Name {
     this.faker = faker;
   }
 
+  /**
+   * @returns {string}
+   */
   name() {
     return [
       this.firstName(),
@@ -17,6 +20,9 @@ class Name {
     ].join(" ");
   }
 
+  /**
+   * @returns {string}
+   */
   nameWithMiddle() {
     return [
       this.firstName(),
@@ -25,22 +31,37 @@ class Name {
     ].join(" ");
   }
 
+  /**
+   * @returns {string}
+   */
   firstName() {
     return this.faker.Random.element(data["firstNames"]);
   }
 
+  /**
+   * @returns {string}
+   */
   lastName() {
     return this.faker.Random.element(data["lastNames"]);
   }
 
+  /**
+   * @returns {string}
+   */
   prefix() {
     return this.faker.Random.element(data["prefixes"]);
   }
 
+  /**
+   * @returns {string}
+   */
   suffix() {
     return this.faker.Random.element(data["suffixes"]);
   }
 
+  /**
+   * @returns {string}
+   */
   title() {
     return [
       this.faker.Random.element(data["titles"]["descriptor"]),
