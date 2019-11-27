@@ -44,9 +44,11 @@
     "gulp-babel": "^7.0.0",
     "gulp-eslint": "^5.0.0",
     "istanbul": "1.0.0-alpha.2",
+    "jsdoc": "^3.6.3",
     "mocha": "^5.0.0",
     "sinon": "^6.0.0",
-    "sinon-test": "^2.1.0"
+    "sinon-test": "^2.1.0",
+    "tsd-jsdoc": "^2.4.0"
   },
   "dependencies": {
     "bs58": "^4.0.0"
