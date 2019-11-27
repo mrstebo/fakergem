@@ -38,6 +38,7 @@ jspm_packages
 
 # Compiled source
 lib
+types
 
 # Custom scripts
 scripts
