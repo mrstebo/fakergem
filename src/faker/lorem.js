@@ -11,11 +11,11 @@ function capitalize(text) {
   return text.replace(/\b\w/, x => x.toUpperCase());
 }
 
-module.exports = class Lorem {
+class Lorem {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -67,4 +67,6 @@ module.exports = class Lorem {
       .map(() => this.paragraph(3, supplemental));
   }
 
-};
+}
+
+module.exports = Lorem;

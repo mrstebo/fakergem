@@ -5,11 +5,11 @@ function parse(faker, format) {
   return faker.Fake.f(text).replace(/^(\w)/, m => m[0].toUpperCase());
 }
 
-module.exports = class Hacker {
+class Hacker {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -39,4 +39,6 @@ module.exports = class Hacker {
     return this.faker.Random.element(data["ingverbs"]);
   }
 
-};
+}
+
+module.exports = Hacker;

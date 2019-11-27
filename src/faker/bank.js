@@ -1,10 +1,10 @@
 const data = require("../../data/bank.json");
 
-module.exports = class Bank {
+class Bank {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -30,4 +30,6 @@ module.exports = class Bank {
     return `${bcc}${ilc}${ib}`;
   }
 
-};
+}
+
+module.exports = Bank;

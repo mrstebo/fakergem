@@ -12,11 +12,11 @@ function shuffle(collection) {
   return result;
 }
 
-module.exports = class Random {
+class Random {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -38,4 +38,6 @@ module.exports = class Random {
     return itemFromCollection(array);
   }
 
-};
+}
+
+module.exports = Random;

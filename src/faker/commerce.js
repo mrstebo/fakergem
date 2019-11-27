@@ -18,11 +18,11 @@ function mergeCategories(categories) {
   return [commaSeparated, lastCategory].join(separator);
 }
 
-module.exports = class Commerce {
+class Commerce {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -59,4 +59,6 @@ module.exports = class Commerce {
     ].join("");
   }
 
-};
+}
+
+module.exports = Commerce;

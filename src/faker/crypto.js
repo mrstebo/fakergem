@@ -2,11 +2,11 @@ const crypto = require("crypto");
 
 const CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyz";
 
-module.exports = class Crypto {
+class Crypto {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -36,4 +36,6 @@ module.exports = class Crypto {
     return hash.digest("hex");
   }
 
-};
+}
+
+module.exports = Crypto;

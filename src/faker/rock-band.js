@@ -1,10 +1,10 @@
 const data = require("../../data/rock-band.json");
 
-module.exports = class RockBand {
+class RockBand {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -14,4 +14,6 @@ module.exports = class RockBand {
     return this.faker.Random.element(data["names"]);
   }
 
-};
+}
+
+module.exports = RockBand;

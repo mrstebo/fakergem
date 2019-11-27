@@ -1,10 +1,10 @@
 const data = require("../../data/rick-and-morty.json");
 
-module.exports = class RickAndMorty {
+class RickAndMorty {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -22,4 +22,6 @@ module.exports = class RickAndMorty {
     return this.faker.Random.element(data["quotes"]);
   }
 
-};
+}
+
+module.exports = RickAndMorty;

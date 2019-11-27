@@ -37,11 +37,11 @@ function daysFromNow(n) {
   d.setDate(d.getDate() + n);
   return d;
 }
-module.exports = class Time {
+class Time {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -103,4 +103,6 @@ module.exports = class Time {
     return timeWithFormat(time, format);
   }
 
-};
+}
+
+module.exports = Time;

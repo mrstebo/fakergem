@@ -1,10 +1,10 @@
 const data = require("../../data/team.json");
 
-module.exports = class Team {
+class Team {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -26,4 +26,6 @@ module.exports = class Team {
     return this.faker.Random.element(data["sports"]);
   }
 
-};
+}
+
+module.exports = Team;

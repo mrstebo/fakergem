@@ -6,11 +6,11 @@ function isValidBoolean(value) {
   return /(true|false)/.test(value);
 }
 
-module.exports = class Fillmurray {
+class Fillmurray {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -35,4 +35,6 @@ module.exports = class Fillmurray {
     ].filter(x => x).join("/");
   }
 
-};
+}
+
+module.exports = Fillmurray;

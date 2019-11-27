@@ -1,10 +1,10 @@
 const data = require("../../data/demographic.json");
 
-module.exports = class Demographic {
+class Demographic {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -41,4 +41,6 @@ module.exports = class Demographic {
     }
   }
 
-};
+}
+
+module.exports = Demographic;

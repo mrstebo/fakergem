@@ -1,10 +1,10 @@
 const data = require("../../data/app.json");
 
-module.exports = class App {
+class App {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -28,4 +28,6 @@ module.exports = class App {
     ].join(" ");
   }
 
-};
+}
+
+module.exports = App;

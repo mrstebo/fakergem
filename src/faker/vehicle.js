@@ -12,11 +12,11 @@ function calculateVinWeight(character, i) {
   (VIN_CHARS.indexOf(character) % 10) * VIN_MAP.indexOf(VIN_WEIGHTS[i]);
 }
 
-module.exports = class Vehicle {
+class Vehicle {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -48,4 +48,6 @@ module.exports = class Vehicle {
     return this.faker.Random.element(data["manufactures"].map(x => x[0]));
   }
 
-};
+}
+
+module.exports = Vehicle;

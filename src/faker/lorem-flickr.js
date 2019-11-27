@@ -31,11 +31,11 @@ function isValidSize(size) {
   return /^\d+x\d+$/.test(size);
 }
 
-module.exports = class LoremFlickr {
+class LoremFlickr {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -72,4 +72,6 @@ module.exports = class LoremFlickr {
     return buildUrl(size, color, searchTerms, matchAll);
   }
 
-};
+}
+
+module.exports = LoremFlickr;

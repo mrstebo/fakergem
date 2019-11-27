@@ -5,11 +5,11 @@ function parse(faker, format) {
   return faker.Fake.f(text);
 }
 
-module.exports = class Compass {
+class Compass {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -75,4 +75,6 @@ module.exports = class Compass {
     return this.faker.Random.element(data["quarterWinds"]["azimuth"]);
   }
 
-};
+}
+
+module.exports = Compass;

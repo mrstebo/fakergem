@@ -1,8 +1,8 @@
-module.exports = class Twitter {
+class Twitter {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -171,4 +171,6 @@ module.exports = class Twitter {
     };
   }
 
-};
+}
+
+module.exports = Twitter;

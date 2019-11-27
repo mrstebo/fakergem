@@ -7,11 +7,11 @@ function daysFromNow(n) {
   return d;
 }
 
-module.exports = class Business {
+class Business {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -29,4 +29,6 @@ module.exports = class Business {
     return this.faker.Random.element(data["creditCardTypes"]);
   }
 
-};
+}
+
+module.exports = Business;

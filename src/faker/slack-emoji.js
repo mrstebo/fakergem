@@ -1,10 +1,10 @@
 const data = require("../../data/slack-emoji.json");
 
-module.exports = class SlackEmoji {
+class SlackEmoji {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -55,4 +55,6 @@ module.exports = class SlackEmoji {
     ]);
   }
 
-};
+}
+
+module.exports = SlackEmoji;

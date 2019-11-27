@@ -1,10 +1,10 @@
 const data = require("../../data/food.json");
 
-module.exports = class Food {
+class Food {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -22,4 +22,6 @@ module.exports = class Food {
     return this.faker.Random.element(data["measurements"]);
   }
 
-};
+}
+
+module.exports = Food;

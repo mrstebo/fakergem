@@ -5,11 +5,11 @@ function leftPad(text, length, paddingCharacter) {
   return (padding + text).slice(-length);
 }
 
-module.exports = class Color {
+class Color {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -46,4 +46,6 @@ module.exports = class Color {
     ];
   }
 
-};
+}
+
+module.exports = Color;

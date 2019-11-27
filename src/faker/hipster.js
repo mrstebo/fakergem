@@ -9,11 +9,11 @@ function capitalize(text) {
   return text.replace(/\b\w/, x => x.toUpperCase());
 }
 
-module.exports = class Hipster {
+class Hipster {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -59,4 +59,6 @@ module.exports = class Hipster {
       .map(() => this.paragraph(3, supplemental));
   }
 
-};
+}
+
+module.exports = Hipster;

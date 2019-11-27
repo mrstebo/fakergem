@@ -12,11 +12,11 @@ function words(faker) {
   return faker.Lorem.words(3).join("-");
 }
 
-module.exports = class Avatar {
+class Avatar {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -35,4 +35,6 @@ module.exports = class Avatar {
     return `https://robohash.org/${filename}?size=${size}&set=${set}${bgsetQuery}`;
   }
 
-};
+}
+
+module.exports = Avatar;

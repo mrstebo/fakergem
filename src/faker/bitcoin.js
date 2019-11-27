@@ -22,11 +22,11 @@ function base58(text) {
   return bs58.encode(new Buffer(text, "ascii"));
 }
 
-module.exports = class Bitcoin {
+class Bitcoin {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -40,4 +40,6 @@ module.exports = class Bitcoin {
     return addressFor("testnet");
   }
 
-};
+}
+
+module.exports = Bitcoin;

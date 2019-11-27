@@ -1,8 +1,8 @@
-module.exports = class Boolean {
+class Boolean {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -12,4 +12,6 @@ module.exports = class Boolean {
     return Math.random() < trueRatio;
   }
 
-};
+}
+
+module.exports = Boolean;

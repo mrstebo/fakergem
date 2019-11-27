@@ -9,11 +9,11 @@ function parse(faker, format) {
     .replace(/\{name2\}/g, faker.Random.element(data["name2"]));
 }
 
-module.exports = class Coffee {
+class Coffee {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -40,4 +40,6 @@ module.exports = class Coffee {
     return parse(this.faker, notes);
   }
 
-};
+}
+
+module.exports = Coffee;

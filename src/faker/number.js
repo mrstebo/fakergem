@@ -19,11 +19,11 @@ function leadingZeroNumber(digits) {
     .join("");
 }
 
-module.exports = class Number {
+class Number {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -81,4 +81,6 @@ module.exports = class Number {
     return randomNumber(0, 9);
   }
 
-};
+}
+
+module.exports = Number;

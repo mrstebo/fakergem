@@ -31,11 +31,11 @@ function reservedNetChecker(addr) {
   return [...PRIVATE_NET_REGEX, ...RESERVED_NETS_REGEX].some(x => addr.match(x));
 }
 
-module.exports = class Internet {
+class Internet {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -162,4 +162,6 @@ module.exports = class Internet {
       .toLowerCase();
   }
 
-};
+}
+
+module.exports = Internet;

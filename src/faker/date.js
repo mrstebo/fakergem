@@ -19,11 +19,11 @@ function daysFromNow(n) {
   return d;
 }
 
-module.exports = class DateFaker {
+class DateFaker {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
@@ -75,4 +75,6 @@ module.exports = class DateFaker {
     return getDateObject(date);
   }
 
-};
+}
+
+module.exports = DateFaker;

@@ -7,18 +7,17 @@ function parse(faker, format) {
   return faker.Fake.f(text);
 }
 
-module.exports = class Address {
+class Address {
 
   /**
    *
-   * @param {import("../faker")} faker
+   * @param {Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
   }
 
   /**
-   * @method city
    * @returns {string}
    */
   city() {
@@ -152,4 +151,6 @@ module.exports = class Address {
     return ""+(this.faker.Number.betweenF(0.00, 360.00) - 180);
   }
 
-};
+}
+
+module.exports = Address;
