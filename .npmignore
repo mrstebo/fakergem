@@ -1,6 +1,5 @@
 /.vscode
 /coverage
-/src
 /test
 .babelrc
 .eslintrc
