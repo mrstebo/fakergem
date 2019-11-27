@@ -15,7 +15,7 @@ class Lorem {
 
   /**
    *
-   * @param {Faker} faker
+   * @param {import('../faker').Faker} faker
    */
   constructor(faker) {
     this.faker = faker;
