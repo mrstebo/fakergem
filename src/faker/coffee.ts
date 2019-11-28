@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/coffee.json';
+import { Faker } from '../faker';
 
 export class Coffee {
   private readonly faker: Faker;
@@ -8,12 +8,12 @@ export class Coffee {
     this.faker = faker;
   }
 
-  blendName(): string {
+  public blendName(): string {
     const blendName = this.faker.Random.element(data.blendNames);
     return this.parse(blendName);
   }
 
-  origin(): string {
+  public origin(): string {
     const country = this.faker.Random.element(data.countries);
     const key = country.replace(/\s/, '_').toLowerCase();
     const regions = data.regions as { [key: string]: any };
@@ -21,11 +21,11 @@ export class Coffee {
     return `${region}, ${country}`;
   }
 
-  variety(): string {
+  public variety(): string {
     return this.faker.Random.element(data.varieties);
   }
 
-  notes(): string {
+  public notes(): string {
     const notes = this.faker.Random.element(data.notes);
     return this.parse(notes);
   }

@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/hacker.json';
+import { Faker } from '../faker';
 
 export class Hacker {
   private readonly faker: Faker;
@@ -8,27 +8,27 @@ export class Hacker {
     this.faker = faker;
   }
 
-  saySomethingSmart(): string {
+  public saySomethingSmart(): string {
     return this.parse(this.faker.Random.element(data.phrases));
   }
 
-  abbreviation(): string {
+  public abbreviation(): string {
     return this.faker.Random.element(data.abbreviations);
   }
 
-  adjective(): string {
+  public adjective(): string {
     return this.faker.Random.element(data.adjectives);
   }
 
-  noun(): string {
+  public noun(): string {
     return this.faker.Random.element(data.nouns);
   }
 
-  verb(): string {
+  public verb(): string {
     return this.faker.Random.element(data.verbs);
   }
 
-  ingverb(): string {
+  public ingverb(): string {
     return this.faker.Random.element(data.ingverbs);
   }
 

@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/beer.json';
+import { Faker } from '../faker';
 
 export class Beer {
   private readonly faker: Faker;
@@ -8,35 +8,35 @@ export class Beer {
     this.faker = faker;
   }
 
-  name(): string {
+  public name(): string {
     return this.faker.Random.element(data.names);
   }
 
-  style(): string {
+  public style(): string {
     return this.faker.Random.element(data.styles);
   }
 
-  hop(): string {
+  public hop(): string {
     return this.faker.Random.element(data.hops);
   }
 
-  yeast(): string {
+  public yeast(): string {
     return this.faker.Random.element(data.yeasts);
   }
 
-  malt(): string {
+  public malt(): string {
     return this.faker.Random.element(data.malts);
   }
 
-  ibu(): string {
+  public ibu(): string {
     return `${this.faker.Number.between(10, 99)} IBU`;
   }
 
-  alcohol(): string {
+  public alcohol(): string {
     return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}%`;
   }
 
-  blg(): string {
+  public blg(): string {
     return `${this.faker.Number.betweenF(2.0, 10.0).toFixed(1)}°Blg`;
   }
 }

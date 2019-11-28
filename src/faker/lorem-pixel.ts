@@ -1,7 +1,7 @@
 import { Faker } from '../faker';
 
 export class LoremPixel {
-  private SUPPORTED_CATEGORIES: Array<string> = [
+  private SUPPORTED_CATEGORIES: string[] = [
     'abstract',
     'animals',
     'business',
@@ -23,11 +23,11 @@ export class LoremPixel {
     this.faker = faker;
   }
 
-  image(
+  public image(
     size: string = '300x300',
     isGray: boolean = false,
     category: string | null = null,
-    number: number | null = null,
+    num: number | null = null,
     text: string | null = null,
   ): string {
     if (!this.isValidSize(size)) {
@@ -38,15 +38,15 @@ export class LoremPixel {
       throw new Error(`Supported categories are ${this.SUPPORTED_CATEGORIES.join(', ')}`);
     }
 
-    if (!this.isNumberValid(number)) {
+    if (!this.isNumberValid(num)) {
       throw new Error('Number must be between 1 and 10');
     }
 
-    if (number && !category) {
+    if (num && !category) {
       throw new Error('Category required when number is passed');
     }
 
-    if (text && !category && !number) {
+    if (text && !category && !num) {
       throw new Error('Category and number must be passed when text is passed');
     }
 
@@ -54,7 +54,7 @@ export class LoremPixel {
       'http://lorempixel.com',
       isGray ? 'g' : null,
       size.replace(/x/, '/'),
-      [category, number, text].filter(x => x).join('/'),
+      [category, num, text].filter(x => x).join('/'),
     ]
       .filter(x => x)
       .join('/');
@@ -68,13 +68,13 @@ export class LoremPixel {
     return !category || this.SUPPORTED_CATEGORIES.indexOf(category) >= 0;
   }
 
-  private isNumberValid(number: number | null): boolean {
+  private isNumberValid(num: number | null): boolean {
     return (
-      number === null ||
+      num === null ||
       Array(10)
         .fill(null)
         .map((_, i) => i + 1)
-        .indexOf(number) >= 0
+        .indexOf(num) >= 0
     );
   }
 }

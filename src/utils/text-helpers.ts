@@ -3,7 +3,7 @@ export function capitalize(text: string): string {
 }
 
 export function leftPad(text: string, length: number, paddingCharacter: string) {
-  let padding = Array(length)
+  const padding = Array(length)
     .fill(null)
     .map(_ => paddingCharacter)
     .join('');

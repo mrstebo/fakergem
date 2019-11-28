@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/compass.json';
+import { Faker } from '../faker';
 
 export class Compass {
   private readonly faker: Faker;
@@ -8,63 +8,63 @@ export class Compass {
     this.faker = faker;
   }
 
-  direction(): string {
+  public direction(): string {
     return this.parse(this.faker.Random.element(data.directions));
   }
 
-  cardinal(): string {
+  public cardinal(): string {
     return this.faker.Random.element(data.cardinals.word);
   }
 
-  ordinal(): string {
+  public ordinal(): string {
     return this.faker.Random.element(data.ordinals.word);
   }
 
-  halfWind(): string {
+  public halfWind(): string {
     return this.faker.Random.element(data.halfWinds.word);
   }
 
-  quarterWind(): string {
+  public quarterWind(): string {
     return this.faker.Random.element(data.quarterWinds.word);
   }
 
-  abbreviation(): string {
+  public abbreviation(): string {
     return this.parse(this.faker.Random.element(data.abbreviations));
   }
 
-  cardinalAbbreviation(): string {
+  public cardinalAbbreviation(): string {
     return this.faker.Random.element(data.cardinals.abbreviation);
   }
 
-  ordinalAbbreviation(): string {
+  public ordinalAbbreviation(): string {
     return this.faker.Random.element(data.ordinals.abbreviation);
   }
 
-  halfWindAbbreviation(): string {
+  public halfWindAbbreviation(): string {
     return this.faker.Random.element(data.halfWinds.abbreviation);
   }
 
-  quarterWindAbbreviation(): string {
+  public quarterWindAbbreviation(): string {
     return this.faker.Random.element(data.quarterWinds.abbreviation);
   }
 
-  azimuth(): string {
+  public azimuth(): string {
     return this.parse(this.faker.Random.element(data.azimuths));
   }
 
-  cardinalAzimuth(): string {
+  public cardinalAzimuth(): string {
     return this.faker.Random.element(data.cardinals.azimuth);
   }
 
-  ordinalAzimuth(): string {
+  public ordinalAzimuth(): string {
     return this.faker.Random.element(data.ordinals.azimuth);
   }
 
-  halfWindAzimuth(): string {
+  public halfWindAzimuth(): string {
     return this.faker.Random.element(data.halfWinds.azimuth);
   }
 
-  quarterWindAzimuth(): string {
+  public quarterWindAzimuth(): string {
     return this.faker.Random.element(data.quarterWinds.azimuth);
   }
 

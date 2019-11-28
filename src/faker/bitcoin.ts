@@ -1,6 +1,6 @@
-import { Faker } from '../faker';
-import crypto, { HexBase64Latin1Encoding } from 'crypto';
 import bs58 from 'bs58';
+import crypto, { HexBase64Latin1Encoding } from 'crypto';
+import { Faker } from '../faker';
 
 export class Bitcoin {
   private PROTOCOL_VERSION: { [key: string]: number } = {
@@ -14,12 +14,12 @@ export class Bitcoin {
     this.faker = faker;
   }
 
-  address(): string {
-    return this.addressFor(this.PROTOCOL_VERSION['main']);
+  public address(): string {
+    return this.addressFor(this.PROTOCOL_VERSION.main);
   }
 
-  testnetAddress(): string {
-    return this.addressFor(this.PROTOCOL_VERSION['testnet']);
+  public testnetAddress(): string {
+    return this.addressFor(this.PROTOCOL_VERSION.testnet);
   }
 
   private addressFor(version: number): string {

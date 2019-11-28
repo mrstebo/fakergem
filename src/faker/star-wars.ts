@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/star-wars.json';
+import { Faker } from '../faker';
 import { capitalize } from '../utils/text-helpers';
 
 export class StarWars {
@@ -9,31 +9,31 @@ export class StarWars {
     this.faker = faker;
   }
 
-  character(): string {
+  public character(): string {
     return this.faker.Random.element(data.characters);
   }
 
-  droid(): string {
+  public droid(): string {
     return this.faker.Random.element(data.droids);
   }
 
-  planet(): string {
+  public planet(): string {
     return this.faker.Random.element(data.planets);
   }
 
-  quote(): string {
+  public quote(): string {
     return this.faker.Random.element(data.quotes);
   }
 
-  specie(): string {
+  public specie(): string {
     return this.faker.Random.element(data.species);
   }
 
-  vehicle(): string {
+  public vehicle(): string {
     return this.faker.Random.element(data.vehicles);
   }
 
-  wookieSentence(): string {
+  public wookieSentence(): string {
     return capitalize(
       Array(this.faker.Number.between(1, 10))
         .fill(null)

@@ -43,7 +43,7 @@ export class Time {
     return 'BETWEEN';
   }
 
-  between(from: Date, to: Date, period: string = this.ALL): Date {
+  public between(from: Date, to: Date, period: string = this.ALL): Date {
     const date = this.faker.Date.between(from, to);
     const time =
       period === this.BETWEEN
@@ -60,7 +60,7 @@ export class Time {
     return time;
   }
 
-  forward(days: number = 365, period: string = this.ALL): Date {
+  public forward(days: number = 365, period: string = this.ALL): Date {
     const from = this.daysFromNow(1);
     const to = this.daysFromNow(days);
     const date = this.faker.Date.between(from, to);
@@ -77,7 +77,7 @@ export class Time {
     return time;
   }
 
-  backward(days: number = 365, period: string = this.ALL): Date {
+  public backward(days: number = 365, period: string = this.ALL): Date {
     const from = this.daysFromNow(-days);
     const to = this.daysFromNow(-1);
     const date = this.faker.Date.between(from, to);

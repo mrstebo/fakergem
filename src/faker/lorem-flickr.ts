@@ -1,7 +1,7 @@
 import { Faker } from '../faker';
 
 export class LoremFlickr {
-  private SUPPORTED_COLORIZATIONS: Array<string> = ['red', 'green', 'blue'];
+  private SUPPORTED_COLORIZATIONS: string[] = ['red', 'green', 'blue'];
 
   private readonly faker: Faker;
 
@@ -9,11 +9,11 @@ export class LoremFlickr {
     this.faker = faker;
   }
 
-  image(size: string = '300x300', searchTerms: Array<string> = [], matchAll: boolean = false): string {
+  public image(size: string = '300x300', searchTerms: string[] = [], matchAll: boolean = false): string {
     return this.buildUrl(size, null, searchTerms, matchAll);
   }
 
-  grayscaleImage(size: string = '300x300', searchTerms: Array<string> = ['all'], matchAll: boolean = false): string {
+  public grayscaleImage(size: string = '300x300', searchTerms: string[] = ['all'], matchAll: boolean = false): string {
     if (!this.hasSearchTerms(searchTerms)) {
       throw new Error('Search terms must be specified for grayscale images');
     }
@@ -21,7 +21,7 @@ export class LoremFlickr {
     return this.buildUrl(size, 'g', searchTerms, matchAll);
   }
 
-  pixelatedImage(size: string = '300x300', searchTerms: Array<string> = ['all'], matchAll: boolean = false): string {
+  public pixelatedImage(size: string = '300x300', searchTerms: string[] = ['all'], matchAll: boolean = false): string {
     if (!this.hasSearchTerms(searchTerms)) {
       throw new Error('Search terms must be specified for pixelated images');
     }
@@ -29,10 +29,10 @@ export class LoremFlickr {
     return this.buildUrl(size, 'p', searchTerms, matchAll);
   }
 
-  colorizedImage(
+  public colorizedImage(
     size: string = '300x300',
     color: string = 'red',
-    searchTerms: Array<string> = ['all'],
+    searchTerms: string[] = ['all'],
     matchAll: boolean = false,
   ): string {
     if (!this.hasSearchTerms(searchTerms)) {
@@ -45,7 +45,7 @@ export class LoremFlickr {
     return this.buildUrl(size, color, searchTerms, matchAll);
   }
 
-  private buildUrl(size: string, format: string | null, searchTerms: Array<string>, matchAll: boolean): string {
+  private buildUrl(size: string, format: string | null, searchTerms: string[], matchAll: boolean): string {
     if (!this.isValidSize(size)) {
       throw new Error('Size should be specified in format 300x300');
     }
@@ -64,7 +64,7 @@ export class LoremFlickr {
     return url;
   }
 
-  private hasSearchTerms(searchTerms: Array<string>): boolean {
+  private hasSearchTerms(searchTerms: string[]): boolean {
     return (searchTerms || []).length > 0;
   }
 

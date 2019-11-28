@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/friends.json';
+import { Faker } from '../faker';
 
 export class Friends {
   private readonly faker: Faker;
@@ -8,15 +8,15 @@ export class Friends {
     this.faker = faker;
   }
 
-  character(): string {
+  public character(): string {
     return this.faker.Random.element(data.characters);
   }
 
-  location(): string {
+  public location(): string {
     return this.faker.Random.element(data.locations);
   }
 
-  quote(): string {
+  public quote(): string {
     return this.faker.Random.element(data.quotes);
   }
 }

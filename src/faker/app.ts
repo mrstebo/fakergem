@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/app.json';
+import { Faker } from '../faker';
 
 export class App {
   private readonly faker: Faker;
@@ -8,18 +8,18 @@ export class App {
     this.faker = faker;
   }
 
-  name(): string {
+  public name(): string {
     return this.faker.Random.element(data.names);
   }
 
-  version(): string {
+  public version(): string {
     return (this.faker.Random.element(data.versions) as string)
       .split('.')
       .map(x => x.replace(/#/g, () => this.faker.Number.between(0, 9).toString()))
       .join('.');
   }
 
-  author(): string {
+  public author(): string {
     return [this.faker.Name.firstName(), this.faker.Name.lastName()].join(' ');
   }
 }

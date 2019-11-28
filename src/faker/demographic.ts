@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/demographic.json';
+import { Faker } from '../faker';
 
 export class Demographic {
   private readonly faker: Faker;
@@ -8,27 +8,27 @@ export class Demographic {
     this.faker = faker;
   }
 
-  race(): string {
+  public race(): string {
     return this.faker.Random.element(data.races);
   }
 
-  educationalAttainment(): string {
+  public educationalAttainment(): string {
     return this.faker.Random.element(data.educationalAttainments);
   }
 
-  demonym(): string {
+  public demonym(): string {
     return this.faker.Random.element(data.demonyms);
   }
 
-  maritalStatus(): string {
+  public maritalStatus(): string {
     return this.faker.Random.element(data.maritalStatuses);
   }
 
-  sex(): string {
+  public sex(): string {
     return this.faker.Random.element(data.sexes);
   }
 
-  height(unit: string = 'metric'): string {
+  public height(unit: string = 'metric'): string {
     switch (unit) {
       case 'metric':
         return `${this.faker.Number.betweenF(1.45, 2.13).toFixed(2)}`;

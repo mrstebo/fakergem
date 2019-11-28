@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/food.json';
+import { Faker } from '../faker';
 
 export class Food {
   private readonly faker: Faker;
@@ -8,15 +8,15 @@ export class Food {
     this.faker = faker;
   }
 
-  ingredient(): string {
+  public ingredient(): string {
     return this.faker.Random.element(data.ingredients);
   }
 
-  spice(): string {
+  public spice(): string {
     return this.faker.Random.element(data.spices);
   }
 
-  measurement(): string {
+  public measurement(): string {
     return this.faker.Random.element(data.measurements);
   }
 }

@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/vehicle.json';
+import { Faker } from '../faker';
 
 export class Vehicle {
   private VIN_CHARS: string = '0123456789.ABCDEFGH..JKLMN.P.R..STUVWXYZ';
@@ -12,14 +12,14 @@ export class Vehicle {
     this.faker = faker;
   }
 
-  vin(): string {
+  public vin(): string {
     const details = this.faker.Random.element(data.manufactures.map(x => ({ wmi: x[1], wmiExt: x[2] })));
     const vin = Array(14)
       .fill(null)
-      .map(_ => this.faker.Random.element(this.VIN_CHARS.split('').filter(x => x != '.')))
+      .map(_ => this.faker.Random.element(this.VIN_CHARS.split('').filter(x => x !== '.')))
       .join('');
 
-    let buffer = `${details.wmi}${vin}`.split('');
+    const buffer = `${details.wmi}${vin}`.split('');
 
     if (details.wmiExt) {
       for (let i = 0; i < 2; i++) {
@@ -33,12 +33,12 @@ export class Vehicle {
     return buffer.join('');
   }
 
-  manufacture(): string {
+  public manufacture(): string {
     return this.faker.Random.element(data.manufactures.map(x => x[0]));
   }
 
-  private vinChecksum(buffer: Array<string>): string {
-    return this.VIN_MAP[<any>buffer.map((c, i) => this.calculateVinWeight(c, i)) % 11];
+  private vinChecksum(buffer: string[]): string {
+    return this.VIN_MAP[(buffer.map((c, i) => this.calculateVinWeight(c, i)) as any) % 11];
   }
 
   private calculateVinWeight(character: string, i: number): number {

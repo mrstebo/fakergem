@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/business.json';
+import { Faker } from '../faker';
 
 export class Business {
   private readonly faker: Faker;
@@ -8,15 +8,15 @@ export class Business {
     this.faker = faker;
   }
 
-  creditCardNumber(): string {
+  public creditCardNumber(): string {
     return this.faker.Random.element(data.creditCardNumbers);
   }
 
-  creditCardExpiryDate(): Date {
+  public creditCardExpiryDate(): Date {
     return this.daysFromNow(365 * this.faker.Number.between(1, 5));
   }
 
-  creditCardType(): string {
+  public creditCardType(): string {
     return this.faker.Random.element(data.creditCardTypes);
   }
 

@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/pokemon.json';
+import { Faker } from '../faker';
 
 export class Pokemon {
   private readonly faker: Faker;
@@ -8,11 +8,11 @@ export class Pokemon {
     this.faker = faker;
   }
 
-  name(): string {
+  public name(): string {
     return this.faker.Random.element(data.names);
   }
 
-  location(): string {
+  public location(): string {
     return this.faker.Random.element(data.locations);
   }
 }

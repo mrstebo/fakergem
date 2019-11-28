@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/music.json';
+import { Faker } from '../faker';
 
 export class Music {
   private readonly faker: Faker;
@@ -8,15 +8,15 @@ export class Music {
     this.faker = faker;
   }
 
-  key(): string {
+  public key(): string {
     return [this.faker.Random.element(data.keys), this.faker.Random.element(data.keyVariants)].join('');
   }
 
-  chord(): string {
+  public chord(): string {
     return [this.faker.Random.element(data.keys), this.faker.Random.element(data.chordTypes)].join('');
   }
 
-  instrument(): string {
+  public instrument(): string {
     return this.faker.Random.element(data.instruments);
   }
 }

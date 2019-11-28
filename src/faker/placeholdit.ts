@@ -1,7 +1,7 @@
 import { Faker } from '../faker';
 
 export class Placeholdit {
-  private SUPPORTED_FORMATS: Array<string> = ['png', 'jpg', 'gif', 'jpeg'];
+  private SUPPORTED_FORMATS: string[] = ['png', 'jpg', 'gif', 'jpeg'];
 
   private readonly faker: Faker;
 
@@ -9,7 +9,7 @@ export class Placeholdit {
     this.faker = faker;
   }
 
-  image(
+  public image(
     size: string = '300x300',
     format: string = 'png',
     backgroundColor: string | null = null,

@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/phone-number.json';
+import { Faker } from '../faker';
 
 export class PhoneNumber {
   private readonly faker: Faker;
@@ -8,31 +8,31 @@ export class PhoneNumber {
     this.faker = faker;
   }
 
-  phoneNumber(): string {
+  public phoneNumber(): string {
     const format = this.faker.Random.element(data.phoneNumber.formats);
     return format.replace(/#/g, () => this.faker.Number.between(0, 9));
   }
 
-  cellPhone(): string {
+  public cellPhone(): string {
     const format = this.faker.Random.element(data.cellPhone.formats);
     return format.replace(/#/g, () => this.faker.Number.between(0, 9));
   }
 
-  areaCode(): string {
+  public areaCode(): string {
     return this.faker.Random.element(data.areaCodes);
   }
 
-  exchangeCode(): string {
+  public exchangeCode(): string {
     return this.faker.Random.element(data.exchangeCodes);
   }
 
-  subscriberNumber(length: number = 4): string {
+  public subscriberNumber(length: number = 4): string {
     const min = Math.pow(10, length) / 10;
     const max = min * 10 - 1;
     return `${this.faker.Number.between(min, max)}`;
   }
 
-  extension(length: number = 4): string {
+  public extension(length: number = 4): string {
     return this.subscriberNumber(length);
   }
 }

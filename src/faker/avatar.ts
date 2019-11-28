@@ -1,7 +1,7 @@
 import { Faker } from '../faker';
 
 export class Avatar {
-  private SUPPORTED_FORMATS: Array<string> = ['png', 'jpg', 'bmp'];
+  private SUPPORTED_FORMATS: string[] = ['png', 'jpg', 'bmp'];
 
   private readonly faker: Faker;
 
@@ -9,7 +9,7 @@ export class Avatar {
     this.faker = faker;
   }
 
-  image(
+  public image(
     slug: string | null = null,
     size: string = '300x300',
     format: string = 'png',

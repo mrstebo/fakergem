@@ -7,7 +7,7 @@ export class DateFaker {
     this.faker = faker;
   }
 
-  between(from: Date | string, to: Date | string): Date {
+  public between(from: Date | string, to: Date | string): Date {
     from = this.getDateObject(from);
     to = this.getDateObject(to);
 
@@ -18,7 +18,7 @@ export class DateFaker {
     return this.getDateObject(date);
   }
 
-  betweenExcept(from: Date | string, to: Date | string, except: Date | string): Date {
+  public betweenExcept(from: Date | string, to: Date | string, except: Date | string): Date {
     from = this.getDateObject(from);
     to = this.getDateObject(to);
     except = this.getDateObject(except);
@@ -30,21 +30,21 @@ export class DateFaker {
     return this.getDateObject(date);
   }
 
-  forward(days: number = 365): Date {
+  public forward(days: number = 365): Date {
     const from = this.daysFromNow(1);
     const to = this.daysFromNow(days);
     const date = this.between(from, to);
     return this.getDateObject(date);
   }
 
-  backward(days: number = 365): Date {
+  public backward(days: number = 365): Date {
     const from = this.daysFromNow(-days);
     const to = this.daysFromNow(-1);
     const date = this.between(from, to);
     return this.getDateObject(date);
   }
 
-  birthday(minAge: number = 18, maxAge: number = 65): Date {
+  public birthday(minAge: number = 18, maxAge: number = 65): Date {
     const from = new Date();
     from.setFullYear(from.getFullYear() - maxAge);
     const to = new Date();
@@ -54,7 +54,7 @@ export class DateFaker {
   }
 
   private getDateObject(date: Date | string): Date {
-    if (typeof date == 'string') {
+    if (typeof date === 'string') {
       return new Date(Date.parse(date));
     }
     date.setHours(0, 0, 0, 0);

@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/name.json';
+import { Faker } from '../faker';
 
 export class Name {
   private readonly faker: Faker;
@@ -8,31 +8,31 @@ export class Name {
     this.faker = faker;
   }
 
-  name(): string {
+  public name(): string {
     return [this.firstName(), this.lastName()].join(' ');
   }
 
-  nameWithMiddle(): string {
+  public nameWithMiddle(): string {
     return [this.firstName(), this.firstName(), this.lastName()].join(' ');
   }
 
-  firstName(): string {
+  public firstName(): string {
     return this.faker.Random.element(data.firstNames);
   }
 
-  lastName(): string {
+  public lastName(): string {
     return this.faker.Random.element(data.lastNames);
   }
 
-  prefix(): string {
+  public prefix(): string {
     return this.faker.Random.element(data.prefixes);
   }
 
-  suffix(): string {
+  public suffix(): string {
     return this.faker.Random.element(data.suffixes);
   }
 
-  title(): string {
+  public title(): string {
     return [
       this.faker.Random.element(data.titles.descriptor),
       this.faker.Random.element(data.titles.level),

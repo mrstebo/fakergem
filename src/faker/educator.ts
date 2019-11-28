@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/educator.json';
+import { Faker } from '../faker';
 
 export class Educator {
   private readonly faker: Faker;
@@ -8,25 +8,25 @@ export class Educator {
     this.faker = faker;
   }
 
-  university(): string {
+  public university(): string {
     const name = this.faker.Random.element(data.names);
     const tertiaryType = this.faker.Random.element(data.tertiaries.types);
     return `${name} ${tertiaryType}`;
   }
 
-  secondarySchool(): string {
+  public secondarySchool(): string {
     const name = this.faker.Random.element(data.names);
     const secondary = this.faker.Random.element(data.secondaries);
     return `${name} ${secondary}`;
   }
 
-  course(): string {
+  public course(): string {
     const courseType = this.faker.Random.element(data.tertiaries.course.types);
     const courseSubject = this.faker.Random.element(data.tertiaries.course.subjects);
     return `${courseType} ${courseSubject}`;
   }
 
-  campus(): string {
+  public campus(): string {
     const name = this.faker.Random.element(data.names);
     return `${name} Campus`;
   }

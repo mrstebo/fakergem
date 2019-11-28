@@ -7,7 +7,7 @@ export class Fake {
     this.faker = faker;
   }
 
-  f(str: string): string {
+  public f(str: string): string {
     return str
       .replace(/\{(\w+)\.(\w+)\}/g, m => this.parseModule(this.faker, m))
       .replace(/#/g, _ => this.faker.Number.between(0, 9).toString());

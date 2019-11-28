@@ -7,7 +7,7 @@ export class Twitter {
     this.faker = faker;
   }
 
-  user(includeStatus: boolean = true, includeEmail: boolean = false): TwitterUser {
+  public user(includeStatus: boolean = true, includeEmail: boolean = false): TwitterUser {
     const userId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const backgroundImageUrl = this.faker.LoremPixel.image('600x400');
@@ -60,7 +60,7 @@ export class Twitter {
     return user;
   }
 
-  status(includeUser: boolean = true, includePhoto: boolean = false): TwitterStatus {
+  public status(includeUser: boolean = true, includePhoto: boolean = false): TwitterStatus {
     const statusId = this.faker.Number.between(1, 9223372036854775807);
     const createdAt = this.faker.Date.between(new Date(2006, 2, 21), new Date());
     const status = {
@@ -91,12 +91,12 @@ export class Twitter {
       user: includeUser ? this.user(false) : undefined,
     };
 
-    if (includePhoto) status.text = `${status['text']} ${status.entities.media[0]['url']}`;
+    if (includePhoto) { status.text = `${status.text} ${status.entities.media[0].url}`; }
 
     return status;
   }
 
-  screenName(): string {
+  public screenName(): string {
     return this.faker.Internet.userName().substring(0, 20);
   }
 
@@ -215,7 +215,7 @@ export interface TwitterUserEntities {
 }
 
 export interface TwitterUrls {
-  urls: Array<string>;
+  urls: string[];
 }
 
 export interface TwitterStatus {
@@ -247,11 +247,11 @@ export interface TwitterStatus {
 }
 
 export interface TwitterStatusEntities {
-  hashtags: Array<string>;
-  symbols: Array<string>;
-  user_mentions: Array<string>;
-  urls: Array<string>;
-  media: Array<TwitterPhotoEntity>;
+  hashtags: string[];
+  symbols: string[];
+  user_mentions: string[];
+  urls: string[];
+  media: TwitterPhotoEntity[];
 }
 
 export interface TwitterPhotoEntity {

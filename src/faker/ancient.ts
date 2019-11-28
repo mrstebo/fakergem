@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/ancient.json';
+import { Faker } from '../faker';
 
 export class Ancient {
   private readonly faker: Faker;
@@ -8,19 +8,19 @@ export class Ancient {
     this.faker = faker;
   }
 
-  god(): string {
+  public god(): string {
     return this.faker.Random.element(data.gods);
   }
 
-  primordial(): string {
+  public primordial(): string {
     return this.faker.Random.element(data.primordials);
   }
 
-  titan(): string {
+  public titan(): string {
     return this.faker.Random.element(data.titans);
   }
 
-  hero(): string {
+  public hero(): string {
     return this.faker.Random.element(data.heroes);
   }
 }

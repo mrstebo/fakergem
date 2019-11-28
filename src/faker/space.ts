@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/space.json';
+import { Faker } from '../faker';
 
 export class Space {
   private readonly faker: Faker;
@@ -8,55 +8,55 @@ export class Space {
     this.faker = faker;
   }
 
-  planet(): string {
+  public planet(): string {
     return this.faker.Random.element(data.planets);
   }
 
-  moon(): string {
+  public moon(): string {
     return this.faker.Random.element(data.moons);
   }
 
-  galaxy(): string {
+  public galaxy(): string {
     return this.faker.Random.element(data.galaxies);
   }
 
-  nebula(): string {
+  public nebula(): string {
     return this.faker.Random.element(data.nebulas);
   }
 
-  starCluster(): string {
+  public starCluster(): string {
     return this.faker.Random.element(data.starClusters);
   }
 
-  constellation(): string {
+  public constellation(): string {
     return this.faker.Random.element(data.constellations);
   }
 
-  star(): string {
+  public star(): string {
     return this.faker.Random.element(data.stars);
   }
 
-  agency(): string {
+  public agency(): string {
     return this.faker.Random.element(data.agencies);
   }
 
-  agencyAbv(): string {
+  public agencyAbv(): string {
     return this.faker.Random.element(data.agencyAbvs);
   }
 
-  nasaSpaceCraft(): string {
+  public nasaSpaceCraft(): string {
     return this.faker.Random.element(data.nasaSpaceCrafts);
   }
 
-  company(): string {
+  public company(): string {
     return this.faker.Random.element(data.companies);
   }
 
-  distanceMeasurement(): string {
+  public distanceMeasurement(): string {
     return this.faker.Random.element(data.distanceMeasurements);
   }
 
-  meteorite(): string {
+  public meteorite(): string {
     return this.faker.Random.element(data.meteorites);
   }
 }

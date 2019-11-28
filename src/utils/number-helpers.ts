@@ -7,5 +7,5 @@ export function betweenFloat(min: number, max: number): number {
 }
 
 export function resolveNumber(n: string | number): number {
-  return Math.max(parseInt(n.toString()), 0);
+  return Math.max(parseInt(n.toString(), 10), 0);
 }

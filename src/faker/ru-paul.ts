@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/ru-paul.json';
+import { Faker } from '../faker';
 
 export class RuPaul {
   private readonly faker: Faker;
@@ -8,7 +8,7 @@ export class RuPaul {
     this.faker = faker;
   }
 
-  quote(): string {
+  public quote(): string {
     return this.faker.Random.element(data.quotes);
   }
 }

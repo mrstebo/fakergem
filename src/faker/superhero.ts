@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/superhero.json';
+import { Faker } from '../faker';
 
 export class Superhero {
   private readonly faker: Faker;
@@ -8,26 +8,26 @@ export class Superhero {
     this.faker = faker;
   }
 
-  name(): string {
+  public name(): string {
     return this.faker.Random.element(data.names)
       .replace('{prefix}', this.faker.Random.element(data.prefixes))
       .replace('{suffix}', this.faker.Random.element(data.suffixes))
       .replace('{descriptor}', this.faker.Random.element(data.descriptors));
   }
 
-  power(): string {
+  public power(): string {
     return this.faker.Random.element(data.powers);
   }
 
-  prefix(): string {
+  public prefix(): string {
     return this.faker.Random.element(data.prefixes);
   }
 
-  suffix(): string {
+  public suffix(): string {
     return this.faker.Random.element(data.suffixes);
   }
 
-  descriptor(): string {
+  public descriptor(): string {
     return this.faker.Random.element(data.descriptors);
   }
 }

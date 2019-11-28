@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/slack-emoji.json';
+import { Faker } from '../faker';
 
 export class SlackEmoji {
   private readonly faker: Faker;
@@ -8,39 +8,39 @@ export class SlackEmoji {
     this.faker = faker;
   }
 
-  people(): string {
+  public people(): string {
     return this.faker.Random.element(data.people);
   }
 
-  nature(): string {
+  public nature(): string {
     return this.faker.Random.element(data.nature);
   }
 
-  foodAndDrink(): string {
+  public foodAndDrink(): string {
     return this.faker.Random.element(data.foodAndDrink);
   }
 
-  celebration(): string {
+  public celebration(): string {
     return this.faker.Random.element(data.celebration);
   }
 
-  activity(): string {
+  public activity(): string {
     return this.faker.Random.element(data.activity);
   }
 
-  travelAndPlaces(): string {
+  public travelAndPlaces(): string {
     return this.faker.Random.element(data.travelAndPlaces);
   }
 
-  objectsAndSymbols(): string {
+  public objectsAndSymbols(): string {
     return this.faker.Random.element(data.objectsAndSymbols);
   }
 
-  custom(): string {
+  public custom(): string {
     return this.faker.Random.element(data.custom);
   }
 
-  emoji(): string {
+  public emoji(): string {
     return this.faker.Random.element([
       ...data.people,
       ...data.nature,

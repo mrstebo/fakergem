@@ -1,5 +1,5 @@
-import { Faker } from '../faker';
 import data from '../data/matz.json';
+import { Faker } from '../faker';
 
 export class Matz {
   private readonly faker: Faker;
@@ -8,7 +8,7 @@ export class Matz {
     this.faker = faker;
   }
 
-  quote(): string {
+  public quote(): string {
     return this.faker.Random.element(data.quotes);
   }
 }
