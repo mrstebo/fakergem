@@ -7,7 +7,7 @@
     "version:patch": "npm version patch",
     "build": "./node_modules/.bin/tsc",
     "format": "./node_modules/.bin/prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "./node_modules/.bin/tslint -p tsconfig.json",
+    "lint": "./node_modules/.bin/tslint -p tsconfig.json --fix",
     "test": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register test/**/*.test.ts",
     "watch": "./node_modules/.bin/gulp watch",
     "prepublish": "npm run build"
@@ -55,5 +55,17 @@
   },
   "dependencies": {
     "bs58": "^4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./node_modules/.bin/lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "yarn lint",
+      "git add"
+    ]
   }
 }
