@@ -13,4 +13,4 @@ deploy:
   on:
     tags: true
     repo: mrstebo/fakergem
-    node: 6.3.0
+    node: 8
