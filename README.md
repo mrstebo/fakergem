@@ -5,7 +5,7 @@
 
 # fakergem
 
-A javascript version of the Faker ruby gem
+A TypeScript version of the Faker ruby gem
 
 Contents
 --------
