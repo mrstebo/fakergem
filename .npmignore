@@ -1,7 +1,10 @@
+/.vscode
 /coverage
 /src
 /test
 .babelrc
 .eslintrc
 .travis.yml
-Gulpfile.js
+.prettierrc
+tsconfig.json
+tslint.json

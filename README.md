@@ -73,13 +73,17 @@ Contents
 ## Installing
 
 ```bash
+# NPM
 npm install fakergem
+
+# Yarn
+yarn install fakergem
 ```
 
 ## Usage
 
 ```js
-const Faker = require('fakergem');
+const { Faker } = require('fakergem');
 
 Faker.Number.number(2);      //=> 52
 ```
