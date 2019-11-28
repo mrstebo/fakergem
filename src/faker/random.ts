@@ -18,9 +18,6 @@ export class Random {
   }
 
   public element(array: any[] | string): any {
-    if (!array) {
-      throw new Error('An array or string must be specified');
-    }
     return pickOne(array);
   }
 }
