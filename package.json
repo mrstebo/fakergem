@@ -34,7 +34,7 @@
   "devDependencies": {
     "@types/bs58": "^4.0.0",
     "@types/chai": "^4.2.3",
-    "@types/mocha": "^5.2.7",
+    "@types/mocha": "^7.0.0",
     "@types/node": "^12.11.1",
     "@types/sinon": "^7.5.0",
     "@types/sinon-test": "^2.4.0",
