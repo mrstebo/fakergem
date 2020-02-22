@@ -2171,10 +2171,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
-sinon-test@^2.1.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/sinon-test/-/sinon-test-2.4.0.tgz#dffb7caaac75107823c30c9152aeebd44e61adb1"
-  integrity sha512-oQnO02I7JDbtrSKN8Qs3upobCQRythJCBn3DzPmv4m/SoPvhZJDVqHDFkRZ1lZhN2GkBqOR3m7WT79190z9kEg==
+sinon-test@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/sinon-test/-/sinon-test-3.0.0.tgz#5d8083fe4673a02fa32e077aaad2911e2fee67f7"
+  integrity sha512-k2V042JwIS6SC3M8Ih3Uo6+6mlL5FKqvvobxoWQobFkACr61WpyAMKsfqXecLL+DrDD3s9T+eYSZdVQzMH1pkA==
 
 sinon@^6.0.0:
   version "6.3.5"
