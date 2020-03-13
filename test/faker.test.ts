@@ -97,6 +97,12 @@ describe('#Faker', () => {
     });
   });
 
+  describe('#CompaniesHouse', () => {
+    it('should be an object', () => {
+      expect(Faker.CompaniesHouse).to.be.a('object');
+    });
+  });
+
   describe('#Company', () => {
     it('should be an object', () => {
       expect(Faker.Company).to.be.a('object');
