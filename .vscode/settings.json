@@ -2,7 +2,6 @@
   "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.lintTask.enable": true,
   "files.trimTrailingWhitespace": true,
@@ -21,5 +20,8 @@
     "pixelated",
     "testnet",
     "wookie"
-  ]
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
