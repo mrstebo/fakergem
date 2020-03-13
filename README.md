@@ -27,6 +27,7 @@ Contents
   - [Faker.Coffee](doc/coffee.md)
   - [Faker.Color](doc/color.md)
   - [Faker.Commerce](doc/commerce.md)
+  - [Faker.CompaniesHouse](doc/companies_house.md)
   - [Faker.Company](doc/company.md)
   - [Faker.Compass](doc/compass.md)
   - [Faker.Crypto](doc/crypto.md)

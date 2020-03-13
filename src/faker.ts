@@ -13,6 +13,7 @@ import { ChuckNorris } from './faker/chuck-norris';
 import { Coffee } from './faker/coffee';
 import { Color } from './faker/color';
 import { Commerce } from './faker/commerce';
+import { CompaniesHouse } from './faker/companies-house';
 import { Company } from './faker/company';
 import { Compass } from './faker/compass';
 import { Crypto } from './faker/crypto';
@@ -73,6 +74,7 @@ export class Faker {
   public Coffee: Coffee;
   public Color: Color;
   public Commerce: Commerce;
+  public CompaniesHouse: CompaniesHouse;
   public Company: Company;
   public Compass: Compass;
   public Crypto: Crypto;
@@ -133,6 +135,7 @@ export class Faker {
     this.Coffee = new Coffee(this);
     this.Color = new Color(this);
     this.Commerce = new Commerce(this);
+    this.CompaniesHouse = new CompaniesHouse(this);
     this.Company = new Company(this);
     this.Compass = new Compass(this);
     this.Crypto = new Crypto(this);
