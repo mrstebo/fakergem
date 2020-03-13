@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-  - '8'
   - '10'
 cache: yarn
 after_success:
@@ -13,4 +12,4 @@ deploy:
   on:
     tags: true
     repo: mrstebo/fakergem
-    node: 8
+    node: 10
