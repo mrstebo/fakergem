@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/mrstebo/fakergem#readme",
   "devDependencies": {
-    "@types/bs58": "^4.0.0",
+    "@types/bs58": "^4.0.1",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.9.1",
